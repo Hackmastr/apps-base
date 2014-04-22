@@ -1,0 +1,4 @@
+# Ignore all app directories
+# Each app should have its own Git repo
+/a/*
+!/a/index.php
