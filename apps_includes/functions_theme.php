@@ -1,12 +1,12 @@
 <?php
 /**
- * Main style/theme functions
+ * Main theme functions
  */
 
 /**
- * Page header
+ * Site header
  */
-get_header() {
+function get_header() {
 	
 	echo '<!DOCTYPE html>
 	<html>
@@ -22,17 +22,32 @@ get_header() {
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 	</head>
-	<body>';
+	<body>
+	
+	<header id="apps_site_header">
+	
+		<a href="#"><img src="'. ABS_PATH .'/apps_assets/img/logo.png" alt="'. SITE_TITLE .'" /></a>
+	
+	</header>';
 		
 	
 }
 
 /**
- * Page footer
+ * Site footer
  */
-get_footer() {
+function get_footer() {
 	
 	echo '</body>
 	</html>';
+	
+}
+
+/**
+ * Site main navigation
+ */
+function get_main_nav() {
+	
+	// Go to database
 	
 }
