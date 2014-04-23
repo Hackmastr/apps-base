@@ -23,3 +23,18 @@ require_once('apps_includes/functions_theme.php');
 $page = array(
 	'title' => '',
 );
+
+/**
+ * Connect to the database
+ */
+$db_conn;
+try {
+	$database = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME, DB_USER, DB_PASS);
+	if (DEBUG) {
+		$database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	}
+	$db_conn = true;
+} catch (PDOException $e) {
+	throw new Exception($e->getMessage());
+	$db_conn = false;
+}
