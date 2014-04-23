@@ -5,3 +5,16 @@
 img { border: 0; }
 a { text-decoration: none; outline: none; }
 header, section, footer, aside, nav, article, figure { display: block; }
+
+/**
+ * Main Layout Structure
+ */
+body {
+	font: 14px/1.4 arial;
+}
+
+.apps_site_wrap {
+	margin: 0 auto;
+	max-width: 1000px;
+	position: relative;
+}
