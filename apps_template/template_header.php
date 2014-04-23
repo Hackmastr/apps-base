@@ -26,4 +26,3 @@
 </header>
 
 <div id="apps_main_content">
-	<div class="apps_page_wrap">
