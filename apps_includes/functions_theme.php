@@ -28,7 +28,7 @@ function get_header() {
 	
 		<div class="apps_site_wrap">
 	
-			<a href="#"><img src="'. SITE_URL .'\apps_assets\img\logo.png" alt="'. SITE_TITLE .'" /></a>';
+			<a href="#"><img src="'. SITE_URL .'/apps_assets/img/logo.png" alt="'. SITE_TITLE .'" /></a>';
 		
 			get_main_nav();
 	
