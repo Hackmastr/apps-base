@@ -26,9 +26,11 @@ function get_header() {
 	
 	<header id="apps_site_header">
 	
-		<a href="#"><img src="'. SITE_URL .'\apps_assets\img\logo.png" alt="'. SITE_TITLE .'" /></a>
+		<a href="#"><img src="'. SITE_URL .'\apps_assets\img\logo.png" alt="'. SITE_TITLE .'" /></a>';
 	
-	</header>';
+		get_main_nav();
+	
+	echo '</header>';
 		
 	
 }
@@ -49,5 +51,6 @@ function get_footer() {
 function get_main_nav() {
 	
 	// Go to database
+	echo 'Navbar';
 	
 }
