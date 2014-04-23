@@ -1,0 +1,7 @@
+/**
+ * Some Simple Resets
+ */
+* { margin: 0; padding: 0; }
+img { border: 0; }
+a { text-decoration: none; outline: none; }
+header, section, footer, aside, nav, article, figure { display: block; }
