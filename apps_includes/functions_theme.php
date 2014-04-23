@@ -16,7 +16,7 @@ function get_header() {
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width">
 		
-		<link rel="stylesheet" type="text/css" href="'. ABS_PATH .'/style.css" />
+		<link rel="stylesheet" type="text/css" href="'. SITE_URL .'/style.css" />
 		
 		<!--[if IE]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -26,7 +26,7 @@ function get_header() {
 	
 	<header id="apps_site_header">
 	
-		<a href="#"><img src="'. ABS_PATH .'/apps_assets/img/logo.png" alt="'. SITE_TITLE .'" /></a>
+		<a href="#"><img src="'. SITE_URL .'\apps_assets\img\logo.png" alt="'. SITE_TITLE .'" /></a>
 	
 	</header>';
 		
