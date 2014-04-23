@@ -19,6 +19,15 @@ body {
 	position: relative;
 }
 
+.apps_sidebar {
+	position: fixed;
+	width: 200px;
+}
+
+.apps_content.right {
+	margin-left: 220px;
+}
+
 /**
  * Apps Site Header
  */
