@@ -18,3 +18,13 @@ body {
 	max-width: 1000px;
 	position: relative;
 }
+
+/**
+ * Apps Site Header
+ */
+#apps_site_header {
+	background: #dddddd url(../img/header_bg.png) repeat-x;
+	border-bottom: 1px solid #ffffff;
+	box-shadow: 0 2px 6px #c0c0c0;
+	height: 50px;
+}
