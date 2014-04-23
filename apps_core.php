@@ -7,7 +7,7 @@
 /**
  * Define the relative path to this file
  */
-define('ABS_PATH', __DIR__);
+define('ABS_PATH', dirname(__FILE__));
 
 /**
  * Get required files
