@@ -23,7 +23,17 @@
 
 		<a href="<?php get_option('site_url'); ?>"><img src="<?php get_option('site_url'); ?>/apps_template/images/logo.png" alt="<?php get_option('site_title'); ?>" /></a>
 	
-		<?php get_main_nav(); ?>
+		<nav id="apps_site_nav">
+			<ul>
+				<li><a href="<?php get_option('site_url'); ?>">Home</a></li>
+				<li>
+					<a href="#">Apps</a>
+					<ul>
+						<li><a href="<?php get_option('site_url'); ?>/a/monthly">Monthly</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
 
 	</div>
 </header>
