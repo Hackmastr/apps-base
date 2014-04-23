@@ -7,11 +7,13 @@
  * Site header
  */
 function get_header() {
+
+	global $page;
 	
 	echo '<!DOCTYPE html>
 	<html>
 	<head>
-		<title></title>
+		<title>'. $page['title'] .'</title>
 		
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width">
