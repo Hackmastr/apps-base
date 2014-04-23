@@ -8,35 +8,7 @@
  */
 function get_header() {
 
-	global $page;
-	
-	echo '<!DOCTYPE html>
-	<html>
-	<head>
-		<title>'. $page['title'] .'</title>
-		
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width">
-		
-		<link rel="stylesheet" type="text/css" href="'. SITE_URL .'/apps_assets/css/style.css" />
-		
-		<!--[if IE]>
-			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-	</head>
-	<body>
-	
-	<header id="apps_site_header">
-	
-		<div class="apps_site_wrap">
-	
-			<a href="'. SITE_URL .'"><img src="'. SITE_URL .'/apps_assets/img/logo.png" alt="'. SITE_TITLE .'" /></a>';
-		
-			get_main_nav();
-	
-		echo '</div>
-	</header>';
-		
+	require_once(ABS_PATH .'apps_template/template_header.php');
 	
 }
 
@@ -45,8 +17,7 @@ function get_header() {
  */
 function get_footer() {
 	
-	echo '</body>
-	</html>';
+	require_once(ABS_PATH .'apps_template/template_footer.php');
 	
 }
 
@@ -58,4 +29,33 @@ function get_main_nav() {
 	// Go to database
 	echo 'Navbar';
 	
+}
+
+/**
+ * Prints page title
+ */
+function get_page_title() {
+
+	global $page;
+
+	echo $page['title'];
+
+}
+
+/**
+ * Prints path to stylesheet
+ */
+function get_option($option) {
+
+	switch($option) {
+		case 'site_url':
+			echo SITE_URL;
+			break;
+		case 'site_title':
+			echo SITE_TITLE;
+			break;
+		default:
+		break;
+	}
+
 }
