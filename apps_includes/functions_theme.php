@@ -26,11 +26,14 @@ function get_header() {
 	
 	<header id="apps_site_header">
 	
-		<a href="#"><img src="'. SITE_URL .'\apps_assets\img\logo.png" alt="'. SITE_TITLE .'" /></a>';
+		<div class="apps_site_wrap">
 	
-		get_main_nav();
+			<a href="#"><img src="'. SITE_URL .'\apps_assets\img\logo.png" alt="'. SITE_TITLE .'" /></a>';
+		
+			get_main_nav();
 	
-	echo '</header>';
+		echo '</div>
+	</header>';
 		
 	
 }
