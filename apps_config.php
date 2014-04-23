@@ -11,4 +11,4 @@ define('SITE_TITLE', 'Ventura Apps');
 /**
  * Set the site's URL
  */
-define('SITE_URL', '//localhost/Apps');
+define('SITE_URL', '//localhost/apps');
