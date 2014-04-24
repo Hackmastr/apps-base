@@ -55,7 +55,11 @@ function create_actions($actions) {
 		$page['title'] = $actions[$_GET['action']]['name'];
 		
 		// Get required file
-		require(APP_SOURCES_PATH .'/'. $actions[$_GET['action']]['file']);
+		if (file_exists(APP_SOURCES_PATH .'/'. $actions[$_GET['action']]['file'])) {
+			require(APP_SOURCES_PATH .'/'. $actions[$_GET['action']]['file']);
+		} else {
+			$page['error'] = 'Source file doesn\'t exist!';
+		}
 	
 	} else {
 	
