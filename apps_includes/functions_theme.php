@@ -8,7 +8,7 @@
  */
 function load_template($template) {
 
-	require_once(APP_TEMPLATES_PATH .'/template_'. $template .'.php');
+	require_once(APP_TEMPLATE_PATH .'/template_'. $template .'.php');
 
 }
 
