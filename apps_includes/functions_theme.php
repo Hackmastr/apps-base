@@ -17,7 +17,7 @@ function load_template($template) {
  */
 function get_header() {
 
-	require_once(APP_TEMPLATES_PATH .'/template_header.php');
+	require_once(SITE_TEMPLATE_PATH .'/template_header.php');
 	
 }
 
@@ -26,7 +26,7 @@ function get_header() {
  */
 function get_footer() {
 	
-	require_once(APP_TEMPLATES_PATH .'/template_footer.php');
+	require_once(SITE_TEMPLATE_PATH .'/template_footer.php');
 	
 }
 
