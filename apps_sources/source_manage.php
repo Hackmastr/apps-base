@@ -18,25 +18,29 @@ function manage() {
 		'locations' => array(
 			'name' => 'Manage Locations',
 			'page' => 'manage',
-			'function' => 'locations',
+			'link' => 'locations',
+			'function' => 'manage_locations',
 			'file' => 'manage_locations.php'
 		),
 		'divisions' => array(
 			'name' => 'Manage Divisions',
 			'page' => 'manage',
-			'function' => 'divisions',
+			'link' => 'divisions',
+			'function' => 'manage_divisions',
 			'file' => 'manage_divisions.php'
 		),
 		'cells' => array(
 			'name' => 'Manage Cells',
 			'page' => 'manage',
-			'function' => 'cells',
+			'link' => 'cells',
+			'function' => 'manage_cells',
 			'file' => 'manage_cells.php'
 		),
 	);
-	create_actions($page['actions']);
+	$sub = create_actions('sub', $page['actions']);
 	
-	//call_user_func($page['actions'][$_GET['action']]['function']);
+	// Call corresponding function from $sub
+	call_user_func($page['actions'][$_GET['sub']]['function']);
 	
 	// Load the template
 	load_template('manage');

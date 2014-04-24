@@ -6,7 +6,7 @@
 /**
  * Add new production cell
  */
-function addCell() {
+function manage_cells() {
 
 	echo 'Add cell';
 
