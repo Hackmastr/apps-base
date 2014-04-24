@@ -64,3 +64,26 @@ function create_actions($actions) {
 	}
 
 }
+
+/**
+ * Prints actions menu
+ * @todo Refactor to use $api_menu_actions
+ */
+function get_actions_menu() {
+
+	global $page;
+	
+	$menu = '<ul>';
+	
+	foreach($page['actions'] as $action) {
+		
+		$active = (isset($_GET['action']) && $_GET['action'] == $action['function']) ? ' class="active"' : '';
+		$menu .= '<li'. $active .'><a href="'. APP_URL .'index.php?p='. $action['page'] .'&action='. $action['function'] .'">'. $action['name'] .'</a></li>';
+		
+	}
+	
+	$menu .= '</ul>';
+	
+	echo $menu;
+
+}
