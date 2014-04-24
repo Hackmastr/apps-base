@@ -32,6 +32,12 @@
 						<li><a href="<?php get_option('site_url'); ?>/a/monthly">Monthly</a></li>
 					</ul>
 				</li>
+				<li>
+					<a href="#">Tools</a>
+					<ul>
+						<li><a href="<?php get_option('site_url'); ?>/index.php?action=manage">Manage</a></li>
+					</ul>
+				</li>
 			</ul>
 		</nav>
 
