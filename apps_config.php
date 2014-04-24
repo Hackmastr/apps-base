@@ -14,6 +14,11 @@ define('SITE_TITLE', 'Ventura Apps');
 define('SITE_URL', '//localhost/apps');
 
 /**
+ * Set the site's path
+ */
+define('SITE_PATH', dirname(__FILE__) .'/');
+
+/**
  * Define database connection settings
  */
 define('DB_HOST', 'localhost');

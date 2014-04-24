@@ -5,11 +5,6 @@
  */
 
 /**
- * Define the relative path to this file
- */
-define('ABS_PATH', dirname(__FILE__) .'/');
-
-/**
  * Get required files
  */
 require_once('apps_version.php');
