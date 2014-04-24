@@ -19,11 +19,6 @@ body {
 	position: relative;
 }
 
-.apps_sidebar {
-	position: fixed;
-	width: 200px;
-}
-
 .apps_content.right {
 	margin-left: 220px;
 }
@@ -102,3 +97,20 @@ body {
 #apps_site_content {
 	padding: 20px;
 }
+
+/**
+ * Apps Sidebar
+ */
+.apps_sidebar {
+	position: fixed;
+	width: 200px;
+}
+
+	.apps_sidebar li {
+		list-style: none;
+	}
+	
+		.apps_sidebar li a {
+			display: block;
+			padding: 10px;
+		}
