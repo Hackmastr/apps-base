@@ -35,7 +35,7 @@
 				<li>
 					<a href="#">Tools</a>
 					<ul>
-						<li><a href="<?php get_option('site_url'); ?>/index.php?action=manage">Manage</a></li>
+						<li><a href="<?php get_option('site_url'); ?>/index.php?p=manage">Manage</a></li>
 					</ul>
 				</li>
 			</ul>
