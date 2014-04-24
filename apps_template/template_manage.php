@@ -4,9 +4,7 @@
 		<div class="apps_site_wrap">
 		
 			<aside class="apps_sidebar">
-			
-				
-			
+				<?php get_actions_menu(); ?>
 			</aside>
 			
 			<section class="apps_content right">
