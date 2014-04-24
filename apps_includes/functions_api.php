@@ -37,12 +37,12 @@ function add_stylesheet($src) {
 /**
  * Creates actions
  */
-function create_actions($actions) {
+function create_actions($arg, $actions) {
 
 	global $page, $api_menu_actions;
 
 	// Check if action has been set
-	if (isset($_GET['action']) && array_key_exists($_GET['action'], $actions)) {
+	if (isset($_GET[$arg]) && array_key_exists($_GET[$arg], $actions)) {
 	
 		// Build our actions menu
 		foreach($actions as $action) {
@@ -52,11 +52,12 @@ function create_actions($actions) {
 		}
 		
 		// Set the page title
-		$page['title'] = $actions[$_GET['action']]['name'];
+		$page['title'] = $actions[$_GET[$arg]]['name'];
 		
 		// Get required file
-		if (file_exists(APP_SOURCES_PATH .'/'. $actions[$_GET['action']]['file'])) {
-			require(APP_SOURCES_PATH .'/'. $actions[$_GET['action']]['file']);
+		if (file_exists(APP_SOURCES_PATH .'/'. $actions[$_GET[$arg]]['file'])) {
+			require(APP_SOURCES_PATH .'/'. $actions[$_GET[$arg]]['file']);
+			return $actions[$_GET[$arg]]['function'];
 		} else {
 			$page['error'] = 'Source file doesn\'t exist!';
 		}
@@ -81,8 +82,8 @@ function get_actions_menu() {
 	
 	foreach($page['actions'] as $action) {
 		
-		$active = (isset($_GET['action']) && $_GET['action'] == $action['function']) ? ' class="active"' : '';
-		$menu .= '<li'. $active .'><a href="'. APP_URL .'index.php?p='. $action['page'] .'&action='. $action['function'] .'">'. $action['name'] .'</a></li>';
+		$active = (isset($_GET['action']) && $_GET['action'] == $action['link']) ? ' class="active"' : '';
+		$menu .= '<li'. $active .'><a href="'. APP_URL .'index.php?p='. $action['page'] .'&action='. $action['link'] .'">'. $action['name'] .'</a></li>';
 		
 	}
 	
