@@ -30,7 +30,7 @@ function apps() {
 		return $actions[$_GET['action']][0];
 	
 	} else {
-		require_once(APP_SOURCES_PATH .'/source_home.php');
+		require_once(APP_SOURCES_PATH .'/'. $actions['home'][1]);
 		return $actions['home'][0];
 	}
 }
