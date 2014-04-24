@@ -40,7 +40,7 @@ function manage() {
 	$sub = create_actions('sub', $page['actions']);
 	
 	// Call corresponding function from $sub
-	call_user_func($page['actions'][$_GET['sub']]['function']);
+	call_user_func($sub);
 	
 	// Load the template
 	load_template('manage');
