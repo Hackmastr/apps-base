@@ -47,7 +47,8 @@ function create_actions($arg, $actions) {
 		// Build our actions menu
 		foreach($actions as $action) {
 		
-			array_push($api_menu_actions, '');
+			$api_menu_actions = array(
+			);
 		
 		}
 		
@@ -76,7 +77,9 @@ function create_actions($arg, $actions) {
  */
 function get_actions_menu() {
 
-	global $page;
+	global $api_menu_actions;
+
+	/*global $page;
 	
 	$menu = '<ul>';
 	
@@ -89,6 +92,8 @@ function get_actions_menu() {
 	
 	$menu .= '</ul>';
 	
-	echo $menu;
+	echo $menu;*/
+	
+	print_r($api_menu_actions);
 
 }
