@@ -21,6 +21,12 @@ function manage() {
 			'function' => 'locations',
 			'file' => 'manage_locations.php'
 		),
+		'divisions' => array(
+			'name' => 'Manage Divisions',
+			'page' => 'manage',
+			'function' => 'divisions',
+			'file' => 'manage_divisions.php'
+		),
 		'cells' => array(
 			'name' => 'Manage Cells',
 			'page' => 'manage',
