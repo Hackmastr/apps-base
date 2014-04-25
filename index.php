@@ -2,7 +2,7 @@
 
 // Setup our app environment
 require_once('apps_core.php');
-define('APP_URL', SITE_URL .'/');
+define('APP_URL', SITE_URL .'');
 define('APP_SOURCES_PATH', dirname(__FILE__) .'/apps_sources');
 define('APP_TEMPLATE_PATH', dirname(__FILE__) .'/apps_template');
 
