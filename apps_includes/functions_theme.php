@@ -50,9 +50,9 @@ function get_sub_nav() {
 	echo '<ul>';
 	
 	// Loops through each nav item
-	foreach ($page['sub_nav'] as $nav_item) {
+	foreach ($page['sub_nav'] as $nav_item => $nav_item_property) {
 	
-		echo '<li><a href="'. APP_URL .'/index.php?p='. $nav_item['function'] .'">'. $nav_item['title'] .'</a></li>';
+		echo '<li><a href="'. APP_URL .'/index.php?p='. $nav_item .'">'. $nav_item_property['title'] .'</a></li>';
 	
 	}
 	
