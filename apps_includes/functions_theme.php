@@ -41,6 +41,26 @@ function get_main_nav() {
 }
 
 /**
+ * Builds sub nav for page
+ */
+function get_sub_nav() {
+	
+	global $page;
+	
+	echo '<ul>';
+	
+	// Loops through each nav item
+	foreach ($page['sub_nav'] as $nav_item) {
+	
+		echo '<li><a href="'. APP_URL .'/index.php?p='. $nav_item['function'] .'">'. $nav_item['title'] .'</a></li>';
+	
+	}
+	
+	echo '</ul>';
+	
+}
+
+/**
  * Prints page title
  */
 function get_page_title() {
