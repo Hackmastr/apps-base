@@ -18,7 +18,11 @@ require_once('apps_includes/functions_theme.php');
 $page = array(
 	'title' => '',
 	'error' => '',
-	'actions' => array(),
+	'sub_nav' => array(
+		'title' => '',
+		'function' => '',
+		'source' => ''
+	),
 );
 
 /**
