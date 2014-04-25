@@ -23,6 +23,7 @@ $page = array(
 		'function' => '',
 		'source' => ''
 	),
+	'actions' => array(),
 );
 
 /**
