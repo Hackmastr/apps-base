@@ -21,7 +21,7 @@
 
 	<div class="apps_site_wrap">
 
-		<a href="<?php get_option('site_url'); ?>"><img src="<?php get_option('site_url'); ?>/apps_template/images/logo.png" alt="<?php get_option('site_title'); ?>" /></a>
+		<a id="apps_site_logo" href="<?php get_option('site_url'); ?>"><img src="<?php get_option('site_url'); ?>/apps_template/images/logo.png" alt="<?php get_option('site_title'); ?>" /></a>
 	
 		<nav id="apps_site_nav">
 			<ul>

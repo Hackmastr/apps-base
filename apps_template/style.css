@@ -35,6 +35,10 @@ body {
 	height: 50px;
 }
 
+	#apps_site_logo {
+		float: left;
+	}
+
 	#apps_site_nav {
 		border-right: 1px solid #dddddd;
 		border-left: 1px solid #ffffff;
