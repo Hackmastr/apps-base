@@ -15,17 +15,17 @@ function manage() {
 		'managelocations' => array(
 			'title' => 'Manage Locations',
 			'function' => 'manage_locations',
-			'source' => 'manage_locations.php'
+			'source' => 'source_manage_locations.php'
 		),
 		'managedivisions' => array(
 			'title' => 'Manage Divisions',
 			'function' => 'manage_divisions',
-			'source' => 'manage_divisions.php'
+			'source' => 'source_manage_divisions.php'
 		),
 		'managecells' => array(
 			'title' => 'Manage Cells',
 			'function' => 'manage_cells',
-			'source' => 'manage_cells.php'
+			'source' => 'source_manage_cells.php'
 		),
 	);
 
