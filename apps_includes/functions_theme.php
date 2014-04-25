@@ -52,11 +52,32 @@ function get_sub_nav() {
 	// Loops through each nav item
 	foreach ($page['sub_nav'] as $nav_item => $nav_item_property) {
 	
-		echo '<li><a href="'. APP_URL .'/index.php?p='. $nav_item .'">'. $nav_item_property['title'] .'</a></li>';
+		echo '<li><a href="'. APP_URL .'/index.php?p='. $_GET['p'] .'&amp;sub='. $nav_item .'">'. $nav_item_property['title'] .'</a></li>';
 	
 	}
 	
 	echo '</ul>';
+	
+}
+
+/**
+ * Loads sub page when requested
+ */
+function get_sub_page() {
+
+	global $page;
+	
+	if (isset($_GET['p']) && isset($_GET['sub']) && array_key_exists($_GET['sub'], $page['sub_nav'])) {
+	
+		$page['title'] = $page['sub_nav'][$_GET['sub']]['title'];
+	
+		return $page['sub_nav'][$_GET['sub']]['function'];
+	
+	} else {
+	
+		return $_GET['p'];
+	
+	}
 	
 }
 
