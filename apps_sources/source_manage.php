@@ -10,39 +10,15 @@ function manage() {
 
 	global $page;
 	
-	// Set the page's title
-	$page['title'] = 'Manage';
-	
-	// Setup the actions menu
-	$page['actions'] = array(
-		'locations' => array(
-			'name' => 'Manage Locations',
-			'page' => 'manage',
-			'link' => 'locations',
-			'function' => 'manage_locations',
-			'file' => 'manage_locations.php'
-		),
-		'divisions' => array(
-			'name' => 'Manage Divisions',
-			'page' => 'manage',
-			'link' => 'divisions',
-			'function' => 'manage_divisions',
-			'file' => 'manage_divisions.php'
-		),
-		'cells' => array(
-			'name' => 'Manage Cells',
-			'page' => 'manage',
-			'link' => 'cells',
+	// Build our sub nav
+	$page['sub_nav'] = array(
+		'managecells' => array(
+			'title' => 'Manage Cells',
 			'function' => 'manage_cells',
-			'file' => 'manage_cells.php'
+			'source' => 'manage_cells.php'
 		),
 	);
-	$sub = create_actions('sub', $page['actions']);
-	
-	// Call corresponding function from $sub
-	call_user_func($sub);
-	
-	// Load the template
-	load_template('manage');
 
+	load_template('manage');
+	
 }
