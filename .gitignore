@@ -2,3 +2,6 @@
 # Each app should have its own Git repo
 /a/*
 !/a/index.php
+
+# Ignore user config file
+apps_config.php
