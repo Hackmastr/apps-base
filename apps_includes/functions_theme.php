@@ -52,7 +52,7 @@ function get_sub_nav() {
 	// Loops through each nav item
 	foreach ($page['sub_nav'] as $nav_item => $nav_item_property) {
 	
-		echo '<li><a href="'. APP_URL .'/index.php?p='. $_GET['p'] .'&amp;sub='. $nav_item .'">'. $nav_item_property['title'] .'</a></li>';
+		//echo '<li><a href="'. APP_URL .'/index.php?p='. $_GET['p'] .'&amp;sub='. $nav_item .'">'. $nav_item_property['title'] .'</a></li>';
 	
 	}
 	
@@ -61,23 +61,42 @@ function get_sub_nav() {
 }
 
 /**
- * Loads sub page when requested
+ * Returns sub page var if set
+ * otherwise false
  */
-function get_sub_page() {
+function get_sub_page($var) {
 
 	global $page;
 	
-	if (isset($_GET['p']) && isset($_GET['sub']) && array_key_exists($_GET['sub'], $page['sub_nav'])) {
+	if (isset($_GET[$var]) && array_key_exists($_GET[$var], $page['sub_nav'])) {
 	
-		$page['title'] = $page['sub_nav'][$_GET['sub']]['title'];
-	
-		return $page['sub_nav'][$_GET['sub']]['function'];
+		return $_GET[$var];
 	
 	} else {
 	
-		return $_GET['p'];
+		return false;
 	
 	}
+	
+}
+
+/**
+ * Returns page action var if set
+ * otherwise false
+ */
+function get_page_action($var) {
+
+	global $page;
+	
+	if (isset($_GET[$var]) && array_key_exists($_GET[$var], $page['sub_nav']['actions'])) {
+	
+		return $_GET[$var];
+	
+	} else {
+	
+		return false;
+	
+	}	
 	
 }
 
@@ -108,4 +127,22 @@ function get_option($option) {
 		break;
 	}
 
+}
+
+/**
+ * Returns requested var if set
+ * otherwise returns false
+ */
+function get_var($var) {
+	
+	if (isset($_GET[$var])) {
+		
+		return $_GET[$var];
+		
+	} else {
+		
+		return false;
+		
+	}
+	
 }
