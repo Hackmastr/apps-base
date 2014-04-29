@@ -1,47 +1,11 @@
 <?php
 /**
- * Main theme functions
+ * Apps functions file
+ * Nothing in this file is organized in any particular way
  */
- 
-/**
- * Loads requested template
- */
-function load_template($template) {
-
-	require_once(APP_TEMPLATE_PATH .'/template_'. $template .'.php');
-
-}
 
 /**
- * Site header
- */
-function get_header() {
-
-	require_once(SITE_TEMPLATE_PATH .'/template_header.php');
-	
-}
-
-/**
- * Site footer
- */
-function get_footer() {
-	
-	require_once(SITE_TEMPLATE_PATH .'/template_footer.php');
-	
-}
-
-/**
- * Site main navigation
- */
-function get_main_nav() {
-	
-	// Go to database
-	echo 'Navbar';
-	
-}
-
-/**
- * Builds sub nav for page
+ * Returns subnav from $page['sub_nav']
  */
 function get_sub_nav() {
 	
@@ -50,9 +14,13 @@ function get_sub_nav() {
 	echo '<ul>';
 	
 	// Loops through each nav item
-	foreach ($page['sub_nav'] as $nav_item => $nav_item_property) {
+	foreach ($page['sub_nav'] as $sub => $menu) {
 	
-		//echo '<li><a href="'. APP_URL .'/index.php?p='. $_GET['p'] .'&amp;sub='. $nav_item .'">'. $nav_item_property['title'] .'</a></li>';
+		foreach ($menu as $menu_item => $menu_item_property) {
+		
+			echo '<li><a href="'. APP_URL .'/index.php?p='. $_GET['p'] .'&'. $sub .'='. $menu_item .'">'. $menu_item_property['title'] .'</a></li>';
+			
+		}
 	
 	}
 	
@@ -61,88 +29,85 @@ function get_sub_nav() {
 }
 
 /**
- * Returns sub page var if set
- * otherwise false
- */
-function get_sub_page($var) {
-
-	global $page;
-	
-	if (isset($_GET[$var]) && array_key_exists($_GET[$var], $page['sub_nav'])) {
-	
-		return $_GET[$var];
-	
-	} else {
-	
-		return false;
-	
-	}
-	
-}
-
-/**
- * Returns page action var if set
- * otherwise false
- */
-function get_page_action($var) {
-
-	global $page;
-	
-	if (isset($_GET[$var]) && array_key_exists($_GET[$var], $page['sub_nav']['actions'])) {
-	
-		return $_GET[$var];
-	
-	} else {
-	
-		return false;
-	
-	}	
-	
-}
-
-/**
- * Prints page title
+ * Returns page title
  */
 function get_page_title() {
 
 	global $page;
 
-	echo $page['title'];
-
-}
-
-/**
- * Prints path to stylesheet
- */
-function get_option($option) {
-
-	switch($option) {
-		case 'site_url':
-			echo SITE_URL;
-			break;
-		case 'site_title':
-			echo SITE_TITLE;
-			break;
-		default:
-		break;
-	}
-
-}
-
-/**
- * Returns requested var if set
- * otherwise returns false
- */
-function get_var($var) {
+	return $page['title'];
 	
-	if (isset($_GET[$var])) {
-		
-		return $_GET[$var];
+}
+
+/**
+ * Loads requested template file
+ * and sub template function
+ */
+function load_template($template_name) {
+
+	global $page;
+
+	$template_loaded = false;
+	
+	// Check if template file exists
+	if (file_exists(APP_TEMPLATE_PATH .'/'. $template_name .'.template.php')) {
+	
+		require_once(APP_TEMPLATE_PATH .'/'. $template_name .'.template.php');
+		$template_loaded = true;
 		
 	} else {
 		
-		return false;
+		echo 'Template file '. APP_TEMPLATE_PATH .'/'. $template_name .'.template.php doesn\'t exist.';
 		
 	}
+	
+	if ($template_loaded) {
+		
+		// Check if sub_template is set
+		// and load the corresponding sub template
+		if (isset($page['sub_template'])) {
+			$sub_template = $page['sub_template'];
+		} else {
+			$sub_template = 'main';
+		}
+		
+		// Call the page header
+		template_header();
+		
+		// Load sub template
+		load_sub_template($sub_template);
+		
+		// Call the page footer
+		template_footer();
+		
+	}
+	
+}
+
+/**
+ * Loads sub template function
+ */
+function load_sub_template($sub_template) {
+
+	if (function_exists('template_'. $sub_template)) {
+	
+		call_user_func('template_'. $sub_template);
+	
+	}
+
+}
+
+/**
+ * Returns current page URL string
+ *
+ * Comes from code snippet by Chris Coyier
+ * http://css-tricks.com/snippets/php/get-current-page-url/
+ */
+function get_page_url() {
+
+  $url  = @( $_SERVER["HTTPS"] != 'on' ) ? 'http://'.$_SERVER["SERVER_NAME"] :  'https://'.$_SERVER["SERVER_NAME"];
+  $url .= ( $_SERVER["SERVER_PORT"] !== 80 ) ? ":".$_SERVER["SERVER_PORT"] : "";
+  $url .= $_SERVER["REQUEST_URI"];
+  return $url;
 	
 }

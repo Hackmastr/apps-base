@@ -13,15 +13,23 @@ require_once('apps_includes/functions_api.php');
 require_once('apps_includes/functions_theme.php');
 
 /**
+ * Load the index template file
+ * I don't know how else to do this...
+ */
+require_once(SITE_PATH .'/apps_template/Index.template.php');
+
+/**
  * Define a $page array to store page details
  */
 $page = array(
 	'title' => '',
 	'error' => '',
 	'sub_nav' => array(
-		'title' => '',
-		'function' => '',
-		'source' => ''
+		'sub' => array (
+			'title' => '',
+			'function' => '',
+			'source' => '',
+		),
 	),
 	'actions' => array(),
 );

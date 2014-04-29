@@ -19,7 +19,7 @@ function apps() {
 	// Setup our pages array
 	$pages = array(
 		'home' => array('home', 'source_home.php'),
-		'manage' => array('manage', 'source_manage.php')
+		'manage' => array('manage', 'Manage.php')
 	);
 
 	// If a page has been requested, and it exists in the $pages array
