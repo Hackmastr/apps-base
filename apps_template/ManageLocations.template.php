@@ -24,15 +24,22 @@ function template_main() {
  * Form for adding new location
  */
 function template_add() {
+
+	global $page;
 	
 	echo '<div class="apps_sidebar">';
 		get_sub_nav();
 	echo '</div>';
 
 	echo '<div class="apps_content right">
-		<h1>'. get_page_title() .'</h1>
+		<h1>'. get_page_title() .'</h1>';
 		
-		<form class="apps_form" method="post" action="'. get_page_url() .'">
+		// Do we have a message to show?
+		if ($page['has_message']) {
+			echo $page['the_message'];
+		}
+		
+		echo '<form class="apps_form" method="post" action="'. get_page_url() .'">
 			<ul>
 				<li>
 					<label for="name">Location Name</label>

@@ -22,7 +22,8 @@ require_once(SITE_PATH .'/apps_template/Index.template.php');
  */
 $page = array(
 	'title' => '',
-	'error' => '',
+	'has_message' => '',
+	'the_message' => '',
 	'sub_nav' => array(
 		'sub' => array (
 			'title' => '',
