@@ -111,3 +111,26 @@ function get_page_url() {
   return $url;
 	
 }
+
+/**
+ * Generates a page message
+ */
+function generate_message($type, $message) {
+	
+	global $page;
+	
+	// Create variable to store the entire message box
+	$message_box = '';
+	
+	// Create the message box
+	$message_box .= '<div class="msg_box '. $type .'">';
+	$message_box .= $message;
+	$message_box .= '</div>';
+	
+	// Enable the message
+	$page['has_message'] = true;
+	
+	// Write the message box
+	$page['the_message'] = $message_box;
+	
+}
