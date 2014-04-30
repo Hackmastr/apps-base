@@ -16,7 +16,7 @@ function template_header() {
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width">
 		
-		<link rel="stylesheet" type="text/css" href="'. SITE_URL .'/apps_template/style.css" />
+		<link rel="stylesheet" type="text/css" href="'. SITE_URL .'/apps_template/global.css" />
 		
 		<!--[if IE]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
