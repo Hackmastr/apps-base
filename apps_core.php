@@ -10,7 +10,7 @@
 require_once('apps_version.php');
 require_once('apps_config.php');
 require_once('apps_includes/functions_api.php');
-require_once('apps_includes/functions_theme.php');
+require_once('apps_includes/functions.php');
 
 /**
  * Load the index template file
