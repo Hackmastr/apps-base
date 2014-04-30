@@ -47,7 +47,7 @@ function template_add() {
 				</li>
 				<li>
 					<label for="country">Country</label>
-					<select id="country">
+					<select id="country" name="country">
 						<option value="us">United States</option>
 						<option value="mexico">Mexico</option>
 						<option value="hungary">Hungary</option>
