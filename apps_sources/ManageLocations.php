@@ -50,6 +50,56 @@ function Locations() {
 }
 
 /**
+ * Displays list of locations
+ */
+function get_locations() {
+	
+	global $db;
+	
+	// Request locations from database
+	$result = $db->query('SELECT * FROM app_locations');
+	
+	// Check if there's any results from the database
+	if ($result->rowCount() > 0) {
+	
+		echo '<ul class="apps_data_list">
+			<li>
+				<dl class="apps_data_list_header">
+					<dt class="name">Name</dt>
+					<dd class="country">Country</dd>
+					<dd class="state">State</dd>
+					<dd class="city">City</dd>
+					<dd class="street">Street</dd>
+					<dd class="zip">ZIP</dd>
+				</dl>
+			</li>
+			<li>
+				<dl class="apps_data_list_data">';
+	
+		// Loop through results and display
+		while ($location = $result->fetch()) {
+			
+				echo '<dt class="name">'. $location['location_name'] .'</dt>
+					<dd class="country">'. $location['location_country'] .'</dd>
+					<dd class="state">'. $location['location_state'] .'</dd>
+					<dd class="city">'. $location['location_city'] .'</dd>
+					<dd class="street">'. $location['location_street'] .'</dd>
+					<dd class="zip">'. $location['location_zip'] .'</dd>';
+		}
+		
+				echo '</dl>
+			</li>
+		</ul>';
+	
+	} else {
+		
+		echo '<p>No locations have been entered into the database.</p>';
+		
+	}
+	
+}
+
+/**
  * Displays a single location
  */
 function View() {

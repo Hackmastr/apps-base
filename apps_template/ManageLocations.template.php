@@ -14,9 +14,11 @@ function template_main() {
 
 	echo '<div class="apps_content right">
 		<h1>'. get_page_title() .'</h1>
-		<a href="'. get_page_url() .'&action=add">Add New Location</a>
+		<a href="'. get_page_url() .'&action=add">Add New Location</a>';
 		
-	</div>';
+		get_locations();
+		
+	echo '</div>';
 	
 }
 
