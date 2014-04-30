@@ -67,7 +67,7 @@ function Add() {
 	if (isset($_POST['add_location'])) {
 		
 		// Create our SQL statement and value params
-		$query = $db->prepare('INSERT INTO app_locations VALUES(:name, :country, :state, :city, :street, :zip)');
+		$query = $db->prepare('INSERT INTO app_locations (location_name, location_country, location_state, location_city, location_street, location_zip) VALUES(:name, :country, :state, :city, :street, :zip)');
 		$params = array(
 			':name' => $_POST['name'],
 			':country' => $_POST['country'],
