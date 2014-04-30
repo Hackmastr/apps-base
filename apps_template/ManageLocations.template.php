@@ -62,8 +62,8 @@ function template_add() {
 					<input type="text" id="city" name="city" />
 				</li>
 				<li>
-					<label for="address">Address</label>
-					<input type="text" id="address" name="address" />
+					<label for="address">Street Address</label>
+					<input type="text" id="street" name="street" />
 				</li>
 				<li>
 					<label for="zip">Zip Code</label>
