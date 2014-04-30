@@ -63,7 +63,7 @@ function template_add() {
 					<input type="text" id="zip" name="zip" />
 				</li>
 				<li>
-					<input type="submit" />
+					<input type="submit" name="add_location" value="Add Location" />
 				</li>
 			</ul>
 		
