@@ -118,3 +118,34 @@ body {
 			display: block;
 			padding: 10px;
 		}
+		
+/**
+ * Apps forms
+ */
+.apps_form {
+	border: 1px solid #dddddd;
+	padding: 10px;
+	width: 400px;
+}
+
+	.apps_form li {
+		list-style: none;
+		padding: 5px 0;
+	}
+		.apps_form label {
+			float: left;
+			margin-right: 20px;
+			width: 100px;
+		}
+		
+		.apps_form input[type=text] {
+			background-color: #dddddd;
+			border: none;
+			border-radius: 5px;
+			padding: 5px;
+			width: 260px;
+		}
+		
+		.apps_form input:focus {
+			outline: none;
+		}
