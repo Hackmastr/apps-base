@@ -36,7 +36,6 @@ function Manage() {
 	
 		// Load the main manage page if nothing is requested
 		// or requested page doesn't exist
-		require_once(APP_SOURCES_PATH .'/source_manage_home.php');
 		return 'ManageHome';
 	
 	}
