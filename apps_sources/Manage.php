@@ -21,6 +21,11 @@ function Manage() {
 				'function' => 'Locations',
 				'source' => 'ManageLocations.php'
 			),
+			'divisions' => array(
+				'title' => 'Manage Divisions',
+				'function' => 'Divisions',
+				'source' => 'ManageDivisions.php'
+			),
 		),
 	);
 	
