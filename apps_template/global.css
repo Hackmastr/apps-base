@@ -170,10 +170,33 @@ body {
  * Data Lists
  */
 .apps_data_list li {
+	border-right: 1px solid #dddddd;
 	clear: both;
 	list-style: none;
+	overflow: hidden;
+}
+
+.apps_data_list_header {
+	border-top: 1px solid #dddddd;
+	background-color: #f1f1f1;
+	overflow: hidden;
 }
 
 .apps_data_list dt, .apps_data_list dd {
+	border-bottom: 1px solid #dddddd;
+	border-left: 1px solid #dddddd;
+	box-sizing: border-box;
 	float: left;
+	padding: 5px;
 }
+
+/**
+ * Base Apps Specific
+ * This will eventually get oved into its own CSS file
+ */
+.apps_data_list .name { width: 30%; }
+.apps_data_list .country { width: 10%; }
+.apps_data_list .state { width: 15%; }
+.apps_data_list .city { width: 15%}
+.apps_data_list .street { width: 20%; }
+.apps_data_list .zip { width: 10%; }
