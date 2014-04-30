@@ -149,3 +149,19 @@ body {
 		.apps_form input:focus {
 			outline: none;
 		}
+		
+/**
+ * Message Boxes
+ */
+.msg_box {
+	margin-bottom: 10px;
+	padding: 10px;
+}
+
+	.success {
+		background-color: #ccff99;
+	}
+	
+	.error {
+		background-color: #ff9999;
+	}
