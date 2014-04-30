@@ -61,9 +61,37 @@ function View() {
  */
 function Add() {
 
-	echo '<pre>';
-	print_r($_POST);
-	echo '</pre>';
+	global $db;
+
+	// Process form data if the form has been submitted
+	if (isset($_POST['add_location'])) {
+		
+		// Create our SQL statement and value params
+		$query = $db->prepare('INSERT INTO app_locations VALUES(:name, :country, :state, :city, :street, :zip)');
+		$params = array(
+			':name' => $_POST['name'],
+			':country' => $_POST['country'],
+			':state' => $_POST['state'],
+			':city' => $_POST['city'],
+			':street' => $_POST['street'],
+			':zip' => $_POST['zip']
+		);
+		
+		// Execute SQL
+		$result = $query->execute($params);
+		
+		// Check the results
+		if ($result) {
+		
+			generate_message('success', 'New location has been added successfully.');
+			
+		} else {
+			
+			generate_message('error', 'Error adding new location.');
+			
+		}
+		
+	}
 
 }
 
