@@ -14,13 +14,9 @@ function get_sub_nav() {
 	echo '<ul>';
 	
 	// Loops through each nav item
-	foreach ($page['sub_nav'] as $sub => $menu) {
+	foreach ($page['areas'] as $sub => $sub_property) {
 	
-		foreach ($menu as $menu_item => $menu_item_property) {
-		
-			echo '<li><a href="'. APP_URL .'/index.php?p='. $_GET['p'] .'&'. $sub .'='. $menu_item .'">'. $menu_item_property['title'] .'</a></li>';
-			
-		}
+		echo '<li><a href="'. APP_URL .'/index.php?p='. $_GET['p'] .'&area='. $sub .'">'. $sub_property[0] .'</a></li>';
 	
 	}
 	

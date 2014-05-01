@@ -13,29 +13,17 @@ function Manage() {
 
 	global $page;
 
-	// Build the manage menu
-	$page['sub_nav'] = array(
-		'manage' => array (
-			'locations' => array(
-				'title' => 'Manage Locations',
-				'function' => 'Locations',
-				'source' => 'ManageLocations.php'
-			),
-			'divisions' => array(
-				'title' => 'Manage Divisions',
-				'function' => 'Divisions',
-				'source' => 'ManageDivisions.php'
-			),
-		),
+	// Build the manage menu	
+	$page['areas'] = array(
+		'locations' => array('Manage Locations', 'ManageLocations'),
+		'divisions' => array('Manage Divisions', 'ManageDivisions')
 	);
 	
-	// Check if page is being requested
+	// Check if a page is being requested
 	// and whether it exists in the manage array
-	if (isset($_GET['manage']) && array_key_exists($_GET['manage'], $page['sub_nav'][$_GET['p']])) {
+	if (isset($_GET['area']) && array_key_exists($_GET['area'], $page['areas'])) {
 	
-		// Load the source file for page being requested
-		require_once('./apps_sources/'. $page['sub_nav']['manage'][$_GET['manage']]['source']);
-		return $page['sub_nav']['manage'][$_GET['manage']]['function'];
+		return $page['areas'][$_GET['area']][1];
 	
 	} else {
 	
@@ -48,7 +36,7 @@ function Manage() {
 }
 
 /**
- * Main manage page
+ * Manage home page
  */
 function ManageHome() {
 

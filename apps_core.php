@@ -24,12 +24,8 @@ $page = array(
 	'title' => '',
 	'has_message' => '',
 	'the_message' => '',
-	'sub_nav' => array(
-		'sub' => array (
-			'title' => '',
-			'function' => '',
-			'source' => '',
-		),
+	'areas' => array(
+		'sub' => array ('', ''),
 	),
 	'actions' => array(),
 );
