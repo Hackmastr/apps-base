@@ -64,8 +64,8 @@ class Manage {
 		// Check if there's any results from the database
 		if ($results->rowCount() > 0) {
 		
-			$header_count = 0;
-			$column_count = 0;
+			$header_first_row = false;
+			$data_first_row = false;
 			
 			echo '<ul class="apps_data_list">
 				<li>
@@ -74,8 +74,9 @@ class Manage {
 			// Loop through the DB columns as headers
 			foreach($this->db_columns as $header => $db_column) {
 				
-				if ($header_count == 0) {
+				if ($header_first_row) {
 					echo '<dt class="'. $db_column .'">'. $header .'</dt>';
+					$header_first_row = true;
 				} else {
 					echo '<dd class="'. $db_column .'">'. $header .'</dd>';
 				}
@@ -88,13 +89,18 @@ class Manage {
 				<dl class="apps_data_list_data">';
 			
 			// Loop through the results and display
-			foreach ($results->fetch() as $db_column => $data) {
+			foreach ($this->db_columns as $column) {
+			
+				foreach ($results->fetchAll() as $data) {
 				
-				if ($column_count == 0) {
-					echo '<dt class="'. $db_column .'">'. $data .'</dt>';
-				} else {
-					echo '<dd class="'. $db_column .'">'. $data .'</dd>';
-				}				
+					if ($data_first_row) {
+						echo '<dt class="'. $column .'">'. $data->$column .'</dt>';
+						$data_first_row = true;
+					} else {
+						echo '<dd class="'. $column .'">'. $data->$column .'</dd>';
+					}
+					
+				}		
 				
 			}
 			
@@ -113,14 +119,29 @@ class Manage {
 	/**
 	 * Adds data to respective area
 	 */
-	function add($form_submit) {
+	function add($form_submit, $form_data) {
 	
 		// Process form data if the form has been submitted
 		if (isset($form_submit)) {
+		
+			// Create an array to hold quantity of value placeholders
+			$placeholders = array();
+			
+			// Create variable to keep count of how many database columns we have
+			$db_column_count = 0;
+		
+			// Count number of database columns, and for each one
+			// add a placeholder
+			while (count($this->db_columns) > $db_column_count) {
+				array_push($placeholders, '?');
+				$db_column_count++;
+			}
 			
 			// Build the SQL query and execute
-			$query = $db->prepare('INSERT INTO app_'. $this->area .' ('. implode(', ', $this->db_columns) .') VALUES('. implode(', :', $this->db_columns) .')');
-			$result = $query->execute($this->db_columns);
+			$query = $this->db->prepare('INSERT INTO app_'. $this->area .' ('. implode(', ', $this->db_columns) .') VALUES('. implode(', ', $placeholders) .')');
+			$result = $query->execute($form_data);
+			
+			//echo 'INSERT INTO app_'. $this->area .' ('. implode(', ', $this->db_columns) .') VALUES('. implode(', ', $placeholders) .')';
 			
 			// Check the results
 			if ($result) {

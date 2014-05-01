@@ -8,3 +8,9 @@ CREATE TABLE app_locations (
 	location_zip VARCHAR(200) NOT NULL,
 	PRIMARY KEY (id)
 );
+
+CREATE TABLE app_divisions (
+	id bigint(20) unsigned NOT NULL auto_increment,
+	division_name VARCHAR(200) NOT NULL,
+	PRIMARY KEY (id)	
+);

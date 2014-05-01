@@ -7,6 +7,8 @@
  * Main template function
  */
 function template_main() {
+
+	global $manage;
 	
 	echo '<div class="apps_sidebar">';
 		get_sub_nav();
@@ -14,9 +16,11 @@ function template_main() {
 
 	echo '<div class="apps_content right">
 		<h1>'. get_page_title() .'</h1>
-		<a href="'. get_page_url() .'&action=add">Add New Division</a>
+		<a href="'. get_page_url() .'&action=add">Add New Division</a>';
 		
-	</div>';
+	$manage->display();	
+		
+	echo '</div>';
 	
 }
 
@@ -42,11 +46,11 @@ function template_add() {
 		echo '<form class="apps_form" method="post" action="'. get_page_url() .'">
 			<ul>
 				<li>
-					<label for="name">Division Name</label>
-					<input type="text" id="name" name="name" />
+					<label for="division_name">Division Name</label>
+					<input type="text" id="division_name" name="division_name" />
 				</li>
 				<li>
-					<input type="submit" name="add_location" value="Add Location" />
+					<input type="submit" name="add_division" value="Add Division" />
 				</li>
 			</ul>
 		

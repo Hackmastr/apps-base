@@ -96,4 +96,41 @@ function ManageLocations() {
  */
 function ManageDivisions() {
 	
+	global $page, $manage;
+	
+	// Set the area we're working with
+	$manage->set_area('divisions');
+	$manage->set_db_columns(array(
+		'Division Name' => 'division_name'
+	));
+	
+	if (isset($_GET['action']) && array_key_exists($_GET['action'], $page['actions'])) {
+	
+		if ($_GET['action'] == 'add') {
+		
+			if (isset($_POST['add_division'])) {
+			
+				$form_data = array(
+					$_POST['division_name']
+				);
+			
+				$manage->add($_POST['add_division'], $form_data);
+			}
+	
+			// Set the page title
+			$page['title'] = 'Add New Division';
+			
+			// Load the template
+			load_template('ManageDivisions', 'Add');
+			
+		}
+	
+	} else {
+	
+		$page['title'] = 'Manage Divisions';
+		
+		load_template('ManageDivisions');
+		
+	}	
+	
 }
