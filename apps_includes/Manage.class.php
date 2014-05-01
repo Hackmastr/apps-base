@@ -102,6 +102,10 @@ class Manage {
 				</li>
 			</ul>';
 			
+		} else {
+			
+			echo '<p>There\'s nothing to display!</p>';
+			
 		}
 		
 	}
