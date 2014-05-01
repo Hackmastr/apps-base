@@ -43,7 +43,7 @@ function get_page_title() {
  * Loads requested template file
  * and sub template function
  */
-function load_template($template_name) {
+function load_template($template_name, $sub_template_name = '') {
 
 	global $page;
 
@@ -63,10 +63,10 @@ function load_template($template_name) {
 	
 	if ($template_loaded) {
 		
-		// Check if sub_template is set
+		// Check if sub_template_name is set
 		// and load the corresponding sub template
-		if (isset($page['sub_template'])) {
-			$sub_template = $page['sub_template'];
+		if (!empty($sub_template_name)) {
+			$sub_template = $sub_template_name;
 		} else {
 			$sub_template = 'main';
 		}
