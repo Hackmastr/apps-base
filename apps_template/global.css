@@ -194,9 +194,9 @@ body {
  * Base Apps Specific
  * This will eventually get oved into its own CSS file
  */
-.apps_data_list .name { width: 30%; }
-.apps_data_list .country { width: 10%; }
-.apps_data_list .state { width: 15%; }
-.apps_data_list .city { width: 15%}
-.apps_data_list .street { width: 20%; }
-.apps_data_list .zip { width: 10%; }
+.apps_data_list .location_name { width: 30%; }
+.apps_data_list .location_country { width: 10%; }
+.apps_data_list .location_state { width: 15%; }
+.apps_data_list .location_city { width: 15%}
+.apps_data_list .location_street { width: 20%; }
+.apps_data_list .location_zip { width: 10%; }

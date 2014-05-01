@@ -8,6 +8,8 @@
  */
 function template_main() {
 	
+	global $manage;
+	
 	echo '<div class="apps_sidebar">';
 		get_sub_nav();
 	echo '</div>';
@@ -16,7 +18,7 @@ function template_main() {
 		<h1>'. get_page_title() .'</h1>
 		<a href="'. get_page_url() .'&action=add">Add New Location</a>';
 		
-		get_locations();
+		$manage->display();
 		
 	echo '</div>';
 	
