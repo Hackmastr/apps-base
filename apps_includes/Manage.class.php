@@ -82,32 +82,34 @@ class Manage {
 					
 					echo '</dl>
 				</li>
-				<li class="apps_data_list_data">
-					<dl>';
+				<li class="apps_data_list_data">';
 			
-			// Loop through each row retrieved
-			foreach ($results->fetchAll() as $data) {
-			
-				// Reset $first_row for each row
-				$first_cell = false;
-			
-				// Loop through each column defined
-				// This is so we can dynamically select the data we need
-				foreach($this->db_columns as $column) {
+				// Loop through each row retrieved
+				foreach ($results->fetchAll() as $data) {
 				
-					if ($first_cell) {
-						echo '<dd class="'. $column .'">'. $data->$column .'</dd>';
-					} else {
-						echo '<dt class="'. $column .'">'. $data->$column .'</dt>';
-						$first_cell = true;
+					// Reset $first_row for each row
+					$first_cell = false;
+					
+					echo '<dl>';
+				
+					// Loop through each column defined
+					// This is so we can dynamically select the data we need
+					foreach($this->db_columns as $column) {
+					
+						if ($first_cell) {
+							echo '<dd class="'. $column .'">'. $data->$column .'</dd>';
+						} else {
+							echo '<dt class="'. $column .'">'. $data->$column .'</dt>';
+							$first_cell = true;
+						}
+					
 					}
-				
-				}
-				
+					
+					echo '</dl>';
+					
 			}
 			
-					echo '</dl>
-				</li>
+				echo '</li>
 			</ul>';
 			
 		} else {
