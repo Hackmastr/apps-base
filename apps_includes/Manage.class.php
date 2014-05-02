@@ -121,6 +121,13 @@ class Manage {
 	}
 	
 	/**
+	 * Single view
+	 */
+	function view() {
+	
+	}
+	
+	/**
 	 * Adds data to respective area
 	 */
 	function add($form_data) {

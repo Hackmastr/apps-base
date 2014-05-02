@@ -11,6 +11,9 @@ require_once('apps_includes/Manage.class.php');
 $manage = new Manage();
 $manage->set_db($db);
 
+// Load base vars
+require_once('apps_includes/Base.vars.php');
+
 // Load corresponding function from the requested page
 call_user_func(apps());
 

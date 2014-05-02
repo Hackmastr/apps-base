@@ -2,7 +2,7 @@
 /**
  * Manages app settings and general corporate information
  */
-
+ 
 // Execute corresponding function from page being requested
 call_user_func(Manage());
 
@@ -11,7 +11,7 @@ call_user_func(Manage());
  */
 function Manage() {
 
-	global $page;
+	global $page, $vars, $manage;
 
 	// Build the manage menu	
 	$page['areas'] = array(
@@ -19,26 +19,34 @@ function Manage() {
 		'divisions' => array('Manage Divisions', 'ManageDivisions')
 	);
 	
-	// Build the actions menu
-	$page['actions'] = array(
-		'add' => 'Add',
-	);
-	
-	// Check if a page is being requested
-	// and whether it exists in the manage array
+	// Has a specific area from the list above been requested?
 	if (isset($_GET['area']) && array_key_exists($_GET['area'], $page['areas'])) {
 	
-		// Check if an action has been requested
-		if (isset($_GET['action']) && array_key_exists($_GET['action'], $page['actions'])) {
-			$page['has_action'] = 'add';
-		}
+		// Set the area we're working with
+		$manage->set_area($_GET['area']);
+		
+		// Set the necessary database columns
+		$manage->set_db_columns($vars['db_columns'][$_GET['area']]);
 	
-		return $page['areas'][$_GET['area']][1];
+		if (isset($_GET['add'])) {
+		
+			// Are we trying to add something?
+			return 'Add';
+			
+		} else if (isset($_GET['view'])) {
+		
+			// Are we trying to view something specific?
+			return 'View';
+		
+		} else {
+		
+			// If nothing else, return the main area page
+			return $page['areas'][$_GET['area']][1];
+		
+		}
 	
 	} else {
 	
-		// Load the main manage page if nothing is requested
-		// or requested page doesn't exist
 		return 'ManageHome';
 	
 	}
@@ -49,14 +57,6 @@ function Manage() {
  * Manage home page
  */
 function ManageHome() {
-
-	global $page;
-	
-	// Set the page's title
-	$page['title'] = 'Manage';
-	
-	// Load the template
-	load_template('Manage');
 	
 }
 
@@ -66,17 +66,6 @@ function ManageHome() {
 function ManageLocations() {
 
 	global $page, $manage;
-
-	// Set the area we're working with
-	$manage->set_area('locations');
-	$manage->set_db_columns(array(
-		'Name' => 'location_name',
-		'Country' => 'location_country',
-		'State' => 'location_state',
-		'City' => 'location_city',
-		'Street' => 'location_street',
-		'ZIP' => 'location_zip'
-	));
 	
 	// Check if an action is being requested
 	if ($page['has_action'] == 'add') {
@@ -160,4 +149,15 @@ function ManageDivisions() {
 	// Load template
 	load_template('ManageDivisions');
 	
+}
+
+/**
+ * Manage view page
+ */
+function View() {
+
+	global $manage;
+
+	$manage->view($_GET['view']);
+
 }
