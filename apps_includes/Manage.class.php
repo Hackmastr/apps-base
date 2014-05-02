@@ -106,7 +106,9 @@ class Manage {
 				
 			}
 			
-			echo '</ul>';
+					echo '</dl>
+				</li>
+			</ul>';
 			
 		} else {
 			
