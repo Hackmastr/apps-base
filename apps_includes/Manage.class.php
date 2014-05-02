@@ -61,52 +61,52 @@ class Manage {
 		// Request data from database for respective area
 		$results = $this->db->query($sql);
 		
-		// Check if there's any results from the database
+		// Check if there are any results from the database
 		if ($results->rowCount() > 0) {
 		
-			$header_first_row = false;
-			$data_first_row = false;
-			
+			$first_cell = false;
+		
 			echo '<ul class="apps_data_list">
-				<li>
-					<dl class="apps_data_list_header">';
+				<li class="apps_data_list_header">
+					<dl>';
+					
+					// Loop through the database columns to display as headers
+					foreach ($this->db_columns as $header => $column) {
+						if ($first_cell) {
+							echo '<dd class="'. $column .'">'. $header .'</dd>';
+						} else {
+							echo '<dt class="'. $column .'">'. $header .'</dt>';
+							$first_cell = true;
+						}				
+					}
+					
+					echo '</dl>
+				</li>
+				<li class="apps_data_list_data">
+					<dl>';
 			
-			// Loop through the DB columns as headers
-			foreach($this->db_columns as $header => $db_column) {
+			// Loop through each row retrieved
+			foreach ($results->fetchAll() as $data) {
+			
+				// Reset $first_row for each row
+				$first_cell = false;
+			
+				// Loop through each column defined
+				// This is so we can dynamically select the data we need
+				foreach($this->db_columns as $column) {
 				
-				if ($header_first_row) {
-					echo '<dt class="'. $db_column .'">'. $header .'</dt>';
-					$header_first_row = true;
-				} else {
-					echo '<dd class="'. $db_column .'">'. $header .'</dd>';
+					if ($first_cell) {
+						echo '<dd class="'. $column .'">'. $data->$column .'</dd>';
+					} else {
+						echo '<dt class="'. $column .'">'. $data->$column .'</dt>';
+						$first_cell = true;
+					}
+				
 				}
 				
 			}
 			
-				echo '</dl>
-			</li>
-			<li>
-				<dl class="apps_data_list_data">';
-			
-			// Loop through the results and display
-			foreach ($this->db_columns as $column) {
-			
-				foreach ($results->fetchAll() as $data) {
-				
-					if ($data_first_row) {
-						echo '<dt class="'. $column .'">'. $data->$column .'</dt>';
-						$data_first_row = true;
-					} else {
-						echo '<dd class="'. $column .'">'. $data->$column .'</dd>';
-					}
-					
-				}		
-				
-			}
-			
-				echo '</dl>
-				</li>
-			</ul>';
+			echo '</ul>';
 			
 		} else {
 			
