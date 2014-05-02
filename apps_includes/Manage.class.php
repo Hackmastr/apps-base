@@ -99,7 +99,7 @@ class Manage {
 						if ($first_cell) {
 							echo '<dd class="'. $column .'">'. $data->$column .'</dd>';
 						} else {
-							echo '<dt class="'. $column .'">'. $data->$column .'</dt>';
+							echo '<dt class="'. $column .'"><a href="'. get_page_url() .'&view='. $data->id .'">'. $data->$column .'</a></dt>';
 							$first_cell = true;
 						}
 					
