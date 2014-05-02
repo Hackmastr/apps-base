@@ -22,12 +22,14 @@ require_once(SITE_PATH .'/apps_template/Index.template.php');
  */
 $page = array(
 	'title' => '',
+	'sub_template' => '',
 	'has_message' => '',
 	'the_message' => '',
 	'areas' => array(
 		'sub' => array ('', ''),
 	),
-	'actions' => array(),
+	'has_action' => '',
+	'actions' => array()
 );
 
 /**

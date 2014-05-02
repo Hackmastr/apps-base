@@ -63,6 +63,8 @@ function load_template($template_name, $sub_template_name = '') {
 		// and load the corresponding sub template
 		if (!empty($sub_template_name)) {
 			$sub_template = $sub_template_name;
+		} else if (!empty($page['sub_template'])) {
+			$sub_template = $page['sub_template'];
 		} else {
 			$sub_template = 'main';
 		}

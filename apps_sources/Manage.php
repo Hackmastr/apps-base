@@ -28,6 +28,11 @@ function Manage() {
 	// and whether it exists in the manage array
 	if (isset($_GET['area']) && array_key_exists($_GET['area'], $page['areas'])) {
 	
+		// Check if an action has been requested
+		if (isset($_GET['action']) && array_key_exists($_GET['action'], $page['actions'])) {
+			$page['has_action'] = 'add';
+		}
+	
 		return $page['areas'][$_GET['area']][1];
 	
 	} else {
@@ -73,10 +78,13 @@ function ManageLocations() {
 		'ZIP' => 'location_zip'
 	));
 	
-	if (isset($_GET['action']) && array_key_exists($_GET['action'], $page['actions'])) {
+	// Check if an action is being requested
+	if ($page['has_action'] == 'add') {
 	
-		if ($_GET['action'] == 'add' && isset($_POST['add_location'])) {
+		// Check if form was submitted
+		if (isset($_POST['add_location'])) {
 		
+			// Get submitted form data
 			$form_data = array(
 				$_POST['location_name'],
 				$_POST['location_country'],
@@ -86,23 +94,25 @@ function ManageLocations() {
 				$_POST['location_zip']
 			);
 			
+			// Add location to database
 			$manage->add($form_data);
-		
 		}
-	
+
+		// Request sub template
+		$page['sub_template'] = 'add';
+		
 		// Set the page title
 		$page['title'] = 'Add New Location';
 		
-		// Load the template
-		load_template('ManageLocations', 'Add');
-	
 	} else {
 	
+		// Set the page title
 		$page['title'] = 'Manage Locations';
 		
-		load_template('ManageLocations');
-		
 	}
+	
+	// Load template
+	load_template('ManageLocations');
 	
 }
 
@@ -119,33 +129,35 @@ function ManageDivisions() {
 		'Division Name' => 'division_name'
 	));
 	
-	if (isset($_GET['action']) && array_key_exists($_GET['action'], $page['actions'])) {
+	if ($page['has_action'] == 'add') {
 	
-		if ($_GET['action'] == 'add') {
+		// Check if form was submitted
+		if (isset($_POST['add_division'])) {
 		
-			if (isset($_POST['add_division'])) {
+			// Get submitted form data
+			$form_data = array(
+				$_POST['division_name']
+			);
 			
-				$form_data = array(
-					$_POST['division_name']
-				);
-			
-				$manage->add($form_data);
-			}
-	
-			// Set the page title
-			$page['title'] = 'Add New Division';
-			
-			// Load the template
-			load_template('ManageDivisions', 'Add');
+			// Add division to database
+			$manage->add($form_data);
 			
 		}
+			
+		// Request sub template
+		$page['sub_template'] = 'add';
+		
+		// Set the page title
+		$page['title'] = 'Add New Division';
 	
 	} else {
-	
+
+		// Set the page title
 		$page['title'] = 'Manage Divisions';
 		
-		load_template('ManageDivisions');
-		
-	}	
+	}
+	
+	// Load template
+	load_template('ManageDivisions');
 	
 }
