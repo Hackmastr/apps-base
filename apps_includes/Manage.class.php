@@ -54,7 +54,7 @@ class Manage {
 	function display() {
 	
 		// Build the SQL query
-		$sql = 'SELECT ';
+		$sql = 'SELECT id, ';
 		$sql .= implode(', ', $this->db_columns);
 		$sql .= ' FROM app_'. $this->area;
 		
