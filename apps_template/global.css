@@ -169,27 +169,33 @@ body {
 /**
  * Data Lists
  */
-.apps_data_list li {
-	border-right: 1px solid #dddddd;
-	clear: both;
-	list-style: none;
-	overflow: hidden;
-}
-
-.apps_data_list_header {
-	border-top: 1px solid #dddddd;
-	background-color: #f1f1f1;
-	overflow: hidden;
-}
-
-.apps_data_list dt, .apps_data_list dd {
-	border-bottom: 1px solid #dddddd;
+.apps_data_list {
 	border-left: 1px solid #dddddd;
-	box-sizing: border-box;
-	float: left;
-	padding: 5px;
+	border-top: 1px solid #dddddd;
 }
+	
+	.apps_data_list_header {
+		background-color: #f1f1f1;
+	}
 
+	.apps_data_list li {
+		list-style: none;
+	}
+
+		.apps_data_list dl {
+			border-bottom: 1px solid #dddddd;
+			overflow: hidden;
+		}
+
+			.apps_data_list dt, .apps_data_list dd {
+				border-right: 1px solid #dddddd;
+				box-sizing: border-box;
+				float: left;
+				padding: 5px;
+			}
+
+
+		
 /**
  * Base Apps Specific
  * This will eventually get oved into its own CSS file
@@ -200,3 +206,5 @@ body {
 .apps_data_list .location_city { width: 15%}
 .apps_data_list .location_street { width: 20%; }
 .apps_data_list .location_zip { width: 10%; }
+
+.apps_data_list .division_name { width: 100%; }
