@@ -86,7 +86,7 @@ function ManageLocations() {
 				$_POST['location_zip']
 			);
 			
-			$manage->add($_POST['add_location'], $form_data);
+			$manage->add($form_data);
 		
 		}
 	
@@ -129,7 +129,7 @@ function ManageDivisions() {
 					$_POST['division_name']
 				);
 			
-				$manage->add($_POST['add_division'], $form_data);
+				$manage->add($form_data);
 			}
 	
 			// Set the page title

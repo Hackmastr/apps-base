@@ -123,44 +123,35 @@ class Manage {
 	/**
 	 * Adds data to respective area
 	 */
-	function add($form_submit, $form_data) {
+	function add($form_data) {
+		
+		// Create an array to hold quantity of value placeholders
+		$placeholders = array();
+		
+		// Create variable to keep count of how many database columns we have
+		$db_column_count = 0;
 	
-		// Process form data if the form has been submitted
-		if (isset($form_submit)) {
+		// Count number of database columns, and for each one
+		// add a placeholder
+		while (count($this->db_columns) > $db_column_count) {
+			array_push($placeholders, '?');
+			$db_column_count++;
+		}
 		
-			// Create an array to hold quantity of value placeholders
-			$placeholders = array();
-			
-			// Create variable to keep count of how many database columns we have
-			$db_column_count = 0;
+		// Build the SQL query and execute
+		$query = $this->db->prepare('INSERT INTO app_'. $this->area .' ('. implode(', ', $this->db_columns) .') VALUES('. implode(', ', $placeholders) .')');
+		$result = $query->execute($form_data);
 		
-			// Count number of database columns, and for each one
-			// add a placeholder
-			while (count($this->db_columns) > $db_column_count) {
-				array_push($placeholders, '?');
-				$db_column_count++;
-			}
-			
-			// Build the SQL query and execute
-			$query = $this->db->prepare('INSERT INTO app_'. $this->area .' ('. implode(', ', $this->db_columns) .') VALUES('. implode(', ', $placeholders) .')');
-			$result = $query->execute($form_data);
-			
-			//echo 'INSERT INTO app_'. $this->area .' ('. implode(', ', $this->db_columns) .') VALUES('. implode(', ', $placeholders) .')';
-			
-			// Check the results
-			if ($result) {
-			
-				generate_message('success', 'New location has been added successfully');
-				
-			} else {
-				
-				generate_message('error', 'Error adding new location');
-				
-			}
+		//echo 'INSERT INTO app_'. $this->area .' ('. implode(', ', $this->db_columns) .') VALUES('. implode(', ', $placeholders) .')';
+		
+		// Check the results
+		if ($result) {
+		
+			generate_message('success', 'New location has been added successfully');
 			
 		} else {
 			
-			generate_message('error', 'Form has not been submitted');
+			generate_message('error', 'Error adding new location');
 			
 		}
 		
