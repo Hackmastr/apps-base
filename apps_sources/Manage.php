@@ -75,6 +75,21 @@ function ManageLocations() {
 	
 	if (isset($_GET['action']) && array_key_exists($_GET['action'], $page['actions'])) {
 	
+		if ($_GET['action'] == 'add' && isset($_POST['add_location'])) {
+		
+			$form_data = array(
+				$_POST['location_name'],
+				$_POST['location_country'],
+				$_POST['location_state'],
+				$_POST['location_city'],
+				$_POST['location_street'],
+				$_POST['location_zip']
+			);
+			
+			$manage->add($_POST['add_location'], $form_data);
+		
+		}
+	
 		// Set the page title
 		$page['title'] = 'Add New Location';
 		
