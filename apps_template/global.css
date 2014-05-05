@@ -3,7 +3,8 @@
  */
 * { margin: 0; padding: 0; }
 img { border: 0; }
-a { text-decoration: none; outline: none; }
+a { color: #6699cc; text-decoration: none; outline: none; }
+a:hover { color: #cc9966; }
 header, section, footer, aside, nav, article, figure { display: block; }
 
 /**
@@ -117,6 +118,12 @@ body {
 		.apps_sidebar li a {
 			display: block;
 			padding: 10px;
+		}
+		
+		.apps_sidebar li.active a {
+			background-color: #6699cc;
+			border-radius: 5px;
+			color: #ffffff;
 		}
 		
 /**
