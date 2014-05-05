@@ -19,6 +19,11 @@ class Manage {
 	 * Contains database column name
 	 */
 	var $db_columns;
+	
+	/**
+	 * Contains values from select statement
+	 */
+	var $values;
 
 	/**
 	 * Class init
@@ -49,20 +54,32 @@ class Manage {
 	}
 	
 	/**
-	 * Dispays data in a table-like structure for respective area
+	 * Selects data from database
 	 */
-	function display() {
+	function select($id = '') {
 	
 		// Build the SQL query
 		$sql = 'SELECT id, ';
 		$sql .= implode(', ', $this->db_columns);
 		$sql .= ' FROM app_'. $this->area;
+
+		// Define WHERE clause if $id is set
+		if (!empty($id)) {
+			$sql .= ' WHERE id = '. $id;
+		}
 		
-		// Request data from database for respective area
-		$results = $this->db->query($sql);
+		// Return result
+		return $this->db->query($sql);
+	
+	}
+	
+	/**
+	 * Displays data in a table-like structure for respective area
+	 */
+	function display() {
 		
 		// Check if there are any results from the database
-		if ($results->rowCount() > 0) {
+		if ($this->select()->rowCount() > 0) {
 		
 			$first_cell = false;
 		
@@ -85,7 +102,7 @@ class Manage {
 				<li class="apps_data_list_data">';
 			
 				// Loop through each row retrieved
-				foreach ($results->fetchAll() as $data) {
+				foreach ($this->select()->fetchAll() as $data) {
 				
 					// Reset $first_row for each row
 					$first_cell = false;
@@ -123,8 +140,31 @@ class Manage {
 	/**
 	 * Single view
 	 */
-	function view() {
+	function view($id) {
+		
+		if ($this->select($id)->rowCount() > 0) {
+		
+			foreach ($this->select($id)->fetchAll() as $data) {
+			
+				foreach($this->db_columns as $column) {
+				
+					$this->values[$column] = $data->$column;				
+				
+				}
+			
+			}
+		
+		}
+		
+	}
 	
+	/**
+	 * Retrieves single value from database results
+	 */
+	function get_value($column) {
+		
+		return $this->values[$column];
+		
 	}
 	
 	/**
@@ -147,8 +187,6 @@ class Manage {
 		// Build the SQL query and execute
 		$query = $this->db->prepare('INSERT INTO app_'. $this->area .' ('. implode(', ', $this->db_columns) .') VALUES('. implode(', ', $values) .')');
 		$result = $query->execute($form_data);
-		
-		//echo 'INSERT INTO app_'. $this->area .' ('. implode(', ', $this->db_columns) .') VALUES('. implode(', ', $placeholders) .')';
 		
 		// Check the results
 		if ($result) {

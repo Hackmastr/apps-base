@@ -33,7 +33,7 @@ function Manage() {
 		if (isset($_GET['add']) && $_GET['add'] == 'new') {
 		
 			// Has the form been submitted?
-			if (isset($_POST['add'])) {
+			if (isset($_POST['submit'])) {
 			
 				// Get our submitted form data
 				$form_post_data = array();
@@ -55,7 +55,7 @@ function Manage() {
 			$manage->view($_GET['view']);
 			
 			// Call the appropiate sub template
-			$sub_template = 'view_'. $_GET['area'];
+			$sub_template = $_GET['area'] .'_form';
 		
 		} else {
 		
