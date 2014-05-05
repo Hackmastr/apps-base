@@ -12,5 +12,8 @@ $vars = array(
 			'Street' => 'location_street',
 			'ZIP' => 'location_zip'
 		),
+		'divisions' => array(
+			'Name' => 'division_name'
+		),
 	),
 );
