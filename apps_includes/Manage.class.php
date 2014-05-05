@@ -133,20 +133,19 @@ class Manage {
 	function add($form_data) {
 		
 		// Create an array to hold quantity of value placeholders
-		$placeholders = array();
+		$values = array();
 		
-		// Create variable to keep count of how many database columns we have
-		$db_column_count = 0;
+		// Count how many elements exist inside $form_data;
+		$form_data_count = count($form_data);
 	
 		// Count number of database columns, and for each one
 		// add a placeholder
-		while (count($this->db_columns) > $db_column_count) {
-			array_push($placeholders, '?');
-			$db_column_count++;
+		for ($i = 0; $i < $form_data_count; ++$i) {
+			$values[] = '?';
 		}
 		
 		// Build the SQL query and execute
-		$query = $this->db->prepare('INSERT INTO app_'. $this->area .' ('. implode(', ', $this->db_columns) .') VALUES('. implode(', ', $placeholders) .')');
+		$query = $this->db->prepare('INSERT INTO app_'. $this->area .' ('. implode(', ', $this->db_columns) .') VALUES('. implode(', ', $values) .')');
 		$result = $query->execute($form_data);
 		
 		//echo 'INSERT INTO app_'. $this->area .' ('. implode(', ', $this->db_columns) .') VALUES('. implode(', ', $placeholders) .')';
