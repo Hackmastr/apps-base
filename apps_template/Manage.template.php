@@ -112,7 +112,7 @@ function template_locations_form() {
 /**
  * Add new division
  */
-function template_add_divisions() {
+function template_divisions_form() {
 
 	global $page;
 	
@@ -135,7 +135,7 @@ function template_add_divisions() {
 					<input type="text" id="division_name" name="division_name" />
 				</li>
 				<li>
-					<input type="submit" name="add_division" value="Add Division" />
+					<input type="submit" name="submit" value="Submit" />
 					<input type="submit" name="delete" value="Delete" />
 				</li>
 			</ul>
