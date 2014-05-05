@@ -54,6 +54,19 @@ function Manage() {
 			// Are we trying to view something specific?
 			$manage->view($_GET['view']);
 			
+			if (isset($_POST['submit'])) {
+			
+				// Get our submitted form data
+				$form_post_data = array();
+				foreach($vars['db_columns'][$_GET['area']] as $db_column) {
+					array_push($form_post_data, $_POST[$db_column]);
+				}
+			
+				// Update data in database
+				$manage->update($form_post_data, $_GET['view']);	
+				
+			}
+			
 			// Call the appropiate sub template
 			$sub_template = $_GET['area'] .'_form';
 		

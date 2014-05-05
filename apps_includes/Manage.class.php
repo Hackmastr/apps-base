@@ -204,7 +204,34 @@ class Manage {
 	/**
 	 * Updates data for a respective area
 	 */
-	function update() {
+	function update($form_data, $id) {
+	
+		// Create an array to hold quantity of value placeholders
+		$values = array();
+		
+		// Count how many elements exist inside $form_data;
+		$form_data_count = count($form_data);
+	
+		// Count number of database columns, and for each one
+		// add a placeholder
+		foreach ($this->db_columns as $column) {
+			$values[] = $column .' = ?';
+		}
+		
+		// Build the SQL query and execute
+		$query = $this->db->prepare('UPDATE app_'. $this->area .' SET '. implode(', ', $values) .' WHERE id = '. $id);
+		$result = $query->execute($form_data);
+		
+		// Check the results
+		if ($result) {
+		
+			generate_message('success', 'New location has been added successfully');
+			
+		} else {
+			
+			generate_message('error', 'Error adding new location');
+			
+		}
 		
 	}
 	
