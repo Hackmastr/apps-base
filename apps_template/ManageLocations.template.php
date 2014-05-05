@@ -27,7 +27,7 @@ function template_main() {
 /**
  * Form for adding new location
  */
-function template_add() {
+function template_add_location() {
 
 	global $page;
 	

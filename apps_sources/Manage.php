@@ -4,7 +4,7 @@
  */
  
 // Execute corresponding function from page being requested
-call_user_func(Manage());
+//call_user_func(Manage());
 
 /**
  * Main manage function for handling page requests
@@ -13,7 +13,8 @@ function Manage() {
 
 	global $page, $vars, $manage;
 
-	// Build the manage menu	
+	// Build the manage menu
+	// $area => $title
 	$page['areas'] = array(
 		'locations' => array('Manage Locations', 'ManageLocations'),
 		'divisions' => array('Manage Divisions', 'ManageDivisions')
@@ -27,137 +28,56 @@ function Manage() {
 		
 		// Set the necessary database columns
 		$manage->set_db_columns($vars['db_columns'][$_GET['area']]);
-	
-		if (isset($_GET['add'])) {
 		
-			// Are we trying to add something?
-			return 'Add';
+		// Are we trying to add something?
+		if (isset($_GET['add']) && $_GET['add'] == 'new') {
+		
+			// Has the form been submitted?
+			if (isset($_POST['add'])) {
 			
+				// Get our submitted form data
+				$form_post_data = array();
+				foreach($vars['db_columns'][$_GET['area']] as $db_column) {
+					array_push($form_post_data, $_POST[$db_column]);
+				}
+			
+				// Submit to the database
+				$manage->add($form_post_data);
+				
+			}
+			
+			// Call the appropriate sub template
+			$sub_template = $_GET['area'] .'_form';
+		
 		} else if (isset($_GET['view'])) {
 		
 			// Are we trying to view something specific?
-			return 'View';
+			$manage->view($_GET['view']);
+			
+			// Call the appropiate sub template
+			$sub_template = 'view_'. $_GET['area'];
 		
 		} else {
 		
-			// If nothing else, return the main area page
-			return $page['areas'][$_GET['area']][1];
+			$sub_template = 'display';
 		
 		}
 	
 	} else {
 	
-		return 'ManageHome';
+		$sub_template = '';
 	
 	}
-
-}
-
-/**
- * Manage home page
- */
-function ManageHome() {
 	
+	load_template('Manage', $sub_template);
+
 }
 
 /**
- * Manage locations page
+ * Manage locations
  */
 function ManageLocations() {
 
-	global $page, $manage;
-	
-	// Check if an action is being requested
-	if ($page['has_action'] == 'add') {
-	
-		// Check if form was submitted
-		if (isset($_POST['add_location'])) {
-		
-			// Get submitted form data
-			$form_data = array(
-				$_POST['location_name'],
-				$_POST['location_country'],
-				$_POST['location_state'],
-				$_POST['location_city'],
-				$_POST['location_street'],
-				$_POST['location_zip']
-			);
-			
-			// Add location to database
-			$manage->add($form_data);
-		}
-
-		// Request sub template
-		$page['sub_template'] = 'add';
-		
-		// Set the page title
-		$page['title'] = 'Add New Location';
-		
-	} else {
-	
-		// Set the page title
-		$page['title'] = 'Manage Locations';
-		
-	}
-	
-	// Load template
-	load_template('ManageLocations');
-	
-}
-
-/**
- * Manage divisions page
- */
-function ManageDivisions() {
-	
-	global $page, $manage;
-	
-	// Set the area we're working with
-	$manage->set_area('divisions');
-	$manage->set_db_columns(array(
-		'Division Name' => 'division_name'
-	));
-	
-	if ($page['has_action'] == 'add') {
-	
-		// Check if form was submitted
-		if (isset($_POST['add_division'])) {
-		
-			// Get submitted form data
-			$form_data = array(
-				$_POST['division_name']
-			);
-			
-			// Add division to database
-			$manage->add($form_data);
-			
-		}
-			
-		// Request sub template
-		$page['sub_template'] = 'add';
-		
-		// Set the page title
-		$page['title'] = 'Add New Division';
-	
-	} else {
-
-		// Set the page title
-		$page['title'] = 'Manage Divisions';
-		
-	}
-	
-	// Load template
-	load_template('ManageDivisions');
-	
-}
-
-/**
- * Manage view page
- */
-function View() {
-
-	global $manage;
-
-	$manage->view($_GET['view']);
+	load_template('Manage', 'display');
 
 }
