@@ -191,11 +191,11 @@ class Manage {
 		// Check the results
 		if ($result) {
 		
-			generate_message('success', 'New location has been added successfully');
+			generate_message('success', 'New '. $this->area .' has been added successfully');
 			
 		} else {
 			
-			generate_message('error', 'Error adding new location');
+			generate_message('error', 'Error adding new '. $this->area .'');
 			
 		}
 		
@@ -225,11 +225,11 @@ class Manage {
 		// Check the results
 		if ($result) {
 		
-			generate_message('success', 'New location has been added successfully');
+			generate_message('success', 'The '. $this->area .' has been updated successfully');
 			
 		} else {
 			
-			generate_message('error', 'Error adding new location');
+			generate_message('error', 'Error updated '. $this->area .'');
 			
 		}
 		
@@ -238,7 +238,21 @@ class Manage {
 	/**
 	 * Deletes data from a respective area
 	 */
-	function delete() {
+	function delete($id) {
+		
+		$query = $this->db->prepare('DELETE FROM app_'. $this->area .' WHERE id = '. $id);
+		$result = $query->execute();
+		
+		// Check the results
+		if ($result) {
+		
+			generate_message('success', 'The '. $this->area .' has been deleted successfully');
+			
+		} else {
+			
+			generate_message('error', 'Error deleting '. $this->area .'');
+			
+		}
 		
 	}
 	

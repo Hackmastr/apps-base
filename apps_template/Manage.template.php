@@ -99,6 +99,7 @@ function template_locations_form() {
 				</li>
 				<li>
 					<input type="submit" name="submit" value="Submit" />
+					<input type="submit" name="delete" value="Delete" />
 				</li>
 			</ul>
 		
@@ -135,6 +136,7 @@ function template_add_divisions() {
 				</li>
 				<li>
 					<input type="submit" name="add_division" value="Add Division" />
+					<input type="submit" name="delete" value="Delete" />
 				</li>
 			</ul>
 		

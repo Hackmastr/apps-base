@@ -43,6 +43,7 @@ function Manage() {
 			
 				// Submit to the database
 				$manage->add($form_post_data);
+				header('Location: '. SITE_URL .'/index.php?p=manage&area='. $_GET['area']);
 				
 			}
 			
@@ -66,10 +67,16 @@ function Manage() {
 				$manage->update($form_post_data, $_GET['view']);	
 				
 			}
+			if (isset($_POST['delete'])) {
+				
+				$manage->delete($_GET['view']);
+				header('Location: '. SITE_URL .'/index.php?p=manage&area='. $_GET['area']);
+				
+			}
 			
 			// Call the appropiate sub template
 			$sub_template = $_GET['area'] .'_form';
-		
+			
 		} else {
 		
 			$sub_template = 'display';
