@@ -92,12 +92,3 @@ function Manage() {
 	load_template('Manage', $sub_template);
 
 }
-
-/**
- * Manage locations
- */
-function ManageLocations() {
-
-	load_template('Manage', 'display');
-
-}
