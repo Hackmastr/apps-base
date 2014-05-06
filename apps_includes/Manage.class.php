@@ -68,8 +68,17 @@ class Manage {
 			$sql .= ' WHERE id = '. $id;
 		}
 		
-		// Return result
-		return $this->db->query($sql);
+		// Get results from query
+		$result = $this->db->query($sql);
+		
+		// Check if anything was returned
+		// and return results, if any
+		// otherwise return false
+		if ($result->rowCount() > 0) {
+			return $result;
+		} else {
+			return false;
+		}
 	
 	}
 	
