@@ -88,7 +88,7 @@ class Manage {
 	function display() {
 		
 		// Check if there are any results from the database
-		if ($this->select()->rowCount() > 0) {
+		if ($this->select()) {
 		
 			$first_cell = false;
 		
@@ -151,7 +151,7 @@ class Manage {
 	 */
 	function view($id) {
 		
-		if ($this->select($id)->rowCount() > 0) {
+		if ($this->select($id)) {
 		
 			foreach ($this->select($id)->fetchAll() as $data) {
 			
