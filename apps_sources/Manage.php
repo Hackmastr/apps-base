@@ -11,7 +11,7 @@
  */
 function Manage() {
 
-	global $page, $vars, $manage;
+	global $page, $vars, $db;
 
 	// Build the manage menu
 	// $area => $title
@@ -22,12 +22,12 @@ function Manage() {
 	
 	// Has a specific area from the list above been requested?
 	if (isset($_GET['area']) && array_key_exists($_GET['area'], $page['areas'])) {
-	
+			
 		// Set the area we're working with
-		$manage->set_area($_GET['area']);
+		$db->set_area($_GET['area']);
 		
 		// Set the necessary database columns
-		$manage->set_db_columns($vars['db_columns'][$_GET['area']]);
+		$db->set_db_columns($vars['db_columns'][$_GET['area']]);
 		
 		// Are we trying to add something?
 		if (isset($_GET['add']) && $_GET['add'] == 'new') {
@@ -42,7 +42,7 @@ function Manage() {
 				}
 			
 				// Submit to the database
-				$manage->add($form_post_data);
+				$db->add($form_post_data);
 				header('Location: '. SITE_URL .'/index.php?p=manage&area='. $_GET['area']);
 				
 			}
@@ -53,7 +53,7 @@ function Manage() {
 		} else if (isset($_GET['view'])) {
 		
 			// Are we trying to view something specific?
-			$manage->view($_GET['view']);
+			$db->view($_GET['view']);
 			
 			if (isset($_POST['submit'])) {
 			
@@ -64,12 +64,12 @@ function Manage() {
 				}
 			
 				// Update data in database
-				$manage->update($form_post_data, $_GET['view']);	
+				$db->update($form_post_data, $_GET['view']);	
 				
 			}
 			if (isset($_POST['delete'])) {
 				
-				$manage->delete($_GET['view']);
+				$db->delete($_GET['view']);
 				header('Location: '. SITE_URL .'/index.php?p=manage&area='. $_GET['area']);
 				
 			}

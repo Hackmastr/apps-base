@@ -6,11 +6,6 @@ define('APP_URL', SITE_URL .'');
 define('APP_SOURCES_PATH', dirname(__FILE__) .'/apps_sources');
 define('APP_TEMPLATE_PATH', dirname(__FILE__) .'/apps_template');
 
-// Load the manage class
-require_once('apps_includes/Manage.class.php');
-$manage = new Manage();
-$manage->set_db($db);
-
 // Load base vars
 require_once('apps_includes/Base.vars.php');
 

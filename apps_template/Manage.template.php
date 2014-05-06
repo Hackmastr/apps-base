@@ -24,7 +24,7 @@ function template_main() {
  */
 function template_display() {
 
-	global $page, $manage;
+	global $page, $db;
 	
 	echo '<div class="apps_sidebar">';
 		get_sub_nav();
@@ -41,7 +41,7 @@ function template_display() {
 		
 		echo '<p><a href="'. get_page_url() .'&add=new">Add New</a></p>';
 		
-		$manage->display();
+		$db->display();
 		
 	echo '</div>';
 
@@ -52,7 +52,7 @@ function template_display() {
  */
 function template_locations_form() {
 
-	global $page, $manage;
+	global $page, $db;
 
 	echo '<div class="apps_sidebar">';
 		get_sub_nav();

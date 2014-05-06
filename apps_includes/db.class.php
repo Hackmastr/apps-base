@@ -3,7 +3,7 @@
  * Manage class
  */
 
-class Manage {
+class Database {
 
 	/**
 	 * Contains database connection string
