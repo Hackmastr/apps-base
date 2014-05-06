@@ -148,6 +148,7 @@ class Manage {
 	
 	/**
 	 * Single view
+	 * @return void
 	 */
 	function view($id) {
 		
@@ -169,6 +170,7 @@ class Manage {
 	
 	/**
 	 * Retrieves single value from database results
+	 * @return string
 	 */
 	function get_value($column) {
 		
@@ -178,6 +180,7 @@ class Manage {
 	
 	/**
 	 * Adds data to respective area
+	 * @return boolean True or false from database SQL query
 	 */
 	function add($form_data) {
 		
@@ -197,21 +200,14 @@ class Manage {
 		$query = $this->db->prepare('INSERT INTO app_'. $this->area .' ('. implode(', ', $this->db_columns) .') VALUES('. implode(', ', $values) .')');
 		$result = $query->execute($form_data);
 		
-		// Check the results
-		if ($result) {
-		
-			generate_message('success', 'New '. $this->area .' has been added successfully');
-			
-		} else {
-			
-			generate_message('error', 'Error adding new '. $this->area .'');
-			
-		}
+		// Return the results
+		return $result;
 		
 	}
 	
 	/**
 	 * Updates data for a respective area
+	 * @return boolean True or false from database SQL query
 	 */
 	function update($form_data, $id) {
 	
@@ -231,37 +227,22 @@ class Manage {
 		$query = $this->db->prepare('UPDATE app_'. $this->area .' SET '. implode(', ', $values) .' WHERE id = '. $id);
 		$result = $query->execute($form_data);
 		
-		// Check the results
-		if ($result) {
-		
-			generate_message('success', 'The '. $this->area .' has been updated successfully');
-			
-		} else {
-			
-			generate_message('error', 'Error updated '. $this->area .'');
-			
-		}
+		// Return the results
+		return $result;
 		
 	}
 	
 	/**
 	 * Deletes data from a respective area
+	 * @return boolean True or false from database SQL query
 	 */
 	function delete($id) {
 		
 		$query = $this->db->prepare('DELETE FROM app_'. $this->area .' WHERE id = '. $id);
 		$result = $query->execute();
 		
-		// Check the results
-		if ($result) {
-		
-			generate_message('success', 'The '. $this->area .' has been deleted successfully');
-			
-		} else {
-			
-			generate_message('error', 'Error deleting '. $this->area .'');
-			
-		}
+		// Return the results
+		return $result;
 		
 	}
 	
