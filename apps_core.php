@@ -28,6 +28,7 @@ require_once(SITE_PATH .'/apps_template/Index.template.php');
  * Define a $page array to store page details
  */
 $page = array(
+	'action' => '',
 	'title' => '',
 	'sub_template' => '',
 	'has_message' => '',
@@ -35,8 +36,7 @@ $page = array(
 	'areas' => array(
 		'sub' => array ('', ''),
 	),
-	'has_action' => '',
-	'actions' => array()
+	'has_action' => ''
 );
 
 /**
