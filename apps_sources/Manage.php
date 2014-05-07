@@ -16,8 +16,8 @@ function Manage() {
 	// Build the manage menu
 	// $area => $title
 	$page['areas'] = array(
-		'locations' => array('Manage Locations', 'ManageLocations'),
-		'divisions' => array('Manage Divisions', 'ManageDivisions')
+		'locations' => array('Manage Locations', 'Location'),
+		'divisions' => array('Manage Divisions', 'Division')
 	);
 	
 	// Has a specific area from the list above been requested?
@@ -31,6 +31,12 @@ function Manage() {
 		
 		// Are we trying to add something?
 		if (get_var('add') == 'new') {
+		
+			// Set the page title
+			$page['title'] = 'Add New '. $page['areas'][$_GET['area']][1];
+		
+			// Set the action
+			$page['action'] = 'add';
 		
 			// Has the form been submitted?
 			if (isset($_POST['submit'])) {
@@ -47,14 +53,18 @@ function Manage() {
 			}
 			
 			// Call the appropriate sub template
-			$sub_template = $_GET['area'] .'_form';
+			$page['sub_template']  = 'manage_form';
 		
 		} else if (get_var('view')) {
+		
+			// Set the action
+			$page['action'] = 'view';
 		
 			// Are we trying to view something specific?
 			$db->view($_GET['view']);
 			
-			if (isset($_POST['submit'])) {
+			// Are trying to update something?
+			if (isset($_POST['update'])) {
 			
 				// Get our submitted form data
 				$form_post_data = array();
@@ -66,6 +76,8 @@ function Manage() {
 				$db->update($form_post_data, $_GET['view']);	
 				
 			}
+			
+			// Are we trying to delete something?
 			if (isset($_POST['delete'])) {
 				
 				$db->delete($_GET['view']);
@@ -73,20 +85,24 @@ function Manage() {
 			}
 			
 			// Call the appropiate sub template
-			$sub_template = $_GET['area'] .'_form';
+			$page['sub_template'] = 'manage_form';
 			
 		} else {
 		
-			$sub_template = 'display';
+			// Set the page title
+			$page['title'] = $page['areas'][$_GET['area']][0];
+		
+			// Load sub template
+			$page['sub_template']  = 'display';
 		
 		}
 	
 	} else {
-	
-		$sub_template = '';
-	
+		
+		$page['title'] = 'Manage Dashboard';
+		
 	}
 	
-	load_template('Manage', $sub_template);
+	load_template('Manage', $page['sub_template']);
 
 }
