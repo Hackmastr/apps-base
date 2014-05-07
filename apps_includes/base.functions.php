@@ -59,6 +59,43 @@ function get_manage_form($area, $action) {
 		
 			break;
 			
+		case 'cells':
+		
+			echo '<li>
+				<label for="app_division_id">Division</label>
+				<select name="app_division_id">';
+				
+					// Retrieve divisions list
+					$divisions = $db->query('SELECT id, division_name FROM app_divisions');
+					foreach ($divisions as $division) {
+						
+						echo '<option value="'. $division->id .'">'. $division->division_name .'</option>';
+						
+					}
+				
+			echo '</select>
+			</li>
+			<li>
+				<label for="app_location_id">Location</label>
+				<select name="app_location_id">';
+				
+					// Retrieve divisions list
+					$locations = $db->query('SELECT id, location_name FROM app_locations');
+					foreach ($locations as $location) {
+						
+						echo '<option value="'. $location->id .'">'. $location->location_name .'</option>';
+						
+					}
+				
+			echo '</select>
+			</li>
+			<li>
+				<label for="cell_name">Cell Name</label>
+				<input type="text" id="cell_name" name="cell_name" />
+			</li>';
+		
+			break;
+			
 		default:
 			echo 'Form doesn\'t exist.';
 		

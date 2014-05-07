@@ -15,5 +15,13 @@ $vars = array(
 		'divisions' => array(
 			'Name' => 'division_name'
 		),
+		'cells' => array(
+			'Division' => 'app_division_id',
+			'Location' => 'app_location_id',
+			'Number' => 'cell_number',
+			'Name' => 'cell_name',
+			'IQ Connector' => 'cell_iq_connector',
+			'Status' => 'cell_status'
+		),
 	),
 );

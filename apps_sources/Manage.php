@@ -17,7 +17,8 @@ function Manage() {
 	// $area => $title
 	$page['areas'] = array(
 		'locations' => array('Manage Locations', 'Location'),
-		'divisions' => array('Manage Divisions', 'Division')
+		'divisions' => array('Manage Divisions', 'Division'),
+		'cells' => array('Manage Cells', 'Cell')
 	);
 	
 	// Has a specific area from the list above been requested?

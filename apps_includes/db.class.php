@@ -83,6 +83,25 @@ class Database {
 	}
 	
 	/**
+	 * Custom SQL query
+	 */
+	function query($sql) {
+		
+		// Get results from query
+		$result = $this->db->query($sql);
+		
+		// Check if anything was returned
+		// and return results, if any
+		// otherwise return false
+		if ($result->rowCount() > 0) {
+			return $result->fetchAll();
+		} else {
+			return false;
+		}
+		
+	}
+	
+	/**
 	 * Displays data in a table-like structure for respective area
 	 */
 	function display() {
