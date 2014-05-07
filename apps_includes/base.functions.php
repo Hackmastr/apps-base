@@ -90,8 +90,24 @@ function get_manage_form($area, $action) {
 			echo '</select>
 			</li>
 			<li>
+				<label for="cell_name">Cell Number</label>
+				<input type="text" id="cell_number" name="cell_number" />
+			</li>
+			<li>
 				<label for="cell_name">Cell Name</label>
 				<input type="text" id="cell_name" name="cell_name" />
+			</li>
+			<li>
+				<label for="cell_iq_connector">Cell IQ Connector</label>
+				<input type="text" id="cell_iq_connector" name="cell_iq_connector" />
+			</li>
+			<li>
+				<label for="cell_status">Cell Status</label>
+				<select name="cell_status">
+					<option value="active">Active</option>
+					<option value="service">Service</option>
+					<option value="discontinued">Discontinued</option>
+				</select>
 			</li>';
 		
 			break;
