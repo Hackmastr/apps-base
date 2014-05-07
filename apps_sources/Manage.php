@@ -21,7 +21,7 @@ function Manage() {
 	);
 	
 	// Has a specific area from the list above been requested?
-	if (isset($_GET['area']) && array_key_exists($_GET['area'], $page['areas'])) {
+	if (get_var('area', $page['areas'])) {
 			
 		// Set the area we're working with
 		$db->set_area($_GET['area']);
@@ -30,7 +30,7 @@ function Manage() {
 		$db->set_db_columns($vars['db_columns'][$_GET['area']]);
 		
 		// Are we trying to add something?
-		if (isset($_GET['add']) && $_GET['add'] == 'new') {
+		if (get_var('add') == 'new') {
 		
 			// Has the form been submitted?
 			if (isset($_POST['submit'])) {
@@ -50,7 +50,7 @@ function Manage() {
 			// Call the appropriate sub template
 			$sub_template = $_GET['area'] .'_form';
 		
-		} else if (isset($_GET['view'])) {
+		} else if (get_var('view')) {
 		
 			// Are we trying to view something specific?
 			$db->view($_GET['view']);
