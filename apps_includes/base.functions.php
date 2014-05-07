@@ -10,14 +10,16 @@ function get_manage_form($area, $action) {
 
 	global $db;
 	
+	// Begin the HTML form
+	echo '<form class="apps_form" method="post" action="'. get_page_url() .'">
+		<ul>';
+	
 	// Which form which we display for $area?
 	switch ($area) {
 		
 		case 'locations':
-			
-			echo '<form class="apps_form" method="post" action="'. get_page_url() .'">
-			<ul>
-				<li>
+		
+				echo '<li>
 					<label for="name">Location Name</label>
 					<input type="text" id="name" name="location_name" value="'. $db->get_value('location_name') .'" />
 				</li>
@@ -44,23 +46,34 @@ function get_manage_form($area, $action) {
 				<li>
 					<label for="zip">Zip Code</label>
 					<input type="text" id="zip" name="location_zip" value="'. $db->get_value('location_zip') .'" />
-				</li>
-				<li>';
-					
-					if ($action == 'view') {
-						echo '<input type="submit" name="update" value="Submit" />
-						<input type="submit" name="delete" value="Delete" />';
-					} else {
-						echo '<input type="submit" name="add" value="Submit" />';
-					}
-					
-				echo '</li>
-			</ul>
-		
-		</form>';
+				</li>';
 			
 			break;
 		
+		case 'divisions':
+		
+			echo '<li>
+				<label for="division_name">Division Name</label>
+				<input type="text" id="division_name" name="division_name" />
+			</li>';
+		
+			break;
+		
+		
 	}
+	
+			// End the HTML form
+			echo '<li>';
+				
+				if ($action == 'view') {
+					echo '<input type="submit" name="update" value="Submit" />
+					<input type="submit" name="delete" value="Delete" />';
+				} else {
+					echo '<input type="submit" name="add" value="Submit" />';
+				}
+				
+			echo '</li>
+		</ul>
+	</form>';
 	
 }
