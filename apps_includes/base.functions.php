@@ -90,7 +90,7 @@ function get_manage_form($area, $action) {
 			echo '</select>
 			</li>
 			<li>
-				<label for="cell_name">Cell Number</label>
+				<label for="cell_number">Cell Number</label>
 				<input type="text" id="cell_number" name="cell_number" />
 			</li>
 			<li>
