@@ -1,6 +1,6 @@
 <?php
 /**
- * Variables for base app
+ * Core variables
  */
 $vars = array(
 	'db_columns' => array(
