@@ -54,7 +54,7 @@ function get_manage_form($area, $action) {
 		
 			echo '<li>
 				<label for="division_name">Division Name</label>
-				<input type="text" id="division_name" name="division_name" />
+				<input type="text" id="division_name" name="division_name" value="'. $db->get_value('division_name') .'" />
 			</li>';
 		
 			break;
