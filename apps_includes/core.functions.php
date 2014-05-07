@@ -5,6 +5,36 @@
  */
 
 /**
+ * Returns true if $requested_var exists in $array
+ * Or returns $requested_var 
+ */
+function get_var($requested_var, $array = '') {
+	
+	// Check if the requested var is set
+	if (isset($_GET[$requested_var])) {
+	
+		// If $array is empty, return the $requested_var
+		// Otherwise, we're only checking if $requested_var exists in $array
+		// If so, return true
+		if (empty($array)) {
+			
+			return $_GET[$requested_var];
+			
+		} else {
+			
+			return true;
+			
+		}
+		
+	} else {
+		
+		return false;
+		
+	}
+	
+}
+
+/**
  * Returns subnav from $page['sub_nav']
  */
 function get_sub_nav() {
