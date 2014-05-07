@@ -1,6 +1,6 @@
 <?php
 /**
- * Apps functions file
+ * Base Apps functions file
  * Nothing in this file is organized in any particular way
  */
 
