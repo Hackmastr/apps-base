@@ -40,7 +40,7 @@ function Manage() {
 			$page['action'] = 'add';
 		
 			// Has the form been submitted?
-			if (isset($_POST['submit'])) {
+			if (isset($_POST['add'])) {
 			
 				// Get our submitted form data
 				$form_post_data = array();
