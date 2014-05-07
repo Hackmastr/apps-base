@@ -58,6 +58,9 @@ function get_manage_form($area, $action) {
 			</li>';
 		
 			break;
+			
+		default:
+			echo 'Form doesn\'t exist.';
 		
 		
 	}
