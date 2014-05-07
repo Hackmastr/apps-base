@@ -43,7 +43,6 @@ function Manage() {
 			
 				// Submit to the database
 				$db->add($form_post_data);
-				header('Location: '. SITE_URL .'/index.php?p=manage&area='. $_GET['area']);
 				
 			}
 			
@@ -70,7 +69,6 @@ function Manage() {
 			if (isset($_POST['delete'])) {
 				
 				$db->delete($_GET['view']);
-				header('Location: '. SITE_URL .'/index.php?p=manage&area='. $_GET['area']);
 				
 			}
 			
