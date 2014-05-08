@@ -29,6 +29,7 @@ require_once(SITE_PATH .'/apps_template/Index.template.php');
  */
 $page = array(
 	'action' => '',
+	'area' => '',
 	'title' => '',
 	'sub_template' => '',
 	'has_message' => '',
@@ -36,7 +37,9 @@ $page = array(
 	'areas' => array(
 		'sub' => array ('', ''),
 	),
-	'has_action' => ''
+	'has_action' => '',
+	
+	'db_result' => array()
 );
 
 /**
