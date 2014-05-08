@@ -112,13 +112,17 @@ body {
 	}
 	
 		.apps_sidebar li a {
+			color: #000000;
 			display: block;
-			padding: 10px;
+			padding: 5px 10px;
+		}
+		
+		.apps_sidebar li a:hover {
+			color: #006699;
 		}
 		
 		.apps_sidebar li.active a {
-			background-color: #6699cc;
-			border-radius: 5px;
+			background-color: #006699;
 			color: #ffffff;
 		}
 		
