@@ -28,21 +28,18 @@ body {
  * Apps Site Header
  */
 #apps_site_header {
-	background: #dddddd url(images/header_bg.png) repeat-x;
-	border-bottom: 1px solid #ffffff;
-	box-shadow: 0 2px 6px #c0c0c0;
-	line-height: 50px;
+	border-bottom: 4px solid #339900;
+	line-height: 60px;
 	padding: 0 20px;
-	height: 50px;
+	height: 60px;
 }
 
 	#apps_site_logo {
 		float: left;
+		padding-top: 5px;
 	}
 
 	#apps_site_nav {
-		border-right: 1px solid #dddddd;
-		border-left: 1px solid #ffffff;
 		float: right;
 	}
 	
@@ -51,8 +48,6 @@ body {
 		}
 		
 			#apps_site_nav li {
-				border-right: 1px solid #ffffff;
-				border-left: 1px solid #dddddd;
 				float: left;
 				list-style: none;
 			}
@@ -60,20 +55,21 @@ body {
 				#apps_site_nav li a {
 					color: #000000;
 					display: block;
+					font-size: 1.2em;
 					padding: 0 20px;
-					text-shadow: 0 1px 0 #ffffff;
 				}
 				
 				#apps_site_nav li a:hover {
-					background: #c0c0c0 url(images/nav_item_bg.png) repeat-x;
+					background-color: #f1f1f1;
 				}
 				
 					#apps_site_nav li ul {
-						background-color: #ffffff;
-						box-shadow: 0 2px 6px #c0c0c0;
+						background-color: #339900;
+						box-shadow: 0 1px 2px #c0c0c0;
 						display: none;
 						position: absolute;
 						z-index: 10;
+						padding-top: 4px;
 					}
 				
 					#apps_site_nav li:hover > ul {
@@ -85,6 +81,7 @@ body {
 						}
 					
 						#apps_site_nav li ul li a {
+							color: #ffffff;
 							display: block;
 							line-height: normal;
 							padding: 10px 20px;
@@ -92,8 +89,7 @@ body {
 						}
 						
 						#apps_site_nav li ul li a:hover {
-							background-color: #f1f1f1;
-							background-image: none;
+							background-color: #66cc33;
 						}
 
 /**
