@@ -9,14 +9,13 @@
  */
 require_once('apps_version.php');
 require_once('apps_config.php');
-require_once('apps_includes/core.vars.php');
 require_once('apps_includes/core.functions.php');
 require_once('apps_includes/db.class.php');
 
 /**
- * Load the database class
+ * Start database connection
  */
-$db = new Database();
+$db = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS);
  
 /**
  * Load the index template file
@@ -31,11 +30,12 @@ $page = array(
 	'action' => '',
 	'has_action' => '',
 	
-	'areas' => '',
+	'areas' => array('', ''),
 	'area' => '',
-	'view' => '',
+	'view_id' => '',
 	
 	'title' => '',
+	'template' => '',
 	'sub_template' => '',
 	
 	'has_message' => '',
@@ -43,23 +43,3 @@ $page = array(
 	
 	'db_result' => array()
 );
-
-/**
- * Connect to the database
- */
-$db_is_conn;
-try {
-	$db_conn = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME, DB_USER, DB_PASS);
-	$db_conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-	if (DEBUG) {
-		$db_conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	}
-	$db_is_conn = true;
-} catch (PDOException $e) {
-	throw new Exception($e->getMessage());
-	$db_is_conn = false;
-}
-
-if ($db_is_conn) {
-	$db->set_db($db_conn);
-}

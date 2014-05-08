@@ -47,11 +47,24 @@ function get_sub_nav() {
 	// Loops through each nav item
 	foreach ($page['areas'] as $area => $nav_item) {
 	
-		echo '<li '. (isset($_GET['area']) && $_GET['area'] == $area ? 'class="active"' : '') .'><a href="'. APP_URL .'/index.php?p='. $_GET['p'] .'&area='. $area .'">'. $nav_item .'</a></li>';
+		echo '<li '. (isset($_GET['area']) && $_GET['area'] == $area ? 'class="active"' : '') .'><a href="'. APP_URL .'/index.php?p='. $_GET['p'] .'&area='. $area .'">'. $nav_item[0] .'</a></li>';
 	
 	}
 	
 	echo '</ul>';
+	
+}
+
+/**
+ * Returns single value from $page['db_result']
+ */
+function get_db_result_val($var) {
+	
+	global $page;
+	
+	if (isset($page['db_result'][$var])) {
+		return $page['db_result'][$var];
+	}
 	
 }
 

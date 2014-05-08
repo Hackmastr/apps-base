@@ -177,7 +177,7 @@ body {
  * Data Lists
  */
 .apps_data_list {
-	border-left: 1px solid #dddddd;
+	border-right: 1px solid #dddddd;
 	border-top: 1px solid #dddddd;
 }
 	
@@ -195,7 +195,7 @@ body {
 		}
 
 			.apps_data_list dt, .apps_data_list dd {
-				border-right: 1px solid #dddddd;
+				border-left: 1px solid #dddddd;
 				box-sizing: border-box;
 				float: left;
 				padding: 5px;
@@ -215,3 +215,10 @@ body {
 .apps_data_list .location_zip { width: 10%; }
 
 .apps_data_list .division_name { width: 100%; }
+
+.apps_data_list .cell_name { width: 25%; }
+.apps_data_list .cell_number { width: 10%; }
+.apps_data_list .cell_division { width: 15%; }
+.apps_data_list .cell_location { width: 15%}
+.apps_data_list .cell_iq_connector { width: 20%; }
+.apps_data_list .cell_status { width: 15%; }

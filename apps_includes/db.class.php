@@ -1,73 +1,57 @@
 <?php
 /**
- * Manage class
+ * Database class
  */
 
 class Database {
 
-	/**
-	 * Contains database connection string
-	 */
+	var $dbhost;
+	var $dbname;
+	var $dbuser;
+	var $dbpass;
 	var $db;
-
-	/**
-	 * Contains the area we're working with
-	 */
-	var $area;
+	var $dbconn;
 	
 	/**
-	 * Contains database column name
+	 * Database init
 	 */
-	var $db_columns;
+	function __construct($dbhost, $dbname, $dbuser, $dbpass) {
 	
-	/**
-	 * Contains values from select statement
-	 */
-	var $values;
-
-	/**
-	 * Class init
-	 */
-	function __construct() {
+		$this->dbhost = $dbhost;
+		$this->dbname = $dbname;
+		$this->dbuser = $dbuser;
+		$this->dbpass = $dbpass;
+		
+		$this->connect();
 		
 	}
 	
 	/**
-	 * Sets database connection string
+	 * Connects to database
 	 */
-	function set_db($db) {
-		$this->db = $db;
-	}
-	
-	/**
-	 * Sets the area to work with
-	 */
-	public function set_area($area) {
-		$this->area = $area;
-	}
-	
-	/**
-	 * Sets database table columns
-	 */
-	function set_db_columns($columns) {
-		$this->db_columns = $columns;
-	}
-	
-	/**
-	 * Selects data from database
-	 */
-	function select($id = '') {
-	
-		// Build the SQL query
-		$sql = 'SELECT id, ';
-		$sql .= implode(', ', $this->db_columns);
-		$sql .= ' FROM app_'. $this->area;
+	function connect() {
+		
+		$dbconn = false;
 
-		// Define WHERE clause if $id is set
-		if (!empty($id)) {
-			$sql .= ' WHERE id = '. $id;
+		try {
+			$this->db = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME, DB_USER, DB_PASS);
+			$this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+			if (DEBUG) {
+				$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			}
+			$this->dbconn = true;
+		} catch (PDOException $e) {
+			throw new Exception($e->getMessage());
+			$this->dbconn = false;
 		}
 		
+	}
+	
+	/**
+	 * Select
+	 */
+	function select($sql, $return_single = false) {
+	
 		// Get results from query
 		$result = $this->db->query($sql);
 		
@@ -75,26 +59,11 @@ class Database {
 		// and return results, if any
 		// otherwise return false
 		if ($result->rowCount() > 0) {
-			return $result;
-		} else {
-			return false;
-		}
-	
-	}
-	
-	/**
-	 * Custom SQL query
-	 */
-	function query($sql) {
-		
-		// Get results from query
-		$result = $this->db->query($sql);
-		
-		// Check if anything was returned
-		// and return results, if any
-		// otherwise return false
-		if ($result->rowCount() > 0) {
-			return $result->fetchAll();
+			if ($return_single) {
+				return $result->fetch();
+			} else {
+				return $result->fetchAll();
+			}
 		} else {
 			return false;
 		}
@@ -102,7 +71,7 @@ class Database {
 	}
 	
 	/**
-	 * Insert data into database
+	 * Insert
 	 */
 	function insert($sql, $data) {
 		
@@ -112,100 +81,25 @@ class Database {
 		return $result;
 		
 	}
-		
-	/**
-	 * Single view
-	 * @return void
-	 */
-	function view($id) {
-		
-		if ($this->select($id)) {
-		
-			foreach ($this->select($id)->fetchAll() as $data) {
-			
-				foreach($this->db_columns as $column) {
-				
-					$this->values[$column] = $data->$column;				
-				
-				}
-			
-			}
-		
-		}
-		
-	}
 	
 	/**
-	 * Retrieves single value from database results
-	 * @return string
+	 * Update
 	 */
-	function get_value($column) {
-		
-		return $this->values[$column];
-		
-	}
+	function update($sql, $data) {
 	
-	/**
-	 * Adds data to respective area
-	 * @return boolean True or false from database SQL query
-	 */
-	function add($form_data) {
+		$query = $this->db->prepare($sql);
+		$result = $query->execute($data);
 		
-		// Create an array to hold quantity of value placeholders
-		$values = array();
-		
-		// Count how many elements exist inside $form_data;
-		$form_data_count = count($form_data);
-	
-		// Count number of database columns, and for each one
-		// add a placeholder
-		for ($i = 0; $i < $form_data_count; ++$i) {
-			$values[] = '?';
-		}
-		
-		// Build the SQL query and execute
-		$query = $this->db->prepare('INSERT INTO app_'. $this->area .' ('. implode(', ', $this->db_columns) .') VALUES('. implode(', ', $values) .')');
-		$result = $query->execute($form_data);
-		
-		// Return the results
 		return $result;
-		
+				
 	}
 	
 	/**
-	 * Updates data for a respective area
-	 * @return boolean True or false from database SQL query
+	 * Delete
 	 */
-	function update($form_data, $id) {
-	
-		// Create an array to hold quantity of value placeholders
-		$values = array();
+	function delete($sql) {
 		
-		// Count how many elements exist inside $form_data;
-		$form_data_count = count($form_data);
-	
-		// Count number of database columns, and for each one
-		// add a placeholder
-		foreach ($this->db_columns as $column) {
-			$values[] = $column .' = ?';
-		}
-		
-		// Build the SQL query and execute
-		$query = $this->db->prepare('UPDATE app_'. $this->area .' SET '. implode(', ', $values) .' WHERE id = '. $id);
-		$result = $query->execute($form_data);
-		
-		// Return the results
-		return $result;
-		
-	}
-	
-	/**
-	 * Deletes data from a respective area
-	 * @return boolean True or false from database SQL query
-	 */
-	function delete($id) {
-		
-		$query = $this->db->prepare('DELETE FROM app_'. $this->area .' WHERE id = '. $id);
+		$query = $this->db->prepare($sql);
 		$result = $query->execute();
 		
 		// Return the results
