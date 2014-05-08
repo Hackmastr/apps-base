@@ -17,10 +17,10 @@ CREATE TABLE app_divisions (
 
 CREATE TABLE app_cells (
 	id bigint(20) unsigned NOT NULL auto_increment,
+	cell_name VARCHAR(100) NOT NULL,
+	cell_number int(4) NOT NULL,
 	app_division_id bigint(20) NOT NULL,
 	app_location_id bigint(20) NOT NULL,
-	cell_number int(4) NOT NULL,
-	cell_name VARCHAR(100) NOT NULL,
 	cell_iq_connector VARCHAR(100) NOT NULL,
 	cell_status VARCHAR(10) NOT NULL DEFAULT 'active',
 	PRIMARY KEY (id)	
