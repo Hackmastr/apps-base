@@ -102,69 +102,17 @@ class Database {
 	}
 	
 	/**
-	 * Displays data in a table-like structure for respective area
+	 * Insert data into database
 	 */
-	function display() {
+	function insert($sql, $data) {
 		
-		// Check if there are any results from the database
-		if ($this->select()) {
+		$query = $this->db->prepare($sql);
+		$result = $query->execute($data);
 		
-			$first_cell = false;
-		
-			echo '<ul class="apps_data_list">
-				<li class="apps_data_list_header">
-					<dl>';
-					
-					// Loop through the database columns to display as headers
-					foreach ($this->db_columns as $header => $column) {
-						if ($first_cell) {
-							echo '<dd class="'. $column .'">'. $header .'</dd>';
-						} else {
-							echo '<dt class="'. $column .'">'. $header .'</dt>';
-							$first_cell = true;
-						}				
-					}
-					
-					echo '</dl>
-				</li>
-				<li class="apps_data_list_data">';
-			
-				// Loop through each row retrieved
-				foreach ($this->select()->fetchAll() as $data) {
-				
-					// Reset $first_row for each row
-					$first_cell = false;
-					
-					echo '<dl>';
-				
-					// Loop through each column defined
-					// This is so we can dynamically select the data we need
-					foreach($this->db_columns as $column) {
-					
-						if ($first_cell) {
-							echo '<dd class="'. $column .'">'. $data->$column .'</dd>';
-						} else {
-							echo '<dt class="'. $column .'"><a href="'. get_page_url() .'&view='. $data->id .'">'. $data->$column .'</a></dt>';
-							$first_cell = true;
-						}
-					
-					}
-					
-					echo '</dl>';
-					
-			}
-			
-				echo '</li>
-			</ul>';
-			
-		} else {
-			
-			echo '<p>There\'s nothing to display!</p>';
-			
-		}
+		return $result;
 		
 	}
-	
+		
 	/**
 	 * Single view
 	 * @return void
