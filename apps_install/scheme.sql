@@ -22,6 +22,6 @@ CREATE TABLE app_cells (
 	app_division_id bigint(20) NOT NULL,
 	app_location_id bigint(20) NOT NULL,
 	cell_iq_connector VARCHAR(100) NOT NULL,
-	cell_status VARCHAR(10) NOT NULL DEFAULT 'active',
+	cell_status VARCHAR(20) NOT NULL DEFAULT 'active',
 	PRIMARY KEY (id)	
 );
