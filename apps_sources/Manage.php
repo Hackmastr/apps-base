@@ -57,6 +57,9 @@ function Manage() {
 		// Display the main manage page
 		$page['template'] = 'Manage';
 		
+		// Set the page title
+		$page['title'] = 'Dashboard';
+		
 	}
 
 	// Load template	
