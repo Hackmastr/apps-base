@@ -25,6 +25,13 @@ body {
 }
 
 /**
+ * Typography
+ */
+h1 {
+	margin-bottom: 10px;
+}
+
+/**
  * Apps Site Header
  */
 #apps_site_header {
