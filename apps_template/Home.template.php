@@ -5,7 +5,7 @@
  */
 function template_main() {
 	
-	echo '<div class="content_main">
+	echo '<div class="apps_content">
 	
 		Dashboard.
 	

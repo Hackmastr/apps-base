@@ -52,9 +52,8 @@ function template_header() {
 		</div>
 	</header>
 	
-	<div id="apps_main_content">
-		<div id="apps_site_content">
-			<div class="apps_site_wrap">';
+	<main id="apps_main_container">
+		<div class="apps_site_wrap">';
 		
 }
 
@@ -63,9 +62,8 @@ function template_header() {
  */
 function template_footer() {
 
-			echo '</div>
-		</div>
-	</div>
+		echo '</div>
+	</main>
 
 	</body>
 	</html>';
