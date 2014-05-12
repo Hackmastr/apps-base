@@ -25,3 +25,13 @@ CREATE TABLE app_cells (
 	cell_status VARCHAR(20) NOT NULL DEFAULT 'active',
 	PRIMARY KEY (id)	
 );
+
+CREATE TABLE app_links (
+	id bigint(20) unsigned NOT NULL auto_increment,
+	link_name VARCHAR(30) NOT NULL,
+	link_description VARCHAR(100) NOT NULL,
+	link_url VARCHAR(100) NOT NULL,
+	link_bg_color VARCHAR(10),
+	link_order int NOT NULL,
+	PRIMARY KEY (id)
+);
