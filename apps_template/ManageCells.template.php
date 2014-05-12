@@ -92,31 +92,27 @@ function template_display() {
 				</li>
 				<li>
 					<label for="app_division_id">Division</label>
-					<select name="app_division_id">
-						<option value="1">Test Division</option>';
+					<select name="app_division_id">';
 					
 						// Retrieve divisions list
-						/*$divisions = $db->query('SELECT id, division_name FROM app_divisions');
-						foreach ($divisions as $division) {
+						foreach ($page['divisions'] as $division) {
 							
-							echo '<option value="'. $division->id .'">'. $division->division_name .'</option>';
+							echo '<option value="'. $division['id'] .'">'. $division['name'] .'</option>';
 							
-						}*/
+						}
 					
 				echo '</select>
 				</li>
 				<li>
 					<label for="app_location_id">Location</label>
-					<select name="app_location_id">
-						<option value="1">Test Location</option>';
+					<select name="app_location_id">';
 					
-						// Retrieve divisions list
-						/*$locations = $db->query('SELECT id, location_name FROM app_locations');
-						foreach ($locations as $location) {
+						// Retrieve locations list
+						foreach ($page['locations'] as $location) {
 							
-							echo '<option value="'. $location->id .'">'. $location->location_name .'</option>';
+							echo '<option value="'. $location['id'] .'">'. $location['name'] .'</option>';
 							
-						}*/
+						}
 					
 				echo '</select>
 				<li>

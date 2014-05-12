@@ -105,10 +105,10 @@ function Display() {
 			$page['title'] = 'Manage Cells';
 			
 			// Set our database query
-			$page['db_result'] = $db->select('SELECT c.id, c.cell_name as name, c.cell_number as number, c.app_location_id as location, c.app_division_id as division, c.cell_iq_connector as iq_connector, c.cell_status as status
+			$page['db_result'] = $db->select('SELECT c.id, c.cell_name as name, c.cell_number as number, d.division_name as division, l.location_name as location, c.cell_iq_connector as iq_connector, c.cell_status as status
 				FROM app_cells c
-				LEFT JOIN app_locations l ON l.id = c.app_location_id
-				LEFT JOIN app_divisions d ON d.id = c.app_division_id');
+				INNER JOIN app_locations l ON l.id = c.app_location_id
+				INNER JOIN app_divisions d ON d.id = c.app_division_id');
 			
 			break;
 			
@@ -403,6 +403,12 @@ function View() {
 				}
 			
 			} else {
+			
+				// Get list of divisions
+				$page['divisions'] = $db->select('SELECT id, division_name as name FROM app_divisions');
+				
+				// Get list of locations
+				$page['locations'] = $db->select('SELECT id, location_name as name FROM app_locations');
 				
 				// Get database results from $_page['view']
 				$page['db_result'] = $db->select('SELECT id, cell_name as name, cell_number as number, app_division_id as division, app_location_id as location, cell_iq_connector as iq_connector, cell_status as status
