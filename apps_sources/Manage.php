@@ -11,7 +11,8 @@ function Manage() {
 	$page['areas'] = array(
 		'locations' => array('Manage Locations', 'ManageLocations'),
 		'divisions' => array('Manage Divisions', 'ManageDivisions'),
-		'cells' => array('Manage Cells', 'ManageCells')
+		'cells' => array('Manage Cells', 'ManageCells'),
+		'links' => array('Manage Links', 'ManageLinks')
 	);
 	
 	// Has an area been requested?
@@ -108,6 +109,22 @@ function Display() {
 			
 			break;
 			
+		case 'links':
+		
+			// Set the page title
+			$page['title'] = 'Manage Links';
+			
+			// Set our database query
+			$page['db_result'] = $db->select('SELECT l.id, l.link_name as name, l.link_description as description, l.link_url as url, l.link_bg_color as bg_color, l.link_order as link_order
+				FROM app_links l');
+			
+			break;
+			
+	}
+	
+	// Display error message if nothing was retreived from database
+	if (!$page['db_result']) {
+		generate_message('error', 'There\'s nothing to display!');
 	}
 	
 	
@@ -201,6 +218,34 @@ function Add() {
 				// Was our form submission successful?
 				if ($page['db_result']) {
 					generate_message('success', 'New cell added successfully!');
+				} else {
+					generate_message('error', 'Something went wrong....');
+				}
+			
+			}		
+			break;
+			
+		case 'links':
+		
+			// Set the page title
+			$page['title'] = 'Add Link';
+			
+			// Has the form been submitted?
+			if (isset($_POST['add'])) {
+			
+				// Gather our form data and submit to database
+				$form_data = array(
+					$_POST['link_name'],
+					$_POST['link_description'],
+					$_POST['link_url'],
+					$_POST['link_bg_color'],
+					$_POST['link_order']
+				);
+				$page['db_result'] = $db->insert('INSERT INTO app_links (link_name, link_description, link_url, link_bg_color, link_order) VALUES(?, ?, ?, ?, ?)', $form_data);
+				
+				// Was our form submission successful?
+				if ($page['db_result']) {
+					generate_message('success', 'New link added successfully!');
 				} else {
 					generate_message('error', 'Something went wrong....');
 				}
@@ -360,6 +405,53 @@ function View() {
 				$page['db_result'] = $db->select('SELECT id, cell_name as name, cell_number as number, app_division_id as division, app_location_id as location, cell_iq_connector as iq_connector, cell_status as status
 					FROM app_cells
 					WHERE id = '. $page['view_id'], true);				
+			
+			}		
+			break;
+			
+		case 'links':
+		
+			// Set the page title
+			$page['title'] = 'Edit Link';
+			
+			// Is the form being updated or deleted?
+			if (isset($_POST['update'])) {
+			
+				// Gather our form data and submit to database
+				$form_data = array(
+					$_POST['link_name'],
+					$_POST['link_description'],
+					$_POST['link_url'],
+					$_POST['link_bg_color'],
+					$_POST['link_order']
+				);
+				$page['db_result'] = $db->update('UPDATE app_links SET link_name = ?, link_description = ?, link_url = ?, link_bg_color = ?, link_order = ?
+					WHERE id = '. $page['view_id'], $form_data);
+			
+				// Was the form submission successful?
+				if ($page['db_result']) {
+					generate_message('success', 'Link successfully updated!');
+				} else {
+					generate_message('error', 'Something went wrong....');
+				}
+				
+			} else if (isset($_POST['delete'])) {
+			
+				$page['db_result'] = $db->delete('DELETE FROM app_links WHERE id = '. $page['view_id']);
+				
+				// Was our form submission successful?
+				if ($page['db_result']) {
+					generate_message('success', 'Link successfully deleted!');
+				} else {
+					generate_message('error', 'Something went wrong....');
+				}
+			
+			} else {
+				
+				// Get database results from $_page['view']
+				$page['db_result'] = $db->select('SELECT l.id, l.link_name as name, l.link_description as description, l.link_url as url, l.link_bg_color as bg_color, l.link_order as link_order
+				FROM app_links l
+				WHERE id = '. $page['view_id'], true);				
 			
 			}		
 			break;
