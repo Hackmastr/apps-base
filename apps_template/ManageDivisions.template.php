@@ -21,25 +21,29 @@ function template_main() {
 		}
 		
 		echo '<p><a href="'. get_page_url() .'&add=new">Add New</a></p>';
+		
+		if ($page['db_result']) {
 	
-		echo '<ul class="apps_data_list">
-			<li class="apps_data_list_header">
-				<dl>
-					<dd class="division_name">Name</dd>
-				</dl>
-			</li>
-			<li>
-				<dl>';
-				
-				foreach($page['db_result'] as $division) {
-				
-					echo '<dd class="division_name"><a href="'. get_page_url() .'&view='. $division['id'] .'">'. $division['name'] .'</a></dd>';
+			echo '<ul class="apps_data_list">
+				<li class="apps_data_list_header">
+					<dl>
+						<dd class="division_name">Name</dd>
+					</dl>
+				</li>
+				<li>
+					<dl>';
 					
-				}
-				
-				echo '</dl>
-			</li>
-		</ul>';
+					foreach($page['db_result'] as $division) {
+					
+						echo '<dd class="division_name"><a href="'. get_page_url() .'&view='. $division['id'] .'">'. $division['name'] .'</a></dd>';
+						
+					}
+					
+					echo '</dl>
+				</li>
+			</ul>';
+			
+		}
 		
 	echo '</div>';
 

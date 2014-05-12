@@ -21,35 +21,39 @@ function template_main() {
 		}
 		
 		echo '<p><a href="'. get_page_url() .'&add=new">Add New</a></p>';
+		
+		if ($page['db_result']) {
 	
-		echo '<ul class="apps_data_list">
-			<li class="apps_data_list_header">
-				<dl>
-					<dd class="location_name">Name</dd>
-					<dd class="location_country">Country</dd>
-					<dd class="location_state">State</dd>
-					<dd class="location_city">City</dd>
-					<dd class="location_street">Street</dd>
-					<dd class="location_zip">ZIP</dd>
-				</dl>
-			</li>
-			<li>
-				<dl>';
-				
-				foreach($page['db_result'] as $location) {
-				
-					echo '<dd class="location_name"><a href="'. get_page_url() .'&view='. $location['id'] .'">'. $location['name'] .'</a></dd>
-					<dd class="location_country">'. $location['country'] .'</dd>
-					<dd class="location_state">'. $location['state'] .'</dd>
-					<dd class="location_city">'. $location['city'] .'</dd>
-					<dd class="location_street">'. $location['street'] .'</dd>
-					<dd class="location_zip">'. $location['zip'] .'</dd>';
+			echo '<ul class="apps_data_list">
+				<li class="apps_data_list_header">
+					<dl>
+						<dd class="location_name">Name</dd>
+						<dd class="location_country">Country</dd>
+						<dd class="location_state">State</dd>
+						<dd class="location_city">City</dd>
+						<dd class="location_street">Street</dd>
+						<dd class="location_zip">ZIP</dd>
+					</dl>
+				</li>
+				<li>
+					<dl>';
 					
-				}
-				
-				echo '</dl>
-			</li>
-		</ul>';
+					foreach($page['db_result'] as $location) {
+					
+						echo '<dd class="location_name"><a href="'. get_page_url() .'&view='. $location['id'] .'">'. $location['name'] .'</a></dd>
+						<dd class="location_country">'. $location['country'] .'</dd>
+						<dd class="location_state">'. $location['state'] .'</dd>
+						<dd class="location_city">'. $location['city'] .'</dd>
+						<dd class="location_street">'. $location['street'] .'</dd>
+						<dd class="location_zip">'. $location['zip'] .'</dd>';
+						
+					}
+					
+					echo '</dl>
+				</li>
+			</ul>';
+			
+		}
 		
 	echo '</div>';
 	

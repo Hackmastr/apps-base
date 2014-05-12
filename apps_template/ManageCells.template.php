@@ -21,35 +21,39 @@ function template_main() {
 		}
 		
 		echo '<p><a href="'. get_page_url() .'&add=new">Add New</a></p>';
+		
+		if ($page['db_result']) {
 	
-		echo '<ul class="apps_data_list">
-			<li class="apps_data_list_header">
-				<dl>
-					<dd class="cell_name">Name</dd>
-					<dd class="cell_number">Number</dd>
-					<dd class="cell_division">Division</dd>
-					<dd class="cell_location">Location</dd>
-					<dd class="cell_iq_connector">IQ Connector</dd>
-					<dd class="cell_status">Status</dd>
-				</dl>
-			</li>
-			<li>
-				<dl>';
-				
-				foreach($page['db_result'] as $cell) {
-				
-					echo '<dd class="cell_name"><a href="'. get_page_url() .'&view='. $cell['id'] .'">'. $cell['name'] .'</a></dd>
-					<dd class="cell_number">'. $cell['number'] .'</dd>
-					<dd class="cell_division">'. $cell['division'] .'</dd>
-					<dd class="cell_location">'. $cell['location'] .'</dd>
-					<dd class="cell_iq_connector">'. $cell['iq_connector'] .'</dd>
-					<dd class="cell_status">'. $cell['status'] .'</dd>';
+			echo '<ul class="apps_data_list">
+				<li class="apps_data_list_header">
+					<dl>
+						<dd class="cell_name">Name</dd>
+						<dd class="cell_number">Number</dd>
+						<dd class="cell_division">Division</dd>
+						<dd class="cell_location">Location</dd>
+						<dd class="cell_iq_connector">IQ Connector</dd>
+						<dd class="cell_status">Status</dd>
+					</dl>
+				</li>
+				<li>
+					<dl>';
 					
-				}
-				
-				echo '</dl>
-			</li>
-		</ul>';
+					foreach($page['db_result'] as $cell) {
+					
+						echo '<dd class="cell_name"><a href="'. get_page_url() .'&view='. $cell['id'] .'">'. $cell['name'] .'</a></dd>
+						<dd class="cell_number">'. $cell['number'] .'</dd>
+						<dd class="cell_division">'. $cell['division'] .'</dd>
+						<dd class="cell_location">'. $cell['location'] .'</dd>
+						<dd class="cell_iq_connector">'. $cell['iq_connector'] .'</dd>
+						<dd class="cell_status">'. $cell['status'] .'</dd>';
+						
+					}
+					
+					echo '</dl>
+				</li>
+			</ul>';
+			
+		}
 		
 	echo '</div>';
 
