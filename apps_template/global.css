@@ -136,33 +136,27 @@ h1 {
 /**
  * Apps forms
  */
-.apps_form {
-	border: 1px solid #dddddd;
-	padding: 10px;
-	width: 450px;
+.apps_form li {
+	list-style: none;
+	padding: 5px 0;
 }
-
-	.apps_form li {
-		list-style: none;
-		padding: 5px 0;
+	.apps_form label {
+		float: left;
+		margin-right: 20px;
+		width: 150px;
 	}
-		.apps_form label {
-			float: left;
-			margin-right: 20px;
-			width: 150px;
-		}
-		
-		.apps_form input[type=text] {
-			background-color: #dddddd;
-			border: none;
-			border-radius: 5px;
-			padding: 5px;
-			width: 260px;
-		}
-		
-		.apps_form input:focus {
-			outline: none;
-		}
+	
+	.apps_form input[type=text] {
+		background-color: #dddddd;
+		border: none;
+		border-radius: 5px;
+		padding: 5px;
+		width: 260px;
+	}
+	
+	.apps_form input:focus {
+		outline: none;
+	}
 		
 /**
  * Message Boxes
