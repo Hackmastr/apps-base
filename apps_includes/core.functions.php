@@ -41,13 +41,16 @@ function get_sub_nav() {
 	
 	global $page;
 	
+	// Is page set?
+	$p = (isset($_GET['p']) ? '?p='. $_GET['p'] : '');
+	
 	echo '<ul>
-		<li '. (!isset($_GET['area']) ? 'class="active"' : '') .'><a href="'. APP_URL .'/index.php?p='. $_GET['p'] .'">Dashboard</a></li>';
+		<li '. (!isset($_GET['area']) ? 'class="active"' : '') .'><a href="'. APP_URL .'/index.php'. $p .'">Dashboard</a></li>';
 	
 	// Loops through each nav item
 	foreach ($page['areas'] as $area => $nav_item) {
 	
-		echo '<li '. (isset($_GET['area']) && $_GET['area'] == $area ? 'class="active"' : '') .'><a href="'. APP_URL .'/index.php?p='. $_GET['p'] .'&area='. $area .'">'. $nav_item[0] .'</a></li>';
+		echo '<li '. (isset($_GET['area']) && $_GET['area'] == $area ? 'class="active"' : '') .'><a href="'. APP_URL .'/index.php'. $p .'&area='. $area .'">'. $nav_item[0] .'</a></li>';
 	
 	}
 	
