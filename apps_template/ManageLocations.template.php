@@ -7,10 +7,10 @@ function template_main() {
 	
 	global $page;
 	
-	echo '<div class="apps_sidebar">';
-		get_sub_nav();
-	echo '</div>
-
+	echo '<div class="apps_sidebar">
+		'. get_sub_nav() .'
+	</div>
+	
 	<div class="apps_content right">
 	
 		<h1>'. get_page_title() .'</h1>';
@@ -66,9 +66,9 @@ function template_display() {
 	
 	global $page;
 	
-	echo '<div class="apps_sidebar">';
-		get_sub_nav();
-	echo '</div>
+	echo '<div class="apps_sidebar">
+		'. get_sub_nav() .'
+	</div>
 
 	<div class="apps_content right">
 	

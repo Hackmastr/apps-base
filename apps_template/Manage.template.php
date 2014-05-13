@@ -5,11 +5,11 @@
  */
 function template_main() {
 
-	echo '<div class="apps_sidebar">';
-		get_sub_nav();
-	echo '</div>';
+	echo '<div class="apps_sidebar">
+		'. get_sub_nav() .'
+	</div>
 
-	echo '<div class="apps_content right">
+	<div class="apps_content right">
 	
 		<h1>'. get_page_title() .'</h1>
 		
