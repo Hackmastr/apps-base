@@ -140,7 +140,7 @@ h1 {
 	list-style: none;
 	padding: 5px 0;
 }
-	.apps_form label {
+	.apps_form label, .apps_form p {
 		float: left;
 		margin-right: 20px;
 		width: 150px;
@@ -157,6 +157,16 @@ h1 {
 	.apps_form input:focus {
 		outline: none;
 	}
+	
+	.apps_form li.checkbox {
+		overflow: hidden;
+	}
+		.apps_form li.checkbox label {
+			display: block;
+			float: none;
+			margin: 0 0 0 170px;
+			width: 300px;
+		}
 		
 /**
  * Message Boxes
