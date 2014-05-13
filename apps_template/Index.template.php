@@ -33,7 +33,9 @@ function template_header() {
 		
 			<nav id="apps_site_nav">
 				<ul>
-					<li><a href="'. SITE_URL .'">Home</a></li>
+					<li>
+						<a href="'. SITE_URL .'">Home</a>
+					</li>
 					<li>
 						<a href="#">Apps</a>
 						<ul>
@@ -41,10 +43,7 @@ function template_header() {
 						</ul>
 					</li>
 					<li>
-						<a href="#">Tools</a>
-						<ul>
-							<li><a href="'. SITE_URL .'/index.php?p=manage">Manage</a></li>
-						</ul>
+						<li><a href="'. SITE_URL .'/index.php?p=manage">Manage</a></li>
 					</li>
 				</ul>
 			</nav>
