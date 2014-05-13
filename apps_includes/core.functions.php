@@ -45,7 +45,7 @@ function get_sub_nav() {
 	$menu = '';
 	
 	// Is page set?
-	$p = (isset($_GET['p']) ? '?p='. $_GET['p'] : '');
+	$p = (isset($_GET['p']) ? '?p='. $_GET['p'] : '?p=home');
 	
 	$menu .= '<ul>
 		<li '. (!isset($_GET['area']) ? 'class="active"' : '') .'><a href="'. APP_URL .'/index.php'. $p .'">Dashboard</a></li>';
