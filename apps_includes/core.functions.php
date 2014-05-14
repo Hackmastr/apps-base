@@ -35,6 +35,27 @@ function get_var($requested_var, $array = '') {
 }
 
 /**
+ * Returns data submitted to forms
+ */
+function get_form_data($prefix = '', $post) {
+	
+	$post_array = array();
+	
+	foreach ($post as $field) {
+	
+		if (empty($prefix)) {
+			array_push($post_array, $_POST[$field]);
+		} else {
+			array_push($post_array, $_POST[$prefix .'_'. $field]);
+		}
+	
+	}
+	
+	return $post_array;
+	
+}
+
+/**
  * Returns subnav from $page['sub_nav']
  */
 function get_sub_nav() {
