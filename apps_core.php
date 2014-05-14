@@ -41,6 +41,7 @@ $page = array(
 	'the_message' => '',
 	
 	'db_result' => array(),
+	'cells' => array(),
 	'divisions' => array(),
 	'locations' => array()
 );
