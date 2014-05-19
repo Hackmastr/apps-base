@@ -7,6 +7,8 @@
  * Site header
  */
 function template_header() {
+
+	global $page;
 	
 	echo '<!DOCTYPE html>
 	<html>
@@ -16,9 +18,15 @@ function template_header() {
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width">
 		
-		<link rel="stylesheet" type="text/css" href="'. SITE_URL .'/apps_template/global.css" />
+		<link rel="stylesheet" type="text/css" href="'. SITE_URL .'/apps_template/global.css" />';
 		
-		<!--[if IE]>
+		if (!empty($page['stylesheets'])) {
+			foreach($page['stylesheets'] as $stylesheet) {
+				echo '<link rel="stylesheet" type="text/css" href="'. $stylesheet .'" />';
+			}
+		}
+		
+		echo '<!--[if IE]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		

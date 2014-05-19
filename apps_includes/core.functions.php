@@ -205,3 +205,14 @@ function generate_message($type, $message) {
 	$page['the_message'] = $message_box;
 	
 }
+
+/**
+ * Loads custom stylesheet into <head>
+ */
+function load_stylesheet($stylesheet) {
+	
+	global $page;
+
+	array_push($page['stylesheets'], $stylesheet);
+	
+}

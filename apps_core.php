@@ -36,6 +36,7 @@ $page = array(
 	'title' => '',
 	'template' => '',
 	'sub_template' => '',
+	'stylesheets' => array(),
 	
 	'has_message' => '',
 	'the_message' => '',
