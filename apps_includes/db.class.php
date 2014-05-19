@@ -107,4 +107,13 @@ class Database {
 		
 	}
 	
+	/**
+	 * Gets the ID of the last inserted record
+	 */
+	function getLastInsertID() {
+		
+		return $this->db->lastInsertID();
+		
+	}
+	
 }
