@@ -204,6 +204,12 @@ function Add() {
 			// Set the page title
 			$page['title'] = 'Add Cell';
 			
+			// Get list of divisions
+			$page['divisions'] = $db->select('SELECT id, division_name as name FROM app_divisions');
+			
+			// Get list of locations
+			$page['locations'] = $db->select('SELECT id, location_name as name FROM app_locations');
+			
 			// Has the form been submitted?
 			if (isset($_POST['add'])) {
 			
