@@ -211,6 +211,35 @@ h1 {
 				float: left;
 				padding: 5px;
 			}
+			
+/**
+ * Tabbed menu
+ */
+.apps_tabbed_nav {
+	overflow: hidden;
+}
+
+	.apps_tabbed_nav li {
+		float: left;
+		list-style: none;
+	}
+	
+		.apps_tabbed_nav li a {
+			display: block;
+			padding: 10px;
+		}
+		
+		.apps_tabbed_nav li.active a {
+			border: 1px solid #dddddd;
+			border-bottom: 1px solid #ffffff;
+			color: #000000;
+		}
+		
+.apps_tabbed_content {
+	border: 1px solid #dddddd;
+	margin-top: -1px;
+	padding: 10px;
+}
 
 
 		
