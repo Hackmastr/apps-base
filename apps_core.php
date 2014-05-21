@@ -33,6 +33,8 @@ $page = array(
 	'area' => '',
 	'view_id' => '',
 	
+	'tabs' => array(),
+	
 	'title' => '',
 	'template' => '',
 	'sub_template' => '',
