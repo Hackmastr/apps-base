@@ -48,7 +48,10 @@ $page = array(
 	'db_result' => array(),
 	'cells' => array(),
 	'divisions' => array(),
-	'locations' => array()
+	'locations' => array(),
+	
+	// New
+	'sub_nav' => array(),
 );
 
 /**
