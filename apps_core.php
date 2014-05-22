@@ -12,6 +12,8 @@ require_once('apps_config.php');
 require_once('apps_includes/core.functions.php');
 require_once('apps_includes/db.class.php');
 
+define('APP_URL', SITE_URL .'/'. APP_PATH);
+
 /**
  * Start database connection
  */
