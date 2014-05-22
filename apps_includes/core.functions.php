@@ -62,25 +62,25 @@ function get_sub_nav() {
 	
 	global $page;
 	
-	// Variable to hold our menu
-	$menu = '';
+	// Initialize our sub nav variable
+	$sub_nav = '<ul class="apps_sub_nav">';
 	
-	// Is page set?
-	$p = (isset($_GET['p']) ? '?p='. $_GET['p'] : '');
+	// Loop through sub_nav array and add defined menu items to $sub_nav
+	foreach ($page['sub_nav'] as $arg => $items) {
 	
-	$menu .= '<ul>
-		<li '. (!isset($_GET['area']) ? 'class="active"' : '') .'><a href="'. APP_URL .'/index.php'. (!empty($p) ? $p : '') .'">Dashboard</a></li>';
-	
-	// Loops through each nav item
-	foreach ($page['areas'] as $area => $nav_item) {
-	
-		$menu .= '<li '. (isset($_GET['area']) && $_GET['area'] == $area ? 'class="active"' : '') .'><a href="'. APP_URL .'/index.php'. (!empty($p) ? $p .'&' : '?') .'area='. $area .'">'. $nav_item[0] .'</a></li>';
-	
+		foreach($items as $item) {
+		
+			$page['current_page'] = (isset($_GET[$arg]) && $_GET[$arg] == $item['id']) ? $item['name'] : '';
+			
+			$sub_nav .= '<li '. ($page['current_page'] || !isset($_GET) && $item['id'] == 'home' ? 'class="active"' : '') .'><a href="'. APP_URL .'?'. $arg .'='. $item['id'] .'">'. $item['name'] .'</a></li>';
+			
+		}
+		
 	}
 	
-	$menu .= '</ul>';
+	$sub_nav .= '</ul>';
 	
-	return $menu;
+	return $sub_nav;
 	
 }
 
