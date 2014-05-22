@@ -48,3 +48,8 @@ $page = array(
 	'divisions' => array(),
 	'locations' => array()
 );
+
+/**
+ * App initializer
+ */
+call_user_func(init());

@@ -1,18 +1,15 @@
 <?php
 
 // Setup our app environment
-require_once('apps_core.php');
-define('APP_URL', SITE_URL .'');
+define('APP_PATH', '');
 define('APP_SOURCES_PATH', dirname(__FILE__) .'/apps_sources');
 define('APP_TEMPLATE_PATH', dirname(__FILE__) .'/apps_template');
-
-// Load corresponding function from the requested page
-call_user_func(apps());
+require_once('apps_core.php');
 
 /**
- * The main apps function
+ * Initialize the app
  */
-function apps() {
+function init() {
 
 	global $page;
 	
