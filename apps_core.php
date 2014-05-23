@@ -52,6 +52,8 @@ $page = array(
 	
 	// New
 	'sub_nav' => array(),
+	'tabbed_nav' => array(),
+	'tabbed_selected' => false,
 );
 
 /**
