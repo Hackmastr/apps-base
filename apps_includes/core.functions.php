@@ -72,7 +72,7 @@ function get_sub_nav() {
 		
 			$page['current_page'] = (isset($_GET[$arg]) && $_GET[$arg] == $item['id']) ? $item['name'] : '';
 			
-			$sub_nav .= '<li '. ($page['current_page'] || !isset($_GET) && $item['id'] == 'home' ? 'class="active"' : '') .'><a href="'. APP_URL .'?'. $arg .'='. $item['id'] .'">'. $item['name'] .'</a></li>';
+			$sub_nav .= '<li '. ($page['current_page'] || !empty($page['current_page']) && !isset($_GET[$arg]) && $item['id'] == 'home' ? 'class="active"' : '') .'><a href="'. APP_URL .'?'. $arg .'='. $item['id'] .'">'. $item['name'] .'</a></li>';
 			
 		}
 		
