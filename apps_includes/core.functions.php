@@ -62,17 +62,28 @@ function get_sub_nav() {
 	
 	global $page;
 	
+	// Parent page variable, if any
+	$parent_page = '';
+	
 	// Initialize our sub nav variable
 	$sub_nav = '<ul class="apps_sub_nav">';
 	
 	// Loop through sub_nav array and add defined menu items to $sub_nav
 	foreach ($page['sub_nav'] as $arg => $items) {
 	
-		foreach($items as $item) {
+		if ($arg == 'parent_page') {
 		
-			$page['current_page'] = (isset($_GET[$arg]) && $_GET[$arg] == $item['id'] || empty($_GET) && $item['id'] == 'home') ? $item['name'] : '';
+			$parent_page = $items['id'] .'='. $items['name'] .'&';
 			
-			$sub_nav .= '<li '. (!empty($page['current_page']) ? 'class="active"' : '') .'><a href="'. APP_URL .'?'. $arg .'='. $item['id'] .'">'. $item['name'] .'</a></li>';
+		} else {
+	
+			foreach($items as $item) {
+			
+				$page['current_page'] = (isset($_GET[$arg]) && $_GET[$arg] == $item['id'] || empty($_GET) && $item['id'] == 'home') ? $item['name'] : '';
+				
+				$sub_nav .= '<li '. (!empty($page['current_page']) ? 'class="active"' : '') .'><a href="'. APP_URL .'/index.php?'. $parent_page . $arg .'='. $item['id'] .'">'. $item['name'] .'</a></li>';
+				
+			}
 			
 		}
 		
