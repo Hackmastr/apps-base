@@ -227,3 +227,12 @@ function load_stylesheet($stylesheet) {
 	array_push($page['stylesheets'], $stylesheet);
 	
 }
+
+/**
+ * Returns time
+ */
+function get_time($format) {
+	
+	return date($format, time());
+	
+}
