@@ -78,7 +78,7 @@ function get_sub_nav() {
 		} else if ($arg == 'sub_page') {
 		
 			$sub_page_for_id = $items['for'];
-			$sub_page = '&'. $items['id'] .'='. $items['name'];
+			$sub_page = (!empty($items['name']) ? '&'. $items['id'] .'='. $items['name'] : '');
 			
 		} else {
 	
@@ -86,7 +86,7 @@ function get_sub_nav() {
 			
 				$page['current_page'] = (isset($_GET[$arg]) && $_GET[$arg] == $item['id'] || empty($_GET) && $item['id'] == 'home') ? $item['name'] : '';
 				
-				$sub_nav .= '<li '. (!empty($page['current_page']) ? 'class="active"' : '') .'><a href="'. APP_URL .'/index.php?'. $parent_page . $arg .'='. $item['id'] .''. (!empty($sub_page_for_id) && $sub_page_for_id == $arg ? $sub_page : '') .'">'. $item['name'] .'</a></li>';
+				$sub_nav .= '<li '. (!empty($page['current_page']) ? 'class="active"' : '') .'><a href="'. APP_URL .'/index.php?'. $parent_page . $arg .'='. $item['id'] .''. (!empty($sub_page) && !empty($sub_page_for_id) && $sub_page_for_id == $arg ? $sub_page : '') .'">'. $item['name'] .'</a></li>';
 				
 			}
 			
