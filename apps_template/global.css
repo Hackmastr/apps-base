@@ -67,7 +67,7 @@ h2 {
 			text-transform: uppercase;
 		}
 		
-		#apps_site_nav li a:hover {
+		#apps_site_nav li a:hover, #apps_site_nav li:hover {
 			background-color: #f1f1f1;
 		}
 		
@@ -76,8 +76,12 @@ h2 {
 			color: #ffffff;
 		}
 		
-			#apps_site_nav li ul {
+			#apps_site_nav li.current-menu-item ul {
 				background-color: #006600;
+			}
+		
+			#apps_site_nav li ul {
+				background-color: #f1f1f1;
 				display: none;
 				position: absolute;
 				text-align: left;
@@ -91,17 +95,25 @@ h2 {
 				#apps_site_nav li ul li {
 					border: none;
 				}
+				
+				#apps_site_nav li.current-menu-item ul li a {
+					color: #ffffff;
+				}
 			
 				#apps_site_nav li ul li a {
-					color: #ffffff;
+					color: #000000;
 					display: block;
 					line-height: normal;
 					padding: 10px 20px;
 					width: 200px;
 				}
 				
-				#apps_site_nav li ul li a:hover {
+				#apps_site_nav li.current-menu-item ul li a:hover {
 					background-color: #009900;
+				}
+				
+				#apps_site_nav li ul li a:hover {
+					background-color: #dddddd;
 				}
 
 /**
