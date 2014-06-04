@@ -11,7 +11,7 @@ function template_main() {
 
 	<div class="apps_content right">
 	
-		<h1>'. get_page_title() .'</h1>
+		<h2>'. get_page_title() .'</h2>
 		
 		<p>This is the main manage page. Perhaps a dashboard of some kind?</p>
 		
