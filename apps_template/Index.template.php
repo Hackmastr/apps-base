@@ -47,7 +47,7 @@ function template_header() {
 						<a href="'. SITE_URL .'">Home</a>
 					</li>
 					<li '. ($page['parent'] == 'apps' ? 'class="current-menu-item"' : '') .'>
-						<a href="#">Apps</a>
+						<a href="'. SITE_URL .'/index.php?p=apps">Apps</a>
 						<ul>
 							<li><a href="'. SITE_URL .'/a/monthly">Monthly</a></li>
 						</ul>

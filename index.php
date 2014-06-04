@@ -16,6 +16,7 @@ function init() {
 	// Setup our pages array
 	$pages = array(
 		'home' => array('Home', 'Home.php'),
+		'apps' => array('Apps', 'Apps.php'),
 		'manage' => array('Manage', 'Manage.php')
 	);
 
