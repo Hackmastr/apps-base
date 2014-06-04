@@ -18,10 +18,12 @@ body {
 #apps_site_wrap {
 	background-color: #ffffff;
 	border-top: 3px solid #006600;
+	box-sizing: border-box;
 	box-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
 	margin: 40px auto;
 	max-width: 1000px;
 	position: relative;
+	padding: 20px;
 }
 
 .apps_content.right {
@@ -43,28 +45,35 @@ h2 {
  * Apps Site Header
  */
 #apps_site_header {
-	padding: 20px 20px 0;
-	text-align: center;
+	border-bottom: 1px solid #c0c0c0;
+	position: relative;
 }
 
+	#apps_site_logo {
+		max-width: 300px;
+	}
+	
+		#apps_site_logo img {
+			width: 100%;
+		}
+
 	#apps_site_nav {
-		border-top: 1px solid #c0c0c0;
-		border-bottom: 1px solid #c0c0c0;
-		overflow: hidden;
-		margin-top: 20px;
+		position: absolute;
+			top: -20px; right: -20px;
 	}
 
 	#apps_site_nav li {
 		list-style: none;
 		float: left;
-		width: 20%;
+		text-align: center;
 	}
 	
 		#apps_site_nav li a {
 			color: #000000;
 			display: block;
-			padding: 10px 0;
+			padding: 30px 20px 20px;
 			text-transform: uppercase;
+			width: 150px;
 		}
 		
 		#apps_site_nav li a:hover, #apps_site_nav li:hover {
@@ -84,7 +93,6 @@ h2 {
 				background-color: #f1f1f1;
 				display: none;
 				position: absolute;
-				text-align: left;
 				z-index: 10;
 			}
 		
@@ -94,6 +102,7 @@ h2 {
 			
 				#apps_site_nav li ul li {
 					border: none;
+					text-align: left;
 				}
 				
 				#apps_site_nav li.current-menu-item ul li a {
@@ -120,8 +129,8 @@ h2 {
  * Apps Main Container
  */
 #apps_main_container {
+	margin-top: 20px;
 	overflow: hidden;
-	padding: 20px;
 }
 
 /**
