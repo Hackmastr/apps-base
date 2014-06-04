@@ -3,6 +3,8 @@
  * Apps core file. This loads the entire Apps site enviroment
  * which will be used by all included apps
  */
+ 
+session_start();
 
 /**
  * Get required files
@@ -44,8 +46,8 @@ $page = array(
 	'sub_template' => '',
 	'stylesheets' => array(),
 	
-	'has_message' => '',
-	'the_message' => '',
+	'has_message' => (isset($_SESSION['has_message']) ? $_SESSION['has_message'] : ''),
+	'the_message' => (isset($_SESSION['the_message']) ? $_SESSION['the_message'] : ''),
 	
 	'db_result' => array(),
 	'cells' => array(),

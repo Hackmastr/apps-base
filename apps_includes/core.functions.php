@@ -215,10 +215,10 @@ function generate_message($type, $message) {
 	$message_box .= '</div>';
 	
 	// Enable the message
-	$page['has_message'] = true;
+	$_SESSION['has_message'] = true;
 	
 	// Write the message box
-	$page['the_message'] = $message_box;
+	$_SESSION['the_message'] = $message_box;
 	
 }
 
