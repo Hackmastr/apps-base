@@ -43,17 +43,17 @@ function template_header() {
 		
 			<nav id="apps_site_nav">
 				<ul>
-					<li>
+					<li '. ($page['parent'] == 'home' ? 'class="current-menu-item"' : '') .'>
 						<a href="'. SITE_URL .'">Home</a>
 					</li>
-					<li>
+					<li '. ($page['parent'] == 'apps' ? 'class="current-menu-item"' : '') .'>
 						<a href="#">Apps</a>
 						<ul>
 							<li><a href="'. SITE_URL .'/a/monthly">Monthly</a></li>
 						</ul>
 					</li>
-					<li>
-						<li><a href="'. SITE_URL .'/index.php?p=manage">Manage</a></li>
+					<li '. ($page['parent'] == 'manage' ? 'class="current-menu-item"' : '') .'>
+						<a href="'. SITE_URL .'/index.php?p=manage">Manage</a>
 					</li>
 				</ul>
 			</nav>

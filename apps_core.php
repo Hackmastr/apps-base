@@ -31,6 +31,8 @@ require_once(SITE_PATH .'/apps_template/Index.template.php');
 $page = array(
 	'action' => '',
 	
+	'parent' => '',
+	
 	'areas' => array(),
 	'area' => '',
 	'view_id' => '',

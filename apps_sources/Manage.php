@@ -7,6 +7,9 @@ function Manage() {
 
 	global $page;
 	
+	// Set page parent for main nav highlight
+	$page['parent'] = 'manage';
+	
 	// Build the sub nav
 	$page['sub_nav'] = array(
 		'parent_page' => array(
