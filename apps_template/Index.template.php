@@ -35,11 +35,11 @@ function template_header() {
 	</head>
 	<body>
 	
-	<header id="apps_site_header">
+	<div id="apps_site_wrap">
 	
-		<div class="apps_site_wrap">
-	
-			<a id="apps_site_logo" href="'. SITE_URL .'"><img src="'. SITE_URL .'/apps_template/images/logo.png" alt="'. SITE_TITLE .'" /></a>
+		<header id="apps_site_header">
+			
+			<h1 id="apps_site_logo"><a href="'. SITE_URL .'"><img src="'. SITE_URL .'/apps_template/images/logo.png" alt="'. SITE_TITLE .'" /></a></h1>
 		
 			<nav id="apps_site_nav">
 				<ul>
@@ -57,12 +57,9 @@ function template_header() {
 					</li>
 				</ul>
 			</nav>
-	
-		</div>
-	</header>
-	
-	<main id="apps_main_container">
-		<div class="apps_site_wrap">';
+		</header>
+		
+		<main id="apps_main_container">';
 		
 }
 
@@ -71,8 +68,8 @@ function template_header() {
  */
 function template_footer() {
 
-		echo '</div>
-	</main>
+		echo '</main>
+	</div>
 
 	</body>
 	</html>';

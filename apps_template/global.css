@@ -3,19 +3,23 @@
  */
 * { margin: 0; padding: 0; }
 img { border: 0; }
-a { color: #6699cc; text-decoration: none; outline: none; }
-a:hover { color: #cc9966; }
+a { text-decoration: none; outline: none; }
+a:hover { }
 header, section, footer, aside, nav, article, figure { display: block; }
 
 /**
  * Main Layout Structure
  */
 body {
+	background-color: #f1f1f1;
 	font: 14px/1.4 'Open Sans';
 }
 
-.apps_site_wrap {
-	margin: 0 auto;
+#apps_site_wrap {
+	background-color: #ffffff;
+	border-top: 3px solid #006600;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
+	margin: 40px auto;
 	max-width: 1000px;
 	position: relative;
 }
@@ -31,78 +35,81 @@ h1 {
 	margin-bottom: 10px;
 }
 
+h2 {
+	margin-bottom: 10px;
+}
+
 /**
  * Apps Site Header
  */
 #apps_site_header {
-	border-bottom: 4px solid #339900;
-	line-height: 60px;
-	padding: 0 20px;
-	height: 60px;
+	padding: 20px 20px 0;
+	text-align: center;
 }
 
-	#apps_site_logo {
-		float: left;
-		padding-top: 5px;
+	#apps_site_nav {
+		border-top: 1px solid #c0c0c0;
+		border-bottom: 1px solid #c0c0c0;
+		overflow: hidden;
+		margin-top: 20px;
 	}
 
-	#apps_site_nav {
-		float: right;
+	#apps_site_nav li {
+		list-style: none;
+		float: left;
+		width: 20%;
 	}
 	
-		#apps_site_nav ul {
-			position: relative;
+		#apps_site_nav li a {
+			color: #000000;
+			display: block;
+			padding: 10px 0;
+			text-transform: uppercase;
 		}
 		
-			#apps_site_nav li {
-				float: left;
-				list-style: none;
+		#apps_site_nav li a:hover {
+			background-color: #f1f1f1;
+		}
+		
+		#apps_site_nav li.current-menu-item a {
+			background-color: #006600;
+			color: #ffffff;
+		}
+		
+			#apps_site_nav li ul {
+				background-color: #006600;
+				box-shadow: 0 1px 2px #c0c0c0;
+				display: none;
+				position: absolute;
+				text-align: left;
+				z-index: 10;
 			}
 		
-				#apps_site_nav li a {
-					color: #000000;
+			#apps_site_nav li:hover > ul {
+				display: block;
+			}
+			
+				#apps_site_nav li ul li {
+					border: none;
+				}
+			
+				#apps_site_nav li ul li a {
+					color: #ffffff;
 					display: block;
-					font-size: 1.2em;
-					padding: 0 20px;
+					line-height: normal;
+					padding: 10px 20px;
+					width: 200px;
 				}
 				
-				#apps_site_nav li a:hover {
-					background-color: #f1f1f1;
+				#apps_site_nav li ul li a:hover {
+					background-color: #009900;
 				}
-				
-					#apps_site_nav li ul {
-						background-color: #339900;
-						box-shadow: 0 1px 2px #c0c0c0;
-						display: none;
-						position: absolute;
-						z-index: 10;
-						padding-top: 4px;
-					}
-				
-					#apps_site_nav li:hover > ul {
-						display: block;
-					}
-					
-						#apps_site_nav li ul li {
-							border: none;
-						}
-					
-						#apps_site_nav li ul li a {
-							color: #ffffff;
-							display: block;
-							line-height: normal;
-							padding: 10px 20px;
-							width: 200px;
-						}
-						
-						#apps_site_nav li ul li a:hover {
-							background-color: #66cc33;
-						}
 
 /**
  * Apps Main Container
  */
 #apps_main_container {
+	overflow: hidden;
 	padding: 20px;
 }
 
@@ -110,7 +117,9 @@ h1 {
  * Apps Sidebar
  */
 .apps_sidebar {
-	position: fixed;
+	border-right: 1px solid #dddddd;
+	float: left;
+	margin-top: 50px;
 	width: 200px;
 }
 
@@ -119,18 +128,18 @@ h1 {
 	}
 	
 		.apps_sidebar li a {
-			color: #000000;
+			color: #808080;
 			display: block;
 			padding: 5px 10px;
+			font-size: 1.2em;
 		}
 		
 		.apps_sidebar li a:hover {
-			color: #006699;
+			color: #006600;
 		}
 		
 		.apps_sidebar li.active a {
-			background-color: #006699;
-			color: #ffffff;
+			color: #006600;
 		}
 		
 /**
@@ -232,6 +241,8 @@ h1 {
  * Tabbed menu
  */
 .apps_tabbed_nav {
+	border-bottom: 4px solid #006600;
+	margin-bottom: 10px;
 	overflow: hidden;
 }
 
@@ -241,22 +252,19 @@ h1 {
 	}
 	
 		.apps_tabbed_nav li a {
+			color: #808080;
 			display: block;
 			padding: 10px;
 		}
 		
-		.apps_tabbed_nav li.active a {
-			border: 1px solid #dddddd;
-			border-bottom: 1px solid #ffffff;
-			color: #000000;
+		.apps_tabbed_nav li a:hover {
+			color: #006600;
 		}
 		
-.apps_tabbed_content {
-	border: 1px solid #dddddd;
-	margin-top: -1px;
-	padding: 10px;
-}
-
+		.apps_tabbed_nav li.active a {
+			background-color: #006600;
+			color: #ffffff;
+		}
 
 		
 /**
