@@ -13,7 +13,7 @@ function apps() {
 	// Set page parent for main nav highlight
 	$page['parent'] = 'apps';
 	
-	$page['title'] = 'Dashboard';
+	$page['title'] = 'Apps';
 
 	load_template('apps');
 
