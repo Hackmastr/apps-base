@@ -11,7 +11,7 @@ header, section, footer, aside, nav, article, figure { display: block; }
  * Main Layout Structure
  */
 body {
-	font: 14px/1.4 arial;
+	font: 14px/1.4 'Open Sans';
 }
 
 .apps_site_wrap {
