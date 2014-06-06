@@ -16,13 +16,16 @@ body {
 }
 
 #apps_site_wrap {
+	margin: 20px auto;
+	max-width: 1000px;
+}
+
+#apps_main_container {
 	background-color: #ffffff;
 	border-top: 3px solid #006600;
 	box-sizing: border-box;
 	box-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
-	margin: 40px auto;
-	max-width: 1000px;
-	position: relative;
+	overflow: hidden;
 	padding: 20px;
 }
 
@@ -34,7 +37,7 @@ body {
  * Typography
  */
 h1 {
-	margin-bottom: 10px;
+	margin: 0;
 }
 
 h2 {
@@ -45,7 +48,7 @@ h2 {
  * Apps Site Header
  */
 #apps_site_header {
-	border-bottom: 1px solid #c0c0c0;
+	margin: 0 0 20px 20px;
 	position: relative;
 }
 
@@ -59,38 +62,38 @@ h2 {
 
 	#apps_site_nav {
 		position: absolute;
-			top: -20px; right: -20px;
+			right: 10px; bottom: 0;
 	}
 
 	#apps_site_nav li {
 		list-style: none;
 		float: left;
+		margin-right: 10px;
 		text-align: center;
 	}
 	
 		#apps_site_nav li a {
-			color: #000000;
+			color: #808080;
 			display: block;
-			padding: 30px 20px 20px;
+			font-weight: bold;
+			padding: 15px 40px;
+			text-shadow: 1px 1px 1px #ffffff;
 			text-transform: uppercase;
-			width: 150px;
 		}
 		
 		#apps_site_nav li a:hover, #apps_site_nav li:hover {
-			background-color: #f1f1f1;
+			background-color: #dddddd;
+			color: #505050;
 		}
 		
 		#apps_site_nav li.current-menu-item a {
 			background-color: #006600;
 			color: #ffffff;
+			text-shadow: none;
 		}
 		
-			#apps_site_nav li.current-menu-item ul {
-				background-color: #006600;
-			}
-		
 			#apps_site_nav li ul {
-				background-color: #f1f1f1;
+				background-color: #dddddd;
 				display: none;
 				position: absolute;
 				z-index: 10;
@@ -102,36 +105,24 @@ h2 {
 			
 				#apps_site_nav li ul li {
 					border: none;
+					float: none;
+					margin: 0;
 					text-align: left;
-				}
-				
-				#apps_site_nav li.current-menu-item ul li a {
-					color: #ffffff;
+					width: 200px;
 				}
 			
 				#apps_site_nav li ul li a {
-					color: #000000;
+					color: #505050;
 					display: block;
 					line-height: normal;
 					padding: 10px 20px;
-					width: 200px;
-				}
-				
-				#apps_site_nav li.current-menu-item ul li a:hover {
-					background-color: #009900;
 				}
 				
 				#apps_site_nav li ul li a:hover {
-					background-color: #dddddd;
+					background-color: #009900;
+					color: #ffffff;
+					text-shadow: none;
 				}
-
-/**
- * Apps Main Container
- */
-#apps_main_container {
-	margin-top: 20px;
-	overflow: hidden;
-}
 
 /**
  * Apps Sidebar
