@@ -22,7 +22,7 @@ body {
 
 #apps_main_container {
 	background-color: #ffffff;
-	border-top: 3px solid #006600;
+	border-top: 3px solid #660066;
 	box-sizing: border-box;
 	box-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
 	overflow: hidden;
@@ -65,64 +65,67 @@ h2 {
 			right: 10px; bottom: 0;
 	}
 
-	#apps_site_nav li {
-		list-style: none;
-		float: left;
-		margin-right: 10px;
-		text-align: center;
-	}
-	
-		#apps_site_nav li a {
-			color: #808080;
-			display: block;
-			font-weight: bold;
-			padding: 15px 40px;
-			text-shadow: 1px 1px 1px #ffffff;
-			text-transform: uppercase;
+		#apps_site_nav li {
+			list-style: none;
+			float: left;
+			margin-right: 10px;
+			text-align: center;
 		}
 		
-		#apps_site_nav li a:hover, #apps_site_nav li:hover {
-			background-color: #dddddd;
-			color: #505050;
-		}
-		
-		#apps_site_nav li.current-menu-item a {
-			background-color: #006600;
-			color: #ffffff;
-			text-shadow: none;
-		}
-		
-			#apps_site_nav li ul {
-				background-color: #dddddd;
-				display: none;
-				position: absolute;
-				z-index: 10;
-			}
-		
-			#apps_site_nav li:hover > ul {
+			#apps_site_nav li a {
+				color: #808080;
 				display: block;
+				font-weight: bold;
+				padding: 15px 40px;
+				text-shadow: 1px 1px 1px #ffffff;
+				text-transform: uppercase;
 			}
 			
-				#apps_site_nav li ul li {
-					border: none;
-					float: none;
-					margin: 0;
-					text-align: left;
-					width: 200px;
+			#apps_site_nav li a:hover, #apps_site_nav li:hover {
+				background-color: #dddddd;
+				color: #505050;
+			}
+			
+			#apps_site_nav li.current-menu-item a {
+				background-color: #660066;
+				color: #ffffff;
+				text-shadow: none;
+			}
+			
+				#apps_site_nav li ul {
+					background-color: #dddddd;
+					display: none;
+					position: absolute;
+					z-index: 10;
 				}
 			
-				#apps_site_nav li ul li a {
-					color: #505050;
+				#apps_site_nav li:hover > ul {
 					display: block;
-					line-height: normal;
-					padding: 10px 20px;
 				}
 				
-				#apps_site_nav li ul li a:hover {
-					background-color: #009900;
-					color: #ffffff;
-					text-shadow: none;
-				}
+					#apps_site_nav li ul li {
+						border: none;
+						float: none;
+						margin: 0;
+						text-align: left;
+						width: 200px;
+					}
+				
+					#apps_site_nav li ul li a {
+						color: #505050;
+						display: block;
+						line-height: normal;
+						padding: 10px 20px;
+					}
+					
+					#apps_site_nav li ul li a:hover {
+						border-left: 4px solid #990099;
+					}
+					
+					#apps_site_nav li.current-menu-item ul li a:hover {
+						background-color: #990099;
+						border: none;
+					}
 
 /**
  * Apps Sidebar
@@ -146,11 +149,11 @@ h2 {
 		}
 		
 		.apps_sidebar li a:hover {
-			color: #006600;
+			color: #660066;
 		}
 		
 		.apps_sidebar li.active a {
-			color: #006600;
+			color: #660066;
 		}
 		
 /**
@@ -252,7 +255,7 @@ h2 {
  * Tabbed menu
  */
 .apps_tabbed_nav {
-	border-bottom: 4px solid #006600;
+	border-bottom: 4px solid #660066;
 	margin-bottom: 10px;
 	overflow: hidden;
 }
@@ -269,11 +272,11 @@ h2 {
 		}
 		
 		.apps_tabbed_nav li a:hover {
-			color: #006600;
+			color: #660066;
 		}
 		
 		.apps_tabbed_nav li.active a {
-			background-color: #006600;
+			background-color: #660066;
 			color: #ffffff;
 		}
 
