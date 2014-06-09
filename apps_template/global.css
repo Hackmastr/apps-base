@@ -166,6 +166,7 @@ h2 {
 
 	.apps_form li {
 		list-style: none;
+		overflow: hidden;
 		padding: 5px 0;
 	}
 		.apps_form label, .apps_form p {
@@ -174,10 +175,11 @@ h2 {
 			width: 150px;
 		}
 		
-		.apps_form input[type=text] {
+		.apps_form input[type=text], .apps_form textarea {
 			background-color: #dddddd;
 			border: none;
 			border-radius: 5px;
+			outline: none;
 			padding: 5px;
 			width: 260px;
 		}
@@ -194,6 +196,14 @@ h2 {
 				float: none;
 				margin: 0 0 0 170px;
 				width: 300px;
+			}
+			
+		.apps_form li ul {
+			float: left;
+		}
+		
+			.apps_form li ul li {
+				padding: 0;
 			}
 		
 .apps_form.inline li {
