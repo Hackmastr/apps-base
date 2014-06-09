@@ -11,6 +11,7 @@ require_once('apps_version.php');
 require_once('apps_config.php');
 require_once('apps_includes/core.functions.php');
 require_once('apps_includes/db.class.php');
+require_once('apps_includes/template.class.php');
 
 define('APP_URL', SITE_URL . APP_PATH);
 
@@ -22,7 +23,7 @@ $db = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS);
 /**
  * Begin template
  */
-$template = new Template();
+$template = new Template(SITE_TEMPLATE_PATH);
 
 /**
  * Define a $page array to store page details
