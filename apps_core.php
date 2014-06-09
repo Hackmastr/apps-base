@@ -23,7 +23,7 @@ $db = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS);
 /**
  * Begin template
  */
-$template = new Template(APP_TEMPLATE_PATH);
+$template = new Template(SITE_TEMPLATE_PATH);
 
 /**
  * Define a $page array to store page details
