@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?php echo $template->get_page_title() . $template->get_option('site_title'); ?></title>
+	<title><?php echo $template->get_page_title() .' - '. $template->get_option('site_title'); ?></title>
 	
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width">
