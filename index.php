@@ -3,15 +3,21 @@
 // Setup our app environment
 define('APP_PATH', '');
 define('APP_SOURCES_PATH', dirname(__FILE__) .'/apps_sources');
-define('APP_TEMPLATE_PATH', dirname(__FILE__) .'/apps_template');
 require_once('apps_core.php');
+$template->set_app_template_path(dirname(__FILE__) .'/apps_template');
+
+try {
+	call_user_func(init());
+} catch (Exception $e) {
+	echo $e->getMessage();
+}
 
 /**
  * Initialize the app
  */
 function init() {
 
-	global $page;
+	global $template;
 	
 	// Setup our pages array
 	$pages = array(

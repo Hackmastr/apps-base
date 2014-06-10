@@ -3,6 +3,53 @@
  * Base Apps functions file
  * Nothing in this file is organized in any particular way
  */
+ 
+/**
+ * Loads template header file
+ */
+function get_header() {
+	
+	global $template;
+	
+	$template_header_file = $template->get_option('site_template_path') .'/template_header.php';
+	
+	if (file_exists($template_header_file)) {
+		require_once($template_header_file);	
+	} else {
+		throw new Exception('Header template ('. $template_header_file .') cannot be found!');
+	}	
+	
+}
+
+/**
+ * Loads requested template file
+ */
+function load_template($requested_template) {
+	
+	global $template;
+	
+	if (file_exists($template->get_option('app_template_path') .'/template_'. $requested_template .'.php')) {
+		require_once($template->get_option('app_template_path') .'/template_'. $requested_template .'.php');	
+	} else {
+		throw new Exception('Requested template file cannot be found!');
+	}	
+	
+}
+
+/**
+ * Loads template footer file
+ */
+function get_footer() {
+	
+	global $template;
+	
+	if (file_exists($template->get_option('site_template_path') .'/template_footer.php')) {
+		require_once($template->get_option('site_template_path') .'/template_footer.php');	
+	} else {
+		throw new Exception('Footer file cannot be found!');
+	}	
+	
+}
 
 /**
  * Returns true if $requested_var exists in $array
@@ -128,7 +175,7 @@ function get_page_title() {
  * Loads requested template file
  * and sub template function
  */
-function load_template($template_name, $sub_template_name = '') {
+function load_template2($template_name, $sub_template_name = '') {
 
 	global $page;
 

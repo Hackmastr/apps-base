@@ -8,13 +8,10 @@
  */
 function home() {
 
-	global $page;
-	
-	// Set page parent for main nav highlight
-	$page['parent'] = 'home';
-	
-	$page['title'] = 'Dashboard';
+	global $template;
 
+	$template->set_page_title('Home');
+	
 	load_template('home');
 
 }
