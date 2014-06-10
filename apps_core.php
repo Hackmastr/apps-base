@@ -10,7 +10,7 @@
 require_once('apps_version.php');
 require_once('apps_config.php');
 require_once('apps_includes/core.functions.php');
-require_once('apps_includes/db.class.php');
+require_once('apps_includes/class_database.php');
 require_once('apps_includes/class_template.php');
 
 define('APP_URL', SITE_URL . APP_PATH);
