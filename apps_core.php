@@ -3,6 +3,8 @@
  * Apps core file. This loads the entire Apps site enviroment
  * which will be used by all included apps
  */
+ 
+define('APPS_CORE_VERSION', '1.0-alpha');
 
 /**
  * Get required files
