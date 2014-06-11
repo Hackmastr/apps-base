@@ -24,7 +24,7 @@ class Template {
 	 * Sets app template path
 	 */
 	function set_app_template_path($app_template_path) {
-		$this->options['app_template_path'] = $app_template_path;
+		$this->options['app_template_path'] = $this->get_option('site_path') . $app_template_path;
 	}
 	
 	/**
@@ -52,6 +52,9 @@ class Template {
 				break;
 			case 'site_url':
 				return $this->options['site_url'];
+				break;
+			case 'site_path':
+				return $this->options['site_path'];
 				break;
 			case 'site_template_path':
 				return $this->options['site_template_path'];
