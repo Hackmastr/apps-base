@@ -39,6 +39,23 @@ function load_template($requested_template) {
 }
 
 /**
+ * Loads requested sub template file
+ */
+function load_sub_template() {
+	
+	global $template;
+	
+	$sub_template_file = $template->get_option('app_template_path') .'/sub_'. $template->get_sub_template() .'.php';
+	
+	if (file_exists($sub_template_file)) {
+		require_once($sub_template_file);	
+	} else {
+		echo 'Requested template file ('. $sub_template_file .') cannot be found!';
+	}		
+	
+}
+
+/**
  * Loads template footer file
  */
 function get_footer() {
@@ -225,7 +242,7 @@ function load_template2($template_name, $sub_template_name = '') {
 /**
  * Loads sub template function
  */
-function load_sub_template($sub_template) {
+function load_sub_template2($sub_template) {
 
 	if (function_exists('template_'. $sub_template)) {
 	
