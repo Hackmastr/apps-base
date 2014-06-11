@@ -9,7 +9,6 @@ define('APPS_CORE_VERSION', '1.0-alpha');
 /**
  * Get required files
  */
-require_once('apps_version.php');
 require_once('apps_config.php');
 require_once('apps_includes/core.functions.php');
 require_once('apps_includes/class_database.php');
