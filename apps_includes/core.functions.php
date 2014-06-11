@@ -28,10 +28,12 @@ function load_template($requested_template) {
 	
 	global $template;
 	
-	if (file_exists($template->get_option('app_template_path') .'/template_'. $requested_template .'.php')) {
-		require_once($template->get_option('app_template_path') .'/template_'. $requested_template .'.php');	
+	$template_file = $template->get_option('app_template_path') .'/template_'. $requested_template .'.php';
+	
+	if (file_exists($template_file)) {
+		require_once($template_file);	
 	} else {
-		throw new Exception('Requested template file cannot be found!');
+		echo 'Requested template file ('. $template_file .') cannot be found!';
 	}	
 	
 }
@@ -43,10 +45,12 @@ function get_footer() {
 	
 	global $template;
 	
-	if (file_exists($template->get_option('site_template_path') .'/template_footer.php')) {
-		require_once($template->get_option('site_template_path') .'/template_footer.php');	
+	$template_footer_file = $template->get_option('site_template_path') .'/template_footer.php';
+	
+	if (file_exists($template_footer_file)) {
+		require_once($template_footer_file);	
 	} else {
-		throw new Exception('Footer file cannot be found!');
+		echo 'Footer file ('. $template_footer_file .') cannot be found!';
 	}	
 	
 }
