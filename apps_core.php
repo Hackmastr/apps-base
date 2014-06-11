@@ -13,12 +13,14 @@ require_once('apps_config.php');
 require_once('apps_includes/functions_template.php');
 require_once('apps_includes/core.functions.php');
 require_once('apps_includes/class_database.php');
+require_once('apps_includes/class_bootstrap.php');
 require_once('apps_includes/class_template.php');
 
 /**
  * Start database connection
  */
-$db = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS);
+$database = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS);
+Bootstrap::$db = $database;
 
 /**
  * Begin template
