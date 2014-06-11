@@ -122,7 +122,7 @@ class Template {
 				'children' => array(
 					'monthly' => array(
 						'title' => 'Monthly',
-						'url' => '/a/index.php',
+						'url' => '/a/monthly/index.php',
 					),
 				),
 			),
