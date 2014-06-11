@@ -42,6 +42,20 @@ class Template {
 	}
 	
 	/**
+	 * Sets sub template to be used within a page
+	 */
+	function set_sub_template($sub_template) {
+		$this->sub_template = $sub_template;
+	}
+	
+	/**
+	 * Returns sub template name
+	 */
+	function get_sub_template() {
+		return $this->sub_template;
+	}
+	
+	/**
 	 * Get site options
 	 */
 	function get_option($option) {
@@ -64,6 +78,26 @@ class Template {
 				break;
 			default:
 				throw new Exception('Option does not exist!');
+		}
+		
+	}
+	
+	/**
+	 * Returns requested $_GET
+	 *
+	 * @return boolean Returns value of $_GET, otherwise false if not set
+	 */
+	function get_var($requested_var) {
+		
+		// Check if the requested var is set
+		if (isset($_GET[$requested_var])) {
+				
+			return $_GET[$requested_var];
+			
+		} else {
+			
+			return false;
+			
 		}
 		
 	}
