@@ -84,7 +84,7 @@ class Template {
 			),
 			'apps' => array(
 				'title' => 'Apps',
-				'url' => '/index.php?p=apps',
+				'url' => '/a/index.php',
 				'children' => array(
 					'monthly' => array(
 						'title' => 'Monthly',
@@ -94,7 +94,7 @@ class Template {
 			),
 			'Manage' => array(
 				'title' => 'Manage',
-				'url' => '/index.php?p=manage',
+				'url' => '/admin/index.php',
 			),
 		);
 		
