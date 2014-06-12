@@ -7,6 +7,8 @@ class Template {
 
 	private $site_template_path;
 	private $app_template_path;
+	private $sub_template;
+	private $sub_func;
 	private $page_title;
 	private $options;
 	
@@ -44,8 +46,9 @@ class Template {
 	/**
 	 * Sets sub template to be used within a page
 	 */
-	function set_sub_template($sub_template) {
+	function set_sub_template($sub_template, $sub_func = 'main') {
 		$this->sub_template = $sub_template;
+		$this->sub_func = $sub_func;
 	}
 	
 	/**
@@ -53,6 +56,13 @@ class Template {
 	 */
 	function get_sub_template() {
 		return $this->sub_template;
+	}
+	
+	/**
+	 * Returns sub function to call
+	 */
+	function get_sub_func() {
+		return $this->sub_func;
 	}
 	
 	/**
