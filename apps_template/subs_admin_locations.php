@@ -15,7 +15,7 @@ function main() {
 			<th class="app_list_header app_list_title">Title</th>
 		</tr>';
 	
-	foreach ($locations->get_locations_list() as $location) {
+	foreach ($locations->getLocationsList() as $location) {
 		
 		echo '<tr>
 			<td class="app_list_data app_list_title">
