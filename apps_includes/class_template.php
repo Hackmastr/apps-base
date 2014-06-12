@@ -11,6 +11,9 @@ class Template {
 	private $sub_func;
 	private $page_title;
 	private $tab_page_title;
+	private $theMessage;
+	private $hasMessage;
+	private $messageType;
 	private $options;
 	
 	/**
@@ -125,6 +128,55 @@ class Template {
 			
 		}
 		
+	}
+	
+	/**
+	 * Validates form input
+	 *
+	 * @return false on failure, otherwise value of form input
+	 */
+	function validate_input($input) {
+		
+		if (!empty($input)) {
+			return $input;
+		} else {
+			throw new Exception('Please fill in all required fields!');
+		}
+		
+	}
+	
+	/**
+	 * Creates error message
+	 */
+	function createMessage($type, $message) {
+		$this->theMessage = $message;
+		$this->hasMessage = true;
+		$this->messageType = $type;
+	}
+	
+	/**
+	 * Returns error message
+	 */
+	function getMessage() {
+		return $this->theMessage;
+	}
+	 
+	/**
+	 * Returns the message type
+	 */
+	function getMessageType() {
+		return $this->messageType;
+	}
+	 
+	/**
+	 * Returns error message status
+	 */
+	function hasMessage() {
+		if ($this->hasMessage) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	/**

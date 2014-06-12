@@ -32,9 +32,26 @@ if ($tab && array_key_exists($tab, $tabs)) {
 	if ($action == 'add') {
 	
 		$template->set_sub_template('admin_'. $tab, 'edit');
+		$template->set_tab_page_title('Add');
 	
 		if (isset($_POST['add'])) {
-			$$tab->add();
+		
+			try {
+			
+				$form_data = array();
+			
+				foreach($locations->get_db_fields() as $field) {
+					array_push($form_data, $template->validate_input($_POST[$field]));
+				}
+				
+				$$tab->add($form_data);
+				
+				// Redirect back to main page
+				header('Location: '. $template->get_option('site_url') .'/admin/index.php?tab='. $tab);
+				
+			} catch (Exception $e) {
+				$template->createMessage('error', $e->getMessage());
+			}
 
 		}
 		

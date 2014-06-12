@@ -18,6 +18,13 @@
 		
 		<div class="apps_tabbed_content">
 		
+			<?php if ($template->hasMessage()) { ?>
+			<div class="msg_box <?php echo $template->getMessageType(); ?>">
+				<?php echo $template->getMessage(); ?>
+			</div>
+			<?php } ?>
+			
+		
 			<?php load_template_subs(); ?>
 		
 		</div>
