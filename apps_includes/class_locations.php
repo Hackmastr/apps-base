@@ -3,7 +3,7 @@
  * Base Apps manage locations class
  */
 
-class Location {
+class Locations {
 
 	private $db;
 	

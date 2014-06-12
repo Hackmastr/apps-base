@@ -11,7 +11,7 @@ class Bootstrap {
 	
 	public static function Locations() {
 
-		$location = new Location();
+		$location = new Locations();
 		$location->set_db(self::$db);
 
 		return $location;
