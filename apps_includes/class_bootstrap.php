@@ -4,6 +4,7 @@
  */
  
 require_once('class_locations.php');
+require_once('class_cells.php');
 
 class Bootstrap {
 	
@@ -16,6 +17,13 @@ class Bootstrap {
 
 		return $location;
 
+	}
+	
+	public static function Cells() {
+		$cells = new Cells();
+		$cells->setDB(self::$db);
+		
+		return $cells;
 	}
 	
 }
