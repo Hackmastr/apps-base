@@ -10,6 +10,7 @@ class Template {
 	private $sub_template;
 	private $sub_func;
 	private $page_title;
+	private $tab_page_title;
 	private $options;
 	
 	/**
@@ -41,6 +42,20 @@ class Template {
 	 */
 	function get_page_title() {
 		return $this->page_title;
+	}
+	
+	/**
+	 * Sets the tab page title
+	 */
+	function set_tab_page_title($title) {
+		$this->tab_page_title = $title;
+	}
+	
+	/**
+	 * Returns the tab page title
+	 */
+	function get_tab_page_title() {
+		return $this->tab_page_title;
 	}
 	
 	/**
