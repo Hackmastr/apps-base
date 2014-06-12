@@ -253,6 +253,10 @@ h2 {
 	overflow: hidden;
 }
 
+.tabbed_nav_right {
+	float: right;
+}
+
 	.apps_tabbed_nav li {
 		float: left;
 		list-style: none;
