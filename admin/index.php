@@ -19,14 +19,15 @@ $tabs = array(
 // Get tab from URL
 $tab = $template->get_var('tab');
 
-// Is a tab being requested?
+// Check if a tab is being requested
+// Otherwise redirect to locations tab
 if ($tab && array_key_exists($tab, $tabs)) {
 	
 	$template->set_sub_template('admin_'. $tab);
 	
 } else {
 	
-	$template->set_sub_template('admin_locations');
+	header('Location: '. $template->get_option('site_url') .'/admin/index.php?tab=locations');
 	
 }
 
