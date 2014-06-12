@@ -16,14 +16,49 @@ $tabs = array(
 	'links' => 'Links',
 );
 
-// Get tab from URL
+// Get request vars
 $tab = $template->get_var('tab');
+$action = $template->get_var('action');
+$id = $template->get_var('id');
 
 // Check if a tab is being requested
 // Otherwise redirect to locations tab
 if ($tab && array_key_exists($tab, $tabs)) {
 	
-	$template->set_sub_template('admin_'. $tab);
+	// Invoke respective class for requested $tab
+	$$tab = Bootstrap::$tabs[$tab]();
+	
+	// Is an action being requested?
+	if ($action == 'add') {
+	
+		$template->set_sub_template('admin_'. $tab, 'edit');
+	
+		if (isset($_POST['add'])) {
+			$$tab->add();
+
+		}
+		
+	} else if ($action == 'edit') {
+	
+		$template->set_sub_template('admin_'. $tab, 'edit');
+		
+		$$tab->setID($id);
+	
+		if (isset($_POST['update'])) {
+			$$tab->update();
+		}
+	
+	} else if ($action == 'delete') {
+	
+		$$tab->setID($id);
+		
+		$$tab->delete();
+		
+	} else {
+		
+		$template->set_sub_template('admin_'. $tab);
+		
+	}
 	
 } else {
 	
