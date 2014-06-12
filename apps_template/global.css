@@ -234,32 +234,15 @@ h2 {
 	}
 	
 /**
- * Data Lists
+ * Apps List Table
  */
-.apps_data_list {
-	border-right: 1px solid #dddddd;
-	border-top: 1px solid #dddddd;
+.apps_list_table {
+	width: 100%;
 }
-	
-	.apps_data_list_header {
-		background-color: #f1f1f1;
+
+	.apps_list_table th {
+		text-align: left;
 	}
-
-	.apps_data_list li {
-		list-style: none;
-	}
-
-		.apps_data_list dl {
-			border-bottom: 1px solid #dddddd;
-			overflow: hidden;
-		}
-
-			.apps_data_list dt, .apps_data_list dd {
-				border-left: 1px solid #dddddd;
-				box-sizing: border-box;
-				float: left;
-				padding: 5px;
-			}
 			
 /**
  * Tabbed menu
