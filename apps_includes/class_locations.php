@@ -6,6 +6,7 @@
 class Locations {
 
 	private $db;
+	private $id;
 	
 	function setDB($db) {
 		$this->db = $db;
@@ -22,6 +23,13 @@ class Locations {
 		
 		return $this->db->select($sql);
 		
+	}
+	
+	/**
+	 * Sets requested location ID
+	 */
+	function setID($id) {
+		$this->id = $id;
 	}
 	
 }
