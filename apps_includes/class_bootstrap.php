@@ -10,6 +10,15 @@ class Bootstrap {
 	
 	public static $db;
 	
+	public static function Load($obj) {
+		
+		$obj = new $obj();
+		$obj->setDB(self::$db);
+		
+		return $obj;
+		
+	}
+	
 	public static function Locations() {
 
 		$location = new Locations();
