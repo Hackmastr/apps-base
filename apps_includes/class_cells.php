@@ -3,41 +3,12 @@
  * Base Apps cells class
  */
 
-class Cells {
-	
-	private $db;
-	private $id;
-	private $db_fields;
-	
-	/**
-	 * Establish database connection
-	 */
-	function setDB($db) {
-		$this->db = $db;
-	}
-	
-	/**
-	 * Sets requested ID
-	 */
-	function setID($id) {
-		$this->id = $id;
-	}	
-	
-	/**
-	 * Sets the database fields
-	 */
-	function set_db_fields($fields) {
-		$this->db_fields = $fields;
-	}
-	
-	/**
-	 * Retrieves list from database
-	 */
-	function getList() {
+class Cells extends Master {
+
+	function __construct() {
 		
-		$sql = 'SELECT id, cell_name FROM app_cells';
-		
-		return $this->db->select($sql);		
+		$this->db_table = 'app_cells c';
+		$this->db_fields = array('c.id', 'c.cell_name');
 		
 	}
 	
