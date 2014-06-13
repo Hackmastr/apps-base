@@ -51,8 +51,15 @@ class Master {
 			$sql .= ' WHERE '. $where;
 		}
 		
-		// Return results
-		return $this->db->select($sql);		
+		// Get results
+		$results = $this->db->select($sql);
+		
+		// Return result of results
+		if ($results) {
+			return $results;
+		} else {
+			return false;
+		}
 		
 	}
 	
