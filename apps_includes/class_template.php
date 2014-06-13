@@ -84,6 +84,13 @@ class Template {
 	}
 	
 	/**
+	 * Sets the app URL
+	 */
+	function setAppURL($url) {
+		$this->options['app_url'] = $url;
+	}
+	
+	/**
 	 * Get site options
 	 */
 	function get_option($option) {
@@ -100,6 +107,9 @@ class Template {
 				break;
 			case 'site_template_path':
 				return $this->options['site_template_path'];
+				break;
+			case 'app_url':
+				return $this->options['app_url'];
 				break;
 			case 'app_template_path':
 				return $this->options['app_template_path'];
