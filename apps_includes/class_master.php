@@ -30,8 +30,6 @@ class Master {
 	 */
 	function getData($args = '') {
 	
-		print_r($args);
-	
 		$fields = isset($args['fields']) ? $args['fields'] : array();
 		$where = isset($args['where']) ? $args['where'] : NULL;
 		
