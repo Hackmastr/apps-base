@@ -113,11 +113,7 @@ function generate_message($type, $message) {
 	$message_box .= $message;
 	$message_box .= '</div>';
 	
-	// Enable the message
-	$page['has_message'] = true;
-	
-	// Write the message box
-	$page['the_message'] = $message_box;
+	return $message_box;
 	
 }
 
