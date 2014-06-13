@@ -3,7 +3,7 @@
  * Base Apps bootstrap class
  */
 
-require_once('class_master.php');
+require_once('class-apps-master.php');
 require_once('class_locations.php');
 require_once('class_cells.php');
 
