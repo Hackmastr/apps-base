@@ -33,6 +33,7 @@ class Master {
 		$fields = isset($args['fields']) ? $args['fields'] : array();
 		$where = isset($args['where']) ? $args['where'] : NULL;
 		$limit = isset($args['limit']) ? $args['limit'] : false;
+		$left_join = isset($args['left_join']) ? $args['left_join'] : array();
 		
 		// Begin our SQL SELECT statement
 		$sql = 'SELECT ';
@@ -46,6 +47,17 @@ class Master {
 		
 		// Select from defined table
 		$sql .= ' FROM '. $this->db_table;
+		
+		// Left join any tables?
+		if (!empty($left_join)) {
+		
+			foreach ($left_join as $join) {
+				
+				$sql .= ' LEFT JOIN '. $join['table'] .' ON '. implode(' AND ', $join['on']);
+				
+			}
+			
+		}
 		
 		// Is a criteria set?
 		if (!is_null($where)) {
