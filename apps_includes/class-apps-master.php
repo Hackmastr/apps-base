@@ -32,6 +32,7 @@ class Master {
 	
 		$fields = isset($args['fields']) ? $args['fields'] : array();
 		$where = isset($args['where']) ? $args['where'] : NULL;
+		$limit = isset($args['limit']) ? $args['limit'] : false;
 		
 		// Begin our SQL SELECT statement
 		$sql = 'SELECT ';
@@ -52,13 +53,38 @@ class Master {
 		}
 		
 		// Get results
-		$results = $this->db->select($sql);
+		$results = $this->db->select($sql, $limit);
 		
 		// Return result of results
 		if ($results) {
 			return $results;
 		} else {
 			return false;
+		}
+		
+	}
+	
+	/**
+	 * Gets value from specified field from database
+	 */
+	function getValue($field) {
+			
+		// Filter our data
+		$filter = array(
+			'fields' => array('id', $field),
+			'where' => 'id = '. $this->id,
+			'limit' => true
+		);
+		
+		// Get results
+		$results = $this->getData($filter);
+		
+		// Check results and return requested field value
+		// Otherwise, return a blank string
+		if ($results) {
+			return $results->$field;
+		} else {
+			return '';
 		}
 		
 	}
