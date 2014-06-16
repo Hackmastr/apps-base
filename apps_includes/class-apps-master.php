@@ -153,4 +153,13 @@ class Master {
 		
 	}
 	
+	/**
+	 * Deletes data from database
+	 */
+	function deleteData() {
+		
+		$this->db->delete('DELETE FROM '. $this->db_table .' WHERE id = '. $this->id);
+		
+	}
+	
 }
