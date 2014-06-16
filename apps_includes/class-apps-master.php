@@ -108,4 +108,49 @@ class Master {
 		
 	}
 	
+	/**
+	 * Submits data to database to be either added or modified
+	 */
+	function submitData($post_array) {
+		
+		// Remove item from $post_array if it doesn't exist in $this->db_fields
+		foreach($post_array as $field => $value) {
+			if (!in_array($field, $this->db_fields)) {
+				unset($post_array[$field]);
+			}
+		}
+		
+		// If ID isn't set, insert record
+		// Otherwise, update an existing record
+		if (empty($this->id)) {
+			$sql = 'INSERT INTO '. $this->db_table;
+		} else {
+			$sql = 'UPDATE '. $this->db_table;
+		}
+				
+		foreach($post_array as $field => $value) {	
+			$sql .= ' SET '. $field .' = ?';
+		}
+		
+		// Define record to update if ID is set
+		if (!empty($this->id)) {
+			$sql .= ' WHERE id = '. $this->id;
+		}
+		
+		// Get results
+		if (empty($this->id)) {
+			$results = $this->db->insert($sql, array_values($post_array));
+		} else {
+			$results = $this->db->update($sql, array_values($post_array));
+		}
+		
+		// Return result of results
+		if ($results) {
+			return $results;
+		} else {
+			return false;
+		}
+		
+	}
+	
 }
