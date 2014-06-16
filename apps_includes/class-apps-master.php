@@ -40,9 +40,9 @@ class Master {
 		
 		// Determine which set of fields to select
 		if (empty($fields)) {
-			$sql .= implode(', ', $this->db_fields);
+			$sql .= $this->db_table .'.'. implode(', '. $this->db_table .'.', $this->db_fields);
 		} else {
-			$sql .= implode(', ', $fields);
+			$sql .= $this->db_table .'.'. implode(', '. $this->db_table .'.', $fields);
 		}
 		
 		// Select from defined table
@@ -53,7 +53,7 @@ class Master {
 		
 			foreach ($left_join as $join) {
 				
-				$sql .= ' LEFT JOIN '. $join['table'] .' ON '. implode(' AND ', $join['on']);
+				$sql .= ' LEFT JOIN '. $join['table'] .' ON '. $join['table'] .'.'. implode(' AND '. $join['table'] .'.', $join['on']);
 				
 			}
 			
