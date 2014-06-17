@@ -73,11 +73,20 @@ class Database {
 	/**
 	 * Insert
 	 */
-	function insert($sql, $data) {
+	function insert($sql, $post_array) {
 		
+		// Prepare SQL query
 		$query = $this->db->prepare($sql);
-		$result = $query->execute($data);
 		
+		// Bind params
+		foreach ($post_array as $field => &$value) {
+			$query->bindParam(':'. $field, $value);
+		}
+		
+		// Execute
+		$result = $query->execute();
+		
+		// Return results
 		return $result;
 		
 	}
@@ -85,11 +94,20 @@ class Database {
 	/**
 	 * Update
 	 */
-	function update($sql, $data) {
+	function update($sql, $post_array) {
 	
+		// Prepare SQL query
 		$query = $this->db->prepare($sql);
-		$result = $query->execute($data);
 		
+		// Bind params
+		foreach ($post_array as $field => &$value) {
+			$query->bindParam(':'. $field, $value);
+		}
+		
+		// Execute
+		$result = $query->execute();
+		
+		// Return results
 		return $result;
 				
 	}
