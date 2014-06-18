@@ -37,3 +37,12 @@ function get_page_url() {
   return $url;
 	
 }
+
+/**
+ * Returns time
+ */
+function get_time($format) {
+	
+	return date($format, time());
+	
+}
