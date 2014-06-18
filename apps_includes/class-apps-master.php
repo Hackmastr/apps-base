@@ -9,6 +9,7 @@ class Master {
 	protected $db;
 	protected $db_table;
 	protected $db_fields;
+	protected $left_join;
 	protected $id;
 	
 	/**
@@ -33,7 +34,7 @@ class Master {
 		$fields = isset($args['fields']) ? $args['fields'] : array();
 		$where = isset($args['where']) ? $args['where'] : NULL;
 		$limit = isset($args['limit']) ? $args['limit'] : false;
-		$left_join = isset($args['left_join']) ? $args['left_join'] : array();
+		$left_join = isset($args['left_join']) ? $args['left_join'] : isset($this->left_join) ? $this->left_join : array();
 		
 		// Begin our SQL SELECT statement
 		$sql = 'SELECT ';
@@ -43,6 +44,15 @@ class Master {
 			$sql .= $this->db_table .'.'. implode(', '. $this->db_table .'.', $this->db_fields);
 		} else {
 			$sql .= $this->db_table .'.'. implode(', '. $this->db_table .'.', $fields);
+		}
+		
+		// Select from left join?
+		if (!empty($left_join)) {
+			foreach ($left_join as $join) {
+			
+				$sql .= ', '. $join['table'] .'.'. implode(', '. $join['table'] .'.', $join['select']);
+			
+			}
 		}
 		
 		// Select from defined table
