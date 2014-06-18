@@ -16,7 +16,7 @@
 			</div>
 			<?php } ?>
 		
-			<p>Admin dashboard.</p>
+			<?php get_admin_cells_form(); ?>
 		
 		</div>
 	

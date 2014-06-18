@@ -16,7 +16,7 @@
 			</div>
 			<?php } ?>
 		
-			<p>Admin dashboard.</p>
+			<?php get_admin_locations_form(); ?>
 		
 		</div>
 	

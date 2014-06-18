@@ -8,8 +8,10 @@ require_once('../apps_core.php');
 $template->set_app_template_path('/apps_template');
 $template->set_page_title('Admin CP');
 
+require_once('../apps_includes/functions-admin-template.php');
+
 // Set up our tabs array
-$tabs = array(
+$allowed_tabs = array(
 	'locations' => 'Locations',
 	'divisions' => 'Divisions',
 	'cells' => 'Cells',
@@ -17,70 +19,43 @@ $tabs = array(
 );
 
 // Get request vars
-$tab = $template->get_var('tab');
-$action = $template->get_var('action');
-$id = $template->get_var('id');
+$tab = get_var('tab');
+$action = get_var('action');
+$id = get_var('id');
 
 // Check if a tab is being requested
 // Otherwise redirect to locations tab
-if ($tab && array_key_exists($tab, $tabs)) {
+if ($tab && array_key_exists($tab, $allowed_tabs)) {
 	
-	// Invoke respective class for requested $tab
-	$$tab = Bootstrap::$tabs[$tab]();
+	// Invoke necessary classes
+	$locations = Bootstrap::Load('Locations');
+	$divisions = Bootstrap::Load('Divisions');
+	$cells = Bootstrap::Load('cells');
 	
-	// Is an action being requested?
-	if ($action == 'add') {
-	
-		$template->set_sub_template('admin_'. $tab, 'edit');
-		$template->set_tab_page_title('Add');
-	
-		if (isset($_POST['add'])) {
+	if (get_var('action') == 'add' || get_var('action') == 'edit' || get_var('action') == 'delete') {
 		
-			try {
-			
-				$form_data = array();
-			
-				foreach($locations->get_db_fields() as $field) {
-					array_push($form_data, $template->validate_input($_POST[$field]));
-				}
-				
-				$$tab->add($form_data);
-				
-				// Redirect back to main page
-				header('Location: '. $template->get_option('site_url') .'/admin/index.php?tab='. $tab);
-				
-			} catch (Exception $e) {
-				$template->createMessage('error', $e->getMessage());
+		// If we're editing or deleting an item, set the ID
+		if (get_var('action') == 'edit' || get_var('action') == 'delete') {
+			$$tab->setID(get_var('id'));
+		}
+		
+		try {
+			// Has the form been submitted?
+			if (isset($_POST['submit'])) {
+				$$tab->submitData($_POST);
+			} else if (get_var('action') == 'delete') {
+				$$tab->deleteData();
 			}
-
+		} catch (Exception $e) {
+			echo $e->getMessage();
 		}
-		
-	} else if ($action == 'edit') {
-	
-		$template->set_sub_template('admin_'. $tab, 'edit');
-		
-		$$tab->setID($id);
-	
-		if (isset($_POST['update'])) {
-			$$tab->update();
-		}
-	
-	} else if ($action == 'delete') {
-	
-		$$tab->setID($id);
-		
-		$$tab->delete();
-		
-	} else {
-		
-		$template->set_sub_template('admin_'. $tab);
 		
 	}
 	
-} else {
+	load_template('admin_'. $tab);
 	
-	header('Location: '. $template->get_option('site_url') .'/admin/index.php?tab=locations');
+} else {
+
+	load_template('admin');
 	
 }
-
-load_template('admin');

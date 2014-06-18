@@ -5,6 +5,7 @@
 
 require_once('class-apps-master.php');
 require_once('class_locations.php');
+require_once('class_divisions.php');
 require_once('class_cells.php');
 
 class Bootstrap {
@@ -26,6 +27,15 @@ class Bootstrap {
 		$location->setDB(self::$db);
 
 		return $location;
+
+	}
+	
+	public static function Divisions() {
+
+		$division = new Divisions();
+		$division->setDB(self::$db);
+
+		return $division;
 
 	}
 	
