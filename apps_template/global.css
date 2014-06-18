@@ -134,6 +134,7 @@ h2 {
 	border-right: 1px solid #dddddd;
 	float: left;
 	margin-top: 50px;
+	padding-right: 10px;
 	width: 200px;
 }
 
@@ -153,7 +154,8 @@ h2 {
 		}
 		
 		.apps_sidebar li.active a {
-			color: #660066;
+			background-color: #660066;
+			color: #ffffff;
 		}
 		
 /**
