@@ -12,9 +12,14 @@ class Bootstrap {
 	
 	public static $db;
 	
-	public static function Load($obj) {
+	public static function Load($obj, $args = array()) {
 		
-		$obj = new $obj();
+		if (!empty($args)) {
+			$obj = new $obj($args);
+		} else {
+			$obj = new $obj();
+		}
+		
 		$obj->setDB(self::$db);
 		
 		return $obj;
