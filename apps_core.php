@@ -12,7 +12,6 @@ define('APPS_CORE_VERSION', '1.0-alpha');
 require_once('apps_config.php');
 require_once('apps_includes/functions-core.php');
 require_once('apps_includes/functions-general-template.php');
-require_once('apps_includes/core.functions.php');
 require_once('apps_includes/class_database.php');
 require_once('apps_includes/class_bootstrap.php');
 require_once('apps_includes/class_template.php');
