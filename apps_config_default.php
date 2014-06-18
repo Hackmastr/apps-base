@@ -3,6 +3,13 @@
  * Site configuration
  */
 
+$site_options = array(
+	'site_title' => 'Ventura Apps',
+	'site_url' => '//localhost/apps',
+	'site_path' => dirname(__FILE__) .'/',
+	'site_template_path' => dirname(__FILE__) .'/apps_template',
+);
+
 /**
  * Set the site's title
  */
