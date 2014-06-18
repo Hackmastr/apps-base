@@ -170,6 +170,24 @@ class Template {
 	}
 	
 	/**
+	 * Sets parent page name
+	 */
+	function setParentPage($name) {
+		$this->parent_page = $name;
+	}
+	
+	/**
+	 * Returns parent page name
+	 */
+	function getParentPage() {
+		if (isset($this->parent_page)) {
+			return $this->parent_page;
+		} else {
+			return '';
+		}
+	}
+	
+	/**
 	 * Gets site nav menu
 	 * @TODO: Populate database with nav link, and retrieve from there
 	 *        Clean up this code!!
