@@ -27,36 +27,3 @@ Bootstrap::$db = $database;
  * Begin template
  */
 $template = new Template($site_options);
-
-/**
- * Define a $page array to store page details
- */
-$page = array(
-	'action' => '',
-	
-	'parent' => '',
-	
-	'areas' => array(),
-	'area' => '',
-	'view_id' => '',
-	
-	'tabs' => array(),
-	
-	'title' => '',
-	'template' => '',
-	'sub_template' => '',
-	'stylesheets' => array(),
-	
-	'has_message' => '',
-	'the_message' => '',
-	
-	'db_result' => array(),
-	'cells' => array(),
-	'divisions' => array(),
-	'locations' => array(),
-	
-	// New
-	'sub_nav' => array(),
-	'tabbed_nav' => array(),
-	'tab_selected' => false,
-);
