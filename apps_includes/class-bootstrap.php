@@ -3,10 +3,10 @@
  * Base Apps bootstrap class
  */
 
-require_once('class-apps-master.php');
-require_once('class_locations.php');
-require_once('class_divisions.php');
-require_once('class_cells.php');
+require_once('class-master.php');
+require_once('class-locations.php');
+require_once('class-divisions.php');
+require_once('class-cells.php');
 
 class Bootstrap {
 	

@@ -4,7 +4,7 @@
  */
 
 // Setup our app environment
-require_once('apps_core.php');
+require_once('apps-core.php');
 $template->set_app_template_path('/apps_template');
 $template->set_page_title('Home');
 	
