@@ -10,7 +10,7 @@ function get_header() {
 	
 	global $template;
 	
-	$template_header_file = $template->get_option('site_template_path') .'/template_header.php';
+	$template_header_file = $template->get_option('site_template_path') .'/template-header.php';
 	
 	if (file_exists($template_header_file)) {
 		require_once($template_header_file);	
@@ -27,7 +27,7 @@ function load_template($requested_template) {
 	
 	global $template;
 	
-	$template_file = $template->get_option('app_template_path') .'/template_'. $requested_template .'.php';
+	$template_file = $template->get_option('app_template_path') .'/template-'. $requested_template .'.php';
 	
 	if (file_exists($template_file)) {
 		require_once($template_file);	
@@ -62,7 +62,7 @@ function get_footer() {
 	
 	global $template;
 	
-	$template_footer_file = $template->get_option('site_template_path') .'/template_footer.php';
+	$template_footer_file = $template->get_option('site_template_path') .'/template-footer.php';
 	
 	if (file_exists($template_footer_file)) {
 		require_once($template_footer_file);	

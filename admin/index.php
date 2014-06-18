@@ -52,7 +52,7 @@ if ($tab && array_key_exists($tab, $allowed_tabs)) {
 		
 	}
 	
-	load_template('admin_'. $tab);
+	load_template('admin-'. $tab);
 	
 } else {
 
