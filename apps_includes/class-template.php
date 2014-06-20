@@ -15,6 +15,8 @@ class Template {
 	private $hasMessage;
 	private $messageType;
 	private $options;
+	private $parent_page;
+	private $child_page;
 	
 	/**
 	 * Template initializer
@@ -188,6 +190,24 @@ class Template {
 	}
 	
 	/**
+	 * Sets parent page name
+	 */
+	function setChildPage($name) {
+		$this->child_page = $name;
+	}
+	
+	/**
+	 * Returns parent page name
+	 */
+	function getChildPage() {
+		if (isset($this->child_page)) {
+			return $this->child_page;
+		} else {
+			return '';
+		}
+	}
+	
+	/**
 	 * Gets site nav menu
 	 * @TODO: Populate database with nav link, and retrieve from there
 	 *        Clean up this code!!
@@ -211,7 +231,7 @@ class Template {
 					),
 				),
 			),
-			'Manage' => array(
+			'manage' => array(
 				'title' => 'Manage',
 				'url' => '/admin/index.php',
 			),
@@ -221,7 +241,7 @@ class Template {
 			
 			if (isset($nav_item_properties['children'])) {
 				
-				$nav_menu .= '<li>
+				$nav_menu .= '<li '. ($this->getParentPage() == $nav_item ? 'class="current-menu-item"' : '') .'>
 					<a href="'. $this->get_option('site_url') . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .'</a>
 					<ul>';
 				
@@ -236,7 +256,7 @@ class Template {
 				
 			} else {
 				
-				$nav_menu .= '<li><a href="'. $this->get_option('site_url') . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .'</a></li>';
+				$nav_menu .= '<li '. ($this->getParentPage() == $nav_item ? 'class="current-menu-item"' : '') .'><a href="'. $this->get_option('site_url') . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .'</a></li>';
 				
 			}
 			

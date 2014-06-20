@@ -7,6 +7,7 @@
 require_once('../apps-core.php');
 $template->set_app_template_path('/apps_template');
 $template->set_page_title('Admin CP');
+$template->setParentPage('manage');
 
 require_once('../apps_includes/functions-admin-template.php');
 
