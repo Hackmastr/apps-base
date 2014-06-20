@@ -232,3 +232,68 @@ function get_admin_cells_form() {
 	}
 	
 }
+
+/**
+ * Displays admin links form
+ */
+function get_admin_links_form() {
+	
+	global $links, $divisions, $locations, $template;
+	
+	if (get_var('action') && get_var('action') == 'add' || get_var('action') == 'edit') {
+		
+			$form = '<form class="apps_form" method="post" action="'. get_page_url() .'">
+				<ul>
+					<li>
+						<label for="name">Link Name</label>
+						<input type="text" id="name" name="link_name" value="'. $links->getValue('link_name') .'" />
+					</li>
+					<li>
+						<label for="description">Description:</label>
+						<input type="text" id="description" name="link_description" value="'. $links->getValue('link_description') .'" />
+					</li>
+					<li>
+						<label for="url">URL</label>
+						<input type="text" id="url" name="link_url" value="'. $links->getValue('link_url') .'" />
+					</li>
+					<li>
+						<label for="bg_color">Background Color</label>
+						<input type="text" id="bg_color" name="link_bg_color" value="'. $links->getValue('link_bg_color') .'" />
+					</li>
+					<li>
+						<label for="address">Order</label>
+						<input type="text" id="order" name="link_order" value="'. $links->getValue('link_order') .'" />
+					</li>
+					<li><input type="submit" name="submit" value="Submit" /></li>
+				</ul>
+			</form>';
+		
+		// Print form
+		echo $form;
+		
+	} else {
+	
+		$table = '<table class="apps_list_table">
+			<tr>
+				<th class="app_list_header app_list_title">Title</th>
+			</tr>';
+		
+		foreach ($links->getData() as $link) {
+			
+			$table .= '<tr>
+				<td class="app_list_data app_list_title">
+					<a href="'. $template->get_option('site_url') .'/admin/index.php?tab=links&id='. $link->id .'&action=edit">'. $link->link_name .'</a>
+					<span class="link-delete"><a href="'. $template->get_option('site_url') .'/admin/index.php?tab=links&id='. $link->id .'&action=delete">Delete</a></span>
+				</td>
+			</tr>';
+			
+		}
+		
+		$table .= '</table>';
+		
+		// Print table
+		echo $table;
+			
+	}
+	
+}

@@ -320,3 +320,33 @@ h2 {
 .apps_data_list .cell_location { width: 15%}
 .apps_data_list .cell_iq_connector { width: 20%; }
 .apps_data_list .cell_status { width: 15%; }
+
+/**
+ * Dashboard Links
+ */
+#apps_dashboard_links li {
+	display: table;
+	float: left;
+	list-style: none;
+	margin: 0 5px;
+	width: 20%;
+}
+
+	#apps_dashboard_links li a {
+		border: 1px solid #dddddd;
+		color: #000000;
+		display: table-cell;
+		font-size: 1.5em;
+		text-align: center;
+		padding: 10px;
+		vertical-align: middle;
+	}
+	
+	#apps_dashboard_links li a:hover {
+		background-color: #f1f1f1;
+	}
+	
+		#apps_dashboard_links li a span {
+			display: block;
+			font-size: 0.7em;
+		}

@@ -7,6 +7,7 @@ require_once('class-master.php');
 require_once('class-locations.php');
 require_once('class-divisions.php');
 require_once('class-cells.php');
+require_once('class-links.php');
 
 class Bootstrap {
 	

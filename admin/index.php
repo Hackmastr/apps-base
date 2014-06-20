@@ -31,6 +31,7 @@ if ($tab && array_key_exists($tab, $allowed_tabs)) {
 	$locations = Bootstrap::Load('Locations');
 	$divisions = Bootstrap::Load('Divisions');
 	$cells = Bootstrap::Load('cells');
+	$links = Bootstrap::Load('links');
 	
 	if (get_var('action') == 'add' || get_var('action') == 'edit' || get_var('action') == 'delete') {
 		
