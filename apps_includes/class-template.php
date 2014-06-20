@@ -140,24 +140,27 @@ class Template {
 	/**
 	 * Creates error message
 	 */
-	function createMessage($type, $message) {
+	function createMessage($type, $message, $return = false) {
 		$this->theMessage = $message;
 		$this->hasMessage = true;
 		$this->messageType = $type;
+		
+		if ($return) {
+			return $this->getMessage();
+		}
+		
 	}
 	
 	/**
 	 * Returns error message
 	 */
 	function getMessage() {
-		return $this->theMessage;
-	}
-	 
-	/**
-	 * Returns the message type
-	 */
-	function getMessageType() {
-		return $this->messageType;
+	
+		$message = '<div class="msg_box '. $this->messageType .'">';
+		$message .= $this->theMessage;
+		$message .= '</div>';
+		
+		return $message;
 	}
 	 
 	/**
