@@ -17,6 +17,7 @@ class Template {
 	private $options;
 	private $parent_page;
 	private $child_page;
+	private $head_scripts = array();
 	
 	/**
 	 * Template initializer
@@ -26,6 +27,20 @@ class Template {
 		// Set the site's options
 		$this->options = $options;
 		
+	}
+	
+	/**
+	 * Adds stylesheet or other scripts to <head>
+	 */
+	function addScript($src) {
+		$this->head_scripts[] = $src;
+	}
+	
+	/**
+	 * Returns scripts added to <head>
+	 */
+	function getScripts() {
+		return $this->head_scripts;
 	}
 	
 	/**

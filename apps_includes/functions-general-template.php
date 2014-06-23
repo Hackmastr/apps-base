@@ -53,3 +53,23 @@ function get_footer() {
 	}	
 	
 }
+
+/**
+ * Loads apps <head>
+ */
+function apps_head() {
+	
+	global $template;
+	
+	// Are there any scripts being loaded?
+	if (!empty($template->getScripts())) {
+	
+		foreach ($template->getScripts() as $script) {
+			
+			echo $script;
+			
+		}
+		
+	}
+	
+}
