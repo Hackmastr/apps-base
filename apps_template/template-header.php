@@ -14,6 +14,8 @@
 	
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css" />
 	
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	
 	<?php apps_head(); ?>
 	
 </head>
