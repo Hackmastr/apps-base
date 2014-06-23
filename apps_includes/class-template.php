@@ -234,7 +234,7 @@ class Template {
 					),
 				),
 			),
-			'manage' => array(
+			'admin' => array(
 				'title' => 'Admin',
 				'url' => '/admin.php',
 			),
