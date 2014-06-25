@@ -4,10 +4,18 @@ $(function() {
 		$(this).addClass('changed-input');
 	});
 	
+	formSubmitted = false;
+
+	$("input[name='submit']").click(function() {
+		formSubmitted = true;
+	});
+	
 	$(window).on('beforeunload', function () {
-	    if ($('.changed-input').length) {
+	
+	    if ($('.changed-input').length && !formSubmitted) {
 	        return 'You haven\'t saved your changes.';
 	    }
+	    
 	});
 
 });
