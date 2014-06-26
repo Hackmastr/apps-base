@@ -44,9 +44,17 @@ if ($tab && array_key_exists($tab, $allowed_tabs)) {
 		try {
 			// Has the form been submitted?
 			if (isset($_POST['submit'])) {
-				$$tab->submitData($_POST);
+				$result = $$tab->submitData($_POST);
+				if ($result) {
+					create_message('success', 'Successfully '. (get_var('action') == 'add' ? 'added' : 'saved') .' '. rtrim($tab, 's') .'.');
+					$template->redirect($template->get_option('site_url') .'/admin.php?tab='. get_var('tab'));
+				} else {
+					create_message('error', 'Something has gone wrong...');
+				}
 			} else if (get_var('action') == 'delete') {
 				$$tab->deleteData();
+				create_message('success', 'Successfully deleted '. rtrim($tab, 's') .'.');
+				$template->redirect($template->get_option('site_url') .'/admin.php?tab='. get_var('tab'));
 			}
 		} catch (Exception $e) {
 			echo $e->getMessage();
