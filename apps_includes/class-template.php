@@ -153,43 +153,6 @@ class Template {
 	}
 	
 	/**
-	 * Creates error message
-	 */
-	function createMessage($type, $message, $return = false) {
-		$this->theMessage = $message;
-		$this->hasMessage = true;
-		$this->messageType = $type;
-		
-		if ($return) {
-			return $this->getMessage();
-		}
-		
-	}
-	
-	/**
-	 * Returns error message
-	 */
-	function getMessage() {
-	
-		$message = '<div class="msg_box '. $this->messageType .'">';
-		$message .= $this->theMessage;
-		$message .= '</div>';
-		
-		return $message;
-	}
-	 
-	/**
-	 * Returns error message status
-	 */
-	function hasMessage() {
-		if ($this->hasMessage) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	/**
 	 * Sets parent page name
 	 */
 	function setParentPage($name) {

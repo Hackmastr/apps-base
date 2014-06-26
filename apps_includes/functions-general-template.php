@@ -73,3 +73,33 @@ function apps_head() {
 	}
 	
 }
+
+/**
+ * Creates message
+ */
+function create_message($type, $message, $echo = false) {
+
+	$msg = '<div class="msg_box '. $type .'">
+		'. $message .'
+	</div>';
+	
+	if ($echo) {
+		echo $msg;
+	} else {
+		$_SESSION['message'] = $msg;
+	}
+	
+}
+
+/**
+ * Displays messages
+ */
+function get_message() {
+
+	if (!empty($_SESSION['message']) && isset($_SESSION['message'])) {
+		echo $_SESSION['message'];
+	}
+	
+	$_SESSION['message'] = '';
+	
+}
