@@ -377,6 +377,15 @@ h2 {
 		background-color: #f1f1f1;
 	}
 	
+		#apps_dashboard_links li a i {
+			font-size: 3em;
+			margin-bottom: 10px;
+		}
+		
+		#apps_dashboard_links li a:hover i {
+			color: #660066;
+		}
+	
 		#apps_dashboard_links li a span {
 			display: block;
 			font-size: 0.7em;

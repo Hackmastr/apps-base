@@ -14,7 +14,12 @@ function get_dashboard_links() {
 	
 	foreach($links->getData() as $link) {
 		
-		$dashboard_link_list .= '<li><a style="border-top: 3px solid '. $link->link_bg_color .';" class="dashboard_link link_'. $link->id .'" href="'. $link->link_url .'">'. $link->link_name .' <span>'. $link->link_description .'</span></a></li>';
+		$dashboard_link_list .= '<li>
+			<a class="dashboard_link link_'. $link->id .'" href="'. $link->link_url .'">
+				<i style="color: '. $link->link_bg_color .'" class="fa '. $link->link_icon_class .'"></i>
+				<h4>'. $link->link_name .'</h4>
+				<span>'. $link->link_description .'</span>
+			</a></li>';
 		
 	}
 	

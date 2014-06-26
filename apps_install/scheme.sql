@@ -33,5 +33,6 @@ CREATE TABLE app_links (
 	link_url VARCHAR(100) NOT NULL,
 	link_bg_color VARCHAR(10),
 	link_order int NOT NULL,
+	link_icon_class VARCHAR(30) NULL,
 	PRIMARY KEY (id)
 );

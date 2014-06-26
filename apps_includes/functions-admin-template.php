@@ -264,6 +264,10 @@ function get_admin_links_form() {
 						<label for="address">Order</label>
 						<input type="text" id="order" name="link_order" value="'. $links->getValue('link_order') .'" />
 					</li>
+					<li>
+						<label for="address">Icon Class</label>
+						<input type="text" id="class" name="link_icon_class" value="'. $links->getValue('link_icon_class') .'" />
+					</li>
 					<li><input type="submit" name="submit" value="Submit" /></li>
 				</ul>
 			</form>';
