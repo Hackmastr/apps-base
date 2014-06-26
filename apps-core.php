@@ -5,7 +5,7 @@
  */
 session_start();
  
-define('APPS_CORE_VERSION', '1.0-alpha');
+define('APPS_CORE_VERSION', '1.0a');
 
 /**
  * Get required files
