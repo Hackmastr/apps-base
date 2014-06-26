@@ -191,4 +191,52 @@ class Master {
 		
 	}
 	
+	/**
+	 * Selects single record data from database
+	 */
+	function getRecord($what, $field = 'id') {
+		
+		switch ($what) {
+			
+			case 'first':
+				
+				$filter = array(
+					'fields' => array($field),
+					'limit' => true
+				);
+				
+				$results = $this->getData($filter);
+				
+				break;
+			
+			case 'next':
+			
+				if ($this->id) {
+			
+					$next_record = $this->id + 1;
+					$filter = array(
+						'fields' => array($field),
+						'where' => 'id = '. $next_record,
+						'limit' => true
+					);
+					
+					$results = $this->getData($filter);
+					
+				} else {
+				
+					$results = false;
+				
+				}
+			
+				break;
+				
+			default:
+				$results = false;
+			
+		}
+		
+		return $results->$field;
+		
+	}
+	
 }
