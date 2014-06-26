@@ -23,6 +23,7 @@ body {
 #apps_main_container {
 	background-color: #ffffff;
 	border-top: 3px solid #660066;
+	clear: both;
 	box-sizing: border-box;
 	box-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
 	overflow: hidden;
@@ -388,3 +389,51 @@ h2 {
 			display: block;
 			font-size: 0.7em;
 		}
+		
+/**
+ * Media Queries
+ */
+@media all and (max-width: 1000px) {
+
+	body {
+		font-size: 12px;
+	}
+
+}
+
+@media all and (max-width: 720px) {
+
+	#apps_site_header {
+		margin: 0 0 10px 10px;
+	}
+
+		#apps_site_nav {
+			margin-top: 20px;
+			position: relative;
+				left: 0; bottom: 10px;
+		}
+
+	#apps_dashboard_links li {
+		width: 25%;
+	}
+}
+
+@media all and (max-width: 600px) {
+
+	#apps_dashboard_links li {
+		width: 33.3%;
+	}
+}
+
+@media all and (max-width: 450px) {
+
+	#apps_site_nav li {
+		float: none;
+	}
+	
+	
+
+	#apps_dashboard_links li {
+		width: 50%;
+	}
+}
