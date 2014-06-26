@@ -391,6 +391,26 @@ h2 {
 		}
 		
 /**
+ * Apps Site Footer
+ */
+#apps_site_footer {
+	color: #999999;
+	font-size: 0.9em;
+	font-weight: bold;
+	padding-top: 10px;
+	text-align: right;
+	text-shadow: 1px 1px 0 #ffffff;
+}
+
+	#apps_site_footer a {
+		color: #666666;
+	}
+	
+	#apps_site_footer a:hover {
+		text-decoration: underline;
+	}
+		
+/**
  * Media Queries
  */
 @media all and (max-width: 1000px) {
