@@ -234,11 +234,13 @@ h2 {
 }
 
 	.success {
-		background-color: #ccff99;
+		background-color: #99ff99;
+		border: 1px solid #339933;
 	}
 	
 	.error {
-		background-color: #ff9999;
+		background-color: #ffcccc;
+		border: 1px solid #ff0000;
 	}
 	
 /**
