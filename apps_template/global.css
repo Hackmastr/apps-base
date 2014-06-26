@@ -305,6 +305,28 @@ h2 {
 			background-color: #660066;
 			color: #ffffff;
 		}
+		
+/**
+ * Buttons
+ */
+.table_action_buttons li {
+	list-style: none;
+	margin-bottom: 20px;
+}
+
+.buttons a {
+	background-color: #dddddd;
+	border-radius: 4px;
+	box-shadow: 1px 1px 0 #c0c0c0;
+	color: #505050;
+	font-weight: bold;
+	padding: 5px 15px;
+}
+
+.buttons a:hover {
+	background-color: #660066;
+	color: #ffffff;
+}
 
 		
 /**
