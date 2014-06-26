@@ -249,4 +249,12 @@ class Template {
 		
 	}
 	
+	/**
+	 * Redirects page
+	 */
+	function redirect($url) {
+		header('Location: '. $url);
+		exit();
+	}
+	
 }
