@@ -42,7 +42,12 @@ h1 {
 }
 
 h2 {
+	font-size: 1.8em;
 	margin-bottom: 10px;
+}
+
+h3 {
+	font-size: 1.2em;
 }
 
 /**
@@ -55,6 +60,7 @@ h2 {
 
 	#apps_site_logo {
 		max-width: 300px;
+		line-height: 0;
 	}
 	
 		#apps_site_logo img {
@@ -137,15 +143,8 @@ h2 {
 	width: 200px;
 }
 
-	.apps_sidebar h3 {
-		border-bottom: 1px solid #c0c0c0;
-		color: #505050;
-		font-size: 1em;
-		text-transform: uppercase;
-	}	
-
 	.apps_sidebar ul {
-		margin: 5px 0;
+		margin: 5px 0 10px;
 	}
 
 		.apps_sidebar li {
@@ -154,15 +153,13 @@ h2 {
 		}
 		
 			.apps_sidebar li a {
-				border-radius: 5px;
-				color: #505050;
+				color: #404040;
 				display: block;
-				padding: 4px 8px;
+				padding: 5px 10px;
 			}
 			
 			.apps_sidebar li a:hover, .apps_sidebar li.active a {
 				background-color: #dddddd;
-				color: #202020;
 			}
 		
 /**
@@ -180,21 +177,39 @@ h2 {
 	}
 		.apps_form label, .apps_form p {
 			float: left;
-			margin-right: 20px;
+			margin: 8px 20px 0 0;
 			width: 150px;
 		}
 		
 		.apps_form input[type=text], .apps_form textarea {
-			background-color: #dddddd;
-			border: none;
-			border-radius: 5px;
+			border: 1px solid #c0c0c0;
+			border-bottom: 4px solid #c0c0c0;
+			box-shadow: inset 0 1px 3px #c0c0c0;
 			outline: none;
-			padding: 5px;
+			padding: 10px;
 			width: 260px;
+		}
+		
+		.apps_form input[type=text]:focus, .apps_form textarea:focus {
+			border-bottom-color: #ff6600;
 		}
 		
 		.apps_form input:focus {
 			outline: none;
+		}
+		
+		.apps_form input[readonly] {
+			background-color: transparent;
+			border-bottom-width: 1px;
+			box-shadow: none;
+		}
+		
+		.apps_form_right_button {
+			margin-left: 10px;
+		}
+		
+		.apps_form button {
+			padding: 5px;
 		}
 		
 		.apps_form li.checkbox {
@@ -245,6 +260,15 @@ h2 {
 	}
 	
 /**
+ * Panels
+ */
+.panel {
+	background-color: #dddddd;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+	
+/**
  * Apps List Table
  */
 .apps_list_table {
@@ -280,9 +304,9 @@ h2 {
  * Tabbed menu
  */
 .apps_tabbed_nav {
-	border-bottom: 3px solid #660066;
-	margin-bottom: 10px;
 	overflow: hidden;
+	position: relative;
+	bottom: -1px;
 }
 
 .tabbed_nav_right {
@@ -292,22 +316,31 @@ h2 {
 	.apps_tabbed_nav li {
 		float: left;
 		list-style: none;
+		margin-left: 10px;
 	}
 	
 		.apps_tabbed_nav li a {
-			color: #808080;
+			background-color: #dddddd;
+			border: 1px solid #c0c0c0;
+			border-bottom: 0;
+			color: #404040;
 			display: block;
 			padding: 10px;
 		}
 		
 		.apps_tabbed_nav li a:hover {
-			color: #660066;
+			background-color: #c0c0c0;
 		}
 		
 		.apps_tabbed_nav li.active a {
-			background-color: #660066;
-			color: #ffffff;
+			background-color: #ffffff;
+			border-bottom: 1px solid #ffffff;
 		}
+
+.apps_tabbed_content {
+	border: 1px solid #c0c0c0;
+	padding: 20px;
+}
 		
 /**
  * Buttons
@@ -319,11 +352,7 @@ h2 {
 
 .buttons a {
 	background-color: #dddddd;
-	border-radius: 4px;
-	box-shadow: 1px 1px 0 #c0c0c0;
-	color: #505050;
-	font-size: .9em;
-	font-weight: bold;
+	color: #404040;
 	padding: 4px 12px;
 }
 
@@ -367,7 +396,7 @@ h2 {
 		box-sizing: border-box;
 		color: #000000;
 		display: table-cell;
-		font-size: 1.5em;
+		font-size: 1.4em;
 		text-align: center;
 		vertical-align: middle;
 	}
