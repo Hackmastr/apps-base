@@ -144,22 +144,26 @@ h3 {
 }
 
 	.apps_sidebar ul {
-		margin: 5px 0 10px;
+		border-top: 1px solid #dddddd;
+		margin: 10px 0 20px;
 	}
 
 		.apps_sidebar li {
 			list-style: none;
-			margin-bottom: 5px;
 		}
 		
 			.apps_sidebar li a {
-				color: #404040;
+				border-bottom: 1px solid #dddddd;
+				color: #999999;
 				display: block;
-				padding: 5px 10px;
+				font-size: 0.9em;
+				font-weight: bold;
+				padding: 10px;
+				text-transform: uppercase;
 			}
 			
 			.apps_sidebar li a:hover, .apps_sidebar li.active a {
-				background-color: #dddddd;
+				color: #000000;
 			}
 		
 /**
@@ -263,16 +267,16 @@ h3 {
  * Panels
  */
 .panel {
-	background-color: #dddddd;
-	margin-bottom: 10px;
-	padding: 10px;
+	border-bottom: 2px solid #dddddd;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
 }
 	
 /**
  * Apps List Table
  */
 .apps_list_table {
-	border: 1px solid #c0c0c0;
+	border: 1px solid #dddddd;
 	border-collapse: collapse;
 	width: 100%;
 }
@@ -283,7 +287,7 @@ h3 {
 	}
 	
 	.apps_list_table td {
-		border-top: 1px solid #c0c0c0;
+		border-top: 1px solid #dddddd;
 		padding: 10px;
 	}
 	
@@ -320,25 +324,27 @@ h3 {
 	}
 	
 		.apps_tabbed_nav li a {
-			background-color: #dddddd;
-			border: 1px solid #c0c0c0;
+			border: 1px solid #dddddd;
 			border-bottom: 0;
-			color: #404040;
+			color: #999999;
 			display: block;
+			font-size: 0.9em;
+			font-weight: bold;
 			padding: 10px;
 		}
 		
 		.apps_tabbed_nav li a:hover {
-			background-color: #c0c0c0;
+			color: #000000;
 		}
 		
 		.apps_tabbed_nav li.active a {
 			background-color: #ffffff;
 			border-bottom: 1px solid #ffffff;
+			color: #000000;
 		}
 
 .apps_tabbed_content {
-	border: 1px solid #c0c0c0;
+	border: 1px solid #dddddd;
 	padding: 20px;
 }
 		
