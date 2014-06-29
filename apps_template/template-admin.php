@@ -12,7 +12,34 @@
 	
 		<?php get_message(); ?>
 	
-		<p>Admin Dashboard</p>
+		<section id="apps_dashboard_links">
+			<ul>
+				<li class="dashboard_link">
+					<a href="<?php $template->get_option('site_url'); ?>?area=locations">
+						<i class="fa fa-globe"></i>
+						<h4>Locations</h4>
+					</a>
+				</li>
+				<li class="dashboard_link">
+					<a href="<?php $template->get_option('site_url'); ?>?area=divisions">
+						<i class="fa fa-sitemap"></i>
+						<h4>Divisions</h4>
+					</a>
+				</li>
+				<li class="dashboard_link">
+					<a href="<?php $template->get_option('site_url'); ?>?area=cells">
+						<i class="fa fa-cubes"></i>
+						<h4>Cells</h4>
+					</a>
+				</li>
+				<li class="dashboard_link">
+					<a href="<?php $template->get_option('site_url'); ?>?area=links">
+						<i class="fa fa-link"></i>
+						<h4>Links</h4>
+					</a>
+				</li>
+			</ul>
+		</section>
 	
 	</div>
 
