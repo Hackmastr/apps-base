@@ -398,6 +398,7 @@ h3 {
 }
 
 	#apps_dashboard_links li a {
+		border-radius: 2px;
 		box-sizing: border-box;
 		color: #000000;
 		display: table-cell;
