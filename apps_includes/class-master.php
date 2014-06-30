@@ -35,6 +35,7 @@ class Master {
 		$where = isset($args['where']) ? $args['where'] : NULL;
 		$limit = isset($args['limit']) ? $args['limit'] : false;
 		$left_join = isset($args['left_join']) ? $args['left_join'] : isset($this->left_join) ? $this->left_join : array();
+		$orderby = isset($args['orderby']) ? $args['orderby'] : NULL;
 		
 		// Begin our SQL SELECT statement
 		$sql = 'SELECT ';
@@ -72,6 +73,11 @@ class Master {
 		// Is a criteria set?
 		if (!is_null($where)) {
 			$sql .= ' WHERE '. $where;
+		}
+		
+		// Are we ording by a specific column?
+		if ($orderby) {
+			$sql .= ' ORDER BY '. $orderby;
 		}
 		
 		// Get results
