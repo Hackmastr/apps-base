@@ -42,4 +42,4 @@ define('DB_PASS', '');
  * Turn on or off debug mode
  * true/false
  */
-define('DEBUG', true);
+define('DEBUG', false);
