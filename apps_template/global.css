@@ -283,20 +283,32 @@ h3 {
 	.apps_list_table td {
 		border-top: 1px solid #dddddd;
 		padding: 10px;
+		position: relative;
 	}
 	
-	.apps_list_table td .link-delete {
-		display: none;
-		float: right;
+	.apps_list_table li {
+		list-style: none;
 	}
 	
-		.apps_list_table td .link-delete a {
+	.apps_list_table ul li {
+		font-size: 0.8em;
+		font-weight: bold;
+	}
+
+	.list_links {
+		position: absolute;
+			right: 10px; bottom: 10px;
+	}
+	
+		.delete a {
 			color: #ff0000;
+			display: none;
 		}
 		
-	.apps_list_table td:hover .link-delete {
-		display: inline;
-	}
+		.apps_list_table td:hover .delete a {
+			display: inline;
+		}
+
 			
 /**
  * Tabbed menu
