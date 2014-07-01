@@ -81,7 +81,10 @@ function get_admin_locations_form() {
 			$table .= '<tr>
 				<td class="app_list_data app_list_title">
 					<a href="'. $template->get_option('site_url') .'/admin.php?area=locations&id='. $location->id .'&action=edit">'. $location->location_name .'</a>
-					<span class="link-delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=locations&id='. $location->id .'&action=delete">Delete</a></span>
+					
+					<ul class="list_links">
+						<li class="delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=locations&id='. $location->id .'&action=delete">Delete</a></li>
+					</ul>
 				</td>
 			</tr>';
 			
@@ -136,7 +139,10 @@ function get_admin_divisions_form() {
 			$table .= '<tr>
 				<td class="app_list_data app_list_title">
 					<a href="'. $template->get_option('site_url') .'/admin.php?area=divisions&id='. $division->id .'&action=edit">'. $division->division_name .'</a>
-					<span class="link-delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=divisions&id='. $division->id .'&action=delete">Delete</a></span>
+					
+					<ul class="list_links">
+						<li class="delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=divisions&id='. $division->id .'&action=delete">Delete</a></li>
+					</ul>
 				</td>
 			</tr>';
 			
@@ -226,7 +232,10 @@ function get_admin_cells_form() {
 			$table .= '<tr>
 				<td class="app_list_data app_list_title">
 					<a href="'. $template->get_option('site_url') .'/admin.php?area=cells&id='. $cell->id .'&action=edit">'. $cell->cell_name .'</a>
-					<span class="link-delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=cells&id='. $cell->id .'&action=delete">Delete</a></span>
+					
+					<ul class="list_links">
+						<li class="delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=cells&id='. $cell->id .'&action=delete">Delete</a></li>
+					</ul>
 				</td>
 			</tr>';
 			
@@ -299,7 +308,10 @@ function get_admin_links_form() {
 			$table .= '<tr>
 				<td class="app_list_data app_list_title">
 					<a href="'. $template->get_option('site_url') .'/admin.php?area=links&id='. $link->id .'&action=edit">'. $link->link_name .'</a>
-					<span class="link-delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=links&id='. $link->id .'&action=delete">Delete</a></span>
+					
+					<ul class="list_links">
+						<li class="delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=links&id='. $link->id .'&action=delete">Delete</a></li>
+					</ul>
 				</td>
 			</tr>';
 			
