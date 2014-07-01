@@ -200,7 +200,7 @@ class Master {
 	/**
 	 * Selects single record data from database
 	 */
-	function getRecord($what, $field = 'id') {
+	function getRecord($what, $field = 'id', $orderby = 'id') {
 		
 		switch ($what) {
 			
@@ -208,7 +208,8 @@ class Master {
 				
 				$filter = array(
 					'fields' => array($field),
-					'limit' => true
+					'limit' => true,
+					'orderby' => $orderby
 				);
 				
 				$results = $this->getData($filter);
@@ -223,7 +224,8 @@ class Master {
 					$filter = array(
 						'fields' => array($field),
 						'where' => 'id = '. $next_record,
-						'limit' => true
+						'limit' => true,
+						'orderby' => $orderby
 					);
 					
 					$results = $this->getData($filter);
