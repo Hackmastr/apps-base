@@ -189,67 +189,6 @@ class Template {
 	}
 	
 	/**
-	 * Gets site nav menu
-	 * @TODO: Populate database with nav link, and retrieve from there
-	 *        Clean up this code!!
-	 */
-	function get_nav_menu() {
-	
-		$nav_menu = '<ul>';
-
-		$nav_menu_setup = array(
-			'home' => array(
-				'title' => 'Home',
-				'url' => '/index.php',
-			),
-			'apps' => array(
-				'title' => 'Apps',
-				'url' => '/a/index.php',
-				'children' => array(
-					'monthly' => array(
-						'title' => 'Monthly',
-						'url' => '/a/monthly/index.php',
-					),
-				),
-			),
-			'admin' => array(
-				'title' => 'Admin',
-				'url' => '/admin.php',
-			),
-		);
-		
-		foreach($nav_menu_setup as $nav_item => $nav_item_properties) {
-			
-			if (isset($nav_item_properties['children'])) {
-				
-				$nav_menu .= '<li '. ($this->getParentPage() == $nav_item ? 'class="current-menu-item"' : '') .'>
-					<a href="'. $this->get_option('site_url') . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .'</a>
-					<ul>';
-				
-					foreach ($nav_item_properties['children'] as $child_item => $child_item_properties) {
-					
-						$nav_menu .= '<li><a href="'. $this->get_option('site_url') . $child_item_properties['url'] .'">'. $child_item_properties['title'] .'</a></li>';
-						
-					}
-				
-					$nav_menu .= '</ul>
-				</li>';
-				
-			} else {
-				
-				$nav_menu .= '<li '. ($this->getParentPage() == $nav_item ? 'class="current-menu-item"' : '') .'><a href="'. $this->get_option('site_url') . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .'</a></li>';
-				
-			}
-			
-		}
-		
-		$nav_menu .= '</ul>';
-		
-		return $nav_menu;
-		
-	}
-	
-	/**
 	 * Redirects page
 	 */
 	function redirect($url) {

@@ -75,6 +75,67 @@ function apps_head() {
 }
 
 /**
+ * Displays main nav menu
+ */
+function get_nav_menu() {
+	
+	global $template;
+	
+	$nav_menu = '<ul>';
+
+	$nav_menu_setup = array(
+		'home' => array(
+			'title' => 'Home',
+			'url' => '/index.php',
+		),
+		'apps' => array(
+			'title' => 'Apps',
+			'url' => '/a/index.php',
+			'children' => array(
+				'monthly' => array(
+					'title' => 'Monthly',
+					'url' => '/a/monthly/index.php',
+				),
+			),
+		),
+		'admin' => array(
+			'title' => 'Admin',
+			'url' => '/admin.php',
+		),
+	);
+	
+	foreach($nav_menu_setup as $nav_item => $nav_item_properties) {
+		
+		if (isset($nav_item_properties['children'])) {
+			
+			$nav_menu .= '<li '. ($template->getParentPage() == $nav_item ? 'class="current-menu-item"' : '') .'>
+				<a href="'. $template->get_option('site_url') . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .'</a>
+				<ul>';
+			
+				foreach ($nav_item_properties['children'] as $child_item => $child_item_properties) {
+				
+					$nav_menu .= '<li><a href="'. $template->get_option('site_url') . $child_item_properties['url'] .'">'. $child_item_properties['title'] .'</a></li>';
+					
+				}
+			
+				$nav_menu .= '</ul>
+			</li>';
+			
+		} else {
+			
+			$nav_menu .= '<li '. ($template->getParentPage() == $nav_item ? 'class="current-menu-item"' : '') .'><a href="'. $template->get_option('site_url') . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .'</a></li>';
+			
+		}
+		
+	}
+	
+	$nav_menu .= '</ul>';
+	
+	echo $nav_menu;
+	
+}
+
+/**
  * Creates message
  */
 function create_message($type, $message, $echo = false) {

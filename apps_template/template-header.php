@@ -30,7 +30,7 @@
 		<h1 id="apps_site_logo"><a href="<?php echo $template->get_option('site_url'); ?>"><img src="<?php echo $template->get_option('site_url'); ?>/apps_template/images/logo.png" alt="'. SITE_TITLE .'" /></a></h1>
 	
 		<nav id="apps_site_nav">
-			<?php echo $template->get_nav_menu(); ?>
+			<?php get_nav_menu(); ?>
 		</nav>
 		
 	</header>
