@@ -96,6 +96,10 @@ function get_nav_menu() {
 					'title' => 'Monthly',
 					'url' => '/a/monthly/index.php',
 				),
+				'pitchtracker' => array(
+					'title' => 'PitchTracker',
+					'url' => '/a/pitchtracker/index.php'
+				),
 			),
 		),
 		'admin' => array(

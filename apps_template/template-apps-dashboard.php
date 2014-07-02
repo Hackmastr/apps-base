@@ -10,6 +10,12 @@
 					<h4>Monthly</h4>
 				</a>
 			</li>
+			<li class="dashboard_link">
+				<a href="<?php echo $template->get_option('site_url'); ?>/a/pitchtracker">
+					<i class="fa fa-bar-chart-o"></i>
+					<h4>PitchTracker</h4>
+				</a>
+			</li>
 		</ul>
 	</section>
 
