@@ -86,6 +86,7 @@ h3 {
 				padding: 10px 20px;
 				text-shadow: 1px 1px 1px #ffffff;
 				text-transform: uppercase;
+				transition: background-color 0.1s;
 			}
 
 			#apps_site_nav li a:hover, #apps_site_nav li:hover {
@@ -141,9 +142,13 @@ h3 {
 	width: 200px;
 }
 
+	.apps_sidebar h3 {
+		border-bottom: 1px solid #000000;
+		padding-bottom: 5px;
+	}
+
 	.apps_sidebar ul {
-		border-top: 1px solid #dddddd;
-		margin: 10px 0 20px;
+		margin-bottom: 10px;
 	}
 
 		.apps_sidebar li {
@@ -151,13 +156,13 @@ h3 {
 		}
 		
 			.apps_sidebar li a {
-				border-bottom: 1px solid #dddddd;
 				color: #999999;
 				display: block;
 				font-size: 0.9em;
 				font-weight: bold;
-				padding: 10px;
+				padding: 10px 0;
 				text-transform: uppercase;
+				transition: color 0.1s;
 			}
 			
 			.apps_sidebar li a:hover, .apps_sidebar li.active a {
@@ -337,6 +342,7 @@ h3 {
 			font-size: 0.9em;
 			font-weight: bold;
 			padding: 10px;
+			transition: color 0.1s;
 		}
 		
 		.apps_tabbed_nav li a:hover {
@@ -416,6 +422,7 @@ h3 {
 		display: table-cell;
 		font-size: 1.4em;
 		text-align: center;
+		transition: background-color 0.1s;
 		vertical-align: middle;
 	}
 	
