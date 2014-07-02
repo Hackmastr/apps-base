@@ -2,8 +2,7 @@ $(function() {
 
 	/**
 	 * Prevent unsaved changes if user navigates away from page
-	 */
-	
+	 * ---------------------------------------------------------------------------------------------- */
 	$('.apps_form').on('change keyup keydown', 'input, textarea, select', function(e) {
 		$(this).addClass('changed-input');
 	});
@@ -22,11 +21,19 @@ $(function() {
 	    
 	});
 	
-	/*----------------------------------------------------------------------------------------------*/
 	
 	/**
+	 * Check all checkboxes
+	 * From: http://briancray.com/posts/check-all-jquery-javascript
+	 * ---------------------------------------------------------------------------------------------- */
+	$('.checkall').on('click', function() {
+		$(this).closest('.checkmultiple').find(':checkbox').prop('checked', this.checked);
+	});
+	
+
+	/**
 	 * Dashboard-like page links
-	 */
+	 * ---------------------------------------------------------------------------------------------- */
 	 
 	// Get the initial width of the links and apply equal height
 	link_width = $('.dashboard_link').width();
