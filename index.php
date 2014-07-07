@@ -10,6 +10,10 @@ $template->set_page_title('Home');
 $template->setParentPage('home');
 
 require_once('apps_includes/functions-dashboard-template.php');
+require_once('apps_includes/class-innolunch.php');
 $links = Bootstrap::Load('Links');
+$innolunch = Bootstrap::Load('Innolunch');
+
+$template->addScript('<link rel="stylesheet" type="text/css" href="'. $template->get_option('site_url') .'/apps_template/base.css" />');
 	
 load_template('home');

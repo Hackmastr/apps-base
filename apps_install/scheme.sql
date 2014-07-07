@@ -36,3 +36,24 @@ CREATE TABLE app_links (
 	link_icon_class VARCHAR(30) NULL,
 	PRIMARY KEY (id)
 );
+
+CREATE TABLE app_innolunch_week (
+	id bigint(20) unsigned NOT NULL auto_increment,
+	innolunch_week VARCHAR(100) NOT NULL,
+	PRIMARY KEY (id)
+);
+INSERT INTO app_innolunch_week (innolunch_week) VALUES ('00/00/0000');
+
+CREATE TABLE app_innolunch (
+	id bigint(20) unsigned NOT NULL auto_increment,
+	innolunch_week_id BIGINT(20) NOT NULL DEFAULT 1,
+	innolunch_day VARCHAR(200) NOT NULL,
+	innolunch_item VARCHAR(200) NOT NULL,
+	innolunch_price VARCHAR(200) NOT NULL,
+	PRIMARY KEY (id)	
+);
+INSERT INTO app_innolunch (innolunch_week_id, innolunch_day, innolunch_item, innolunch_price) VALUES (1, 'Monday', 'Item 1', '$3.00');
+INSERT INTO app_innolunch (innolunch_week_id, innolunch_day, innolunch_item, innolunch_price) VALUES (1, 'Tuesday', 'Item 2', '$3.00');
+INSERT INTO app_innolunch (innolunch_week_id, innolunch_day, innolunch_item, innolunch_price) VALUES (1, 'Wednesday', 'Item 3', '$3.00');
+INSERT INTO app_innolunch (innolunch_week_id, innolunch_day, innolunch_item, innolunch_price) VALUES (1, 'Thursday', 'Item 4', '$3.00');
+INSERT INTO app_innolunch (innolunch_week_id, innolunch_day, innolunch_item, innolunch_price) VALUES (1, 'Friday', 'Item 5', '$3.00');

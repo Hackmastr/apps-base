@@ -5,5 +5,9 @@
 	<section id="apps_dashboard_links">
 		<?php get_dashboard_links(); ?>
 	</section>
+	
+	<section id="apps_innolunch">
+		<?php get_innolunch_menu(); ?>
+	</section>
 
 <?php get_footer(); ?>

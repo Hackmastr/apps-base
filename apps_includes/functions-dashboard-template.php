@@ -29,3 +29,29 @@ function get_dashboard_links() {
 	echo $dashboard_link_list;
 	
 }
+
+/**
+ * Innolunch Menu
+ */
+function get_innolunch_menu() {
+	
+	global $innolunch, $template;
+	
+	$menu = '<h2>Lunch Schedule</h2>
+	<ul>';
+	
+	foreach ($innolunch->getData() as $lunch) {
+		$menu .= '<li>
+		
+			<p class="day">'. $lunch->innolunch_day .'</p>
+			<p class="item">'. $lunch->innolunch_item .'</p>
+			<p class="price">'. $lunch->innolunch_price .'</p>
+			
+		</li>';
+	}
+	
+		$menu .= '</ul>';
+	
+	echo $menu;
+	
+}
