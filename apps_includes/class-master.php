@@ -238,6 +238,12 @@ class Master {
 			
 				break;
 				
+			case 'last':
+			
+				return $this->db->getLastInsertID();
+				
+				break;
+				
 			default:
 				$results = false;
 			
