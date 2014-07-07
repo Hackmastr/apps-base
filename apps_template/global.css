@@ -368,7 +368,7 @@ h3 {
 	margin-bottom: 20px;
 }
 
-.buttons a, input[type=submit], button {
+.buttons a, input[type=submit], input[type=button], button {
 	background-color: #0066cc;
 	border: 0;
 	color: #ffffff;
@@ -376,11 +376,11 @@ h3 {
 	padding: 4px 8px;
 }
 
-.buttons a:hover, input[type=submit]:hover, button:hover {
+.buttons a:hover, input[type=submit]:hover, input[type=button]:hover, button:hover {
 	background-color: #0099ff;
 }
 
-.buttons a:active, input[type=submit]:active, button:active {
+.buttons a:active, input[type=submit]:active, input[type=button]:active, button:active {
 	box-shadow: inset 0 0 2px #000000;
 }
 
