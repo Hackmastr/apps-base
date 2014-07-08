@@ -233,17 +233,6 @@ h3 {
 				padding: 0;
 			}
 		
-.apps_form.inline li {
-	float: left;
-	margin-right: 20px;
-}
-
-	.apps_form.inline li label {
-		float: none;
-		margin: 0;
-		width: auto;
-	}
-		
 /**
  * Message Boxes
  */
