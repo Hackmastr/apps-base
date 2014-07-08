@@ -44,7 +44,7 @@ class Master {
 		if (empty($fields)) {
 			$sql .= $this->db_table .'.'. implode(', '. $this->db_table .'.', $this->db_fields);
 		} else {
-			$sql .= $this->db_table .'.'. implode(', '. $this->db_table .'.', $fields);
+			$sql .= implode(', ', $fields);
 		}
 		
 		// Select from left join?
@@ -104,8 +104,8 @@ class Master {
 			
 			// Filter our data
 			$filter = array(
-				'fields' => array('id', $field),
-				'where' => 'id = '. $this->id,
+				'fields' => array($field),
+				'where' => $this->db_table .'.id = '. $this->id,
 				'limit' => true
 			);
 			
