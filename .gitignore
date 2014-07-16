@@ -4,4 +4,4 @@
 !/a/index.php
 
 # Ignore user config file
-apps_config.php
+apps-config.php
