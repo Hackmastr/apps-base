@@ -470,6 +470,26 @@ h3 {
 	body {
 		font-size: 12px;
 	}
+	
+	.apps_sidebar {
+		float: none;
+		margin-bottom: 20px;
+		width: 100%;
+	}
+	
+		.apps_sidebar li {
+			display: inline;
+			margin-right: 20px;
+		}
+		
+			.apps_sidebar li a {
+				display: inline;
+				font-size: 1.2em;
+			}
+	
+	.apps_content.right {
+		margin: 0;
+	}
 
 }
 
