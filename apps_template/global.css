@@ -182,6 +182,15 @@ h3 {
 		overflow: hidden;
 		padding: 5px 0;
 	}
+	
+		.apps_form li.dropdown {
+			overflow: visible;
+		}
+		
+			.apps_form li.dropdown ul {
+				float: none;
+			}
+		
 		.apps_form label, .apps_form p {
 			float: left;
 			margin: 8px 20px 0 0;
