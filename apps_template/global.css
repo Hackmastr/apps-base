@@ -262,6 +262,11 @@ h3 {
 		border: 1px solid #339933;
 	}
 	
+	.info {
+		background-color: #99ccff;
+		border: 1px solid #336699;
+	}
+	
 	.error {
 		background-color: #ffcccc;
 		border: 1px solid #ff0000;
