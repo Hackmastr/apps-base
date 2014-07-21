@@ -7,18 +7,28 @@ a { color: #0066cc; text-decoration: none; outline: none; }
 a:hover { color: #0099ff; }
 header, section, footer, aside, nav, article, figure { display: block; }
 
+.clear:after {
+	clear: both;
+	content: " ";
+	display: table;
+}
+
+html {
+	font-family: arial;
+	font-size: 16px;
+}
+
+@media (max-width: 1000px) {
+	html {
+		font-size: 14px;
+	}
+}
+
 /**
  * Main Layout Structure
  */
 body {
 	background-color: #f1f1f1;
-	font: 16px/1.4 arial;
-}
-
-@media (max-width: 1000px) {
-	body {
-		font-size: 14px;
-	}
 }
 
 #apps_site_wrap {
@@ -64,6 +74,7 @@ h3 {
 }
 
 	#apps_site_logo {
+		float: left;
 		max-width: 300px;
 		line-height: 0;
 	}
@@ -73,69 +84,64 @@ h3 {
 		}
 		
 	#apps_site_nav {
-		position: absolute;
-			right: 0; bottom: 0;
+		float: right;
+		margin-top: 30px;
+		position: relative;
 	}
-
+	
 		#apps_site_nav li {
-			line-height: normal;
-			list-style: none;
 			float: left;
-			margin-right: 10px;
-			text-align: center;
+			list-style: none;
+			margin-left: 20px;
 		}
-
+		
 			#apps_site_nav li a {
-				color: #000000;
+				color: #777;
 				display: block;
-				padding: 10px 20px;
-				text-shadow: 1px 1px 1px #ffffff;
+				padding: 20px;
 				text-transform: uppercase;
-				transition: background-color 0.1s;
 			}
-
-			#apps_site_nav li a:hover, #apps_site_nav li:hover {
-				background-color: #dddddd;
+			
+			#apps_site_nav li a:hover, #apps_site_nav li.current-menu-item a {
+				color: #000000;
 			}
-
-			#apps_site_nav li.current-menu-item a {
-				background-color: #660066;
-				color: #ffffff;
-				text-shadow: none;
+		
+			#apps_site_nav li ul {
+				background-color: #000000;
+				display: none;
+				position: absolute;
+					top: 99%;
+				z-index: 5;
 			}
-
-				#apps_site_nav li ul {
-					background-color: #dddddd;
-					display: none;
-					position: absolute;
-					z-index: 10;
+			
+			#apps_site_nav li ul:before {
+				border: 10px solid transparent;
+				border-bottom-color: #000000;
+				content: " ";
+				height: 0;
+				position: absolute;
+					top: -20px; left: 14%;
+				width: 0;
+				z-index: 5;
+			}
+			
+			#apps_site_nav li:hover > ul {
+				display: block;
+			}
+			
+				#apps_site_nav li li {
+					margin: 0;
+					width: 200px;
 				}
-
-				#apps_site_nav li:hover > ul {
-					display: block;
-				}
-
-					#apps_site_nav li ul li {
-						border: none;
-						float: none;
-						margin: 0;
-						text-align: left;
-						width: 200px;
+			
+					#apps_site_nav li li a, #apps_site_nav li.current-menu-item li a {
+						color: #dddddd;
+						font-size: 0.9em;
+						padding: 20px;
 					}
-
-					#apps_site_nav li ul li a {
-						display: block;
-						line-height: normal;
-						padding: 10px 20px;
-					}
-
-					#apps_site_nav li ul li a:hover {
-						border-left: 2px solid #990099;
-					}
-
-					#apps_site_nav li.current-menu-item ul li a:hover {
-						background-color: #990099;
-						border: none;
+					
+					#apps_site_nav li li a:hover {
+						color: #ffffff;
 					}
 
 /**
