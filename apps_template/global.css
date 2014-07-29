@@ -8,35 +8,6 @@ a { color: #0066cc; text-decoration: none; outline: none; }
 a:hover { text-decoration: underline; }
 header, section, footer, aside, nav, article, figure { display: block; }
 
-<<<<<<< HEAD
-.clear:after {
-	clear: both;
-	content: " ";
-	display: table;
-}
-
-html {
-	font-family: arial;
-	font-size: 16px;
-}
-
-@media (max-width: 1000px) {
-	html {
-		font-size: 14px;
-	}
-}
-
-/**
- * Main Layout Structure
- */
-body {
-	background-color: #f1f1f1;
-}
-
-#apps_site_wrap {
-	margin: 20px auto;
-	max-width: 1000px;
-=======
 /**
  * Grid
  */
@@ -53,7 +24,6 @@ body {
 
 [class*='col-']:last-of-type {
   padding-right: 0;
->>>>>>> redesign
 }
 
 .col-fullwidth { width: 100%; }
@@ -109,76 +79,16 @@ body {
 
 	#apps_site_logo {
 		float: left;
-<<<<<<< HEAD
-		max-width: 300px;
-		line-height: 0;
-=======
->>>>>>> redesign
 	}
 	
 	#apps_site_nav {
-		float: right;
-		margin-top: 30px;
-		position: relative;
+		position: absolute;
+			right: 0; bottom: 0;
 	}
 	
 		#apps_site_nav li {
 			float: left;
 			list-style: none;
-<<<<<<< HEAD
-			margin-left: 20px;
-		}
-		
-			#apps_site_nav li a {
-				color: #777;
-				display: block;
-				padding: 20px;
-				text-transform: uppercase;
-			}
-			
-			#apps_site_nav li a:hover, #apps_site_nav li.current-menu-item a {
-				color: #000000;
-			}
-		
-			#apps_site_nav li ul {
-				background-color: #000000;
-				display: none;
-				position: absolute;
-					top: 99%;
-				z-index: 5;
-			}
-			
-			#apps_site_nav li ul:before {
-				border: 10px solid transparent;
-				border-bottom-color: #000000;
-				content: " ";
-				height: 0;
-				position: absolute;
-					top: -20px; left: 14%;
-				width: 0;
-				z-index: 5;
-			}
-			
-			#apps_site_nav li:hover > ul {
-				display: block;
-			}
-			
-				#apps_site_nav li li {
-					margin: 0;
-					width: 200px;
-				}
-			
-					#apps_site_nav li li a, #apps_site_nav li.current-menu-item li a {
-						color: #dddddd;
-						font-size: 0.9em;
-						padding: 20px;
-					}
-					
-					#apps_site_nav li li a:hover {
-						color: #ffffff;
-					}
-
-=======
 			margin-right: 10px;
 			position: relative;
 		}
@@ -222,7 +132,6 @@ body {
 						background-color: #330033;
 					}
 					
->>>>>>> redesign
 /**
  * Apps Site Footer
  */
@@ -247,71 +156,10 @@ body {
 		margin-top: 5px;
 	}
 	
-<<<<<<< HEAD
-		.apps_form li.dropdown {
-			overflow: visible;
-		}
-		
-			.apps_form li.dropdown ul {
-				float: none;
-			}
-			
-		.apps_form .label {
-			width: 200px;
-		}
-		
-		.apps_form label, .apps_form p {
-			float: left;
-			margin: 8px 20px 0 0;
-			width: 180px;
-		}
-		
-		.apps_form input[type=text], .apps_form textarea {
-			border: 1px solid #c0c0c0;
-			box-shadow: inset 0 0 3px #c0c0c0;
-			font-size: 0.8rem;
-			outline: none;
-			padding: 10px;
-		}
-		
-		.apps_form input[type=text]:focus, .apps_form textarea:focus {
-			border-color: #ff6600;
-		}
-		
-		.apps_form input:focus {
-			outline: none;
-		}
-		
-		.apps_form input[readonly] {
-			background-color: transparent;
-			border: none;
-			box-shadow: none;
-			font-size: 0.8rem;
-			padding: 10px 20px 0 0;
-		}
-		
-		.apps_form_right_button {
-			margin-left: 10px;
-		}
-		
-		.apps_form li.checkbox {
-			overflow: hidden;
-		}
-			.apps_form li.checkbox label {
-				display: block;
-				float: none;
-				margin: 0 0 0 170px;
-				width: 300px;
-			}
-			
-		.apps_form li ul {
-			float: left;
-=======
 		.sidebar_links li a {
 			color: #000000;
 			display: block;
 			padding: 5px 10px;
->>>>>>> redesign
 		}
 		
 			.sidebar_links li.active a, .sidebar_links li a:hover {
