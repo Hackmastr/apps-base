@@ -1,38 +1,38 @@
 <?php get_header(); ?>
 	
-	<div class="apps_sidebar">
+	<div class="col-1-4">
 		
 		<?php get_sidebar(); ?>
 	
 	</div>
 	
-	<div class="apps_content right">
+	<div class="col-3-4">
 	
 		<h2><?php echo $template->get_page_title(); ?></h2>
 	
 		<?php get_message(); ?>
 	
-		<section id="apps_dashboard_links">
-			<ul>
-				<li class="dashboard_link">
+		<section id="admin_dashboard_links">
+			<ul class="apps_dashboard_links">
+				<li>
 					<a href="<?php $template->get_option('site_url'); ?>?area=locations">
 						<i class="fa fa-globe"></i>
 						<h4>Locations</h4>
 					</a>
 				</li>
-				<li class="dashboard_link">
+				<li>
 					<a href="<?php $template->get_option('site_url'); ?>?area=divisions">
 						<i class="fa fa-sitemap"></i>
 						<h4>Divisions</h4>
 					</a>
 				</li>
-				<li class="dashboard_link">
+				<li>
 					<a href="<?php $template->get_option('site_url'); ?>?area=cells">
 						<i class="fa fa-cubes"></i>
 						<h4>Cells</h4>
 					</a>
 				</li>
-				<li class="dashboard_link">
+				<li>
 					<a href="<?php $template->get_option('site_url'); ?>?area=links">
 						<i class="fa fa-link"></i>
 						<h4>Links</h4>

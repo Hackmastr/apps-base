@@ -1,12 +1,14 @@
 /**
  * Some Simple Resets
  */
-* { margin: 0; padding: 0; }
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; margin: 0; padding: 0; }
 img { border: 0; }
 a { color: #0066cc; text-decoration: none; outline: none; }
-a:hover { color: #0099ff; }
+a:hover { text-decoration: underline; }
 header, section, footer, aside, nav, article, figure { display: block; }
 
+<<<<<<< HEAD
 .clear:after {
 	clear: both;
 	content: " ";
@@ -34,55 +36,86 @@ body {
 #apps_site_wrap {
 	margin: 20px auto;
 	max-width: 1000px;
+=======
+/**
+ * Grid
+ */
+.clear:after, .grid:after {
+	clear: both;
+	content: " ";
+	display: table;
+}
+
+[class*='col-'] {
+	float: left;
+	padding-right: 20px;
+}
+
+[class*='col-']:last-of-type {
+  padding-right: 0;
+>>>>>>> redesign
+}
+
+.col-fullwidth { width: 100%; }
+
+.col-1-2 { width: 50%; }
+
+.col-1-3 { width: 33.33%; }
+.col-2-3 { width: 66.33%; }
+
+@media (max-width: 800px) {
+	
+	[class*='col-'] {
+		float: none;
+		padding: 0;
+		width: 100%;
+	}
+
+}
+
+.col-1-4 { width: 25%; }
+.col-3-4 { width: 75%; }
+
+/**
+ * Main Layout Structure
+ */
+html {
+	font-size: 18px;
+}
+
+body {
+	background-color: #dddddd;
+	font-family: arial;
+	margin: 10px;
+}
+
+#apps_site_wrap {
+	margin: 0 auto;
+	max-width: 1200px;
 }
 
 #apps_main_container {
 	background-color: #ffffff;
 	border-top: 3px solid #660066;
-	clear: both;
-	box-sizing: border-box;
-	box-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
-	overflow: hidden;
 	padding: 20px;
 }
 
-.apps_content.right {
-	margin-left: 220px;
-}
-
 /**
- * Typography
- */
-h1 {
-	margin: 0;
-}
-
-h2 {
-	font-size: 1.5rem;
-	margin-bottom: 10px;
-}
-
-h3 {
-}
-
-/**
- * Apps Site Header
+ * Apps Header
  */
 #apps_site_header {
-	margin: 0 20px 20px;
 	position: relative;
 }
 
 	#apps_site_logo {
 		float: left;
+<<<<<<< HEAD
 		max-width: 300px;
 		line-height: 0;
+=======
+>>>>>>> redesign
 	}
 	
-		#apps_site_logo img {
-			width: 100%;
-		}
-		
 	#apps_site_nav {
 		float: right;
 		margin-top: 30px;
@@ -92,6 +125,7 @@ h3 {
 		#apps_site_nav li {
 			float: left;
 			list-style: none;
+<<<<<<< HEAD
 			margin-left: 20px;
 		}
 		
@@ -144,56 +178,76 @@ h3 {
 						color: #ffffff;
 					}
 
-/**
- * Apps Sidebar
- */
-.apps_sidebar {
-	float: left;
-	padding-right: 10px;
-	width: 200px;
-}
-
-	.apps_sidebar h3 {
-		border-bottom: 1px solid #000000;
-		padding-bottom: 5px;
-	}
-
-	.apps_sidebar ul {
-		margin-bottom: 10px;
-	}
-
-		.apps_sidebar li {
-			list-style: none;
+=======
+			margin-right: 10px;
+			position: relative;
 		}
 		
-			.apps_sidebar li a {
-				color: #999999;
+			#apps_site_nav li a {
+				color: #505050;
 				display: block;
-				font-size: 0.9rem;
-				font-weight: bold;
-				padding: 10px 0;
-				text-transform: uppercase;
-				transition: color 0.1s;
+				padding: 20px;
 			}
 			
-			.apps_sidebar li a:hover, .apps_sidebar li.active a {
-				color: #000000;
+			#apps_site_nav li a:hover {
+				background-color: #c0c0c0;
+				text-decoration: none;
+			}
+			
+			#apps_site_nav li.current-menu-item a {
+				background-color: #660066;
+				color: #ffffff;
 			}
 		
+			#apps_site_nav li ul {
+				background-color: #660066;
+				position: absolute;
+					left: -9999px;
+			}
+			
+			#apps_site_nav li:hover ul {
+				left: 0;
+			}
+			
+				#apps_site_nav li li {
+					float: none;
+					margin: 3px 0 0;
+				}
+				
+					#apps_site_nav li li a {
+						color: #ffffff;
+					}
+					
+					#apps_site_nav li li a:hover {
+						background-color: #330033;
+					}
+					
+>>>>>>> redesign
 /**
- * Apps forms
+ * Apps Site Footer
  */
-.apps_form {
-	margin-bottom: 20px;
-	overflow: hidden;
+#apps_site_footer {
+	color: #606060;
+	font-size: 0.8rem;
+	font-weight: bold;
+	padding: 10px 0 0;
+	text-align: right;
+	text-shadow: 1px 1px 0 rgba(255, 255, 255, .8);
 }
 
-	.apps_form li {
+/**
+ * Widgets
+ */
+.widget {
+	margin-bottom: 20px;
+}
+
+	.sidebar_links li {
 		list-style: none;
-		overflow: hidden;
-		padding: 5px 0;
+		margin-top: 5px;
 	}
 	
+<<<<<<< HEAD
 		.apps_form li.dropdown {
 			overflow: visible;
 		}
@@ -252,229 +306,132 @@ h3 {
 			
 		.apps_form li ul {
 			float: left;
-		}
-		
-			.apps_form li ul li {
-				padding: 0;
-			}
-		
-/**
- * Message Boxes
- */
-.msg_box {
-	margin-bottom: 10px;
-	padding: 10px;
-}
-
-	.success {
-		background-color: #99ff99;
-		border: 1px solid #339933;
-	}
-	
-	.info {
-		background-color: #99ccff;
-		border: 1px solid #336699;
-	}
-	
-	.error {
-		background-color: #ffcccc;
-		border: 1px solid #ff0000;
-	}
-	
-/**
- * Panels
- */
-.panel {
-	border-bottom: 2px solid #dddddd;
-	margin-bottom: 20px;
-	padding-bottom: 20px;
-}
-	
-/**
- * Apps List Table
- */
-.apps_list_table {
-	border: 1px solid #dddddd;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-	.apps_list_table th {
-		padding: 10px;
-		text-align: left;
-	}
-	
-	.apps_list_table td {
-		border-top: 1px solid #dddddd;
-		padding: 10px;
-		position: relative;
-	}
-	
-	.apps_list_table li {
-		list-style: none;
-	}
-	
-	.apps_list_table ul li {
-		font-size: 0.8rem;
-	}
-
-	.list_links {
-		position: absolute;
-			right: 10px; bottom: 10px;
-	}
-	
-		.delete a {
-			color: #ff0000;
-			display: none;
-		}
-		
-		.apps_list_table td:hover .delete a {
-			display: inline;
-		}
-
-			
-/**
- * Tabbed menu
- */
-.apps_tabbed_nav {
-	overflow: hidden;
-	position: relative;
-	bottom: -1px;
-}
-
-.tabbed_nav_right {
-	float: right;
-}
-
-	.apps_tabbed_nav li {
-		float: left;
-		list-style: none;
-		margin-left: 10px;
-	}
-	
-		.apps_tabbed_nav li a {
-			border: 1px solid #dddddd;
-			border-bottom: 0;
-			color: #999999;
+=======
+		.sidebar_links li a {
+			color: #000000;
 			display: block;
-			font-weight: bold;
-			padding: 10px;
-			transition: color 0.1s;
+			padding: 5px 10px;
+>>>>>>> redesign
 		}
 		
-		.apps_tabbed_nav li a:hover {
-			color: #000000;
-		}
-		
-		.apps_tabbed_nav li.active a {
-			background-color: #ffffff;
-			border-bottom: 1px solid #ffffff;
-			color: #000000;
-		}
-
-.apps_tabbed_content {
-	border: 1px solid #dddddd;
-	padding: 20px;
-}
-		
-/**
- * Buttons
- */
-.table_action_buttons li {
-	list-style: none;
-	margin-bottom: 20px;
-}
-
-.buttons a, input[type=submit], input[type=button], button {
-	background-color: #0066cc;
-	border: 0;
-	color: #ffffff;
-	border-radius: 2px;
-	padding: 4px 8px;
-}
-
-.buttons a:hover, input[type=submit]:hover, input[type=button]:hover, button:hover {
-	background-color: #0099ff;
-}
-
-.buttons a:active, input[type=submit]:active, input[type=button]:active, button:active {
-	box-shadow: inset 0 0 2px #000000;
-}
-
-		
-/**
- * Base Apps Specific
- * This will eventually get oved into its own CSS file
- */
-.apps_data_list .location_name { width: 30%; }
-.apps_data_list .location_country { width: 10%; }
-.apps_data_list .location_state { width: 15%; }
-.apps_data_list .location_city { width: 15%}
-.apps_data_list .location_street { width: 20%; }
-.apps_data_list .location_zip { width: 10%; }
-
-.apps_data_list .division_name { width: 100%; }
-
-.apps_data_list .cell_name { width: 25%; }
-.apps_data_list .cell_number { width: 10%; }
-.apps_data_list .cell_division { width: 15%; }
-.apps_data_list .cell_location { width: 15%}
-.apps_data_list .cell_iq_connector { width: 20%; }
-.apps_data_list .cell_status { width: 15%; }
+			.sidebar_links li.active a, .sidebar_links li a:hover {
+				background-color: #dddddd;
+				border-radius: 3px;
+				text-decoration: none;
+			}
 
 /**
  * Dashboard Links
  */
-#apps_dashboard_links li {
-	display: table;
+.apps_dashboard_links li {
 	float: left;
 	list-style: none;
 	width: 20%;
 }
 
-	#apps_dashboard_links li a {
-		border-radius: 2px;
-		box-sizing: border-box;
+	.apps_dashboard_links a {
 		color: #000000;
-		display: table-cell;
+		display: block;
+		padding: 10px;
 		text-align: center;
-		transition: background-color 0.1s;
-		vertical-align: middle;
 	}
 	
-	#apps_dashboard_links li a:hover {
-		background-color: #f1f1f1;
+		.apps_dashboard_links a i {
+			font-size: 2rem;
+		}
+		
+	.apps_dashboard_links a:hover {
+		background-color: #dddddd;
+		text-decoration: none;
 	}
 	
-		#apps_dashboard_links li a i {
-			font-size: 4rem;
-			margin-bottom: 10px;
-		}
-		
-		#apps_dashboard_links li a:hover i {
-			color: #660066;
-		}
-	
-		#apps_dashboard_links li a span {
-			display: block;
-		}
-		
 /**
- * Apps Site Footer
+ * Tabbed Nav
  */
-#apps_site_footer {
-	color: #999999;
-	font-size: 0.8rem;
-	font-weight: bold;
-	padding-top: 10px;
-	text-align: right;
-	text-shadow: 1px 1px 0 #ffffff;
+.apps_tabbed_nav {
+	overflow: hidden;
+	position: relative;
+		bottom: -1px;
 }
 
-	#apps_site_footer a {
-		color: #666666;
+	.apps_tabbed_nav li {
+		float: left;
+		list-style: none;
+		margin: 0 5px;
 	}
 	
-	#apps_site_footer a:hover {
-		text-decoration: underline;
+		.apps_tabbed_nav li a {
+			border: 1px solid #c0c0c0;
+			border-bottom-color: transparent;
+			color: #808080;
+			display: block;
+			padding: 10px;
+		}
+		
+		.apps_tabbed_nav li a:hover {
+			text-decoration: none;
+		}
+		
+			.apps_tabbed_nav li.active a {
+				border-bottom-color: #ffffff;
+				color: #000000;
+			}
+			
+.apps_tabbed_content {
+	border: 1px solid #c0c0c0;
+	padding: 10px;
+}
+	
+/**
+ * List Tables
+ */
+.apps_list_table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+	.apps_list_table th {
+		border-bottom: 1px solid #000000;
+		font-weight: normal;
+		padding: 10px;
+		text-align: left;
 	}
+	
+	.apps_list_table td {
+	border-bottom: 1px solid #c0c0c0;
+		padding: 10px;
+	}
+	
+	.apps_list_table .list_meta {
+		font-size: 0.8rem;
+	}
+	
+	.apps_list_table ul.details {
+		float: left;
+	}
+	
+	.apps_list_table ul.links {
+		float: right;
+	}
+	
+		.apps_list_table li {
+			list-style: none;
+		}
+	
+/**
+ * Forms
+ */
+.apps_form li {
+	list-style: none;
+	margin-bottom: 10px;
+}
+
+	.apps_form label {
+		display: inline-block;
+		width: 200px;
+	}
+
+.apps_form input {
+	padding: 5px;
+	font-size: 1rem;
+}

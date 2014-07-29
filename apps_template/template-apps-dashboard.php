@@ -2,15 +2,15 @@
 
 	<h2><?php echo $template->get_page_title(); ?></h2>
 	
-	<section id="apps_dashboard_links">
-		<ul>
-			<li class="dashboard_link">
+	<section id="apps">
+		<ul class="apps_dashboard_links clear">
+			<li>
 				<a href="<?php echo $template->get_option('site_url'); ?>/a/monthly">
 					<i class="fa fa-calendar"></i>
 					<h4>Monthly</h4>
 				</a>
 			</li>
-			<li class="dashboard_link">
+			<li>
 				<a href="<?php echo $template->get_option('site_url'); ?>/a/pitchtracker">
 					<i class="fa fa-bar-chart-o"></i>
 					<h4>PitchTracker</h4>

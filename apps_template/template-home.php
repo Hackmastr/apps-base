@@ -2,11 +2,11 @@
 
 	<h2><?php echo $template->get_page_title(); ?></h2>
 	
-	<section id="apps_dashboard_links">
+	<section id="home_dashboard_links">
 		<?php get_dashboard_links(); ?>
 	</section>
 	
-	<section id="apps_innolunch">
+	<section id="innolunch">
 		<?php get_innolunch_menu(); ?>
 	</section>
 

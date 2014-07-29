@@ -1,14 +1,14 @@
-#apps_innolunch {
+#innolunch {
 	clear: both;
 	margin-top: 20px;
 }
-	#apps_innolunch li {
+	#innolunch li {
 		float: left;
 		list-style: none;
 		text-align: center;
 		width: 20%;
 	}
 	
-		#apps_innolunch li p.day {
+		#innolunch li p.day {
 			font-weight: bold;
 		}

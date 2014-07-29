@@ -7,13 +7,15 @@ function get_sidebar() {
 	
 	global $template;
 	
-	echo '<ul>
-		<li '. (empty(get_var('area')) == 'locations' ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') .'/admin.php">Dashboard</a></li>
-		<li '. (get_var('area') == 'locations' ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') .'/admin.php?area=locations">Locations</a></li>
-		<li '. (get_var('area') == 'divisions' ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') .'/admin.php?area=divisions">Divisions</a></li>
-		<li '. (get_var('area') == 'cells' ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') .'/admin.php?area=cells">Cells</a></li>
-		<li '. (get_var('area') == 'links' ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') .'/admin.php?area=links">Links</a></li>
-	</ul>';
+	echo '<div class="widget sidebar_links">
+		<ul>
+			<li '. (empty(get_var('area')) == 'locations' ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') .'/admin.php">Dashboard</a></li>
+			<li '. (get_var('area') == 'locations' ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') .'/admin.php?area=locations">Locations</a></li>
+			<li '. (get_var('area') == 'divisions' ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') .'/admin.php?area=divisions">Divisions</a></li>
+			<li '. (get_var('area') == 'cells' ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') .'/admin.php?area=cells">Cells</a></li>
+			<li '. (get_var('area') == 'links' ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') .'/admin.php?area=links">Links</a></li>
+		</ul>
+	</div>';
 	
 }
 
@@ -82,9 +84,11 @@ function get_admin_locations_form() {
 				<td class="app_list_data app_list_title">
 					<a href="'. $template->get_option('site_url') .'/admin.php?area=locations&id='. $location->id .'&action=edit">'. $location->location_name .'</a>
 					
-					<ul class="list_links">
-						<li class="delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=locations&id='. $location->id .'&action=delete">Delete</a></li>
-					</ul>
+					<div class="list_meta">
+						<ul class="links">
+							<li class="delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=locations&id='. $location->id .'&action=delete">Delete</a></li>
+						</ul>
+					</div>
 				</td>
 			</tr>';
 			
@@ -140,9 +144,11 @@ function get_admin_divisions_form() {
 				<td class="app_list_data app_list_title">
 					<a href="'. $template->get_option('site_url') .'/admin.php?area=divisions&id='. $division->id .'&action=edit">'. $division->division_name .'</a>
 					
-					<ul class="list_links">
-						<li class="delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=divisions&id='. $division->id .'&action=delete">Delete</a></li>
-					</ul>
+					<div class="list_meta">
+						<ul class="links">
+							<li class="delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=divisions&id='. $division->id .'&action=delete">Delete</a></li>
+						</ul>
+					</div>
 				</td>
 			</tr>';
 			
@@ -233,9 +239,11 @@ function get_admin_cells_form() {
 				<td class="app_list_data app_list_title">
 					<a href="'. $template->get_option('site_url') .'/admin.php?area=cells&id='. $cell->id .'&action=edit">'. $cell->cell_name .'</a>
 					
-					<ul class="list_links">
-						<li class="delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=cells&id='. $cell->id .'&action=delete">Delete</a></li>
-					</ul>
+					<div class="list_meta">
+						<ul class="links">
+							<li class="delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=cells&id='. $cell->id .'&action=delete">Delete</a></li>
+						</ul>
+					</div>
 				</td>
 			</tr>';
 			
@@ -309,9 +317,11 @@ function get_admin_links_form() {
 				<td class="app_list_data app_list_title">
 					<a href="'. $template->get_option('site_url') .'/admin.php?area=links&id='. $link->id .'&action=edit">'. $link->link_name .'</a>
 					
-					<ul class="list_links">
-						<li class="delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=links&id='. $link->id .'&action=delete">Delete</a></li>
-					</ul>
+					<div class="list_meta">
+						<ul class="links">
+							<li class="delete"><a href="'. $template->get_option('site_url') .'/admin.php?area=links&id='. $link->id .'&action=delete">Delete</a></li>
+						</ul>
+					</div>
 				</td>
 			</tr>';
 			

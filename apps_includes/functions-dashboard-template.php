@@ -10,15 +10,17 @@ function get_dashboard_links() {
 	
 	global $links, $template;
 	
-	$dashboard_link_list = '<ul>';
+	$dashboard_link_list = '<ul class="apps_dashboard_links clear">';
 	
 	foreach($links->getData() as $link) {
 		
 		$dashboard_link_list .= '<li>
-			<a class="dashboard_link link_'. $link->id .'" href="'. $link->link_url .'">
-				<i style="color: '. $link->link_bg_color .'" class="fa '. $link->link_icon_class .'"></i>
-				<h4>'. $link->link_name .'</h4>
-				<span>'. $link->link_description .'</span>
+			<a class="link_'. $link->id .'" href="'. $link->link_url .'">
+				<div>
+					<i style="color: '. $link->link_bg_color .'" class="fa '. $link->link_icon_class .'"></i>
+					<h4>'. $link->link_name .'</h4>
+					<span>'. $link->link_description .'</span>
+				</div>
 			</a></li>';
 		
 	}

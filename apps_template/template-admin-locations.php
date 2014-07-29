@@ -1,12 +1,12 @@
 <?php get_header(); ?>
 
-	<div class="apps_sidebar">
+	<div class="col-1-4">
 		
 		<?php get_sidebar(); ?>
 	
 	</div>
 	
-	<div class="apps_content right">
+	<div class="col-3-4">
 	
 		<h2><?php echo $template->get_page_title(); ?></h2>
 	
