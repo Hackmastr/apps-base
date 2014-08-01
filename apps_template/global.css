@@ -172,27 +172,33 @@ body {
 /**
  * Dashboard Links
  */
-.apps_dashboard_links li {
-	float: left;
-	list-style: none;
-	width: 20%;
+.apps_dashboard_links {
+	overflow: hidden;
 }
 
-	.apps_dashboard_links a {
-		color: #000000;
-		display: block;
-		padding: 10px;
-		text-align: center;
+	.apps_dashboard_links li {
+		display: table;
+		float: left;
+		list-style: none;
+		width: 20%;
 	}
 	
-		.apps_dashboard_links a i {
-			font-size: 2rem;
+		.apps_dashboard_links a {
+			color: #000000;
+			display: table-cell;
+			padding: 10px;
+			text-align: center;
+			vertical-align: middle
 		}
 		
-	.apps_dashboard_links a:hover {
-		background-color: #dddddd;
-		text-decoration: none;
-	}
+			.apps_dashboard_links i {
+				font-size: 4rem;
+			}
+			
+		.apps_dashboard_links a:hover {
+			background-color: #f1f1f1;
+			text-decoration: none;
+		}
 	
 /**
  * Tabbed Nav
@@ -284,3 +290,22 @@ body {
 	padding: 5px;
 	font-size: 1rem;
 }
+
+/**
+ * Buttons
+ */
+.buttons li {
+	list-style: none;
+}
+
+	.buttons li a {
+		background-color: #0066cc;
+		color: #ffffff;
+		font-size: 0.9rem;
+		padding: 2px 6px;
+	}
+	
+	.buttons li a:hover {
+		background-color: #0099ff;
+		text-decoration: none;
+	}

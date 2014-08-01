@@ -36,18 +36,18 @@ $(function() {
 	 * ---------------------------------------------------------------------------------------------- */
 	 
 	// Get the initial width of the links and apply equal height
-	link_width = $('.dashboard_link').width();
+	link_width = $('.apps_dashboard_links > li').width();
 	apply_equal_height(link_width);
 	
 	// If the user resizes the browser window, get the new width of the links
 	$(window).resize(function() {
-		link_width = $('.dashboard_link').width();
+		link_width = $('.apps_dashboard_links > li').width();
 		apply_equal_height(link_width);
 	});
 
 	// Apply equal height to links based on its width
 	function apply_equal_height(link_width) {
-		$('.dashboard_link').css({'height':link_width+'px'});
+		$('.apps_dashboard_links > li').css({'height':link_width+'px'});
 	}
 
 });

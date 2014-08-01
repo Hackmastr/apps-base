@@ -16,12 +16,11 @@ function get_dashboard_links() {
 		
 		$dashboard_link_list .= '<li>
 			<a class="link_'. $link->id .'" href="'. $link->link_url .'">
-				<div>
-					<i style="color: '. $link->link_bg_color .'" class="fa '. $link->link_icon_class .'"></i>
-					<h4>'. $link->link_name .'</h4>
-					<span>'. $link->link_description .'</span>
-				</div>
-			</a></li>';
+				<i style="color: '. $link->link_bg_color .'" class="fa '. $link->link_icon_class .'"></i>
+				<h4>'. $link->link_name .'</h4>
+				<span>'. $link->link_description .'</span>
+			</a>
+		</li>';
 		
 	}
 	
