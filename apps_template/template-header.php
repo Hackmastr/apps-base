@@ -24,7 +24,7 @@
 
 <div id="apps_site_wrap">
 
-	<header id="apps_site_header" class="clear">
+	<header id="apps_site_header">
 		
 		<h1 id="apps_site_logo"><a href="<?php echo $template->get_option('site_url'); ?>"><img src="<?php echo $template->get_option('site_url'); ?>/apps_template/images/logo.png" alt="'. SITE_TITLE .'" /></a></h1>
 	
