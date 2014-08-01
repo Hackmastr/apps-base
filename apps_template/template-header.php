@@ -34,4 +34,4 @@
 		
 	</header>
 	
-	<main id="apps_main_container" class="grid">
+	<section id="apps_main_container" class="grid">
