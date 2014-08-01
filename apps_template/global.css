@@ -55,7 +55,7 @@ header, section, footer, aside, nav, article, figure { display: block; }
  * Main Layout Structure
  */
 html {
-	font-size: 18px;
+	font-size: 16px;
 }
 
 body {
