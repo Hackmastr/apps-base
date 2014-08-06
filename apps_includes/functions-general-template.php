@@ -168,3 +168,12 @@ function get_message() {
 	$_SESSION['message'] = '';
 	
 }
+
+/**
+ * Returns human readable date
+ */
+function get_date($timestamp) {
+	
+	return date('M jS, Y', $timestamp);
+	
+}
