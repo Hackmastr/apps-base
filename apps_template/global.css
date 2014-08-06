@@ -35,6 +35,22 @@ body {
 	padding: 20px;
 }
 
+@media handheld, only screen and (max-width: 767px) { 
+	
+	html {
+		font-size: 14px;
+	}
+	
+	body {
+		margin: 0;
+	}
+	
+	#apps_main_container {
+		padding: 10px;
+	}
+
+}
+
 /**
  * Apps Header
  */
@@ -92,6 +108,14 @@ body {
 					#apps_site_nav li li a:hover {
 						background-color: #330033;
 					}
+					
+@media handheld, only screen and (max-width: 767px) { 
+	
+	#apps_site_header {
+		padding: 0 10px;
+	}
+
+}
 					
 /**
  * Apps Site Footer
@@ -153,6 +177,10 @@ body {
 		
 			.apps_dashboard_links i {
 				font-size: 4rem;
+			}
+			
+			.apps_dashboard_links span {
+				display: block;
 			}
 			
 		.apps_dashboard_links a:hover {
@@ -236,20 +264,26 @@ body {
 /**
  * Forms
  */
-.apps_form li {
-	list-style: none;
-	margin-bottom: 10px;
+.apps_form ul {
+	margin-bottom: 20px;
+	overflow: hidden;
 }
 
-	.apps_form label {
-		display: inline-block;
-		width: 200px;
+	.apps_form li {
+		list-style: none;
+		margin-bottom: 10px;
 	}
+	
+		.apps_form li label {
+			float: left;
+			width: 200px;
+		}
 
-.apps_form input, .apps_form textarea {
-	padding: 5px;
-	font-size: 1rem;
-}
+		.apps_form input, .apps_form textarea {
+			padding: 5px;
+			font-size: 1rem;
+			width: 300px;
+		}
 
 /**
  * Buttons
