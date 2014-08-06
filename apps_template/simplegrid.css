@@ -23,8 +23,6 @@ body {
 
 .grid {
 	width: 100%;
-	max-width: 1140px;
-	min-width: 755px;
 	margin: 0 auto;
 	overflow: hidden;
 }
@@ -33,6 +31,10 @@ body {
 	content: "";
 	display: table;
 	clear: both;
+}
+
+[class*='col-']:last-of-type {
+  padding-right: 0;
 }
 
 .grid-pad {
@@ -108,7 +110,7 @@ body {
 	width: 83.333%;
 }
 
-.col-9-12 {
+.col-9-12, .col-3-4 {
 	width: 75%;
 }
 
