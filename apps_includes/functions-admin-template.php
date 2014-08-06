@@ -14,6 +14,8 @@ function get_sidebar() {
 			<li '. (get_var('area') == 'divisions' ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') .'/admin.php?area=divisions">Divisions</a></li>
 			<li '. (get_var('area') == 'cells' ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') .'/admin.php?area=cells">Cells</a></li>
 			<li '. (get_var('area') == 'links' ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') .'/admin.php?area=links">Links</a></li>
+			<li '. (get_var('area') == 'roles' ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') .'/admin.php?area=roles">Roles</a></li>
+			<li '. (get_var('area') == 'users' ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') .'/admin.php?area=users">Users</a></li>
 		</ul>
 	</div>';
 	

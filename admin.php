@@ -17,6 +17,8 @@ $allowed_tabs = array(
 	'divisions' => 'Divisions',
 	'cells' => 'Cells',
 	'links' => 'Links',
+	'roles' => 'Roles',
+	'users' => 'Users'
 );
 
 // Get request vars

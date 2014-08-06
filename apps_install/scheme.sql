@@ -57,3 +57,19 @@ INSERT INTO app_innolunch (innolunch_week_id, innolunch_day, innolunch_item, inn
 INSERT INTO app_innolunch (innolunch_week_id, innolunch_day, innolunch_item, innolunch_price) VALUES (1, 'Wednesday', 'Item 3', '$3.00');
 INSERT INTO app_innolunch (innolunch_week_id, innolunch_day, innolunch_item, innolunch_price) VALUES (1, 'Thursday', 'Item 4', '$3.00');
 INSERT INTO app_innolunch (innolunch_week_id, innolunch_day, innolunch_item, innolunch_price) VALUES (1, 'Friday', 'Item 5', '$3.00');
+
+CREATE TABLE app_roles (
+	id bigint(20) unsigned NOT NULL auto_increment,
+	role_name VARCHAR(100) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE app_users (
+	id bigint(20) unsigned NOT NULL auto_increment,
+	app_roles_id bigint(20) NOT NULL,
+	app_cells_id bigint(20) NOT NULL,
+	user_name VARCHAR(100) NOT NULL,
+	user_email_address VARCHAR(100) NOT NULL,
+	user_notification_threshold int,
+	PRIMARY KEY (id)
+);

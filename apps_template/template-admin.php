@@ -38,6 +38,18 @@
 						<h4>Links</h4>
 					</a>
 				</li>
+				<li>
+					<a href="<?php $template->get_option('site_url'); ?>?area=roles">
+						<i class="fa fa-trophy"></i>
+						<h4>Roles</h4>
+					</a>
+				</li>
+				<li>
+					<a href="<?php $template->get_option('site_url'); ?>?area=users">
+						<i class="fa fa-users"></i>
+						<h4>Users</h4>
+					</a>
+				</li>
 			</ul>
 		</section>
 	
