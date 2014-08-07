@@ -11,6 +11,8 @@
 		<h2><?php echo $template->get_page_title(); ?></h2>
 	
 		<?php get_message(); ?>
+		
+		<?php get_admin_users_form(); ?>
 	
 	</div>
 

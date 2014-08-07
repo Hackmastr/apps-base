@@ -67,9 +67,11 @@ CREATE TABLE app_roles (
 CREATE TABLE app_users (
 	id bigint(20) unsigned NOT NULL auto_increment,
 	app_roles_id bigint(20) NOT NULL,
-	app_cells_id bigint(20) NOT NULL,
+	app_cells_id bigint(20),
+	app_divisions_id bigint(20),
 	user_name VARCHAR(100) NOT NULL,
 	user_email_address VARCHAR(100) NOT NULL,
+	user_shift VARCHAR(100) NOT NULL,
 	user_notification_threshold int,
 	PRIMARY KEY (id)
 );

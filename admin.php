@@ -35,6 +35,8 @@ if ($area && array_key_exists($area, $allowed_tabs)) {
 	$divisions = Bootstrap::Load('Divisions');
 	$cells = Bootstrap::Load('cells');
 	$links = Bootstrap::Load('links');
+	$roles = Bootstrap::Load('roles');
+	$users = Bootstrap::Load('users');
 	
 	if (get_var('action') == 'add' || get_var('action') == 'edit' || get_var('action') == 'delete') {
 		

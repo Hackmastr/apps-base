@@ -337,3 +337,176 @@ function get_admin_links_form() {
 	}
 	
 }
+
+/**
+ * Displays admin roles form
+ */
+function get_admin_roles_form() {
+	
+	global $roles, $template;
+	
+	if (get_var('action') && get_var('action') == 'add' || get_var('action') == 'edit') {
+		
+		$form = '<form class="apps_form" method="post" action="'. get_page_url() .'">
+			<ul>
+				<li>
+					<label for="role_name">Role Name</label>
+					<input type="text" id="role_name" name="role_name" value="'. $roles->getValue('role_name') .'" />
+				</li>
+				<li>
+					<input type="submit" name="submit" value="Submit" />
+				</li>
+			</ul>
+		</form>';
+		
+		// Print form
+		echo $form;
+		
+	} else {
+	
+		$table = '<ul class="table_action_buttons buttons">
+			<li><a href="'. $template->get_option('site_url') .'/admin.php?area='. get_var('area') .'&action=add">Add New</a></li>
+		</ul>
+	
+		<table class="apps_list_table">
+			<tr>
+				<th class="app_list_header app_list_title">Title</th>
+			</tr>';
+		
+		foreach ($roles->getData() as $role) {
+			
+			$table .= '<tr>
+				<td class="app_list_data app_list_title">
+					<a href="'. $template->get_option('site_url') .'/admin.php?area='. get_var('area') .'&id='. $role->id .'&action=edit">'. $role->role_name .'</a>
+					
+					<div class="list_meta">
+						<ul class="links">
+							<li class="delete"><a href="'. $template->get_option('site_url') .'/admin.php?area='. get_var('area') .'&id='. $role->id .'&action=delete">Delete</a></li>
+						</ul>
+					</div>
+				</td>
+			</tr>';
+			
+		}
+		
+		$table .= '</table>';
+		
+		// Print table
+		echo $table;
+			
+	}
+	
+}
+
+/**
+ * Displays admin users form
+ */
+function get_admin_users_form() {
+	
+	global $users, $divisions, $cells, $template;
+	
+	if (get_var('action') && get_var('action') == 'add' || get_var('action') == 'edit') {
+		
+		$form = '<form class="apps_form" method="post" action="'. get_page_url() .'">
+			<ul>
+				<li>
+					<label for="user_name">Name</label>
+					<input type="text" id="user_name" name="user_name" value="'. $users->getValue('user_name') .'" />
+				</li>
+				<li>
+					<label for="app_divisions_id">Division</label>
+					<select name="app_divisions_id">';
+					
+						$form .= '<option '. ($users->getValue('app_divisions_id') == '' ? 'selected="selected"' : '') .' value="">--</option>';
+					
+						// Retrieve divisions list
+						foreach ($divisions->getData() as $division) {
+							$form .= '<option '. ($users->getValue('app_divisions_id') == $division->id ? 'selected="selected"' : '') .' value="'. $division->id .'">'. $division->division_name .'</option>';
+						}
+					
+				$form .= '</select>
+				</li>
+				<li>
+					<label for="app_cells_id">Cell</label>
+					<select name="app_cells_id">';
+					
+						$form .= '<option '. ($users->getValue('app_cells_id') == '' ? 'selected="selected"' : '') .' value="">--</option>';
+					
+						// Retrieve divisions list
+						foreach ($cells->getData() as $cell) {
+							$form .= '<option '. ($users->getValue('app_cells_id') == $cell->id ? 'selected="selected"' : '') .' value="'. $cell->id .'">'. $cell->cell_name .'</option>';
+						}
+					
+				$form .= '</select>
+				</li>
+				<li>
+					<label for="user_shift">Shift</label>
+					<select name="user_shift">';
+					
+						$form .= '<option '. ($users->getValue('user_shift') == '' ? 'selected="selected"' : '') .' value="">--</option>';
+						$form .= '<option '. ($users->getValue('user_shift') == 'first' ? 'selected="selected"' : '') .' value="first">First</option>';
+						$form .= '<option '. ($users->getValue('user_shift') == 'second' ? 'selected="selected"' : '') .' value="second">Second</option>';
+						$form .= '<option '. ($users->getValue('user_shift') == 'third' ? 'selected="selected"' : '') .' value="third">third</option>';
+					
+				$form .= '</select>
+				</li>
+				<li>
+					<label for="user_email_address">Email Address</label>
+					<input type="text" id="user_email_address" name="user_email_address" value="'. $users->getValue('user_email_address') .'" />
+				</li>
+				<li>
+					<label for="user_notification_threshold">Notification Threshold</label>
+					<input type="text" id="user_notification_threshold" name="user_notification_threshold" value="'. $users->getValue('user_notification_threshold') .'" />
+				</li>
+				<li>
+					<input type="submit" name="submit" value="Submit" />
+				</li>
+			</ul>
+		</form>';
+		
+		// Print form
+		echo $form;
+		
+	} else {
+	
+		$table = '<ul class="table_action_buttons buttons">
+			<li><a href="'. $template->get_option('site_url') .'/admin.php?area='. get_var('area') .'&action=add">Add New</a></li>
+		</ul>
+	
+		<table class="apps_list_table">
+			<tr>
+				<th class="app_list_header app_list_title">Title</th>
+			</tr>';
+		
+			if ($users->getData()) {
+				foreach ($users->getData() as $user) {
+					
+					$table .= '<tr>
+						<td class="app_list_data app_list_title">
+							<a href="'. $template->get_option('site_url') .'/admin.php?area='. get_var('area') .'&id='. $user->id .'&action=edit">'. $user->user_name .'</a>
+							
+							<div class="list_meta">
+								<ul class="links">
+									<li class="delete"><a href="'. $template->get_option('site_url') .'/admin.php?area='. get_var('area') .'&id='. $user->id .'&action=delete">Delete</a></li>
+								</ul>
+							</div>
+						</td>
+					</tr>';
+					
+				}
+			} else {
+			
+				$table .= '<tr>
+					<td>No users exist yet.</td>
+				</tr>';
+				
+			}
+		
+		$table .= '</table>';
+		
+		// Print table
+		echo $table;
+			
+	}
+	
+}

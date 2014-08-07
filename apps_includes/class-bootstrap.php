@@ -8,6 +8,8 @@ require_once('class-locations.php');
 require_once('class-divisions.php');
 require_once('class-cells.php');
 require_once('class-links.php');
+require_once('class-roles.php');
+require_once('class-users.php');
 
 class Bootstrap {
 	
@@ -51,6 +53,24 @@ class Bootstrap {
 		$cells->setDB(self::$db);
 		
 		return $cells;
+		
+	}
+	
+	public static function Roles() {
+	
+		$roles = new Roles();
+		$roles->setDB(self::$db);
+		
+		return $roles;
+		
+	}
+	
+	public static function Users() {
+	
+		$users = new Users();
+		$users->setDB(self::$db);
+		
+		return $users;
 		
 	}
 	
