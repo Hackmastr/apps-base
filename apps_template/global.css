@@ -255,7 +255,18 @@ body {
 	
 	.apps_list_table ul.links {
 		float: right;
+		opacity: 0;
+		transition: opacity 0.1s;
 	}
+	
+		.apps_list_table ul.links a {
+			color: #ff0000;
+		}
+	
+		.apps_list_table td:hover ul.links {
+			display: block;
+			opacity: 1;
+		}
 	
 		.apps_list_table li {
 			list-style: none;
