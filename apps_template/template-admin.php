@@ -16,47 +16,44 @@
 	
 			<?php get_message(); ?>
 		
-			<section id="admin_dashboard_links">
-				<ul class="apps_dashboard_links">
-					<li>
-						<a href="<?php $template->get_option('site_url'); ?>?area=locations">
-							<i class="fa fa-globe"></i>
-							<h4>Locations</h4>
-						</a>
-					</li>
-					<li>
-						<a href="<?php $template->get_option('site_url'); ?>?area=divisions">
-							<i class="fa fa-sitemap"></i>
-							<h4>Divisions</h4>
-						</a>
-					</li>
-					<li>
-						<a href="<?php $template->get_option('site_url'); ?>?area=cells">
-							<i class="fa fa-cubes"></i>
-							<h4>Cells</h4>
-						</a>
-					</li>
-					<li>
-						<a href="<?php $template->get_option('site_url'); ?>?area=links">
-							<i class="fa fa-link"></i>
-							<h4>Links</h4>
-						</a>
-					</li>
-					<li>
-						<a href="<?php $template->get_option('site_url'); ?>?area=roles">
-							<i class="fa fa-trophy"></i>
-							<h4>Roles</h4>
-						</a>
-					</li>
-					<li>
-						<a href="<?php $template->get_option('site_url'); ?>?area=users">
-							<i class="fa fa-users"></i>
-							<h4>Users</h4>
-						</a>
-					</li>
-				</ul>
-			</section>
-		
+			<div class="row dashboard-links">
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					<a class="thumbnail" href="<?php $template->get_option('site_url'); ?>?area=locations">
+						<i class="fa fa-globe"></i>
+						<h4>Locations</h4>
+					</a>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					<a class="thumbnail" href="<?php $template->get_option('site_url'); ?>?area=divisions">
+						<i class="fa fa-sitemap"></i>
+						<h4>Divisions</h4>
+					</a>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					<a class="thumbnail" href="<?php $template->get_option('site_url'); ?>?area=cells">
+						<i class="fa fa-cubes"></i>
+						<h4>Cells</h4>
+					</a>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					<a class="thumbnail" href="<?php $template->get_option('site_url'); ?>?area=links">
+						<i class="fa fa-link"></i>
+						<h4>Links</h4>
+					</a>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					<a class="thumbnail" href="<?php $template->get_option('site_url'); ?>?area=roles">
+						<i class="fa fa-trophy"></i>
+						<h4>Roles</h4>
+					</a>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					<a class="thumbnail" href="<?php $template->get_option('site_url'); ?>?area=users">
+						<i class="fa fa-users"></i>
+						<h4>Users</h4>
+					</a>
+				</div>
+			</div>
 		</div>
 
 <?php get_footer(); ?>

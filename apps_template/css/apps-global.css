@@ -76,3 +76,32 @@ body {
 .table td:hover .delete-button {
 	display: inline;
 }
+
+/**
+ * Dashboard Links
+ */
+.dashboard-links {
+	text-align: center;
+}
+
+	.dashboard-links a {
+		color: #000000;
+		padding: 10px;
+	}
+	
+		.dashboard-links .thumbnail {
+			border: none;
+		}
+		
+		.dashboard-links span {
+			display: block;
+		}
+	
+		.dashboard-links a i {
+			font-size: 3em;
+		}
+	
+		.dashboard-links a:hover {
+			background-color: #f1f1f1;
+			text-decoration: none;
+		}

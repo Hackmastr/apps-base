@@ -4,12 +4,12 @@
 		<h1><?php echo $template->get_page_title(); ?></h1>
 	</div>
 	
-	<section id="home_dashboard_links">
+	<div class="row dashboard-links">
 		<?php get_dashboard_links(); ?>
-	</section>
+	</div>
 	
-	<section id="innolunch">
+	<div class="table-responsive">
 		<?php get_innolunch_menu(); ?>
-	</section>
+	</div>
 
 <?php get_footer(); ?>
