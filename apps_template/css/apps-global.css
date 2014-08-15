@@ -1,0 +1,78 @@
+/**
+ * Main Layout Structure
+ */
+body {
+	padding-top: 70px;
+}
+
+/**
+ * Page Header
+ */
+.page-header {
+	border: none;
+	margin: 0;
+}
+
+	.page-header h1 {
+		margin: 0;
+	}
+
+/**
+ * Main Navigation
+ */
+.navbar-inverse {
+	background-color: #660066;
+	border: 0;
+}
+
+	.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a {
+		color: #ccc;
+	}
+	
+	.navbar-inverse .navbar-nav>.active>a {
+		background-color: #330033;
+	}
+	
+/**
+ * Sidebar
+ */
+.nav-sidebar {
+	border-bottom: 1px solid #c0c0c0;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+
+.nav-sidebar:last-of-type {
+	border-bottom: none;
+}
+
+	.nav-sidebar li a {
+		color: #808080;
+	}
+	
+		.nav-sidebar li a:hover {
+			background-color: transparent;
+			color: #000000;
+		}
+	
+		.nav-sidebar li.active a {
+			background-color: #dddddd;
+		}
+		
+/**
+ * Tabbed Content
+ */
+.nav-tabs {
+	margin-bottom: 20px;
+}
+	
+/**
+ * Buttons
+ */
+.delete-button {
+	display: none;
+}
+
+.table td:hover .delete-button {
+	display: inline;
+}

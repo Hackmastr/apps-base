@@ -1,6 +1,8 @@
 <?php get_header(); ?>
 
-	<h2><?php echo $template->get_page_title(); ?></h2>
+	<div class="page-header">
+		<h3><?php echo $template->get_page_title(); ?></h3>
+	</div>
 	
 	<section id="apps">
 		<ul class="apps_dashboard_links clear">

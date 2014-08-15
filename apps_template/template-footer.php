@@ -1,10 +1,10 @@
-	</section>
-	
-	<footer id="apps_site_footer">
-		Ventura Apps | <a href="mailto:keith.brinks@venturamfg.com">Report A Problem</a>
-	</footer>
-	
-</div>
+</div><!-- /container -->
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="<?php echo $template->get_option('site_url'); ?>/apps_template/js/bootstrap.min.js"></script>
 
 </body>
 </html>

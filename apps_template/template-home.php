@@ -1,6 +1,8 @@
 <?php get_header(); ?>
 
-	<h2><?php echo $template->get_page_title(); ?></h2>
+	<div class="page-header">
+		<h1><?php echo $template->get_page_title(); ?></h1>
+	</div>
 	
 	<section id="home_dashboard_links">
 		<?php get_dashboard_links(); ?>

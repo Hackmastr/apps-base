@@ -1,18 +1,24 @@
 <?php get_header(); ?>
 
-	<div class="col-1-4">
+	<div class="row">
+	
+		<div class="col-sm-4 col-md-3 sidebar">
+			<?php get_sidebar(); ?>
+		</div>
 		
-		<?php get_sidebar(); ?>
+		<div class="col-sm-8 col-md-9">
+		
+			<div class="page-header">
 	
-	</div>
+				<h1><?php echo $template->get_page_title(); ?></h1>
+				
+			</div>
 	
-	<div class="col-3-4">
-	
-		<h2><?php echo $template->get_page_title(); ?></h2>
-	
-		<?php get_message(); ?>
-	
-		<?php get_admin_cells_form(); ?>
+			<?php get_message(); ?>
+		
+			<?php get_admin_cells_form(); ?>
+			
+		</div>
 	
 	</div>
 

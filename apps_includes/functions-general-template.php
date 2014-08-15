@@ -81,7 +81,7 @@ function get_nav_menu() {
 	
 	global $template;
 	
-	$nav_menu = '<ul>';
+	$nav_menu = '<ul class="nav navbar-nav">';
 
 	$nav_menu_setup = array(
 		'home' => array(
@@ -112,9 +112,9 @@ function get_nav_menu() {
 		
 		if (isset($nav_item_properties['children'])) {
 			
-			$nav_menu .= '<li '. ($template->getParentPage() == $nav_item ? 'class="current-menu-item"' : '') .'>
-				<a href="'. $template->get_option('site_url') . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .'</a>
-				<ul>';
+			$nav_menu .= '<li class="dropdown'. ($template->getParentPage() == $nav_item ? ' active"' : '') .'">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="'. $template->get_option('site_url') . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .' <span class="caret"></span></a>
+				<ul class="dropdown-menu" role="menu">';
 			
 				foreach ($nav_item_properties['children'] as $child_item => $child_item_properties) {
 				
@@ -127,7 +127,7 @@ function get_nav_menu() {
 			
 		} else {
 			
-			$nav_menu .= '<li '. ($template->getParentPage() == $nav_item ? 'class="current-menu-item"' : '') .'><a href="'. $template->get_option('site_url') . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .'</a></li>';
+			$nav_menu .= '<li '. ($template->getParentPage() == $nav_item ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .'</a></li>';
 			
 		}
 		
@@ -144,7 +144,7 @@ function get_nav_menu() {
  */
 function create_message($type, $message, $echo = false) {
 
-	$msg = '<div class="msg_box '. $type .'">
+	$msg = '<div class="alert alert-'. $type .'">
 		'. $message .'
 	</div>';
 	
