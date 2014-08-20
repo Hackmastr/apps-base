@@ -45,9 +45,15 @@ body {
 		background-color: #330033;
 	}
 	
-		.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-			color: #ccc;
+		.dropdown-menu>li>a {
+			color: #000000;
 			padding: 10px 15px 10px 25px;
+		}
+		
+		@media screen and (max-width: 767px) {
+			.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+				color: #ccc;
+			}
 		}
 	
 /**
