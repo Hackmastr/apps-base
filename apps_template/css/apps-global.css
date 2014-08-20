@@ -25,6 +25,10 @@ body {
 	border: 0;
 }
 
+	.navbar-inverse .navbar-collapse {
+		border-color: #330033;
+	}
+
 	.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a {
 		color: #ccc;
 	}
@@ -32,6 +36,19 @@ body {
 	.navbar-inverse .navbar-nav>.active>a {
 		background-color: #330033;
 	}
+	
+	.navbar-inverse .navbar-toggle {
+		border-color: #330033;
+	}
+	
+	.navbar-inverse .navbar-toggle:hover {
+		background-color: #330033;
+	}
+	
+		.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+			color: #ccc;
+			padding: 10px 15px 10px 25px;
+		}
 	
 /**
  * Sidebar
