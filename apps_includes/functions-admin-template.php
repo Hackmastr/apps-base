@@ -88,23 +88,23 @@ function get_admin_locations_form() {
 				<tr>
 					<th>Title</th>
 				</tr>
-			</thead>';
+			</thead>
+			<tbody>';
 		
 		foreach ($locations->getData() as $location) {
 			
-			$table .= '<tbody>
-				<tr>
+			$table .= '<tr>
 					<td>
 						<a href="'. $template->get_option('site_url') .'/admin.php?area=locations&id='. $location->id .'&action=edit">'. $location->location_name .'</a>
 						
 						<a class="btn btn-danger btn-xs pull-right delete-button" href="'. $template->get_option('site_url') .'/admin.php?area=locations&id='. $location->id .'&action=delete">Delete</a></li>
 					</td>
-				</tr>
-			</tbody>';
+				</tr>';
 			
 		}
 		
-		$table .= '</table>';
+			$table .= '</tbody>
+		</table>';
 		
 		// Print table
 		echo $table;
