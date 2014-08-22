@@ -18,7 +18,7 @@ class Template {
 	private $parent_page;
 	private $child_page;
 	private $head_scripts = array();
-	private $secondary_nav;
+	public $subnav;
 	
 	/**
 	 * Template initializer
@@ -196,19 +196,6 @@ class Template {
 		header('Location: '. $url);
 		exit();
 	}
-	
-	/**
-	 * Creates secondary nav menu
-	 */
-	function generateSecondaryNav($secondary_nav) {
-		$this->secondary_nav = $secondary_nav;
-	}
-	
-	/**
-	 * Gets secondary nav
-	 */
-	function getSecondaryNav() {
-		return $this->secondary_nav;
-	}
+
 	
 }

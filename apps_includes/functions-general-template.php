@@ -136,11 +136,11 @@ function get_nav_menu() {
 	$nav_menu .= '</ul>';
 	
 	// Is there a secondary nav?
-	if (!empty($template->getSecondaryNav())) {
+	if (!empty($template->subnav)) {
 		
 		$nav_menu .= '<ul class="nav navbar-nav navbar-right">';
 		
-			foreach($template->getSecondaryNav() as $secondary_nav_item => $secondary_nav_item_properties) {
+			foreach($template->subnav as $secondary_nav_item => $secondary_nav_item_properties) {
 				
 				if (isset($secondary_nav_item_properties['children'])) {
 					
@@ -150,7 +150,7 @@ function get_nav_menu() {
 					
 						foreach ($secondary_nav_item_properties['children'] as $secondary_nav_child_item => $secondary_nav_child_item_properties) {
 						
-							$nav_menu .= '<li><a href="'. $template->get_option('site_url') . $secondary_nav_child_item_properties['url'] .'">'. $secondary_nav_child_item_properties['title'] .'</a></li>';
+							$nav_menu .= '<li><a href="'. $secondary_nav_child_item_properties['url'] .'">'. $secondary_nav_child_item_properties['title'] .'</a></li>';
 							
 						}
 					
@@ -159,7 +159,7 @@ function get_nav_menu() {
 					
 				} else {
 					
-					$nav_menu .= '<li '. ($template->getChildPage() == $secondary_nav_item ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') . $secondary_nav_item_properties['url'] .'">'. $secondary_nav_item_properties['title'] .'</a></li>';
+					$nav_menu .= '<li '. ($template->getChildPage() == $secondary_nav_item ? 'class="active"' : '') .'><a href="'. $secondary_nav_item_properties['url'] .'">'. $secondary_nav_item_properties['title'] .'</a></li>';
 					
 				}
 				

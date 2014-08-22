@@ -11,7 +11,7 @@ class App {
 	 * Sets the App URL
 	 */
 	function setAppURL($url) {
-		$this->appURL = $url; 
+		$this->appURL = $url;
 	}
 	
 	/**
