@@ -436,7 +436,7 @@ function get_admin_roles_form() {
  */
 function get_admin_users_form() {
 	
-	global $users, $divisions, $cells, $template;
+	global $roles, $users, $divisions, $cells, $template;
 	
 	if (get_var('action') && get_var('action') == 'add' || get_var('action') == 'edit') {
 		
@@ -445,6 +445,21 @@ function get_admin_users_form() {
 				<label class="col-sm-3 control-label" for="user_name">Name</label>
 				<div class="col-sm-9">
 					<input class="form-control" type="text" id="user_name" name="user_name" value="'. $users->getValue('user_name') .'" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="app_roles_id">Role</label>
+				<div class="col-sm-9">
+					<select class="form-control" name="app_roles_id">';
+					
+						$form .= '<option '. ($roles->getValue('app_roles_id') == '' ? 'selected="selected"' : '') .' value="">--</option>';
+					
+						// Retrieve roles list
+						foreach ($roles->getData() as $role) {
+							$form .= '<option '. ($roles->getValue('app_roles_id') == $role->id ? 'selected="selected"' : '') .' value="'. $role->id .'">'. $role->role_name .'</option>';
+						}
+					
+					$form .= '</select>
 				</div>
 			</div>
 			<div class="form-group">
