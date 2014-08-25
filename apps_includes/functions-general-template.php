@@ -211,3 +211,14 @@ function get_date($timestamp) {
 	return date('M jS, Y', $timestamp);
 	
 }
+
+/**
+ * Returns instance of an object
+ */
+function get_obj($obj) {
+	
+	global $$obj;
+	
+	return $$obj;
+	
+}
