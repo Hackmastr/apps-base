@@ -148,6 +148,7 @@ class Master {
 				}
 			}
 			
+			$results = false;
 			$fields = '';
 			$params = '';
 			
@@ -169,6 +170,9 @@ class Master {
 				$sql .= rtrim($params, ', ');
 				
 				$sql .= ')';
+				
+				// Get results
+				$results = $this->db->insert($sql, $post_array);
 			
 			} else if ($action == 'update') {
 			
@@ -180,18 +184,14 @@ class Master {
 				$sql .= rtrim($fields, ', ');
 				
 				$sql .= ' WHERE id = '. $this->id;
+				
+				// Get results
+				$results = $this->db->update($sql, $post_array);
 			
 			} else {
 				
 				throw new Exception('Database submit action is not valid!');
 				
-			}
-			
-			// Get results
-			if (empty($this->id)) {
-				$results = $this->db->insert($sql, $post_array);
-			} else {
-				$results = $this->db->update($sql, $post_array);
 			}
 			
 			// Return result of results
