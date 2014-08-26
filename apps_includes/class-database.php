@@ -75,11 +75,18 @@ class Database {
 	 */
 	function insert($sql, $post_array) {
 		
+		$arrayed_values = '';
+		
 		// Prepare SQL query
 		$query = $this->db->prepare($sql);
 		
 		// Bind params
 		foreach ($post_array as $field => &$value) {
+		
+			if (is_array($value)) {
+				$value = implode(', ', $value);
+			}
+		
 			$query->bindParam(':'. $field, $value);
 		}
 		
@@ -101,7 +108,13 @@ class Database {
 		
 		// Bind params
 		foreach ($post_array as $field => &$value) {
+		
+			if (is_array($value)) {
+				$value = implode(', ', $value);
+			}		
+		
 			$query->bindParam(':'. $field, $value);
+			
 		}
 		
 		// Execute
