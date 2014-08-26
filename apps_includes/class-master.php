@@ -152,7 +152,7 @@ class Master {
 			$params = '';
 			
 			// Insert new record if $action == insert
-			if ($action = 'insert') {
+			if ($action == 'insert') {
 			
 				$sql = 'INSERT INTO '. $this->db_table .' (';
 				
