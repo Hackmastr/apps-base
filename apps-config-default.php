@@ -8,6 +8,12 @@ $site_options = array(
 	'site_url' => '//localhost/apps',
 	'site_path' => dirname(__FILE__) .'/',
 	'site_template_path' => dirname(__FILE__) .'/apps_template',
+	'email_host' => '',
+	'email_port' => '25',
+	'email_from' => '',
+	'email_from_name' => '',
+	'email_username' => '',
+	'email_password' => ''
 );
 
 /**
