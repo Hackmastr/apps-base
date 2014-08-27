@@ -10,6 +10,7 @@ require_once('class-cells.php');
 require_once('class-links.php');
 require_once('class-roles.php');
 require_once('class-users.php');
+require_once('class-user-cells.php');
 
 class Bootstrap {
 	

@@ -436,7 +436,7 @@ function get_admin_roles_form() {
  */
 function get_admin_users_form() {
 	
-	global $roles, $users, $divisions, $cells, $template;
+	global $roles, $users, $userCells, $divisions, $cells, $template;
 	
 	if (get_var('action') && get_var('action') == 'add' || get_var('action') == 'edit') {
 		
@@ -478,18 +478,39 @@ function get_admin_users_form() {
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="app_cells_id">Cell</label>
+				<label class="col-sm-3 control-label">Select cells user assigned to</label>
 				<div class="col-sm-9">
-					<select class="form-control" name="app_cells_id">';
+					<div class="checkbox">
+						<label><input type="checkbox" class="checkall" /> (Select All)</label>
+					</div>
+					<div class="checkbox">';
 					
-						$form .= '<option '. ($users->getValue('app_cells_id') == '' ? 'selected="selected"' : '') .' value="">--</option>';
-					
-						// Retrieve divisions list
-						foreach ($cells->getData() as $cell) {
-							$form .= '<option '. ($users->getValue('app_cells_id') == $cell->id ? 'selected="selected"' : '') .' value="'. $cell->id .'">'. $cell->cell_name .'</option>';
+						// Get assigned cells for this user, if any
+						$user_cells_assigned = array();
+						
+						if (get_var('action') == 'edit') {
+						
+							$filter = array(
+								'where' => 'app_users_id = '. get_var('id')
+							);
+						
+							if ($userCells->getData($filter)) {
+								foreach($userCells->getData($filter) as $user_cells_data) {
+									array_push($user_cells_assigned, $user_cells_data->app_cells_id);
+								}
+							}
 						}
-					
-					$form .= '</select>
+			
+						// Get all cells
+						foreach ($cells->getData() as $cell) {
+		
+							$form .= '<div class="checkbox">
+								<label><input '. (!empty($user_cells_assigned) && in_array($cell->id, $user_cells_assigned) ? 'checked="checked"' : 'no') .' type="checkbox" name="user_cells[]" value="'. $cell->id .'" /> '. $cell->cell_name .'</label>
+							</div>';
+		
+						}
+				
+					$form .= '</div>
 				</div>
 			</div>
 			<div class="form-group">

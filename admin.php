@@ -37,6 +37,7 @@ if ($area && array_key_exists($area, $allowed_tabs)) {
 	$links = Bootstrap::Load('links');
 	$roles = Bootstrap::Load('roles');
 	$users = Bootstrap::Load('users');
+	$userCells = Bootstrap::Load('UserCells');
 	
 	if (get_var('action') == 'add' || get_var('action') == 'edit' || get_var('action') == 'delete') {
 		
@@ -53,7 +54,7 @@ if ($area && array_key_exists($area, $allowed_tabs)) {
 					create_message('success', 'Successfully '. (get_var('action') == 'add' ? 'added' : 'saved') .' '. rtrim($area, 's') .'.');
 					$template->redirect($template->get_option('site_url') .'/admin.php?area='. get_var('area'));
 				} else {
-					create_message('error', 'Something has gone wrong...');
+					create_message('danger', 'Something has gone wrong...');
 				}
 			} else if (get_var('action') == 'delete') {
 				$$area->deleteData();
