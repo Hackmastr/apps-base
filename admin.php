@@ -48,7 +48,7 @@ if ($area && array_key_exists($area, $allowed_tabs)) {
 		try {
 			// Has the form been submitted?
 			if (isset($_POST['submit'])) {
-				$result = $$area->submitData($_POST);
+				$result = $$area->submitData((get_var('action') == 'add' ? 'insert' : 'update'), $_POST);
 				if ($result) {
 					create_message('success', 'Successfully '. (get_var('action') == 'add' ? 'added' : 'saved') .' '. rtrim($area, 's') .'.');
 					$template->redirect($template->get_option('site_url') .'/admin.php?area='. get_var('area'));
