@@ -11,7 +11,6 @@ $template->set_page_title('Home');
 $template->setParentPage('home');
 
 require_once('apps_includes/functions-dashboard-template.php');
-require_once('apps_includes/class-innolunch.php');
 $links = Bootstrap::Load('Links');
 $innolunch = Bootstrap::Load('Innolunch');
 
