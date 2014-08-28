@@ -72,6 +72,7 @@ CREATE TABLE app_users (
 	user_email_address VARCHAR(100) NOT NULL,
 	user_shift VARCHAR(100) NOT NULL,
 	user_notification_threshold int,
+	user_is_cell_lead int NOT NULL,
 	PRIMARY KEY (id)
 );
 

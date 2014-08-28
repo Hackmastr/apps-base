@@ -456,7 +456,7 @@ function get_admin_users_form() {
 					
 						// Retrieve roles list
 						foreach ($roles->getData() as $role) {
-							$form .= '<option '. ($roles->getValue('app_roles_id') == $role->id ? 'selected="selected"' : '') .' value="'. $role->id .'">'. $role->role_name .'</option>';
+							$form .= '<option '. ($users->getValue('app_roles_id') == $role->id ? 'selected="selected"' : '') .' value="'. $role->id .'">'. $role->role_name .'</option>';
 						}
 					
 					$form .= '</select>
@@ -536,6 +536,17 @@ function get_admin_users_form() {
 				<label class="col-sm-3 control-label" for="user_notification_threshold">Notification Threshold</label>
 				<div class="col-sm-9">
 					<input class="form-control" type="text" id="user_notification_threshold" name="user_notification_threshold" value="'. $users->getValue('user_notification_threshold') .'" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Is this user a cell lead?</label>
+				<div class="col-sm-9">
+					<div class="radio">
+						<label><input type="radio" name="user_is_cell_lead" value="1"'. ($users->getValue('user_is_cell_lead') == '1' || $users->getValue('user_is_cell_lead') != '0' ? 'checked="checked"' : '') .' /> Yes</label>
+					</div>
+					<div class="radio">
+						<label><input type="radio" name="user_is_cell_lead" value="0"'. ($users->getValue('user_is_cell_lead') == '0' ? 'checked="checked"' : '') .' /> No</label>
+					</div>
 				</div>
 			</div>
 			<div class="form-group">
