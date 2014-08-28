@@ -4,6 +4,7 @@
  */
  
 // Setup our app environment
+define('APP_NAME', 'apps');
 require_once('apps-core.php');
 $template->set_app_template_path('/apps_template');
 $template->set_page_title('Admin CP');
