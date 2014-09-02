@@ -74,4 +74,12 @@ class Users extends Master {
 		
 	}
 	
+	/**
+	 * Gets users for define production cell
+	 */
+	function getCellUsers($cell_id) {
+		$result = $this->db->select('SELECT * FROM app_users_cells uc INNER JOIN app_users u ON u.id = uc.app_users_id INNER JOIN app_roles r ON u.app_roles_id = r.id WHERE uc.app_cells_id = '. $cell_id);
+		return $result;
+	}
+	
 }
