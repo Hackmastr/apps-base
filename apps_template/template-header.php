@@ -13,6 +13,9 @@
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 		
+		<!-- jQuery Validate -->
+		<script src="<?php echo $template->get_option('site_url'); ?>/apps_template/js/jquery.validate.min.js"></script>
+		
 		<!-- Ventura Apps JavaScript -->
 		<script src="<?php echo $template->get_option('site_url'); ?>/apps_template/js/ventura-apps.js"></script>
 

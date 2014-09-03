@@ -128,3 +128,14 @@ body {
 			background-color: #f1f1f1;
 			text-decoration: none;
 		}
+
+/**
+ * Forms
+ */
+label.error {
+	color: #ff0000;
+}
+
+input.error {
+	border-color: #ff0000;
+}
