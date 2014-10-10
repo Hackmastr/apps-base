@@ -1,19 +1,28 @@
 <?php
+
 /**
- * Main page to Ventura Apps
+ * VenturaApps Base App
+ *
+ * @author Keith Brinks <keith.brinks@venturamfg.com>
+ * @version 1.0.0
  */
 
-// Setup our app environment
-define('APP_NAME', 'apps');
-require_once('apps-core.php');
-$template->set_app_template_path('/apps_template');
-$template->set_page_title('Home');
-$template->setParentPage('home');
+####################################################################
+#                        App setup & config                        #
+####################################################################
 
-require_once('apps_includes/functions-dashboard-template.php');
-$links = Bootstrap::Load('Links');
-$innolunch = Bootstrap::Load('Innolunch');
+require_once 'apps-core.php';
 
-$template->addScript('<link rel="stylesheet" type="text/css" href="'. $template->get_option('site_url') .'/apps_template/base.css" />');
+$app = new App();
+$app->name = 'Base';
+$app->version = '1.0.0';
+$app->prefix = 'apps';
+$app->url = $options['site_url'];
+
+$template = new Template($options, $app);
+
+####################################################################
+
+$template->addScript('<link rel="stylesheet" type="text/css" href="'. $options['site_url'] .'/apps_template/base.css" />');
 	
 load_template('home');

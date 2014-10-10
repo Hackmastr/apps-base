@@ -4,6 +4,19 @@
  */
 
 /**
+ * Checks if current page is a single view page
+ */
+function is_single() {
+	
+	if (get_var('action') == 'view' && get_var('id')) {
+		return true;
+	} else {
+		return false;
+	}
+	
+}
+
+/**
  * Returns requested $_GET
  *
  * @return boolean Returns value of $_GET, otherwise false if not set
@@ -44,5 +57,16 @@ function get_page_url() {
 function get_time($format) {
 	
 	return date($format, time());
+	
+}
+
+/**
+ * Returns human readable date
+ *
+ * @since 1.0.0
+ */
+function get_date($timestamp, $format = 'M jS, Y') {
+	
+	return date($format, $timestamp);
 	
 }

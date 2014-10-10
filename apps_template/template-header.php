@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title><?php echo $template->get_page_title() .' - '. $template->get_option('site_title'); ?></title>
+		<title><?php echo $template->page_title .' - '. $options['site_title']; ?></title>
 		
 		<!-- Device support -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,16 +14,16 @@
 		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 		
 		<!-- jQuery Validate -->
-		<script src="<?php echo $template->get_option('site_url'); ?>/apps_template/js/jquery.validate.min.js"></script>
+		<script src="<?php echo $options['site_url']; ?>/apps_template/js/jquery.validate.min.js"></script>
 		
 		<!-- Ventura Apps JavaScript -->
-		<script src="<?php echo $template->get_option('site_url'); ?>/apps_template/js/ventura-apps.js"></script>
+		<script src="<?php echo $options['site_url']; ?>/apps_template/js/ventura-apps.js"></script>
 
 		<!-- Bootstrap CSS -->
-		<link href="<?php echo $template->get_option('site_url'); ?>/apps_template/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+		<link href="<?php echo $options['site_url']; ?>/apps_template/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 		
 		<!-- Global CSS -->
-		<link href="<?php echo $template->get_option('site_url'); ?>/apps_template/css/apps-global.css" rel="stylesheet" media="screen" />
+		<link href="<?php echo $options['site_url']; ?>/apps_template/css/apps-global.css" rel="stylesheet" media="screen" />
 
 		<!-- HTML5 support for IE -->
 		<!--[if lt IE 9]>
@@ -52,7 +52,7 @@
 				<span class="icon-bar"></span>
 			</button>
 	      
-			<a class="navbar-brand" href="<?php echo $template->get_option('site_url'); ?>">VenturaApps</a>
+			<a class="navbar-brand" href="<?php echo $options['site_url']; ?>">VenturaApps</a>
 	    
 	    </div>
 		

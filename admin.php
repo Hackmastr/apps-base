@@ -1,77 +1,121 @@
 <?php
 /**
  * Ventura Apps site administration panel
+ *
+ * @author Keith Brinks <keith.brinks@venturmfg.com>
+ * @since 1.0.0
  */
- 
-// Setup our app environment
-define('APP_NAME', 'apps');
-require_once('apps-core.php');
-$template->set_app_template_path('/apps_template');
-$template->set_page_title('Admin CP');
-$template->setParentPage('admin');
 
-require_once('apps_includes/functions-admin-template.php');
+####################################################################
+#                        App setup & config                        #
+####################################################################
 
-// Set up our tabs array
-$allowed_tabs = array(
-	'locations' => 'Locations',
-	'divisions' => 'Divisions',
-	'cells' => 'Cells',
-	'links' => 'Links',
-	'roles' => 'Roles',
-	'users' => 'Users'
+require_once 'apps-core.php';
+
+$app = new App();
+$app->name = 'Base';
+$app->version = '1.0.0';
+$app->prefix = 'apps';
+$app->url = $options['site_url'];
+
+$template = new Template($options, $app);
+
+####################################################################
+
+// Include necessary files
+require_once 'apps_includes/functions-admin.php';
+
+// Build subnav
+$template->subnav = array(
+	'dashboard' => array(
+		'title' => 'Dashboard',
+		'url' => $options['site_url'] .'/admin.php'
+	),
+	'locations' => array(
+		'title' => 'Locations',
+		'url' => $options['site_url'] .'/admin.php?area=locations'
+	),
+	'divisions' => array(
+		'title' => 'Divisions',
+		'url' => $options['site_url'] .'/admin.php?area=divisions'
+	),
+	'cells' => array(
+		'title' => 'Cells',
+		'url' => $options['site_url'] .'/admin.php?area=cells'
+	),
+	'links' => array(
+		'title' => 'Links',
+		'url' => $options['site_url'] .'/admin.php?area=links'
+	),
+	'roles' => array(
+		'title' => 'Roles',
+		'url' => $options['site_url'] .'/admin.php?area=roles'
+	),
+	'users' => array(
+		'title' => 'Users',
+		'url' => $options['site_url'] .'/admin.php?area=users',
+		'template' => 'user'
+	)
 );
 
 // Get request vars
+$id = get_var('id');
 $area = get_var('area');
 $action = get_var('action');
-$id = get_var('id');
 
-// Check if a tab is being requested
-// Otherwise redirect to locations tab
-if ($area && array_key_exists($area, $allowed_tabs)) {
+// Is a specific area being requested?
+if ($area) {
+
+	if ($action == 'add') {
 	
-	// Invoke necessary classes
-	$locations = Bootstrap::Load('Locations');
-	$divisions = Bootstrap::Load('Divisions');
-	$cells = Bootstrap::Load('cells');
-	$links = Bootstrap::Load('links');
-	$roles = Bootstrap::Load('roles');
-	$users = Bootstrap::Load('users');
-	$userCells = Bootstrap::Load('UserCells');
-	
-	if (get_var('action') == 'add' || get_var('action') == 'edit' || get_var('action') == 'delete') {
-		
-		// If we're editing or deleting an item, set the ID
-		if (get_var('action') == 'edit' || get_var('action') == 'delete') {
-			$$area->setID(get_var('id'));
-		}
-		
-		try {
-			// Has the form been submitted?
-			if (isset($_POST['submit'])) {
-				$result = $$area->submitData((get_var('action') == 'add' ? 'insert' : 'update'), $_POST);
-				if ($result) {
-					create_message('success', 'Successfully '. (get_var('action') == 'add' ? 'added' : 'saved') .' '. rtrim($area, 's') .'.');
-					$template->redirect($template->get_option('site_url') .'/admin.php?area='. get_var('area'));
-				} else {
-					create_message('danger', 'Something has gone wrong...');
-				}
-			} else if (get_var('action') == 'delete') {
-				$$area->deleteData();
-				create_message('success', 'Successfully deleted '. rtrim($area, 's') .'.');
-				$template->redirect($template->get_option('site_url') .'/admin.php?area='. get_var('area'));
+		// Has the form been submitted?
+		if (isset($_POST['submit'])) {
+			
+			switch ($area) {
+				case 'users':
+					User::addUser($_POST);
+					break;
 			}
-		} catch (Exception $e) {
-			echo $e->getMessage();
+			
+			redirect($options['site_url'] .'/admin.php?area='. $area);
+			
 		}
+		
+		$template->page_title = 'Add New User';
+		
+	} else if ($action == 'view') {
+	
+		// Has the form been submitted?
+		if (isset($_POST['submit'])) {
+			
+			switch ($area) {
+				case 'users':
+					User::saveUser($id, $_POST);
+					break;
+			}
+			
+			redirect($options['site_url'] .'/admin.php?area='. $area);
+			
+		} else if (isset($_POST['delete'])) {
+			
+			switch ($area) {
+				case 'users':
+					User::deleteUser($id);
+					break;
+			}
+			
+			redirect($options['site_url'] .'/admin.php?area='. $area);
+			
+		}
+		
+		$template->page_title = 'View User';
 		
 	}
 	
-	load_template('admin-'. $area);
-	
+	load_template('admin-'. $template->subnav[$area]['template']);
+
 } else {
 
-	load_template('admin');
+	load_template('admin-dashboard');
 	
 }

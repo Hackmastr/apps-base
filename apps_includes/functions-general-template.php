@@ -8,9 +8,9 @@
  */
 function get_header() {
 	
-	global $template;
+	global $page, $options, $template;
 	
-	$template_header_file = $template->get_option('site_template_path') .'/template-header.php';
+	$template_header_file = $options['site_path'] .'/apps_template/template-header.php';
 	
 	if (file_exists($template_header_file)) {
 		require_once($template_header_file);	
@@ -25,9 +25,9 @@ function get_header() {
  */
 function load_template($requested_template) {
 	
-	global $template;
+	global $context, $options, $app, $template;
 	
-	$template_file = $template->get_option('app_template_path') .'/template-'. $requested_template .'.php';
+	$template_file = $options['site_path'] . (!empty($app->directory) ? '/a/'. $app->directory : '') .'/'. $app->prefix .'_template/template-'. $requested_template .'.php';
 	
 	if (file_exists($template_file)) {
 		require_once($template_file);	
@@ -42,9 +42,9 @@ function load_template($requested_template) {
  */
 function get_footer() {
 	
-	global $template;
+	global $page, $options;
 	
-	$template_footer_file = $template->get_option('site_template_path') .'/template-footer.php';
+	$template_footer_file = $options['site_path'] .'/apps_template/template-footer.php';
 	
 	if (file_exists($template_footer_file)) {
 		require_once($template_footer_file);	
@@ -79,7 +79,7 @@ function apps_head() {
  */
 function get_nav_menu() {
 	
-	global $template;
+	global $options, $template;
 	
 	$nav_menu = '<ul class="nav navbar-nav">';
 
@@ -112,13 +112,13 @@ function get_nav_menu() {
 		
 		if (isset($nav_item_properties['children'])) {
 			
-			$nav_menu .= '<li class="dropdown'. ($template->getParentPage() == $nav_item ? ' active"' : '') .'">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="'. $template->get_option('site_url') . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .' <span class="caret"></span></a>
+			$nav_menu .= '<li class="dropdown'. ($template->parent_page == $nav_item ? ' active"' : '') .'">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="'. $options['site_url'] . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .' <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">';
 			
 				foreach ($nav_item_properties['children'] as $child_item => $child_item_properties) {
 				
-					$nav_menu .= '<li><a href="'. $template->get_option('site_url') . $child_item_properties['url'] .'">'. $child_item_properties['title'] .'</a></li>';
+					$nav_menu .= '<li><a href="'. $options['site_url'] . $child_item_properties['url'] .'">'. $child_item_properties['title'] .'</a></li>';
 					
 				}
 			
@@ -127,7 +127,7 @@ function get_nav_menu() {
 			
 		} else {
 			
-			$nav_menu .= '<li '. ($template->getParentPage() == $nav_item ? 'class="active"' : '') .'><a href="'. $template->get_option('site_url') . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .'</a></li>';
+			$nav_menu .= '<li '. ($template->parent_page == $nav_item ? 'class="active"' : '') .'><a href="'. $options['site_url'] . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .'</a></li>';
 			
 		}
 		
@@ -138,34 +138,7 @@ function get_nav_menu() {
 	// Is there a secondary nav?
 	if (!empty($template->subnav)) {
 		
-		$nav_menu .= '<ul class="nav navbar-nav navbar-right">';
 		
-			foreach($template->subnav as $secondary_nav_item => $secondary_nav_item_properties) {
-				
-				if (isset($secondary_nav_item_properties['children'])) {
-					
-					$nav_menu .= '<li class="dropdown'. ($template->getChildPage() == $secondary_nav_item ? ' active"' : '') .'">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="'. $template->get_option('site_url') . $secondary_nav_item_properties['url'] .'">'. $secondary_nav_item_properties['title'] .' <span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">';
-					
-						foreach ($secondary_nav_item_properties['children'] as $secondary_nav_child_item => $secondary_nav_child_item_properties) {
-						
-							$nav_menu .= '<li><a href="'. $secondary_nav_child_item_properties['url'] .'">'. $secondary_nav_child_item_properties['title'] .'</a></li>';
-							
-						}
-					
-						$nav_menu .= '</ul>
-					</li>';
-					
-				} else {
-					
-					$nav_menu .= '<li '. ($template->getChildPage() == $secondary_nav_item ? 'class="active"' : '') .'><a href="'. $secondary_nav_item_properties['url'] .'">'. $secondary_nav_item_properties['title'] .'</a></li>';
-					
-				}
-				
-			}
-		
-		$nav_menu .= '</ul>';
 		
 	}
 	
@@ -204,21 +177,9 @@ function get_message() {
 }
 
 /**
- * Returns human readable date
+ * Redirects page
  */
-function get_date($timestamp) {
-	
-	return date('M jS, Y', $timestamp);
-	
-}
-
-/**
- * Returns instance of an object
- */
-function get_obj($obj) {
-	
-	global $$obj;
-	
-	return $$obj;
-	
+function redirect($url) {
+	header('Location: '. $url);
+	exit();
 }
