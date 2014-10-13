@@ -7,8 +7,10 @@
  * Checks if current page is a single view page
  */
 function is_single() {
+
+	$action = get_var('action');
 	
-	if (get_var('action') == 'view' && get_var('id')) {
+	if ($action == 'view' || $action == 'add') {
 		return true;
 	} else {
 		return false;

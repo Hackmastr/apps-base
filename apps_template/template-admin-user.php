@@ -29,7 +29,7 @@
 					$user_is_cell_lead = ($user ? $user->getIsCellLead() : '');
 				?>
 				
-				<?php if (!$user) : ?>
+				<?php if (get_var('action') != 'add' && !$user) : ?>
 				
 					<?php create_message('danger', 'User does not exist!', true); ?>
 					
@@ -126,7 +126,7 @@
 				
 			<?php else : ?>
 			
-				<a class="btn btn-primary" href="<?php echo $app->url; ?>/admin.php?area=<?php echo get_var('area'); ?>&action=add">Add New</a>
+				<a class="btn btn-primary" href="<?php echo $app->url; ?>/admin.php?area=users&action=add">Add New</a>
 				
 				<?php if (User::getAllUsers()) : ?>
 				
@@ -142,7 +142,7 @@
 							
 								<tr>
 									<td>
-										<a href="<?php echo $app->url; ?>/admin.php?area=<?php echo get_var('area'); ?>&action=view&id=<?php echo $user->getID(); ?>"><?php echo $user->getName(); ?></a>
+										<a href="<?php echo $app->url; ?>/admin.php?area=users&action=view&id=<?php echo $user->getID(); ?>"><?php echo $user->getName(); ?></a>
 									</td>
 								</tr>			
 	

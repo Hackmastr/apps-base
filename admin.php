@@ -22,9 +22,6 @@ $template = new Template($options, $app);
 
 ####################################################################
 
-// Include necessary files
-require_once 'apps_includes/functions-admin.php';
-
 // Build subnav
 $template->subnav = array(
 	'dashboard' => array(
@@ -49,7 +46,8 @@ $template->subnav = array(
 	),
 	'roles' => array(
 		'title' => 'Roles',
-		'url' => $options['site_url'] .'/admin.php?area=roles'
+		'url' => $options['site_url'] .'/admin.php?area=roles',
+		'template' => 'role'
 	),
 	'users' => array(
 		'title' => 'Users',
@@ -63,59 +61,58 @@ $id = get_var('id');
 $area = get_var('area');
 $action = get_var('action');
 
-// Is a specific area being requested?
 if ($area) {
 
-	if ($action == 'add') {
-	
-		// Has the form been submitted?
-		if (isset($_POST['submit'])) {
-			
-			switch ($area) {
-				case 'users':
+	switch ($area) {
+		
+		case 'roles':
+			if ($action == 'add') {
+				$template->page_title = 'Add New Role';
+				if (isset($_POST['submit'])) {
+					Role::addRole($_POST);
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+			} else if ($action == 'view') {
+				$template->page_title = 'View Role';
+				if (isset($_POST['submit'])) {
+					Role::saveRole($id, $_POST);
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+				if (isset($_POST['delete'])) {
+					Role::deleteRole($id);
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+			} else {
+				$template->page_title = 'Manage Roles';
+			}
+			break;
+		case 'users':
+			if ($action == 'add') {
+				$template->page_title = 'Add New User';
+				if (isset($_POST['submit'])) {
 					User::addUser($_POST);
-					break;
-			}
-			
-			redirect($options['site_url'] .'/admin.php?area='. $area);
-			
-		}
-		
-		$template->page_title = 'Add New User';
-		
-	} else if ($action == 'view') {
-	
-		// Has the form been submitted?
-		if (isset($_POST['submit'])) {
-			
-			switch ($area) {
-				case 'users':
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+			} else if ($action == 'view') {
+				$template->page_title = 'View User';
+				if (isset($_POST['submit'])) {
 					User::saveUser($id, $_POST);
-					break;
-			}
-			
-			redirect($options['site_url'] .'/admin.php?area='. $area);
-			
-		} else if (isset($_POST['delete'])) {
-			
-			switch ($area) {
-				case 'users':
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+				if (isset($_POST['delete'])) {
 					User::deleteUser($id);
-					break;
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+			} else {
+				$template->page_title = 'Manage Users';
 			}
-			
-			redirect($options['site_url'] .'/admin.php?area='. $area);
-			
-		}
-		
-		$template->page_title = 'View User';
+			break;		
 		
 	}
 	
 	load_template('admin-'. $template->subnav[$area]['template']);
 
 } else {
-
+	$template->page_title = 'Admin Dashboard';
 	load_template('admin-dashboard');
-	
 }
