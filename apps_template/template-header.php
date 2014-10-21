@@ -52,7 +52,7 @@
 				<span class="icon-bar"></span>
 			</button>
 	      
-			<a class="navbar-brand" href="<?php echo $options['site_url']; ?>">VenturaApps</a>
+			<a class="navbar-brand" href="<?php echo $options['site_url']; ?>">VenturaApps <sup>Beta</sup></a>
 	    
 	    </div>
 		
