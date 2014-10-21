@@ -3,18 +3,20 @@
 	<div class="row">
 	
 		<div class="col-sm-4 col-md-3 sidebar">
-			<?php get_sidebar(); ?>
+			<?php echo $template->subnav(); ?>
 		</div>
-	
+		
 		<div class="col-sm-8 col-md-9">
-	
+		
 			<div class="page-header">
-				<h1><?php echo $template->get_page_title(); ?></h1>
+	
+				<h1><?php echo $template->page_title; ?></h1>
+				
 			</div>
 	
 			<?php get_message(); ?>
-	
-			<?php get_admin_locations_form(); ?>
+		
+			<?php get_admin_cells_form(); ?>
 			
 		</div>
 	

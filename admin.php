@@ -26,23 +26,28 @@ $template = new Template($options, $app);
 $template->subnav = array(
 	'dashboard' => array(
 		'title' => 'Dashboard',
-		'url' => $options['site_url'] .'/admin.php'
+		'url' => $options['site_url'] .'/admin.php',
+		'template' => 'dashboard'
 	),
 	'locations' => array(
 		'title' => 'Locations',
-		'url' => $options['site_url'] .'/admin.php?area=locations'
+		'url' => $options['site_url'] .'/admin.php?area=locations',
+		'template' => 'location'
 	),
 	'divisions' => array(
 		'title' => 'Divisions',
-		'url' => $options['site_url'] .'/admin.php?area=divisions'
+		'url' => $options['site_url'] .'/admin.php?area=divisions',
+		'template' => 'division'
 	),
 	'cells' => array(
 		'title' => 'Cells',
-		'url' => $options['site_url'] .'/admin.php?area=cells'
+		'url' => $options['site_url'] .'/admin.php?area=cells',
+		'template' => 'cell'
 	),
 	'links' => array(
 		'title' => 'Links',
-		'url' => $options['site_url'] .'/admin.php?area=links'
+		'url' => $options['site_url'] .'/admin.php?area=links',
+		'template' => 'link'
 	),
 	'roles' => array(
 		'title' => 'Roles',
