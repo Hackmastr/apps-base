@@ -70,6 +70,27 @@ if ($area) {
 
 	switch ($area) {
 		
+		case 'locations':
+			if ($action == 'add') {
+				$template->page_title = 'Add New Location';
+				if (isset($_POST['submit'])) {
+					Location::addLocation($_POST);
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+			} else if ($action == 'view') {
+				$template->page_title = 'View Location';
+				if (isset($_POST['submit'])) {
+					Location::saveLocation($id, $_POST);
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+				if (isset($_POST['delete'])) {
+					Location::deleteLocation($id);
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+			} else {
+				$template->page_title = 'Manage Locations';
+			}
+			break;
 		case 'roles':
 			if ($action == 'add') {
 				$template->page_title = 'Add New Role';
