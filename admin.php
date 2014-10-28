@@ -91,6 +91,27 @@ if ($area) {
 				$template->page_title = 'Manage Locations';
 			}
 			break;
+		case 'divisions':
+			if ($action == 'add') {
+				$template->page_title = 'Add New Division';
+				if (isset($_POST['submit'])) {
+					Division::addDivision($_POST);
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+			} else if ($action == 'view') {
+				$template->page_title = 'View Division';
+				if (isset($_POST['submit'])) {
+					Division::saveDivision($id, $_POST);
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+				if (isset($_POST['delete'])) {
+					Division::deleteDivision($id);
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+			} else {
+				$template->page_title = 'Manage Divisions';
+			}
+			break;
 		case 'roles':
 			if ($action == 'add') {
 				$template->page_title = 'Add New Role';

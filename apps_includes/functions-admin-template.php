@@ -1,66 +1,6 @@
 <?php
 
 /**
- * Displays admin divisions form
- */
-function get_admin_divisions_form() {
-	
-	global $divisions, $template;
-	
-	if (get_var('action') && get_var('action') == 'add' || get_var('action') == 'edit') {
-		
-		$form = '<form class="form-horizontal" role="form" method="post" action="'. get_page_url() .'">
-			<div class="form-group">
-				<label class="col-sm-3 control-label" for="division_name">Division Name</label>
-				<div class="col-sm-9">
-					<input class="form-control" type="text" id="division_name" name="division_name" value="'. $divisions->getValue('division_name') .'" />
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-3 col-sm-9">
-					<button class="btn btn-default" type="submit" name="submit">Submit</button>
-				</div>
-			</div>
-		</form>';
-		
-		// Print form
-		echo $form;
-		
-	} else {
-	
-		$table = '<a class="btn btn-primary" href="'. $template->get_option('site_url') .'/admin.php?area='. get_var('area') .'&action=add">Add New</a>
-	
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Title</th>
-				</tr>
-			</thead>
-			<tbody>';
-		
-		foreach ($divisions->getData() as $division) {
-			
-				$table .= '<tr>
-					<td>
-						<a href="'. $template->get_option('site_url') .'/admin.php?area=divisions&id='. $division->id .'&action=edit">'. $division->division_name .'</a>
-						
-						<a class="btn btn-xs btn-danger pull-right delete-button" href="'. $template->get_option('site_url') .'/admin.php?area=divisions&id='. $division->id .'&action=delete">Delete</a>
-					</td>
-				</tr>';
-			
-		}
-		
-			$table .= '</tbody>
-		</table>';
-		
-		// Print table
-		echo $table;
-			
-	}
-	
-}
-
-/**
  * Displays admin cells form
  */
 function get_admin_cells_form() {
