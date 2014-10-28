@@ -50,6 +50,60 @@ class Cell {
 	}
 	
 	/**
+	 * Adds cell to database
+	 */
+	public static function addCell($post) {
+		
+		$db = DB::getInstance();
+		
+		$query = $db->dbh->prepare('INSERT INTO app_cells (app_division_id, app_location_id, cell_number, cell_name, cell_iq_connector, cell_status) VALUES (:app_division_id, :app_location_id, :cell_number, :cell_name, :cell_iq_connector, :cell_status)');
+		$query->bindValue('app_division_id', $post['app_division_id']);
+		$query->bindValue('app_location_id', $post['app_location_id']);
+		$query->bindValue('cell_number', $post['cell_number']);
+		$query->bindValue('cell_name', $post['cell_name']);
+		$query->bindValue('cell_iq_connector', $post['cell_iq_connector']);
+		$query->bindValue('cell_status', $post['cell_status']);
+		
+		if ($query->execute())
+			return true;
+		
+	}
+	
+	/**
+	 * Saves cell to database
+	 */
+	public static function saveCell($id, $post) {
+		
+		$db = DB::getInstance();
+		$query = $db->dbh->prepare('UPDATE app_cells SET app_division_id = :app_division_id, app_location_id = :app_location_id, cell_number = :cell_number, cell_name = :cell_name, cell_iq_connector = :cell_iq_connector, cell_status = :cell_status WHERE id = :id');
+		$query->bindValue('id', $id);
+		$query->bindValue('app_division_id', $post['app_division_id']);
+		$query->bindValue('app_location_id', $post['app_location_id']);
+		$query->bindValue('cell_number', $post['cell_number']);
+		$query->bindValue('cell_name', $post['cell_name']);
+		$query->bindValue('cell_iq_connector', $post['cell_iq_connector']);
+		$query->bindValue('cell_status', $post['cell_status']);
+		
+		if ($query->execute())
+			return true;
+		
+	}
+	
+	/**
+	 * Deletes cell from database
+	 */
+	public static function deleteCell($id) {
+		
+		$db = DB::getInstance();
+		$query = $db->dbh->prepare('DELETE FROM app_cells WHERE id = :id');
+		$query->bindValue('id', $id);
+		
+		if ($query->execute())
+			return true;
+		
+	}
+	
+	/**
 	 * Get cell ID
 	 *
 	 * @since 1.0.0
@@ -65,6 +119,41 @@ class Cell {
 	 */
 	function getName() {
 		return $this->cell_name;
+	}
+	
+	/**
+	 * Get cell number
+	 */
+	function getNumber() {
+		return $this->cell_number;
+	}
+	
+	/**
+	 * Get cell division ID
+	 */
+	function getDivisionID() {
+		return $this->app_division_id;
+	}
+	
+	/**
+	 * Get cell location ID
+	 */
+	function getLocationID() {
+		return $this->app_location_id;
+	}
+	
+	/**
+	 * Get cell IQ connector
+	 */
+	function getIQConnector() {
+		return $this->cell_iq_connector;
+	}
+	
+	/**
+	 * Get cell status
+	 */
+	function getStatus() {
+		return $this->cell_status;
 	}
 	
 }

@@ -16,6 +16,21 @@ class Link {
 	private $link_icon_class;
 	
 	/**
+	 * Gets single link
+	 */
+	public static function getLink($id) {
+	
+		$db = DB::getInstance();
+		$query = $db->dbh->prepare('SELECT * FROM app_links WHERE id = :id');
+		$query->bindValue('id', $id);
+		$query->execute();
+		
+		if ($query->rowCount() > 0)
+			return $query->fetchAll(PDO::FETCH_CLASS, 'Link')[0];
+			
+	}
+	
+	/**
 	 * Gets all links
 	 */
 	public static function getAllLinks() {
@@ -25,6 +40,60 @@ class Link {
 		
 		if ($query->execute())
 			return $query->fetchALL(PDO::FETCH_CLASS, 'Link');		
+		
+	}
+	
+	/**
+	 * Adds link to database
+	 */
+	public static function addLink($post) {
+		
+		$db = DB::getInstance();
+		
+		$query = $db->dbh->prepare('INSERT INTO app_links (link_name, link_description, link_url, link_bg_color, link_order, link_icon_class) VALUES (:link_name, :link_description, :link_url, :link_bg_color, :link_order, :link_icon_class)');
+		$query->bindValue('link_name', $post['link_name']);
+		$query->bindValue('link_description', $post['link_description']);
+		$query->bindValue('link_url', $post['link_url']);
+		$query->bindValue('link_bg_color', $post['link_bg_color']);
+		$query->bindValue('link_order', $post['link_order']);
+		$query->bindValue('link_icon_class', $post['link_icon_class']);
+		
+		if ($query->execute())
+			return true;
+		
+	}
+	
+	/**
+	 * Saves link to database
+	 */
+	public static function saveLink($id, $post) {
+		
+		$db = DB::getInstance();
+		$query = $db->dbh->prepare('UPDATE app_links SET link_name = :link_name, link_description = :link_description, link_url = :link_url, link_bg_color = :link_bg_color, link_order = :link_order, link_icon_class = :link_icon_class WHERE id = :id');
+		$query->bindValue('id', $id);
+		$query->bindValue('link_name', $post['link_name']);
+		$query->bindValue('link_description', $post['link_description']);
+		$query->bindValue('link_url', $post['link_url']);
+		$query->bindValue('link_bg_color', $post['link_bg_color']);
+		$query->bindValue('link_order', $post['link_order']);
+		$query->bindValue('link_icon_class', $post['link_icon_class']);
+		
+		if ($query->execute())
+			return true;
+		
+	}
+	
+	/**
+	 * Deletes link from database
+	 */
+	public static function deleteLink($id) {
+		
+		$db = DB::getInstance();
+		$query = $db->dbh->prepare('DELETE FROM app_links WHERE id = :id');
+		$query->bindValue('id', $id);
+		
+		if ($query->execute())
+			return true;
 		
 	}
 	

@@ -112,6 +112,48 @@ if ($area) {
 				$template->page_title = 'Manage Divisions';
 			}
 			break;
+		case 'cells':
+			if ($action == 'add') {
+				$template->page_title = 'Add New Cell';
+				if (isset($_POST['submit'])) {
+					Cell::addCell($_POST);
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+			} else if ($action == 'view') {
+				$template->page_title = 'View Cell';
+				if (isset($_POST['submit'])) {
+					Cell::saveCell($id, $_POST);
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+				if (isset($_POST['delete'])) {
+					Cell::deleteCell($id);
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+			} else {
+				$template->page_title = 'Manage Cells';
+			}
+			break;
+		case 'links':
+			if ($action == 'add') {
+				$template->page_title = 'Add New Link';
+				if (isset($_POST['submit'])) {
+					Link::addLink($_POST);
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+			} else if ($action == 'view') {
+				$template->page_title = 'View Link';
+				if (isset($_POST['submit'])) {
+					Link::saveLink($id, $_POST);
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+				if (isset($_POST['delete'])) {
+					Link::deleteLink($id);
+					redirect($options['site_url'] .'/admin.php?area='. $area);
+				}
+			} else {
+				$template->page_title = 'Manage Links';
+			}
+			break;
 		case 'roles':
 			if ($action == 'add') {
 				$template->page_title = 'Add New Role';
