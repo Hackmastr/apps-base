@@ -24,4 +24,5 @@ $template->parent_page = 'home';
 
 ####################################################################
 	
+$template->page_title = 'Dashboard';
 load_template('home');
