@@ -2,8 +2,41 @@
  * Main Layout Structure
  */
 body {
-	padding-top: 70px;
+	background-color: #dddddd;
 }
+
+#page-wrap {
+	margin: 50px auto;
+	width: 90%;
+}
+
+	@media screen and (max-width:768px) {
+		#page-wrap {
+			margin: 0;
+			width: 100%;
+		}	
+	}
+
+.main-container {
+	background-color: #ffffff;
+	padding: 20px;
+}
+
+.main-footer {
+	background-color: #cccccc;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	color: #808080;
+	font-size: 0.8em;
+	padding: 5px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+	.main-footer a {
+		color: #808080;
+		font-weight: bold;
+	}
 
 /**
  * Page Header
@@ -11,6 +44,7 @@ body {
 .page-header {
 	border: none;
 	margin: 0;
+	padding: 0;
 }
 
 	.page-header h1 {
@@ -20,72 +54,45 @@ body {
 /**
  * Main Navigation
  */
+.navbar {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	margin-bottom: 0;
+}
+
 .navbar-inverse {
-	background-color: #660066;
+	background-color: #336699;
 	border: 0;
 }
 
-	.navbar-inverse .navbar-collapse {
-		border-color: #330033;
-	}
-
-	.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a {
-		color: #ccc;
-	}
-	
-	.navbar-inverse .navbar-nav>.active>a {
-		background-color: #330033;
-	}
-	
-	.navbar-inverse .navbar-toggle {
-		border-color: #330033;
-	}
-	
-	.navbar-inverse .navbar-toggle:hover {
-		background-color: #330033;
-	}
-	
-		.dropdown-menu>li>a {
-			color: #000000;
-			padding: 10px 15px 10px 25px;
-		}
-		
-		@media screen and (max-width: 767px) {
-			.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-				color: #ccc;
-			}
-		}
-		
 	.navbar-brand sup {
 		font-size: .54em;
 		text-transform: uppercase;
 	}
-	
-/**
- * Sidebar
- */
-.nav-sidebar {
-	border-bottom: 1px solid #c0c0c0;
-	margin-bottom: 20px;
-	padding-bottom: 20px;
-}
 
-.nav-sidebar:last-of-type {
-	border-bottom: none;
-}
-
-	.nav-sidebar li a {
-		color: #808080;
+	.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a {
+		color: #ffffff;
 	}
 	
-		.nav-sidebar li a:hover {
-			background-color: transparent;
-			color: #000000;
-		}
+	.navbar-inverse .navbar-nav>li>a:hover {
+		background-color: #003366;
+	}
 	
-		.nav-sidebar li.active a {
-			background-color: #dddddd;
-		}
+	.navbar-inverse .navbar-toggle {
+		border-color: #ffffff;
+	}
+	
+	.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+		background-color: #3a74ad;
+	}
+	
+/**
+ * List groups
+ */
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+	background-color: #000000;
+	border-color: #000000;
+}
 		
 /**
  * Tabbed Content

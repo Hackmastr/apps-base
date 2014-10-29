@@ -39,28 +39,30 @@
 	
 	</head>
 <body>
-
-<div class="navbar navbar-inverse navbar-fixed-top apps_main_nav" role="navigation">
-	<div class="container-fluid">
 	
-	    <div class="navbar-header">
+<div id="page-wrap">
+	
+	<div class="navbar navbar-inverse apps_main_nav" role="navigation">
+		<div class="container-fluid">
+		
+		    <div class="navbar-header">
+				
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".main-nav">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+		      
+				<a class="navbar-brand" href="<?php echo $options['site_url']; ?>">VenturaApps <sup>Beta</sup></a>
+		    
+		    </div>
 			
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".main-nav">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-	      
-			<a class="navbar-brand" href="<?php echo $options['site_url']; ?>">VenturaApps <sup>Beta</sup></a>
-	    
-	    </div>
-		
-		<div class="collapse navbar-collapse main-nav">
-			<?php get_nav_menu(); ?>
-		</div>
-		
-	</div><!-- /container -->
-</div><!-- /navbar -->
-
-<div class="container-fluid">
+			<div class="collapse navbar-collapse main-nav">
+				<?php get_nav_menu(); ?>
+			</div>
+			
+		</div><!-- /container -->
+	</div><!-- /navbar -->
+	
+	<div class="container-fluid main-container">

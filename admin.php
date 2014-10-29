@@ -24,40 +24,42 @@ $template = new Template($options, $app);
 
 // Build subnav
 $template->subnav = array(
-	'dashboard' => array(
-		'title' => 'Dashboard',
-		'url' => $options['site_url'] .'/admin.php',
-		'template' => 'dashboard'
-	),
-	'locations' => array(
-		'title' => 'Locations',
-		'url' => $options['site_url'] .'/admin.php?area=locations',
-		'template' => 'location'
-	),
-	'divisions' => array(
-		'title' => 'Divisions',
-		'url' => $options['site_url'] .'/admin.php?area=divisions',
-		'template' => 'division'
-	),
-	'cells' => array(
-		'title' => 'Cells',
-		'url' => $options['site_url'] .'/admin.php?area=cells',
-		'template' => 'cell'
-	),
-	'links' => array(
-		'title' => 'Links',
-		'url' => $options['site_url'] .'/admin.php?area=links',
-		'template' => 'link'
-	),
-	'roles' => array(
-		'title' => 'Roles',
-		'url' => $options['site_url'] .'/admin.php?area=roles',
-		'template' => 'role'
-	),
-	'users' => array(
-		'title' => 'Users',
-		'url' => $options['site_url'] .'/admin.php?area=users',
-		'template' => 'user'
+	'area' => array(
+		'dashboard' => array(
+			'title' => 'Dashboard',
+			'url' => $options['site_url'] .'/admin.php',
+			'template' => 'dashboard'
+		),
+		'locations' => array(
+			'title' => 'Locations',
+			'url' => $options['site_url'] .'/admin.php?area=locations',
+			'template' => 'location'
+		),
+		'divisions' => array(
+			'title' => 'Divisions',
+			'url' => $options['site_url'] .'/admin.php?area=divisions',
+			'template' => 'division'
+		),
+		'cells' => array(
+			'title' => 'Cells',
+			'url' => $options['site_url'] .'/admin.php?area=cells',
+			'template' => 'cell'
+		),
+		'links' => array(
+			'title' => 'Links',
+			'url' => $options['site_url'] .'/admin.php?area=links',
+			'template' => 'link'
+		),
+		'roles' => array(
+			'title' => 'Roles',
+			'url' => $options['site_url'] .'/admin.php?area=roles',
+			'template' => 'role'
+		),
+		'users' => array(
+			'title' => 'Users',
+			'url' => $options['site_url'] .'/admin.php?area=users',
+			'template' => 'user'
+		)
 	)
 );
 
@@ -199,7 +201,7 @@ if ($area) {
 		
 	}
 	
-	load_template('admin-'. $template->subnav[$area]['template']);
+	load_template('admin-'. $template->subnav['area'][$area]['template']);
 
 } else {
 	$template->page_title = 'Admin Dashboard';

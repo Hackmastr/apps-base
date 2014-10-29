@@ -22,7 +22,5 @@ $app->url = $options['site_url'];
 $template = new Template($options, $app);
 
 ####################################################################
-
-$template->addScript('<link rel="stylesheet" type="text/css" href="'. $options['site_url'] .'/apps_template/base.css" />');
 	
 load_template('home');

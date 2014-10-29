@@ -17,8 +17,5 @@
 		
 		<?php endforeach; else : create_message('info', 'No links exist.', true); endif; ?>
 	</div>
-	
-	<div class="table-responsive">
-	</div>
 
 <?php get_footer(); ?>

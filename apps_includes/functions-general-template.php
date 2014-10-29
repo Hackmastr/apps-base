@@ -42,7 +42,7 @@ function load_template($requested_template) {
  */
 function get_footer() {
 	
-	global $page, $options;
+	global $app, $options;
 	
 	$template_footer_file = $options['site_path'] .'/apps_template/template-footer.php';
 	

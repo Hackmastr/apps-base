@@ -70,29 +70,24 @@ class Template {
 	 * Generates navbar from $subnav
 	 */
 	function subnav() {
-	
-		if (!empty($this->subnav)) {
-
-			$subnav = '<div class="navbar-collapse collapse">
-				<ul class="nav nav-sidebar">';
+		
+		$menu = '';
+		
+		foreach ($this->subnav as $action => $subnav) {
 			
-				foreach($this->subnav as $subnav_item => $subnav_item_properties) {
-					
-					$subnav .= '<li><a href="'. $subnav_item_properties['url'] .'">'. $subnav_item_properties['title'] .'</a></li>';
-					
-				}
+			$page = (isset($_GET[$action]) ? $_GET[$action] : '');
 			
-				$subnav .= '</ul>
-			</div>';
+			$menu .= '<div class="list-group">';
+		
+			foreach ($subnav as $subnav_item => $subnav_item_properties) {
+				$menu .= '<a class="list-group-item'. ($page == $subnav_item || empty($page) && $subnav_item == 'dashboard' ? ' active' : '') .'" href="'. $subnav_item_properties['url'] .'">'. $subnav_item_properties['title'] .'</a>';
+			}
 			
-			// Returns results
-			return $subnav;
-			
-		} else {
-			
-			return 'Subnav not defined.';
+			$menu .= '</div>';
 			
 		}
+		
+		return $menu;
 
 	}
 	
