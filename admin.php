@@ -19,6 +19,7 @@ $app->prefix = 'apps';
 $app->url = $options['site_url'];
 
 $template = new Template($options, $app);
+$template->parent_page = 'admin';
 
 ####################################################################
 
