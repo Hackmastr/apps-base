@@ -1,37 +1,16 @@
 <?php
-
 /**
  * App spawner class
  *
- * @author Keith Brinks <keith.brinks@venturamfg.com>
- * @since 1.0
+ * Used to define app-specific settings
  */
  
 class App {
-	
-	/**
-	 * App name
-	 */
+
 	public $name;
-	
-	/**
-	 * App version
-	 */
 	public $version;
-	
-	/**
-	 * Directory path
-	 */
 	public $directory;
-	
-	/**
-	 * App URL
-	 */
 	public $url;
-	
-	/**
-	 * Prefix name
-	 */
 	public $prefix;
 	
 }
