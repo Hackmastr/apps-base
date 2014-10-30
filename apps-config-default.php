@@ -3,11 +3,11 @@
  * Site configuration
  */
 
-$site_options = array(
+$options = array(
 	'site_title' => 'Ventura Apps',
-	'site_url' => '//localhost/apps',
+	'site_url' => 'http://localhost/projects/ventura/apps',
 	'site_path' => dirname(__FILE__) .'/',
-	'site_template_path' => dirname(__FILE__) .'/apps_template',
+	'apps_directory' => dirname(__FILE__) .'/a/',
 	'email_host' => '',
 	'email_port' => '25',
 	'email_from' => '',
@@ -20,12 +20,13 @@ $site_options = array(
  * Define database connection settings
  */
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'ventura_apps');
-define('DB_USER', 'root');
+define('DB_NAME', '');
+define('DB_USER', '');
 define('DB_PASS', '');
+define('DB_CONNECTION_TYPE', '');
 
 /**
  * Turn on or off debug mode
  * true/false
  */
-define('DEBUG', false);
+define('DEBUG', true);
