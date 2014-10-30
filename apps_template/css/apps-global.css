@@ -143,6 +143,10 @@ body {
 			border: none;
 		}
 		
+		.dashboard-links h4 {
+			margin-bottom: 0;
+		}
+		
 		.dashboard-links span {
 			display: block;
 		}

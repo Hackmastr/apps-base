@@ -7,7 +7,7 @@
 	<div class="row dashboard-links">
 		<?php if (Link::getAllLinks()) : foreach(Link::getAllLinks() as $link) : ?>
 		
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			<div class="col-lg-3 col-md-4 col-xs-6">
 				<a class="thumbnail" href="<?php echo $link->getURL(); ?>">
 					<i style="color: <?php echo $link->getBGColor(); ?>" class="fa <?php echo $link->getIconClass(); ?>"></i>
 					<h4><?php echo $link->getName(); ?></h4>
