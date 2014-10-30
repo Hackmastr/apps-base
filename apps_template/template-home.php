@@ -22,7 +22,7 @@
 		
 		<?php echo (get_var('menu') == 'edit' ? '<form class="form-horizontal" method="post" action="'. get_page_url() .'">' : ''); ?>
 		
-		<h2>Innolunch  - <?php echo (get_var('menu') == 'edit' ? '<input name="innolunch_week" type="text" value="'. Innolunch::getWeek() .'" />' : Innolunch::getWeek()); ?> <span class="pull-right"><?php echo (get_var('menu') == 'edit' ? '<button class="btn btn-primary btn-xs" type="submit" name="save">Save</button>' : '<a href="'. get_page_url() .'/index.php?menu=edit#innolunch">Edit</a>'); ?></span></h2>
+		<h2>Lunch Schedule  - Week of <?php echo (get_var('menu') == 'edit' ? '<input name="innolunch_week" type="text" value="'. Innolunch::getWeek() .'" />' : Innolunch::getWeek()); ?> <span class="pull-right"><?php echo (get_var('menu') == 'edit' ? '<button class="btn btn-primary btn-xs" type="submit" name="save">Save</button>' : '<a href="'. get_page_url() .'/index.php?menu=edit#innolunch">Edit</a>'); ?></span></h2>
 		
 		<table class="table table-bordered table-hover">
 			<thead>
