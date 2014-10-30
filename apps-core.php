@@ -10,7 +10,6 @@ session_start();
  */
 require_once 'apps-config.php';
 require_once 'apps_includes/functions-core.php';
-require_once 'apps_includes/functions-general-template.php';
 require_once 'apps_includes/phpmailer/class.phpmailer.php';
 require_once 'apps_includes/class-app.php';
 
@@ -61,8 +60,3 @@ $mail->FromName = $options['email_from_name'];
 $mail->SMTPAuth = true;
 $mail->Username = $options['email_username'];
 $mail->Password = $options['email_password'];
-
-/**
- * Declare $page var
- */
-$page = '';
