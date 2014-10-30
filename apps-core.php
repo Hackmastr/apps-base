@@ -47,6 +47,7 @@ DB::writeConf('db_host', DB_HOST);
 DB::writeConf('db_name', DB_NAME);
 DB::writeConf('db_user', DB_USER);
 DB::writeConf('db_pass', DB_PASS);
+DB::writeConf('db_connection_type', DB_CONNECTION_TYPE);
 
 /**
  * Initialize and configure PHPMailer
