@@ -2,18 +2,12 @@
 /**
  * Database class
  *
- * @since 1.0.0
  */
 
 class DB {
 
-	// Database configuration
-	private static $conf;
-	
-	// Database handle
 	public $dbh;
-	
-	// Database instance
+	private static $conf;
 	private static $instance;
 	
 	/**
@@ -24,22 +18,15 @@ class DB {
 	}
 	
 	/**
-	 * Initialize database connection
+	 * Initializes database connection
 	 */
 	private function __construct() {
-		
-		if (self::$conf['db_connection_type'] == 'odbc') {
-			$this->dbh = new PDO('odbc:'. $conf['db_host'], $conf['db_user'], $conf['db_pass']);
-		} else {
-			$this->dbh = new PDO('mysql:host='. self::$conf['db_host'] .';dbname='. self::$conf['db_name'], self::$conf['db_user'], self::$conf['db_pass']);
-		}
-		
+		$this->dbh = new PDO((self::$conf['db_connection_type'] == 'odbc' ? 'odbc' : 'mysql') .':host='. self::$conf['db_host'] .';dbname='. self::$conf['db_name'], self::$conf['db_user'], self::$conf['db_pass']);
 		$this->dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-		
 	}
 	
 	/**
-	 * Get database instance
+	 * Returns instance of database connection
 	 */
 	static function getInstance() {
 	
