@@ -23,6 +23,14 @@ $template = new Template($options, $app);
 $template->parent_page = 'home';
 
 ####################################################################
+
+$menu = get_var('menu');
+
+if ($menu && $menu == 'edit' && isset($_POST['save'])) {
+
+	Innolunch::Save($_POST);
+	redirect($options['site_url'] .'/index.php#innolunch');
+}
 	
 $template->page_title = 'Dashboard';
 load_template('home');

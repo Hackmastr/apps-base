@@ -46,7 +46,6 @@ INSERT INTO app_innolunch_week (innolunch_week) VALUES ('00/00/0000');
 
 CREATE TABLE app_innolunch (
 	id bigint(20) unsigned NOT NULL auto_increment,
-	innolunch_week_id BIGINT(20) NOT NULL DEFAULT 1,
 	innolunch_day VARCHAR(200) NOT NULL,
 	innolunch_item VARCHAR(200) NOT NULL,
 	innolunch_price VARCHAR(200) NOT NULL,
