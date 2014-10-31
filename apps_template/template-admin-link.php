@@ -108,9 +108,7 @@
 					
 				<?php endif; ?>
 			
-			<?php endif; ?>				
-				
-			</div>
+			<?php endif; ?>
 			
 		</div>
 	
