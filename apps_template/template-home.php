@@ -8,10 +8,9 @@
 		<?php if (Link::getAllLinks()) : foreach(Link::getAllLinks() as $link) : ?>
 		
 			<div class="col-lg-3 col-md-4 col-xs-6">
-				<a class="thumbnail" href="<?php echo $link->getURL(); ?>">
+				<a class="thumbnail" href="<?php echo $link->getURL(); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo $link->getDescription(); ?>">
 					<i style="color: <?php echo $link->getBGColor(); ?>" class="fa <?php echo $link->getIconClass(); ?>"></i>
 					<h4><?php echo $link->getName(); ?></h4>
-					<span><?php echo $link->getDescription(); ?></span>
 				</a>
 			</div>			
 		
@@ -52,5 +51,11 @@
 		<?php echo (get_var('menu') == 'edit' ? '</form>' : ''); ?>
 		
 	</div>
+	
+	<script type="text/javascript">
+		$(function() {
+			$('.thumbnail').tooltip();
+		});
+	</script>
 
 <?php get_footer(); ?>

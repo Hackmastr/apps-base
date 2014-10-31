@@ -22,6 +22,9 @@
 		<!-- Bootstrap CSS -->
 		<link href="<?php echo $options['site_url']; ?>/apps_template/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 		
+		<!-- Bootstrap JS -->
+		<link href="<?php echo $options['site_url']; ?>/apps_template/js/bootstrap.min.js" rel="stylesheet" media="screen" />
+		
 		<!-- Global CSS -->
 		<link href="<?php echo $options['site_url']; ?>/apps_template/css/apps-global.css" rel="stylesheet" media="screen" />
 
