@@ -24,7 +24,7 @@ class Role {
 		$query->bindValue('id', $id);
 		$query->execute();
 		
-		if ($query->rowCount() > 0)
+		if ($query->execute())
 			return $query->fetchAll(PDO::FETCH_CLASS, 'Role')[0];
 			
 	}

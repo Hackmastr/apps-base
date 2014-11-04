@@ -23,9 +23,8 @@ class Location {
 		$db = DB::getInstance();
 		$query = $db->dbh->prepare('SELECT * FROM app_locations WHERE id = :id');
 		$query->bindValue('id', $id);
-		$query->execute();
 		
-		if ($query->rowCount() > 0)
+		if ($query->execute())
 			return $query->fetchAll(PDO::FETCH_CLASS, 'Location')[0];
 			
 	}

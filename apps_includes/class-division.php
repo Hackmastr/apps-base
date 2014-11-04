@@ -20,9 +20,8 @@ class Division {
 		$db = DB::getInstance();
 		$query = $db->dbh->prepare('SELECT * FROM app_divisions WHERE id = :id');
 		$query->bindValue('id', $id);
-		$query->execute();
 		
-		if ($query->rowCount() > 0)
+		if ($query->execute())
 			return $query->fetchAll(PDO::FETCH_CLASS, 'Division')[0];
 			
 	}

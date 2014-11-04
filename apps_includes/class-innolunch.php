@@ -24,9 +24,8 @@ class Innolunch {
 		$db = DB::getInstance();
 		$query = $db->dbh->prepare('SELECT * FROM app_innolunch_week WHERE id = :id');
 		$query->bindValue('id', 1);
-		$query->execute();
 		
-		if ($query->rowCount() > 0)
+		if ($query->execute())
 			return $query->fetch()->innolunch_week;
 		
 	}
@@ -41,7 +40,9 @@ class Innolunch {
 		$query = $db->dbh->prepare('UPDATE app_innolunch_week SET innolunch_week = :innolunch_week WHERE id = :id');	
 		$query->bindValue('id', 1);	
 		$query->bindValue('innolunch_week', $week);
-		$result = $query->execute();
+		
+		if ($query->execute())
+			return true;
 	
 	}
 	
@@ -54,7 +55,7 @@ class Innolunch {
 		$query = $db->dbh->prepare('SELECT * FROM app_innolunch');
 		$query->execute();
 		
-		if ($query->rowCount() > 0)
+		if ($query->execute())
 			return $query->fetchAll(PDO::FETCH_CLASS, 'Innolunch');
 		
 	}

@@ -24,9 +24,8 @@ class User {
 		$db = DB::getInstance();
 		$query = $db->dbh->prepare('SELECT * FROM app_users WHERE id = :id');
 		$query->bindValue('id', $id);
-		$query->execute();
 		
-		if ($query->rowCount() > 0)
+		if ($query->execute())
 			return $query->fetchAll(PDO::FETCH_CLASS, 'User')[0];
 			
 	}
@@ -42,9 +41,8 @@ class User {
 			INNER JOIN app_roles r ON u.app_roles_id = r.id
 			WHERE uc.app_cells_id = :cell_id');
 		$query->bindValue('cell_id', $cell_id);
-		$query->execute();
 		
-		if ($query->rowCount() > 0)
+		if ($query->execute())
 			return $query->fetchAll(PDO::FETCH_CLASS, 'User');
 					
 	}
@@ -71,9 +69,8 @@ class User {
 		$query = $db->dbh->prepare('SELECT * FROM app_users_cells WHERE app_users_id = :user_id AND app_cells_id = :cell_id');
 		$query->bindValue('user_id', $user_id);
 		$query->bindValue('cell_id', $cell_id);
-		$query->execute();
 		
-		if ($query->rowCount() > 0)
+		if ($query->execute())
 			return true;
 		else
 			return false;
@@ -128,9 +125,8 @@ class User {
 		$query->bindValue('app_divisions_id', $post['app_divisions_id']);
 		$query->bindValue('user_shift', $post['user_shift']);
 		$query->bindValue('user_is_cell_lead', $post['user_is_cell_lead']);
-		$result = $query->execute();	
 		
-		if ($result) {
+		if ($query->execute()) {
 			self::setUserCells($id, $post);
 		}
 		
@@ -168,11 +164,8 @@ class User {
 		
 		}
 		
-		if ($result) {
+		if ($result)
 			return true;
-		} else {
-			return false;
-		}
 	
 	}
 	
