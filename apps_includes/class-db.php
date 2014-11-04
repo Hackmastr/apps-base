@@ -21,8 +21,15 @@ class DB {
 	 * Initializes database connection
 	 */
 	private function __construct() {
-		$this->dbh = new PDO((self::$conf['db_connection_type'] == 'odbc' ? 'odbc' : 'mysql') .':host='. self::$conf['db_host'] .';dbname='. self::$conf['db_name'], self::$conf['db_user'], self::$conf['db_pass']);
+
+		if (self::$conf['db_connection_type'] == 'odbc') {
+			$this->dbh = new PDO('odbc:'. self::$conf['db_host'], self::$conf['db_user'], self::$conf['db_pass']);
+		} else {
+			$this->dbh = new PDO('mysql:host='. self::$conf['db_host'] .';dbname='. self::$conf['db_name'], self::$conf['db_user'], self::$conf['db_pass']);
+		}
+
 		$this->dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+		
 	}
 	
 	/**
