@@ -70,7 +70,7 @@
 								<div class="checkbox">
 									<label><input type="checkbox" class="checkall" /> (Select All)</label>
 								</div>
-								<div class="checkbox">
+								<div class="checkbox checkmultiple">
 									<?php if (Cell::getAllCells()) : foreach(Cell::getAllCells() as $cell) : ?>
 										<?php User::inCell($user_id, $cell->getID()); ?>
 										<div class="checkbox">
