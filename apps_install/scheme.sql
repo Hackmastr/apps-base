@@ -72,6 +72,8 @@ CREATE TABLE app_users (
 	user_shift VARCHAR(100) NOT NULL,
 	user_notification_threshold int,
 	user_is_cell_lead int NOT NULL,
+	user_password VARCHAR(255),
+	user_is_admin int NOT NULL,
 	PRIMARY KEY (id)
 );
 

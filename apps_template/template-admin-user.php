@@ -27,6 +27,7 @@
 					$user_email_address = ($user ? $user->getEmailAddress() : '');
 					$user_notification_threshold = ($user ? $user->getNotificationThreshold() : '');
 					$user_is_cell_lead = ($user ? $user->getIsCellLead() : '');
+					$user_is_admin = ($user ? $user->isAdmin() : '');
 				?>
 				
 				<?php if (get_var('action') != 'add' && !$user) : ?>
@@ -111,6 +112,23 @@
 								</div>
 								<div class="radio">
 									<label><input <?php echo (!$user_is_cell_lead ? 'checked="checked"' : ''); ?> type="radio" name="user_is_cell_lead" value="0" /> No</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="user_password">Password (optional)</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="password" id="user_password" name="user_password" value="" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Is admin</label>
+							<div class="col-sm-9">
+								<div class="radio">
+									<label><input <?php echo ($user_is_admin ? 'checked="checked"' : ''); ?> type="radio" name="user_is_admin" value="1" /> Yes</label>
+								</div>
+								<div class="radio">
+									<label><input <?php echo (!$user_is_admin ? 'checked="checked"' : ''); ?> type="radio" name="user_is_admin" value="0" /> No</label>
 								</div>
 							</div>
 						</div>
