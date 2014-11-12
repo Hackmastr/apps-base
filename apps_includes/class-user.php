@@ -68,11 +68,12 @@ class User {
 	static function inCell($user_id, $cell_id) {
 		
 		$db = DB::getInstance();
-		$query = $db->dbh->prepare('SELECT * FROM app_users_cells WHERE app_users_id = :user_id AND app_cells_id = :cell_id');
+		$query = $db->dbh->prepare('SELECT COUNT(*) FROM app_users_cells WHERE app_users_id = :user_id AND app_cells_id = :cell_id');
 		$query->bindValue('user_id', $user_id);
 		$query->bindValue('cell_id', $cell_id);
+		$query->execute();
 		
-		if ($query->execute())
+		if ($query->fetchColumn() > 0)
 			return true;
 		else
 			return false;
