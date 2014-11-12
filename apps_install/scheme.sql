@@ -65,17 +65,18 @@ CREATE TABLE app_roles (
 
 CREATE TABLE app_users (
 	id bigint(20) unsigned NOT NULL auto_increment,
-	app_roles_id bigint(20) NOT NULL,
+	app_roles_id bigint(20),
 	app_divisions_id bigint(20),
 	user_name VARCHAR(100) NOT NULL,
 	user_email_address VARCHAR(100) NOT NULL,
-	user_shift VARCHAR(100) NOT NULL,
+	user_shift VARCHAR(100),
 	user_notification_threshold int,
 	user_is_cell_lead int NOT NULL,
 	user_password VARCHAR(255),
 	user_is_admin int NOT NULL,
 	PRIMARY KEY (id)
 );
+INSERT INTO app_users (user_name user_email_address, user_is_cell_lead, user_password, user_is_admin) VALUES ('administrator', 'apps@venturamfg.com', 0, '$2y$10$vpXWDBir4QScr0GS63mKienYquM.hrTKwtV1rjYfrzXFxO/yzC7C.', 1);
 
 CREATE TABLE app_users_cells (
 	id bigint(20) unsigned NOT NULL auto_increment,
