@@ -78,7 +78,7 @@ function get_header() {
  */
 function load_template($requested_template) {
 	
-	global $app, $options, $template;
+	global $app, $options, $template, $usr;
 	
 	$template_file = $options['site_path'] . (!empty($app->directory) ? '/a/'. $app->directory : '') .'/'. $app->prefix .'_template/template-'. $requested_template .'.php';
 	
@@ -132,7 +132,7 @@ function apps_head() {
  */
 function get_nav_menu() {
 	
-	global $options, $template;
+	global $options, $template, $usr;
 	
 	$nav_menu = '<ul class="nav navbar-nav">';
 
@@ -188,6 +188,12 @@ function get_nav_menu() {
 	
 	$nav_menu .= '</ul>';
 	
+	if ($usr->isLoggedIn()) {
+		$nav_menu .= '<form method="post" action="'. get_page_url() .'">
+			<button type="submit" name="logout" class="btn btn-default navbar-btn navbar-right">Logout ('. User::getUser($usr->getID())->getName() .')</button>
+		</form>';
+	}
+	
 	echo $nav_menu;
 	
 }
@@ -228,4 +234,23 @@ function get_message() {
 function redirect($url) {
 	header('Location: '. $url);
 	exit();
+}
+
+/**
+ * Login form
+ */
+function get_login_form() {
+	
+	echo '<form class="form-inline" method="post" action="'. get_page_url() .'">
+		<div class="form-group">
+			<label class="sr-only" for="user_name">User Name</label>
+			<input class="form-control" type="email" id="user_name" name="user_name" placeholder="User Name" value="'. (isset($_POST['user_name']) ? $_POST['user_name'] : '') .'" />
+		</div>
+		<div class="form-group">
+			<label class="sr-only" for="user_name">Password</label>
+			<input class="form-control" type="password" id="user_password" name="user_password" placeholder="Password" />
+		</div>
+		<button type="submit" name="login" class="btn btn-default">Login</button>
+	</form>';
+	
 }

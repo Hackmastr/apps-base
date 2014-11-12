@@ -4,6 +4,7 @@
  * which will be used by all included apps
  */
 session_start();
+ob_start();
 
 /**
  * Get required files
@@ -60,3 +61,24 @@ $mail->FromName = $options['email_from_name'];
 $mail->SMTPAuth = true;
 $mail->Username = $options['email_username'];
 $mail->Password = $options['email_password'];
+
+/**
+ * User Login Management
+ */
+$usr = new UserLogin();
+
+if (isset($_POST['login'])) {
+	
+	$login_result = $usr->login($_POST['user_name'], $_POST['user_password']);
+	
+	if (!$login_result) {
+		create_message('danger', 'The login information you provided was incorrect. Please try again.');
+	} else {
+		redirect(get_page_url());
+	}
+	
+}
+if (isset($_POST['logout'])) {
+	$usr->logout();
+	redirect(get_page_url());
+}

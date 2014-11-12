@@ -101,6 +101,10 @@ body {
 		background-color: #3a74ad;
 	}
 	
+	.navbar-inverse .navbar-text {
+		color: #ffffff;
+	}
+	
 /**
  * List groups
  */

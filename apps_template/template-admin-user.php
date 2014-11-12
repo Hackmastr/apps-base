@@ -27,6 +27,7 @@
 					$user_email_address = ($user ? $user->getEmailAddress() : '');
 					$user_notification_threshold = ($user ? $user->getNotificationThreshold() : '');
 					$user_is_cell_lead = ($user ? $user->getIsCellLead() : '');
+					$user_password = ($user ? $user->getPassword() : '');
 					$user_is_admin = ($user ? $user->isAdmin() : '');
 				?>
 				

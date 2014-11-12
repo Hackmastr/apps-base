@@ -125,14 +125,8 @@ class User {
 	 */
 	public static function saveUser($id, $post) {
 		
-		if (!empty($post['user_password'])) {
-			$password = password_hash($post['user_password'], PASSWORD_BCRYPT);
-		} else {
-			$password = '';
-		}
-		
 		$db = DB::getInstance();
-		$query = $db->dbh->prepare('UPDATE app_users SET app_roles_id = :app_roles_id, user_name = :user_name, user_email_address = :user_email_address, user_notification_threshold = :user_notification_threshold, app_divisions_id = :app_divisions_id, user_shift = :user_shift, user_is_cell_lead = :user_is_cell_lead, user_password = :user_password, user_is_admin = :user_is_admin WHERE id = :id');
+		$query = $db->dbh->prepare('UPDATE app_users SET app_roles_id = :app_roles_id, user_name = :user_name, user_email_address = :user_email_address, user_notification_threshold = :user_notification_threshold, app_divisions_id = :app_divisions_id, user_shift = :user_shift, user_is_cell_lead = :user_is_cell_lead,'. (!empty($post['user_password']) ? ' user_password = :user_password,' : '') .' user_is_admin = :user_is_admin WHERE id = :id');
 		$query->bindValue('id', $id);
 		$query->bindValue('app_roles_id', $post['app_roles_id']);
 		$query->bindValue('user_name', $post['user_name']);
@@ -141,7 +135,11 @@ class User {
 		$query->bindValue('app_divisions_id', $post['app_divisions_id']);
 		$query->bindValue('user_shift', $post['user_shift']);
 		$query->bindValue('user_is_cell_lead', $post['user_is_cell_lead']);
-		$query->bindValue('user_password', $password);
+		
+		if (!empty($post['user_password'])) {
+			$query->bindValue('user_password', password_hash($post['user_password'], PASSWORD_BCRYPT));
+		}
+		
 		$query->bindValue('user_is_admin', $post['user_is_admin']);
 		
 		if ($query->execute()) {
