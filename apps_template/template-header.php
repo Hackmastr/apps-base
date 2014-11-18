@@ -20,10 +20,10 @@
 		<script src="<?php echo $options['site_url']; ?>/apps_template/js/ventura-apps.js"></script>
 
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		
 		<!-- Bootstrap JS -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 		
 		<!-- Global CSS -->
 		<link href="<?php echo $options['site_url']; ?>/apps_template/css/apps-global.css" rel="stylesheet" media="screen" />
