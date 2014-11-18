@@ -41,9 +41,13 @@
 		<?php apps_head(); ?>	
 	
 	</head>
-<body>
+<body<?php if (DEV_MODE) : ?> class="dev"<?php endif; ?>>
 	
 <div id="page-wrap">
+	
+	<?php if (DEV_MODE) : ?>
+	<div class="alert alert-danger"><strong>Warning:</strong> Site is currently in dev mode!</div>
+	<?php endif; ?>
 	
 	<div class="navbar navbar-inverse apps_main_nav" role="navigation">
 		<div class="container-fluid">

@@ -24,6 +24,10 @@ body {
 	background-color: #dddddd;
 }
 
+	.dev {
+		border: 3px dashed #ff0000;
+	}
+
 #page-wrap {
 	margin: 50px auto;
 	width: 90%;
