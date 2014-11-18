@@ -29,4 +29,4 @@ define('DB_CONNECTION_TYPE', '');
  * Turn on or off dev mode
  * true/false
  */
-define('DEV_MODE', true);
+define('DEV_MODE', false);
