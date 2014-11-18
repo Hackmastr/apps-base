@@ -26,7 +26,7 @@ define('DB_PASS', '');
 define('DB_CONNECTION_TYPE', '');
 
 /**
- * Turn on or off debug mode
+ * Turn on or off dev mode
  * true/false
  */
-define('DEBUG', true);
+define('DEV_MODE', true);
