@@ -136,7 +136,9 @@
 						<div class="form-group">
 							<div class="col-sm-offset-3 col-sm-9">
 								<button class="btn btn-default" type="submit" name="submit">Submit</button>
-								<?php echo ($user->getID() == 1 ? '<p class="pull-right">Administrator user cannot be deleted.</p>' : '<button class="btn btn-danger pull-right" type="submit" name="delete">Delete</button>'); ?>
+								<?php if (get_var('action') == 'view') : ?>
+									<?php echo ($user->getID() == 1 ? '<p class="pull-right">Administrator user cannot be deleted.</p>' : '<button class="btn btn-danger pull-right" type="submit" name="delete">Delete</button>'); ?>
+								<?php endif; ?>
 							</div>
 						</div>
 					</form>

@@ -76,7 +76,9 @@
 						<div class="form-group">
 							<div class="col-sm-offset-3 col-sm-9">
 								<button class="btn btn-default" type="submit" name="submit">Submit</button>
-								<button class="btn btn-default btn-danger pull-right" type="submit" name="delete">Delete</button>
+								<?php if (get_var('action') == 'view') : ?>
+									<button class="btn btn-default btn-danger pull-right" type="submit" name="delete">Delete</button>
+								<?php endif; ?>
 							</div>
 						</div>
 					</form>
