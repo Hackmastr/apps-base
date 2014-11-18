@@ -20,7 +20,7 @@ class Role {
 	static function getRole($id) {
 	
 		$db = DB::getInstance();
-		$query = $db->dbh->prepare('SELECT innolunch_week FROM app_roles WHERE id = :id');
+		$query = $db->dbh->prepare('SELECT * FROM app_roles WHERE id = :id');
 		$query->bindValue('id', $id);
 		$query->execute();
 		
