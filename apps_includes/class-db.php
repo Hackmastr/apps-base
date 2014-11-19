@@ -22,8 +22,8 @@ class DB {
 	 */
 	private function __construct() {
 
-		if (self::$conf['db_connection_type'] == 'odbc') {
-			$this->dbh = new PDO('odbc:'. self::$conf['db_host'], self::$conf['db_user'], self::$conf['db_pass']);
+		if (self::$conf['db_connection_type'] == 'sqlsrv') {
+			$this->dbh = new PDO('sqlsrv:Server='. self::$conf['db_host'] .';Database='. self::$conf['db_name'], self::$conf['db_user'], self::$conf['db_pass']);
 		} else {
 			$this->dbh = new PDO('mysql:host='. self::$conf['db_host'] .';dbname='. self::$conf['db_name'], self::$conf['db_user'], self::$conf['db_pass']);
 		}
