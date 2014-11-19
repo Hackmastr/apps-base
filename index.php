@@ -1,10 +1,8 @@
 <?php
-
 /**
- * VenturaApps Base App
+ * VenturaApps base app main index file
  *
- * @author Keith Brinks <keith.brinks@venturamfg.com>
- * @version 1.0.0
+ * Displays dashboard links and the Innolunch menu
  */
 
 ####################################################################
