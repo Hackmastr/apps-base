@@ -13,7 +13,16 @@ $options = array(
 	'email_from' => '',
 	'email_from_name' => '',
 	'email_username' => '',
-	'email_password' => ''
+	'email_password' => '',
+	'home' => array(
+			'title' => 'Home',
+			'url' => '/index.php',
+		),
+		'admin' => array(
+			'title' => 'Admin',
+			'url' => '/admin.php',
+		),
+	),
 );
 
 /**
