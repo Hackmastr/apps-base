@@ -135,33 +135,8 @@ function get_nav_menu() {
 	global $options, $template, $usr;
 	
 	$nav_menu = '<ul class="nav navbar-nav">';
-
-	$nav_menu_setup = array(
-		'home' => array(
-			'title' => 'Home',
-			'url' => '/index.php',
-		),
-		'apps' => array(
-			'title' => 'Apps',
-			'url' => '/a/index.php',
-			'children' => array(
-				'monthly' => array(
-					'title' => 'Monthly',
-					'url' => '/a/monthly/index.php',
-				),
-				'pitchtracker' => array(
-					'title' => 'PitchTracker',
-					'url' => '/a/pitchtracker/index.php'
-				),
-			),
-		),
-		'admin' => array(
-			'title' => 'Admin',
-			'url' => '/admin.php',
-		),
-	);
 	
-	foreach($nav_menu_setup as $nav_item => $nav_item_properties) {
+	foreach($options['mainnav'] as $nav_item => $nav_item_properties) {
 		
 		if (isset($nav_item_properties['children'])) {
 			
