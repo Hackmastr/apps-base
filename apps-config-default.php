@@ -14,7 +14,8 @@ $options = array(
 	'email_from_name' => '',
 	'email_username' => '',
 	'email_password' => '',
-	'home' => array(
+	'mainnav' =>  array(
+		'home' => array(
 			'title' => 'Home',
 			'url' => '/index.php',
 		),
