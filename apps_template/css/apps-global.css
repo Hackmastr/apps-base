@@ -134,13 +134,22 @@ body {
 }
 
   .dropdown-header {
-    color: #000000;
-    font-weight: bold;
     margin-top: 10px;
   }
   
     .dropdown-header:first-child {
       margin: 0;
+    }
+    
+    .dropdown-menu>li.dropdown-header>a {
+      display: inline;
+      font-weight: 700;
+      padding: 0;
+    }
+    
+    .dropdown-menu>li.dropdown-header>a:hover {
+      background-color: transparent;
+      text-decoration: underline;
     }
 	
 /**
