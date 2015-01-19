@@ -134,6 +134,7 @@ body {
 }
 
   .dropdown-header {
+    color: #000000;
     margin-top: 10px;
     font-weight: 700;
   }
@@ -143,6 +144,7 @@ body {
     }
     
     .dropdown-menu>li.dropdown-header>a {
+      color: #000000;
       display: inline;
       font-weight: 700;
       padding: 0;
