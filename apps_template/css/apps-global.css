@@ -123,6 +123,25 @@ body {
 .nav-tabs {
 	margin-bottom: 20px;
 }
+
+/**
+ * Drop down menus
+ */
+.dropdown-menu {
+  min-width: 200px;
+  max-height: 350px;
+  overflow: scroll;
+}
+
+  .dropdown-header {
+    color: #000000;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+    .dropdown-header:first-child {
+      margin: 0;
+    }
 	
 /**
  * Buttons
