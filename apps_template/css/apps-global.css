@@ -135,6 +135,7 @@ body {
 
   .dropdown-header {
     margin-top: 10px;
+    font-weight: 700;
   }
   
     .dropdown-header:first-child {
