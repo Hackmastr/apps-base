@@ -17,6 +17,19 @@
 		<?php endforeach; else : create_message('info', 'No links exist.', true); endif; ?>
 	</div>
 	
+	<h1>Apps</h1>
+	
+	<div class="row dashboard-links">
+		<?php foreach($options['mainnav']['apps']['children'] as $app) : ?>		
+			<div class="col-lg-3 col-md-4 col-xs-6">
+				<a class="thumbnail" href="<?php echo $app['url']; ?>" data-toggle="tooltip">
+					<i class="fa <?php echo $app['icon']; ?>"></i>
+					<h4><?php echo $app['title']; ?></h4>
+				</a>
+			</div>
+		<?php endforeach; ?>
+	</div>
+	
 	<script type="text/javascript">
 		$(function() {
 			$('.thumbnail').tooltip();
