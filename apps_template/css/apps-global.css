@@ -130,7 +130,7 @@ body {
 .dropdown-menu {
   min-width: 200px;
   max-height: 350px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
   .dropdown-header {
