@@ -6,7 +6,7 @@ h1 {
 	font-size: 2em;
 	margin: 0 0 20px 0;
 }
-	
+
 h2 {
 	color: #000000;
 	font-size: 1.6em;
@@ -16,6 +16,12 @@ h2 {
 		font-size: .6em;
 		margin-top: 5px;
 	}
+
+h3 {
+	color: #000000;
+	font-size: 1.4em;
+	margin: 0 0 10px 0;
+}
 
 /**
  * Main Layout Structure
@@ -37,7 +43,7 @@ body {
 		#page-wrap {
 			margin: 0;
 			width: 100%;
-		}	
+		}
 	}
 
 .main-container {
@@ -92,23 +98,23 @@ body {
 	.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a {
 		color: #ffffff;
 	}
-	
+
 	.navbar-inverse .navbar-nav>li>a:hover {
 		background-color: #003366;
 	}
-	
+
 	.navbar-inverse .navbar-toggle {
 		border-color: #ffffff;
 	}
-	
+
 	.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
 		background-color: #3a74ad;
 	}
-	
+
 	.navbar-inverse .navbar-text {
 		color: #ffffff;
 	}
-	
+
 /**
  * List groups
  */
@@ -116,7 +122,7 @@ body {
 	background-color: #000000;
 	border-color: #000000;
 }
-		
+
 /**
  * Tabbed Content
  */
@@ -138,23 +144,23 @@ body {
     margin-top: 10px;
     font-weight: 700;
   }
-  
+
     .dropdown-header:first-child {
       margin: 0;
     }
-    
+
     .dropdown-menu>li.dropdown-header>a {
       color: #000000;
       display: inline;
       font-weight: 700;
       padding: 0;
     }
-    
+
     .dropdown-menu>li.dropdown-header>a:hover {
       background-color: transparent;
       text-decoration: underline;
     }
-	
+
 /**
  * Buttons
  */
@@ -177,23 +183,23 @@ body {
 		color: #000000;
 		padding: 10px;
 	}
-	
+
 		.dashboard-links .thumbnail {
 			border: none;
 		}
-		
+
 		.dashboard-links h4 {
 			margin-bottom: 0;
 		}
-		
+
 		.dashboard-links span {
 			display: block;
 		}
-	
+
 		.dashboard-links a i {
 			font-size: 3em;
 		}
-	
+
 		.dashboard-links a:hover {
 			background-color: #f1f1f1;
 			text-decoration: none;
@@ -216,3 +222,42 @@ input.error {
 #innolunch .table {
 	margin: 0;
 }
+
+/**
+ * Update Notes
+ */
+.updatenotes-legend {
+	margin-bottom: 20px;
+}
+
+	.updatenotes-legend span {
+		color: #ffffff;
+		font-size: .8em;
+		padding: 2px 5px;
+		text-transform: uppercase;
+	}
+
+	.updatenotes-legend-added { background-color: #339900; }
+	li.added { border-color: #339900; }
+
+	.updatenotes-legend-removed { background-color: #ff0000; }
+	li.removed { border-color: #ff0000; }
+
+	.updatenotes-legend-fixed { background-color: #ff9900; }
+	li.fixed { border-color: #ff9900; }
+
+	.updatenotes-legend-improved { background-color: #660066; }
+	li.improved { border-color: #660099; }
+
+.update-notes h4 {
+	color: #000000;
+	font-size: 1em;
+}
+
+.update-notes li {
+		border-left: 10px solid #000000;
+		line-height: 25px;
+		list-style: none;
+		margin: 5px 0;
+		padding-left: 10px;
+	}
