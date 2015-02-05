@@ -1,0 +1,169 @@
+<?php
+/**
+ * @package VenturaApps_Monthly
+ */
+
+class HitsMisses {
+
+  static function saveHitsMisses($type, $level, $id, $post, $period_month, $period_year) {
+
+    $db = DB::getInstance();
+
+    $remark_number = 1;
+
+    // Loop over $post and select each 'remark'
+    foreach ($post as $remarks => $remark) {
+
+      if (self::hitsMissesExist($type, $level, $id, $remark_number, $period_month, $period_year)) {
+
+        $sql = 'UPDATE app_monthly_hitsmisses_data SET hitsmisses_remark = :remark WHERE ';
+
+        // Check if this is cell, division, or corporate level
+        if ($level == 'cell') {
+          $sql .= 'app_cells_id = :id AND ';
+        }
+        if ($level == 'division') {
+          $sql .= 'app_divisions_id = :id AND ';
+        }
+
+        $sql .= 'hitsmisses_level = :level AND hitsmisses_type = :type AND hitsmisses_number = :number AND hitsmisses_period_month = :period_month AND hitsmisses_period_year = :period_year';
+
+    		$query = $db->dbh->prepare($sql);
+        if ($level == 'cell') {
+          $query->bindValue('id', $id);
+        }
+        if ($level == 'division') {
+          $query->bindValue('id', $id);
+        }
+
+    		$query->bindValue('level', $level);
+    		$query->bindValue('type', $type);
+    		$query->bindValue('number', $remark_number);
+    		$query->bindValue('remark', $remark);
+    		$query->bindValue('period_month', $period_month);
+    		$query->bindValue('period_year', $period_year);
+    		$query->execute();
+
+      } else {
+
+        // Begin SQL insert query
+        $sql = 'INSERT INTO app_monthly_hitsmisses_data (';
+
+        // Check if this is cell, division, or corporate level
+        if ($level == 'cell') {
+          $sql .= 'app_cells_id, ';
+        }
+        if ($level == 'division') {
+          $sql .= 'app_divisions_id, ';
+        }
+
+        $sql .= 'hitsmisses_level, hitsmisses_type, hitsmisses_number, hitsmisses_remark, hitsmisses_period_month, hitsmisses_period_year) VALUES (';
+
+        if ($level == 'cell' || $level == 'division') {
+          $sql .= ':id, ';
+        }
+
+        $sql .= ':level, :type, :number, :remark, :period_month, :period_year)';
+
+    		$query = $db->dbh->prepare($sql);
+        if ($level == 'cell') {
+          $query->bindValue('id', $id);
+        }
+        if ($level == 'division') {
+          $query->bindValue('id', $id);
+        }
+    		$query->bindValue('level', $level);
+    		$query->bindValue('type', $type);
+    		$query->bindValue('number', $remark_number);
+    		$query->bindValue('remark', $remark);
+    		$query->bindValue('period_month', $period_month);
+    		$query->bindValue('period_year', $period_year);
+    		$query->execute();
+
+      }
+
+  		$remark_number++;
+
+    }
+
+  }
+
+  static function hitsMissesExist($type, $level, $id, $remark_number, $period_month, $period_year) {
+
+    $db = DB::getInstance();
+
+    $sql = 'SELECT COUNT(*) as count FROM app_monthly_hitsmisses_data WHERE ';
+
+    // Check if this is cell, division, or corporate level
+    if ($level == 'cell') {
+      $sql .= 'app_cells_id = :id AND ';
+    }
+    if ($level == 'division') {
+      $sql .= 'app_divisions_id = :id AND ';
+    }
+
+    $sql .= 'hitsmisses_level = :level AND hitsmisses_type = :type AND hitsmisses_number = :number AND hitsmisses_period_month = :period_month AND hitsmisses_period_year = :period_year';
+
+		$query = $db->dbh->prepare($sql);
+    if ($level == 'cell') {
+      $query->bindValue('id', $id);
+    }
+    if ($level == 'division') {
+      $query->bindValue('id', $id);
+    }
+		$query->bindValue('level', $level);
+		$query->bindValue('type', $type);
+		$query->bindValue('number', $remark_number);
+		$query->bindValue('period_month', $period_month);
+		$query->bindValue('period_year', $period_year);
+		$query->execute();
+
+		if ($query->execute() && $query->fetch()->count > 0)
+			return true;
+		else
+			return false;
+
+  }
+
+  static function getHit($division_id, $cell_id, $type, $number, $period_month, $period_year) {
+
+    $db = DB::getInstance();
+
+    $sql = 'SELECT hitsmisses_remark FROM app_monthly_hitsmisses_data WHERE ';
+
+    // Check if this is cell, division, or corporate level
+    if ($cell_id) {
+      $sql .= 'app_cells_id = :id AND ';
+    }
+    if ($division_id) {
+      $sql .= 'app_divisions_id = :id AND ';
+    }
+    if (!$cell_id && !$division_id) {
+      $sql .= 'app_cells_id IS NULL AND app_divisions_id IS NULL AND ';
+    }
+
+    $sql .= 'hitsmisses_type = :type AND hitsmisses_number = :number AND hitsmisses_period_month = :period_month AND hitsmisses_period_year = :period_year';
+
+    $query = $db->dbh->prepare($sql);
+    if ($cell_id) {
+      $query->bindValue('id', $cell_id);
+    }
+    if ($division_id) {
+      $query->bindValue('id', $division_id);
+    }
+		$query->bindValue('type', $type);
+		$query->bindValue('number', $number);
+		$query->bindValue('period_month', $period_month);
+		$query->bindValue('period_year', $period_year);
+		$query->execute();
+		$result = $query->fetch();
+
+		if ($result)
+      return $result->hitsmisses_remark;
+    else
+      return false;
+
+  }
+
+}
+

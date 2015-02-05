@@ -1,0 +1,41 @@
+<?php get_header(); ?>
+
+	<div class="row">
+
+		<div class="col-sm-4 col-md-3 sidebar">
+			<?php echo $template->subnav(); ?>
+		</div>
+		
+		<div class="col-sm-8 col-md-9">
+		
+			<div class="page-header">
+				<h1><?php echo $template->page_title; ?></h1>
+			</div>
+			
+			<?php if (get_active_pitch_sheets()) : ?>
+			
+				<div class="row dashboard-links">
+			
+					<?php foreach(get_active_pitch_sheets() as $sheet) : ?>
+						<div class="col-lg-3 col-md-4 col-xs-6">
+							<a class="thumbnail" href="<?php echo $app->url .'/index.php?action=view&id='. $sheet->getID(); ?>">
+								<h4><?php echo Cell::getCell($sheet->getCellID())->getName(); ?></h4>
+								<span>Shift: <?php echo $sheet->getShift(); ?></span>
+								<span>On: <?php echo get_time($sheet->getTimestamp()); ?></span>
+							</a>
+						</div>		
+					<?php endforeach; ?>
+			
+				</div>
+			
+			<?php else : ?>
+			
+				<?php create_message('info', 'There are no active pitch sheets.', true); ?>
+				
+			<?php endif; ?>
+			
+		</div>
+		
+	</div>
+
+<?php get_footer(); ?>

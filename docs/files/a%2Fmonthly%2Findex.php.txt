@@ -1,0 +1,205 @@
+<?php
+/**
+ * Monthly app
+ *
+ * @package VenturaApps_Monthly
+ */
+
+####################################################################
+#                        App setup & config                        #
+####################################################################
+
+require_once '../../apps-core.php';
+
+$app = new App();
+$app->name = 'Monthly';
+$app->version = '1.0.0';
+$app->directory = 'monthly';
+$app->prefix = 'monthly';
+$app->url = $options['site_url'] .'/a/'. $app->directory;
+
+// Begin template
+$template = new Template($options, $app);
+
+// Set the parent page
+$template->parent_page = 'apps';
+
+####################################################################
+
+// Build subnav
+$template->subnav = array();
+
+// Get request vars
+$id = get_var('id');
+$division_id = get_var('division');
+$cell_id = get_var('cell');
+$manage = get_var('manage');
+$action = get_var('action');
+
+// Include math.js and calculate_metrics.js
+require 'monthly_includes/functions-monthly-template.php';
+$template->addScript('<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjs/1.1.1/math.min.js"></script>');
+$template->addScript('<script type="text/javascript" src="'. $app->url .'/monthly_template/js/calculate_metrics.js"></script>');
+$template->addScript('<script src="http://code.highcharts.com/highcharts.js"></script>');
+$template->addScript('<link rel="stylesheet" type="text/css" href="'. $app->url .'/monthly_template/css/monthly.css" />');
+
+if ($cell_id || $division_id) {
+
+	// Redirect to URL with period if period is set
+	if (isset($_POST['period'])) {
+
+    if ($cell_id) {
+		  redirect($app->url .'/index.php?cell='. $cell_id.'&period='. $_POST['period_month'] . $_POST['period_year']);
+		} else {
+  		redirect($app->url .'/index.php?division='. $division_id.'&period='. $_POST['period_month'] . $_POST['period_year']);
+		}
+
+	}
+
+	// Submit metrics if metric form is submitted
+	if (isset($_POST['submit'])) {
+
+  	if ($cell_id) {
+		  Metric::saveMetricData($cell_id, get_period('month'), get_period('year'), $_POST);
+      redirect($app->url .'/index.php?cell='. $cell_id.'&period='. get_period('month') . get_period('year'));
+    }
+
+	}
+
+	// A horrific approach to saving hits/misses
+	if ($cell_id) {
+
+  	if (isset($_POST['submit_hits'])) {
+    	HitsMisses::saveHitsMisses('hit', 'cell', $cell_id, $_POST, get_period('month'), get_period('year'));
+    	redirect($app->url .'/index.php?cell='. $cell_id .'&period='. get_period('month') . get_period('year') .'#hits');
+  	}
+  	if (isset($_POST['submit_misses'])) {
+    	HitsMisses::saveHitsMisses('miss', 'cell', $cell_id, $_POST, get_period('month'), get_period('year'));
+    	redirect($app->url .'/index.php?cell='. $cell_id .'&period='. get_period('month') . get_period('year') .'#misses');
+  	}
+  	if (isset($_POST['submit_goingforward'])) {
+    	HitsMisses::saveHitsMisses('goingforward', 'cell', $cell_id, $_POST, get_period('month'), get_period('year'));
+    	redirect($app->url .'/index.php?cell='. $cell_id .'&period='. get_period('month') . get_period('year') .'#goingforward');
+  	}
+
+	}
+
+	if ($division_id) {
+
+   	if (isset($_POST['submit_hits'])) {
+    	HitsMisses::saveHitsMisses('hit', 'division', $division_id, $_POST, get_period('month'), get_period('year'));
+    	redirect($app->url .'/index.php?division='. $division_id .'&period='. get_period('month') . get_period('year') .'#hits');
+  	}
+  	if (isset($_POST['submit_misses'])) {
+    	HitsMisses::saveHitsMisses('miss', 'division', $division_id, $_POST, get_period('month'), get_period('year'));
+    	redirect($app->url .'/index.php?division='. $division_id.'&period='. get_period('month') . get_period('year') .'#misses');
+  	}
+  	if (isset($_POST['submit_goingforward'])) {
+    	HitsMisses::saveHitsMisses('goingforward', 'division', $division_id, $_POST, get_period('month'), get_period('year'));
+    	redirect($app->url .'/index.php?division='. $division_id.'&period='. get_period('month') . get_period('year') .'#goingforward');
+  	}
+
+	}
+
+	$template->page_title = ($cell_id ? Cell::getCell($cell_id)->getName() .' Metrics' : Division::getDivision($division_id)->getName() .' Division');
+	load_template('metrics');
+
+} else if ($manage) {
+
+	switch ($manage) {
+
+		case 'corporate':
+
+		  $template->page_title = 'Corporate Hits/Misses';
+
+	  	// Redirect to URL with period if period is set
+      if (isset($_POST['period'])) {
+        redirect($app->url .'/index.php?manage=corporate&period='. $_POST['period_month'] . $_POST['period_year']);
+      }
+
+     	if (isset($_POST['submit_hits'])) {
+      	HitsMisses::saveHitsMisses('hit', 'corporate', '', $_POST, get_period('month'), get_period('year'));
+      	redirect($app->url .'/index.php?manage=corporate&period='. get_period('month') . get_period('year') .'#hits');
+    	}
+    	if (isset($_POST['submit_misses'])) {
+      	HitsMisses::saveHitsMisses('miss', 'corporate', '', $_POST, get_period('month'), get_period('year'));
+      	redirect($app->url .'/index.php?manage=corporate&period='. get_period('month') . get_period('year') .'#misses');
+    	}
+    	if (isset($_POST['submit_goingforward'])) {
+      	HitsMisses::saveHitsMisses('goingforward', 'corporate', '', $_POST, get_period('month'), get_period('year'));
+      	redirect($app->url .'/index.php?manage=corporate&period='. get_period('month') . get_period('year') .'#goingforward');
+    	}
+
+		  break;
+		case 'categories':
+			if ($action == 'add') {
+				$template->page_title = 'Add New Category';
+				if (isset($_POST['submit'])) {
+					Category::addCategory($_POST);
+					redirect($app->url .'/index.php?manage='. $manage);
+				}
+			} else if ($action == 'view') {
+				$template->page_title = 'View Categories';
+				if (isset($_POST['submit'])) {
+					Category::saveCategory($id, $_POST);
+					redirect($app->url .'/index.php?manage='. $manage);
+				}
+				if (isset($_POST['delete'])) {
+					Category::deleteCategory($id);
+					redirect($app->url .'/index.php?manage='. $manage);
+				}
+			} else {
+				$template->page_title = 'Manage Categories';
+			}
+			break;
+		case 'metrics':
+			if ($action == 'add') {
+				$template->page_title = 'Add New Metric';
+				if (isset($_POST['submit'])) {
+					Metric::addMetric($_POST);
+					redirect($app->url .'/index.php?manage='. $manage);
+				}
+			} else if ($action == 'view') {
+				$template->page_title = 'View Metric';
+				if (isset($_POST['submit'])) {
+					Metric::saveMetric($id, $_POST);
+					redirect($app->url .'/index.php?manage='. $manage);
+				}
+				if (isset($_POST['delete'])) {
+					Metric::deleteMetric($id);
+					redirect($app->url .'/index.php?manage='. $manage);
+				}
+			} else {
+				$template->page_title = 'Manage Metrics';
+			}
+			break;
+		case 'metriccells':
+
+			if (isset($_POST['submit'])) {
+
+				// Delete all existing metric cell assignments
+				Metric::deleteAllMetricCells();
+
+				// Save all newly assigned metrics
+				if (isset($_POST['metric_cells'])) {
+					foreach ($_POST['metric_cells'] as $metric => $cells) {
+						Metric::saveAllMetricCells($metric, $cells);
+					}
+				}
+
+			}
+
+			$template->page_title = 'Manage Metric Cell Assignment';
+			break;
+
+	}
+
+	load_template('manage-'. $manage);
+
+} else {
+
+	$template->page_title = 'Monthly';
+	load_template('monthly');
+
+}
+

@@ -1,0 +1,278 @@
+<?php
+
+/**
+ * PitchTracker pitch class
+ *
+ * @author Keith Brinks <keith.brinks@venturamfg.com>
+ * @since 1.0.0
+ */
+ 
+class Pitch {
+
+	/**
+	 * Database connection
+	 *
+	 * @since 1.0.0
+	 */
+	private $db;
+
+	/**
+	 * Pitch ID
+	 *
+	 * @since 1.0.0
+	 */
+	private $id;
+	
+	/**
+	 * Pitch sheet ID
+	 *
+	 * @since 1.0.0
+	 */
+	private $app_pitchtracker_sheets_id;
+	 
+	/**
+	 * Pitch timestamp
+	 *
+	 * @since 1.0.0
+	 */
+	private $pitch_timestamp;
+	 
+	/**
+	 * Pitch number
+	 *
+	 * @since 1.0.0
+	 */
+	private $pitch_number;
+	 
+	/**
+	 * Pitch goal
+	 *
+	 * @since 1.0.0
+	 */
+	private $pitch_goal;
+	 
+	/**
+	 * Pitch actual
+	 *
+	 * @since 1.0.0
+	 */
+	private $pitch_actual;
+	 
+	/**
+	 * Counter measure used
+	 *
+	 * @since 1.0.0
+	 */
+	private $pitch_counter_measure;
+	 
+	/**
+	 * Other reason for missed pitch
+	 *
+	 * @since 1.0.0
+	 */
+	private $pitch_missed_reason_other;
+	 
+	/**
+	 * Other reason for missed pitch
+	 *
+	 * @since 1.0.0
+	 */
+	private $pitch_result;
+	
+	/**
+	 * Construct
+	 */
+	function __construct() {
+		$this->db = DB::getInstance();
+	}
+	 
+	/**
+	 * Sets the pitch ID
+	 *
+	 * @since 1.0.0
+	 */
+	function setID($id) {
+		$this->id = $id;
+	}
+	 
+	/**
+	 * Sets the sheet ID
+	 *
+	 * @since 1.0
+	 */
+	function setSheetID($sheet_id) {
+		$this->app_pitchtracker_sheets_id = $sheet_id;
+	}
+	 
+	/**
+	 * Sets timestamp for when pitch was submitted
+	 *
+	 * @since 1.0.0
+	 */
+	function setTimestamp($timestamp) {
+		$this->sheet_timestamp = $timestamp;
+	}
+	 
+	/**
+	 * Sets the pitch number
+	 *
+	 * @since 1.0.0
+	 */
+	function setNumber($number) {
+		$this->pitch_number = $number;
+	}
+	 
+	/**
+	 * Sets the pitch goal
+	 *
+	 * @since 1.0.0
+	 */
+	function setGoal($goal) {
+		$this->pitch_goal = $goal;
+	}
+	 
+	/**
+	 * Sets the pitch actual
+	 *
+	 * @since 1.0.0
+	 */
+	function setActual($actual) {
+		$this->pitch_actual = $actual;
+	}
+	 
+	/**
+	 * Sets the counter measure used
+	 *
+	 * @since 1.0.0
+	 */
+	function setCounterMeasure($counter_measure) {
+		$this->pitch_counter_measure = $counter_measure;
+	}
+	 
+	/**
+	 * Sets the (other) missed reason
+	 *
+	 * @since 1.0.0
+	 */
+	function setMissedReasonOther($missed_reason_other) {
+		$this->pitch_missed_reason_other = $missed_reason_other;
+	}
+	 
+	/**
+	 * Sets the pitch result (hit/miss)
+	 *
+	 * @since 1.0.0
+	 */
+	function setResult($result) {
+		$this->pitch_result = $result;
+	}
+	
+	/**
+	 * Gets the pitch ID
+	 *
+	 * @since 1.0.0
+	 */
+	function getID() {
+		return $this->id;
+	}
+	 
+	/**
+	 * Gets the sheet ID
+	 *
+	 * @since 1.0
+	 */
+	function getSheetID() {
+		return $this->app_pitchtracker_sheets_id;
+	}
+	 
+	/**
+	 * Gets timestamp for when pitch was submitted
+	 *
+	 * @since 1.0.0
+	 */
+	function getTimestamp() {
+		return $this->sheet_timestamp;
+	}
+	 
+	/**
+	 * Gets the pitch number
+	 *
+	 * @since 1.0.0
+	 */
+	function getNumber() {
+		return $this->pitch_number;
+	}
+	 
+	/**
+	 * Gets the pitch goal
+	 *
+	 * @since 1.0.0
+	 */
+	function getGoal() {
+		return $this->pitch_goal;
+	}
+	 
+	/**
+	 * Gets the pitch actual
+	 *
+	 * @since 1.0.0
+	 */
+	function getActual() {
+		return $this->pitch_actual;
+	}
+	 
+	/**
+	 * Gets the counter measure used
+	 *
+	 * @since 1.0.0
+	 */
+	function getCounterMeasure() {
+		return $this->pitch_counter_measure;
+	}
+	 
+	/**
+	 * Gets the (other) missed reason
+	 *
+	 * @since 1.0.0
+	 */
+	function getMissedReasonOther() {
+		return $this->pitch_missed_reason_other;
+	}
+	 
+	/**
+	 * Gets the pitch result (hit/miss)
+	 *
+	 * @since 1.0.0
+	 */
+	function getResult() {
+		return $this->pitch_result;
+	}
+	 
+	/**
+	 * Creates new pitch
+	 *
+	 * @since 1.0.0
+	 */
+	function create() {
+		 
+		$query = $this->db->dbh->prepare('INSERT INTO app_pitchtracker_pitches (app_pitchtracker_sheets_id, pitch_timestamp, pitch_number, pitch_goal, pitch_actual, pitch_counter_measure, pitch_missed_reason_other, pitch_result) VALUES (:app_pitchtracker_sheets_id, :pitch_timestamp, :pitch_number, :pitch_goal, :pitch_actual, :pitch_counter_measure, :pitch_missed_reason_other, :pitch_result)');
+		$query->bindValue('app_pitchtracker_sheets_id', $this->getSheetID());
+		$query->bindValue('pitch_timestamp', $this->getTimestamp());
+		$query->bindValue('pitch_number', $this->getNumber());
+		$query->bindValue('pitch_goal', $this->getGoal());
+		$query->bindValue('pitch_actual', $this->getActual());
+		$query->bindValue('pitch_counter_measure', $this->getCounterMeasure());
+		$query->bindValue('pitch_missed_reason_other', $this->getMissedReasonOther());
+		$query->bindValue('pitch_result', $this->getResult());
+		$result = $query->execute();
+		$this->setID($this->db->dbh->lastInsertID());
+		
+		if ($result) {
+			return true;
+		} else {
+			return false;
+		}
+		 
+	}
+	
+}

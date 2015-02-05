@@ -1,0 +1,279 @@
+<?php
+
+/**
+ * PitchTracker pitch sheet class
+ *
+ * @author Keith Brinks <keith.brinks@venturamfg.com>
+ * @since 1.0.0
+ */
+ 
+class PitchSheet {
+	
+	/**
+	 * Database connection
+	 *
+	 * @since 1.0.0
+	 */
+	private $db;
+	
+	/**
+	 * Pitch Sheet ID
+	 *
+	 * @since 1.0.0
+	 */
+	private $id;
+	
+	/**
+	 * Cell ID sheet was setup for
+	 *
+	 * @since 1.0.0
+	 */
+	private $app_cells_id;
+	
+	/**
+	 * Production shift sheet was created for
+	 *
+	 * @since 1.0.0
+	 */
+	private $sheet_shift;
+	
+	/**
+	 * Timestamp when sheet was created
+	 *
+	 * @since 1.0.0
+	 */
+	private $sheet_timestamp;
+	
+	/**
+	 * Defines whether sheet was created with takt or cycle time
+	 *
+	 * @since 1.0.0
+	 */
+	private $sheet_mode;
+	
+	/**
+	 * Production takt or cycle time
+	 *
+	 * @since 1.0.0
+	 */
+	private $sheet_taktcycle_time;
+	
+	/**
+	 * Calculated line cycle time
+	 *
+	 * @since 1.0.0
+	 */
+	private $sheet_planned_cycle_time;
+	
+	/**
+	 * Goal per pitch
+	 *
+	 * @since 1.0.0
+	 */
+	private $sheet_pitch_goal;
+	
+	/**
+	 * Total goal for shift
+	 *
+	 * @since 1.0.0
+	 */
+	private $sheet_shift_goal;
+	
+	/**
+	 * Construct
+	 */
+	function __construct() {
+		$this->db = DB::getInstance();
+	}
+	
+	/**
+	 * Sets PitchSheet ID
+	 *
+	 * @since 1.0.0
+	 */
+	function setID($id) {
+		$this->id = $id;
+	}
+	
+	/**
+	 * Sets cell ID
+	 *
+	 * @since 1.0.0
+	 */
+	function setCellID($app_cells_id) {
+		$this->app_cells_id = $app_cells_id;
+	}
+	
+	/**
+	 * Sets shift
+	 *
+	 * @since 1.0.0
+	 */
+	function setShift($sheet_shift) {
+		$this->sheet_shift = $sheet_shift;
+	}
+	
+	/**
+	 * Sets timestamp
+	 *
+	 * @since 1.0.0
+	 */
+	function setTimestamp($sheet_timestamp) {
+		$this->sheet_timestamp = $sheet_timestamp;
+	}
+	
+	/**
+	 * Set mode
+	 *
+	 * @since 1.0.0
+	 */
+	function setMode($sheet_mode) {
+		$this->sheet_mode = $sheet_mode;
+	}
+	
+	/**
+	 * Sets tack/cycle time
+	 *
+	 * @since 1.0.0
+	 */
+	function setTaktCycleTime($sheet_taktcycle_time) {
+		$this->sheet_taktcycle_time = $sheet_taktcycle_time;
+	}
+	
+	/**
+	 * Sets planned cycle time
+	 *
+	 * @since 1.0.0
+	 */
+	function setPlannedCycleTime($sheet_planned_cycle_time) {
+		$this->sheet_planned_cycle_time = $sheet_planned_cycle_time;
+	}
+	
+	/**
+	 * Sets pitch goal
+	 *
+	 * @since 1.0.0
+	 */
+	function setPitchGoal($sheet_pitch_goal) {
+		$this->sheet_pitch_goal = $sheet_pitch_goal;
+	}
+	
+	/**
+	 * Sets shift goal
+	 *
+	 * @since 1.0.0
+	 */
+	function setShiftGoal($sheet_shift_goal) {
+		$this->sheet_shift_goal = $sheet_shift_goal;
+	}
+	
+	/**
+	 * Gets PitchSheet ID
+	 *
+	 * @since 1.0.0
+	 */
+	function getID() {
+		return $this->id;
+	}
+	
+	/**
+	 * Gets cell ID
+	 *
+	 * @since 1.0.0
+	 */
+	function getCellID() {
+		return $this->app_cells_id;
+	}
+	
+	/**
+	 * Gets shift
+	 *
+	 * @since 1.0.0
+	 */
+	function getShift() {
+		return $this->sheet_shift;
+	}
+	
+	/**
+	 * Gets timestamp
+	 *
+	 * @since 1.0.0
+	 */
+	function getTimestamp() {
+		return $this->sheet_timestamp;
+	}
+	
+	/**
+	 * Get mode
+	 *
+	 * @since 1.0.0
+	 */
+	function getMode() {
+		return $this->sheet_mode;
+	}
+	
+	/**
+	 * Gets tack/cycle time
+	 *
+	 * @since 1.0.0
+	 */
+	function getTaktCycleTime() {
+		return $this->sheet_taktcycle_time;
+	}
+	
+	/**
+	 * Gets planned cycle time
+	 *
+	 * @since 1.0.0
+	 */
+	function getPlannedCycleTime() {
+		return $this->sheet_planned_cycle_time;
+	}
+	
+	/**
+	 * Gets pitch goal
+	 *
+	 * @since 1.0.0
+	 */
+	function getPitchGoal() {
+		return $this->sheet_pitch_goal;
+	}
+	
+	/**
+	 * Gets shift goal
+	 *
+	 * @since 1.0.0
+	 */
+	function getShiftGoal() {
+		return $this->sheet_shift_goal;
+	}
+
+	/**
+	 * Creates new pitch sheet
+	 *
+	 * @since 1.0.0
+	 */
+	function create() {
+	
+		$sql = 'INSERT INTO app_pitchtracker_sheets (app_cells_id, sheet_shift, sheet_timestamp, sheet_mode, sheet_taktcycle_time, sheet_planned_cycle_time, sheet_pitch_goal, sheet_shift_goal) VALUES (:app_cells_id, :sheet_shift, :sheet_timestamp, :sheet_mode, :sheet_taktcycle_time, :sheet_planned_cycle_time, :sheet_pitch_goal, :sheet_shift_goal)';
+		$query = $this->db->dbh->prepare($sql);
+		$query->bindValue('app_cells_id', $this->getCellID());
+		$query->bindValue('sheet_shift', $this->getShift());
+		$query->bindValue('sheet_timestamp', $this->getTimestamp());
+		$query->bindValue('sheet_mode', $this->getMode());
+		$query->bindValue('sheet_taktcycle_time', $this->getTaktCycleTime());
+		$query->bindValue('sheet_planned_cycle_time', $this->getPlannedCycleTime());
+		$query->bindValue('sheet_pitch_goal', $this->getPitchGoal());
+		$query->bindValue('sheet_shift_goal', $this->getShiftGoal());
+		$result = $query->execute();
+		$this->setID($this->db->dbh->lastInsertID());
+		
+		if ($result) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
+}

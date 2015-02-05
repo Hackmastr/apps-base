@@ -1,0 +1,384 @@
+<?php
+/**
+ * Matric class
+ *
+ * @package VenturaApps_Monthly
+ */
+
+class Metric {
+
+	private $id;
+	private $app_monthly_metric_categories_id;
+	private $metric_name;
+	private $metric_has_forecast;
+	private $metric_is_calculated;
+	private $metric_calculation;
+	private $metric_is_reported;
+	private $metric_data_type;
+	private $metric_order;
+
+	private $metric_id;
+	private $metric_data_forecast;
+	private $metric_data_actual;
+
+	/**
+	 * Gets single metric
+	 */
+	static function getMetric($id) {
+
+		$db = DB::getInstance();
+		$query = $db->dbh->prepare('SELECT * FROM app_monthly_metrics WHERE id = :id');
+		$query->bindValue('id', $id);
+
+		if ($query->execute())
+			return $query->fetchAll(PDO::FETCH_CLASS, 'Metric')[0];
+
+	}
+
+	/**
+	 * Gets all metrics
+	 */
+	public static function getAllMetrics($cell_id = '', $category_id = '') {
+
+		$db = DB::getInstance();
+		if (empty($cell_id) && empty($category_id)) {
+			$query = $db->dbh->prepare('SELECT * FROM app_monthly_metrics');
+		} else if (empty($cell_id) && !empty($category_id)) {
+			$query = $db->dbh->prepare('SELECT * FROM app_monthly_metrics WHERE app_monthly_metric_categories_id = :category_id ORDER BY metric_order');
+			$query->bindValue('category_id', $category_id);
+		} else {
+			$query = $db->dbh->prepare('SELECT
+				m.id as metric_id,
+				metric_has_forecast
+				FROM app_monthly_metrics m
+				INNER JOIN app_monthly_metric_cells mc ON mc.app_monthly_metrics_id = m.id
+				WHERE mc.app_cells_id = :cell_id');
+			$query->bindValue('cell_id', $cell_id);
+		}
+
+		if ($query->execute())
+			return $query->fetchALL(PDO::FETCH_CLASS, 'Metric');
+
+	}
+
+	/**
+	 * Gets metric data
+	 */
+	public static function getMetricData($category_id, $cell_id, $period_month, $period_year) {
+
+		$db = DB::getInstance();
+		$query = $db->dbh->prepare('SELECT
+			m.id as metric_id,
+			metric_name,
+			metric_has_forecast,
+			metric_is_calculated,
+			metric_calculation,
+			metric_is_reported,
+			metric_data_forecast,
+			metric_data_actual
+			FROM app_monthly_metrics m
+			INNER JOIN app_monthly_metric_cells mc ON mc.app_monthly_metrics_id = m.id
+			LEFT JOIN app_monthly_metrics_data md ON md.app_monthly_metrics_id = m.id AND md.metric_data_period_month = :period_month AND md.metric_data_period_year = :period_year AND md.app_cells_id = :metric_data_cell_id
+			WHERE m.app_monthly_metric_categories_id = :category_id
+			AND mc.app_cells_id = :metric_cells_cell_id
+			ORDER BY metric_order');
+		$query->bindValue('category_id', $category_id);
+		$query->bindValue('metric_data_cell_id', $cell_id);
+		$query->bindValue('metric_cells_cell_id', $cell_id);
+		$query->bindValue('period_month', $period_month);
+		$query->bindValue('period_year', $period_year);
+
+		if ($query->execute())
+			return $query->fetchALL(PDO::FETCH_CLASS, 'Metric');
+
+	}
+
+	/**
+	 * Saves metric data
+	 */
+	public static function saveMetricData($cell_id, $period_month, $period_year, $post) {
+
+		$db = DB::getInstance();
+
+		foreach (self::getAllMetrics($cell_id) as $metric) {
+
+			$forecast = ($metric->hasForecast()) ? $post['metric_'. $metric->getMetricID() .'_forecast'] : '';
+			$actual = $post['metric_'. $metric->getMetricID() .'_actual'];
+
+			if (self::metricDataExists($metric->getMetricID(), $cell_id, $period_month, $period_year)) {
+				$sql = 'UPDATE app_monthly_metrics_data SET metric_data_forecast = :metric_data_forecast, metric_data_actual = :metric_data_actual WHERE app_monthly_metrics_id = :app_monthly_metrics_id AND app_cells_id = :app_cells_id AND metric_data_period_month = :metric_data_period_month AND metric_data_period_year = :metric_data_period_year';
+			} else {
+				$sql = 'INSERT INTO app_monthly_metrics_data (app_monthly_metrics_id, app_cells_id, metric_data_forecast, metric_data_actual, metric_data_period_month, metric_data_period_year) VALUES (:app_monthly_metrics_id, :app_cells_id, :metric_data_forecast, :metric_data_actual, :metric_data_period_month, :metric_data_period_year)';
+			}
+
+			$query = $db->dbh->prepare($sql);
+			$query->bindValue('app_monthly_metrics_id', $metric->getMetricID());
+			$query->bindValue('app_cells_id', $cell_id);
+			$query->bindValue('metric_data_forecast', $forecast);
+			$query->bindValue('metric_data_actual', $actual);
+			$query->bindValue('metric_data_period_month', $period_month);
+			$query->bindValue('metric_data_period_year', $period_year);
+			$query->execute();
+
+		}
+
+	}
+
+	/**
+	 * Checks if metric data record exists
+	 */
+	public static function metricDataExists($metric_id, $cell_id, $period_month, $period_year) {
+
+		$db = DB::getInstance();
+
+		$query = $db->dbh->prepare('SELECT COUNT(*) as count FROM app_monthly_metrics_data WHERE app_monthly_metrics_id = :metric_id AND app_cells_id = :cell_id AND metric_data_period_month = :period_month AND metric_data_period_year = :period_year');
+		$query->bindValue('metric_id', $metric_id);
+		$query->bindValue('cell_id', $cell_id);
+		$query->bindValue('period_month', $period_month);
+		$query->bindValue('period_year', $period_year);
+
+		if ($query->execute() && $query->fetch()->count > 0)
+			return true;
+		else
+			return false;
+
+	}
+
+	/**
+	 * Checks if metric is in cell
+	 */
+	static function inCell($metric_id, $cell_id) {
+
+		$db = DB::getInstance();
+		$query = $db->dbh->prepare('SELECT COUNT(*) as count FROM app_monthly_metric_cells WHERE app_monthly_metrics_id = :metric_id AND app_cells_id = :cell_id');
+		$query->bindValue('metric_id', $metric_id);
+		$query->bindValue('cell_id', $cell_id);
+
+		if ($query->execute() && $query->fetch()->count > 0)
+			return true;
+		else
+			return false;
+
+	}
+
+	/**
+	 * Adds metric to database
+	 */
+	public static function addMetric($post) {
+
+		$db = DB::getInstance();
+
+		$query = $db->dbh->prepare('INSERT INTO app_monthly_metrics (app_monthly_metric_categories_id, metric_name, metric_has_forecast, metric_is_calculated, metric_calculation, metric_is_reported, metric_data_type, metric_order) VALUES (:app_monthly_metric_categories_id, :metric_name, :metric_has_forecast, :metric_is_calculated, :metric_calculation, :metric_is_reported, :metric_data_type, :metric_order)');
+		$query->bindValue('app_monthly_metric_categories_id', $post['app_monthly_metric_categories_id']);
+		$query->bindValue('metric_name', $post['metric_name']);
+		$query->bindValue('metric_has_forecast', $post['metric_has_forecast']);
+		$query->bindValue('metric_is_calculated', $post['metric_is_calculated']);
+		$query->bindValue('metric_calculation', $post['metric_calculation']);
+		$query->bindValue('metric_is_reported', $post['metric_is_reported']);
+		$query->bindValue('metric_data_type', $post['metric_data_type']);
+		$query->bindValue('metric_order', $post['metric_order']);
+
+		if ($query->execute()) {
+
+			if (!empty($post['metric_cells'])) {
+				self::setMetricCells($db->dbh->lastInsertId(), $post);
+			} else {
+				return true;
+			}
+
+		} else {
+			return false;
+		}
+
+	}
+
+	/**
+	 * Saves metric to database
+	 */
+	public static function saveMetric($id, $post) {
+
+		$db = DB::getInstance();
+
+		$query = $db->dbh->prepare('UPDATE app_monthly_metrics SET app_monthly_metric_categories_id = :app_monthly_metric_categories_id, metric_name = :metric_name, metric_has_forecast = :metric_has_forecast, metric_is_calculated = :metric_is_calculated, metric_data_type = :metric_data_type, metric_calculation = :metric_calculation, metric_is_reported = :metric_is_reported, metric_order = :metric_order WHERE id = :id');
+		$query->bindValue('id', $id);
+		$query->bindValue('app_monthly_metric_categories_id', $post['app_monthly_metric_categories_id']);
+		$query->bindValue('metric_name', $post['metric_name']);
+		$query->bindValue('metric_has_forecast', $post['metric_has_forecast']);
+		$query->bindValue('metric_is_calculated', $post['metric_is_calculated']);
+		$query->bindValue('metric_data_type', $post['metric_data_type']);
+		$query->bindValue('metric_calculation', $post['metric_calculation']);
+		$query->bindValue('metric_is_reported', $post['metric_is_reported']);
+		$query->bindValue('metric_order', $post['metric_order']);
+
+		if ($query->execute()) {
+			self::setMetricCells($id, $post);
+		}
+
+	}
+
+	/**
+	 * Deletes metric from database
+	 */
+	public static function deleteMetric($id) {
+
+		$db = DB::getInstance();
+
+		$query = $db->dbh->prepare('DELETE FROM app_monthly_metrics WHERE id = :id');
+		$query->bindValue('id', $id);
+
+		if ($query->execute())
+			self::deleteMetricCells($id);
+
+	}
+
+	/**
+	 * Sets cells metric is assigned to
+	 */
+	public static function setMetricCells($id, $post) {
+
+		self::deleteMetricCells($id);
+
+		$db = DB::getInstance();
+
+		foreach ($post['metric_cells'] as $cell_id) {
+
+			$query = $db->dbh->prepare('INSERT INTO app_monthly_metric_cells (app_monthly_metrics_id, app_cells_id) VALUES (:app_monthly_metrics_id, :app_cells_id)');
+			$query->bindValue('app_monthly_metrics_id', $id);
+			$query->bindValue('app_cells_id', $cell_id);
+			$result = $query->execute();
+
+		}
+
+		if ($result)
+			return true;
+
+	}
+
+	/**
+	 * Delete metric cells
+	 */
+	public static function deleteMetricCells($id) {
+
+		$db = DB::getInstance();
+		$query = $db->dbh->prepare('DELETE FROM app_monthly_metric_cells WHERE app_monthly_metrics_id = :id');
+		$query->bindValue('id', $id);
+		$query->execute();
+
+	}
+
+	/**
+	 * Save all metric cell assignments
+	 */
+	public static function saveAllMetricCells($metric_id, $cells) {
+
+		$db = DB::getInstance();
+
+		foreach ($cells as $cell_id) {
+
+			$query = $db->dbh->prepare('INSERT INTO app_monthly_metric_cells (app_monthly_metrics_id, app_cells_id) VALUES (:app_monthly_metrics_id, :app_cells_id)');
+			$query->bindValue('app_monthly_metrics_id', $metric_id);
+			$query->bindValue('app_cells_id', $cell_id);
+			$result = $query->execute();
+
+		}
+
+		if ($result)
+			return true;
+
+	}
+
+	/**
+	 * Delete all metric cell assigments
+	 */
+	public static function deleteAllMetricCells() {
+		$db = DB::getInstance();
+		$query = $db->dbh->prepare('DELETE FROM app_monthly_metric_cells');
+		$query->execute();
+	}
+
+	/**
+	 * Get ID
+	 */
+	public function getID() {
+		return $this->id;
+	}
+
+	/**
+	 * Get category ID metric is assigned to
+	 */
+	public function getCategoryID() {
+		return $this->app_monthly_metric_categories_id;
+	}
+
+	/**
+	 * Metric name
+	 */
+	public function getName() {
+		return $this->metric_name;
+	}
+
+	/**
+	 * Metric has forecast?
+	 */
+	public function hasForecast() {
+		return $this->metric_has_forecast;
+	}
+
+	/**
+	 * Metric is calculated
+	 */
+	public function isCalculated() {
+		return $this->metric_is_calculated;
+	}
+
+	/**
+	 * Metric calculation
+	 */
+	public function getCalculation() {
+		return $this->metric_calculation;
+	}
+
+	/**
+	 * Metric reported
+	 */
+	public function isReported() {
+		return $this->metric_is_reported;
+	}
+
+	/**
+	 * Metric data type
+	 */
+	public function getDataType() {
+		return $this->metric_data_type;
+	}
+
+	/**
+	 * Get metric order
+	 */
+	public function getOrder() {
+		return $this->metric_order;
+	}
+
+	/**
+	 * Metric ID
+	 */
+	public function getMetricID() {
+		return $this->metric_id;
+	}
+
+	/**
+	 * Metric data forecast
+	 */
+	public function getDataForecast() {
+		return $this->metric_data_forecast;
+	}
+
+	/**
+	 * Metric data actual
+	 */
+	public function getDataActual() {
+		return $this->metric_data_actual;
+	}
+
+}
+
