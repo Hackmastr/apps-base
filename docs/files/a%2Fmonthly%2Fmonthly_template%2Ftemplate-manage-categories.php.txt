@@ -1,0 +1,87 @@
+<?php get_header(); ?>
+
+	<div class="row">
+
+		<div class="col-sm-4 col-md-3 sidebar">
+			<?php get_monthly_subnav(); ?>
+		</div>
+
+		<div class="col-sm-8 col-md-9">
+
+			<div class="page-header">
+				<h1><?php echo $template->page_title; ?></h1>
+			</div>
+
+			<?php get_message() ?>
+
+			<?php if (is_single()) : ?>
+
+				<?php
+					$category_id = get_var('id');
+
+					$category = ($category_id ? Category::getCategory($category_id) : false);
+					$category_name = ($category ? $category->getName() : '');
+					$category_order = ($category ? $category->getOrder() : '');
+				?>
+
+				<?php if (get_var('action') != 'add' && !$category) : ?>
+
+					<?php create_message('danger', 'Category does not exist!', true); ?>
+
+				<?php else : ?>
+
+					<form class="form-horizontal" method="post" action="<?php echo get_page_url(); ?>">
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="category_name">Category Name</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" id="category_name" name="category_name" value="<?php echo $category_name; ?>" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="category_order">Category Order</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" name="category_order" value="<?php echo $category_order ?>" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-3 col-sm-9">
+								<button class="btn btn-default" type="submit" name="submit">Submit</button>
+								<button class="btn btn-default btn-danger pull-right" type="submit" name="delete">Delete</button>
+							</div>
+						</div>
+					</form>
+
+				<?php endif; ?>
+
+			<?php else : ?>
+
+				<a class="btn btn-primary" href="<?php echo $app->url; ?>/index.php?manage=categories&action=add">Add New</a>
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Title</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<?php foreach (Category::getAllCategories() as $category)  : ?>
+						<tr>
+							<td>
+								<a href="<?php echo $app->url; ?>/index.php?manage=categories&action=view&id=<?php echo $category->getID(); ?>"><?php echo $category->getName(); ?></a>
+								<span class="label label-primary pull-right">Order: <?php echo $category->getOrder(); ?></span>
+							</td>
+						</tr>
+						<?php endforeach; ?>
+
+					</tbody>
+				</table>
+
+			<?php endif; ?>
+
+		</div>
+
+	</div>
+
+<?php get_footer(); ?>
+

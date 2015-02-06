@@ -1,0 +1,237 @@
+<?php get_header(); ?>
+
+	<div class="row">
+
+		<div class="col-sm-4 col-md-3 sidebar">
+			<?php get_monthly_subnav(); ?>
+		</div>
+
+		<div class="col-sm-8 col-md-9">
+
+			<div class="page-header">
+
+				<h1><?php echo $template->page_title; ?></h1>
+
+			</div>
+
+			<?php get_message() ?>
+
+			<section class="select_period">
+        <?php echo get_period_select_form(); ?>
+			</section>
+
+			<?php if (get_var('period')) : ?>
+
+				<form class="form-horizontal" method="post" action="<?php echo get_page_url(); ?>">
+
+					<?php foreach (Category::getAllCategories() as $category) : ?>
+
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title"><?php echo $category->getName(); ?></h3>
+							</div>
+							<?php if (Metric::getMetricData($category->getID(), get_var('cell'), get_var(get_period('month')), get_var(get_period('year')))) : ?>
+								<table class="table">
+									<colgroup>
+										<col width="40%">
+										<col width="25%">
+										<col width="25%">
+										<col width="10%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th>Metric</th>
+											<th>Forecast</th>
+											<th>Actual</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php foreach (Metric::getMetricData($category->getID(), get_var('cell'), get_period('month'), get_period('year')) as $metric) : ?>
+											<tr<?php echo ($metric->isReported() ? ' class="success"' : ''); ?>>
+												<td>
+													<label class="control-label"><?php echo $metric->getName(); ?></label>
+												</td>
+												<td>
+													<?php if ($metric->hasForecast()) : ?>
+														<input class="form-control" type="text" name="metric_<?php echo $metric->getMetricID(); ?>_forecast" value="<?php echo $metric->getDataForecast(); ?>" autocomplete="off" />
+													<?php endif; ?>
+												</td>
+												<td>
+													<input <?php echo ($metric->isCalculated() ? 'class="form-control metric_calculated" readonly' : 'class="form-control"'); ?> type="text" name="metric_<?php echo $metric->getMetricID(); ?>_actual" value="<?php echo $metric->getDataActual(); ?>" autocomplete="off" />
+												</td>
+												<td>
+													<?php if ($metric->isCalculated()) : ?>
+														<input type="hidden" class="metric_calculation" value="<?php echo $metric->getCalculation(); ?>" />
+														<button class="btn btn-primary calculate_metric">Calculate</button>
+													<?php endif; ?>
+												</td>
+											</tr>
+										<?php endforeach; ?>
+									</tbody>
+								</table>
+							<?php else : ?>
+								<div class="panel-body">
+									No metrics exist for this category.
+								</div>
+							<?php endif; ?>
+						</div>
+
+					<?php endforeach; ?>
+
+					<button class="btn btn-default" type="submit" name="submit">Save Metric Data</button>
+
+				</form>
+
+				<div class="panel panel-primary hitsmisses">
+					<div class="panel-heading" id="hits">
+						<h3 class="panel-title">Hits</h3>
+					</div>
+
+          <form class="form-horizontal" method="post" action="<?php echo get_page_url(); ?>">
+						<table class="table">
+							<colgroup>
+								<col width="20%">
+								<col width="80%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Remark</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								  <td><label class="control-label">Hit #1</label></td>
+								  <td><input class="form-control" type="text" name="remark_1" value="<?php echo HitsMisses::getHit(get_var('division'), get_var('cell'), 'hit', 1, get_period('month'), get_period('year')); ?>" autocomplete="off" /></td>
+								</tr>
+								<tr>
+  								<td><label class="control-label">Hit #2</label></td>
+                  <td><input class="form-control" type="text" name="remark_2" value="<?php echo HitsMisses::getHit(get_var('division'), get_var('cell'), 'hit', 2, get_period('month'), get_period('year')); ?>" autocomplete="off" /></td>
+								</tr>
+								<tr>
+  								<td><label class="control-label">Hit #3</label></td>
+                  <td><input class="form-control" type="text" name="remark_3" value="<?php echo HitsMisses::getHit(get_var('division'), get_var('cell'), 'hit', 3, get_period('month'), get_period('year')); ?>" autocomplete="off" /></td>
+								</tr>
+								<tr>
+  								<td><label class="control-label">Hit #4</label></td>
+                  <td><input class="form-control" type="text" name="remark_4" value="<?php echo HitsMisses::getHit(get_var('division'), get_var('cell'), 'hit', 4, get_period('month'), get_period('year')); ?>" autocomplete="off" /></td>
+								</tr>
+								<tr>
+  								<td><label class="control-label">Hit #5</label></td>
+                  <td><input class="form-control" type="text" name="remark_5" value="<?php echo HitsMisses::getHit(get_var('division'), get_var('cell'), 'hit', 5, get_period('month'), get_period('year')); ?>" autocomplete="off" /></td>
+								</tr>
+							</tbody>
+						</table>
+
+            <div class="panel-footer">
+              <button class="btn btn-default" type="submit" name="submit_hits">Submit Hits</button>
+            </div>
+
+          </form>
+				</div>
+
+				<div class="panel panel-primary hitsmisses">
+					<div class="panel-heading" id="misses">
+						<h3 class="panel-title">Misses</h3>
+					</div>
+
+          <form class="form-horizontal" method="post" action="<?php echo get_page_url(); ?>">
+						<table class="table">
+							<colgroup>
+								<col width="20%">
+								<col width="80%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Remark</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								  <td><label class="control-label">Miss #1</label></td>
+								  <td><input class="form-control" type="text" name="remark_1" value="<?php echo HitsMisses::getHit(get_var('division'), get_var('cell'), 'miss', 1, get_period('month'), get_period('year')); ?>" autocomplete="off" /></td>
+								</tr>
+								<tr>
+  								<td><label class="control-label">Miss #2</label></td>
+                  <td><input class="form-control" type="text" name="remark_2" value="<?php echo HitsMisses::getHit(get_var('division'), get_var('cell'), 'miss', 2, get_period('month'), get_period('year')); ?>" autocomplete="off" /></td>
+								</tr>
+								<tr>
+  								<td><label class="control-label">Miss #3</label></td>
+                  <td><input class="form-control" type="text" name="remark_3" value="<?php echo HitsMisses::getHit(get_var('division'), get_var('cell'), 'miss', 3, get_period('month'), get_period('year')); ?>" autocomplete="off" /></td>
+								</tr>
+								<tr>
+  								<td><label class="control-label">Miss #4</label></td>
+                  <td><input class="form-control" type="text" name="remark_4" value="<?php echo HitsMisses::getHit(get_var('division'), get_var('cell'), 'miss', 4, get_period('month'), get_period('year')); ?>" autocomplete="off" /></td>
+								</tr>
+								<tr>
+  								<td><label class="control-label">Miss #5</label></td>
+                  <td><input class="form-control" type="text" name="remark_5" value="<?php echo HitsMisses::getHit(get_var('division'), get_var('cell'), 'miss', 5, get_period('month'), get_period('year')); ?>" autocomplete="off" /></td>
+								</tr>
+							</tbody>
+						</table>
+
+            <div class="panel-footer">
+              <button class="btn btn-default" type="submit" name="submit_misses">Submit Misses</button>
+            </div>
+
+          </form>
+				</div>
+
+				<div class="panel panel-primary hitsmisses">
+					<div class="panel-heading" id="goingforward">
+						<h3 class="panel-title">Going Forward</h3>
+					</div>
+
+          <form class="form-horizontal" method="post" action="<?php echo get_page_url(); ?>">
+						<table class="table">
+							<colgroup>
+								<col width="20%">
+								<col width="80%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Remark</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								  <td><label class="control-label">Going Forward #1</label></td>
+								  <td><input class="form-control" type="text" name="remark_1" value="<?php echo HitsMisses::getHit(get_var('division'), get_var('cell'), 'goingforward', 1, get_period('month'), get_period('year')); ?>" autocomplete="off" /></td>
+								</tr>
+								<tr>
+  								<td><label class="control-label">Going Forward #2</label></td>
+                  <td><input class="form-control" type="text" name="remark_2" value="<?php echo HitsMisses::getHit(get_var('division'), get_var('cell'), 'goingforward', 2, get_period('month'), get_period('year')); ?>" autocomplete="off" /></td>
+								</tr>
+								<tr>
+  								<td><label class="control-label">Going Forward #3</label></td>
+                  <td><input class="form-control" type="text" name="remark_3" value="<?php echo HitsMisses::getHit(get_var('division'), get_var('cell'), 'goingforward', 3, get_period('month'), get_period('year')); ?>" autocomplete="off" /></td>
+								</tr>
+								<tr>
+  								<td><label class="control-label">Going Forward #4</label></td>
+                  <td><input class="form-control" type="text" name="remark_4" value="<?php echo HitsMisses::getHit(get_var('division'), get_var('cell'), 'goingforward', 4, get_period('month'), get_period('year')); ?>" autocomplete="off" /></td>
+								</tr>
+								<tr>
+  								<td><label class="control-label">Going Forward #5</label></td>
+                  <td><input class="form-control" type="text" name="remark_5" value="<?php echo HitsMisses::getHit(get_var('division'), get_var('cell'), 'goingforward', 5, get_period('month'), get_period('year')); ?>" autocomplete="off" /></td>
+								</tr>
+							</tbody>
+						</table>
+
+            <div class="panel-footer">
+              <button class="btn btn-default" type="submit" name="submit_goingforward">Submit Going Forward</button>
+            </div>
+
+          </form>
+				</div>
+
+			<?php endif; ?>
+
+		</div>
+
+	</div>
+
+<?php get_footer(); ?>
+

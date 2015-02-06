@@ -1,0 +1,16 @@
+<?php
+/**
+ * App spawner class
+ *
+ * Used to define app-specific settings
+ */
+ 
+class App {
+
+	public $name;
+	public $version;
+	public $directory;
+	public $url;
+	public $prefix;
+	
+}

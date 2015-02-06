@@ -1,0 +1,182 @@
+<?php get_header(); ?>
+
+	<div class="row">
+
+		<div class="col-sm-4 col-md-3 sidebar">
+			<?php echo $template->subnav(); ?>
+			
+			<form id="pitch_sheet" class="form-horizontal" method="post" action="<?php echo get_page_url(); ?>">
+				<button class="btn btn-danger btn-lg btn-block" type="submit" name="line_down" id="line-down" value="line down" data-loading-text="Loading...">Line Down</button>
+			</form>
+		</div>
+		
+		<div class="col-sm-8 col-md-9">
+			
+			<?php get_message(); ?>
+
+			<?php if (get_sheets()) : foreach(get_sheets() as $sheet) : ?>
+			
+				<div class="page-header">
+					<h1><?php echo Cell::getCell($sheet->getCellID())->getName() .' Pitch Attainment Sheet - '. get_time($sheet->getTimestamp()); ?></h1>
+				</div>
+			
+				<div class="col-sm-offset-3">
+					<span class="label label-info">Shift: <?php echo $sheet->getShift(); ?></span>
+					<span class="label label-info">Takt/Cycle Time: <?php echo $sheet->getTaktCycleTime(); ?></span>
+					<span class="label label-info">Planned Cycle Time: <?php echo $sheet->getPlannedCycleTime(); ?></span>
+				</div>
+				
+				<form id="pitch_sheet" class="form-horizontal" method="post" action="<?php echo get_page_url(); ?>">
+					<div class="form-group">
+						<label class="col-sm-3 control-label" for="next_pitch">Next Pitch #</label>
+						<div class="col-sm-9">
+							<p class="form-control-static"><?php echo get_next_pitch_number(); ?></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label" for="pitch_goal">Pitch Goal</label>
+						<div class="col-sm-9">
+							<input class="form-control" type="number" name="pitch_goal" value="<?php echo $sheet->getPitchGoal(); ?>" required />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label" for="pitch_actual">Actual</label>
+						<div class="col-sm-9">
+							<input class="form-control" type="number" name="pitch_actual" id="pitch_actual" required />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label" for="pitch_missed_reasons">Missed Pitch Reason</label>
+						<div class="col-sm-9">
+							<select class="form-control" name="pitch_missed_reasons[]" id="pitch_missed_reasons" multiple="multiple" data-placeholder="Select reason(s)...">
+								<?php if (get_missed_pitch_reasons()): foreach(get_missed_pitch_reasons() as $missed_reason): ?>
+									<option value="<?php echo $missed_reason->id; ?>"><?php echo $missed_reason->missed_description; ?></option>
+								<?php endforeach; endif; ?>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label" for="pitch_missed_reason_other">Missed Pitch Reason (Other)</label>
+						<div class="col-sm-9">
+							<textarea class="form-control" name="pitch_missed_reason_other" id="pitch_missed_reason_other"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label" for="pitch_counter_measure">Counter Measure</label>
+						<div class="col-sm-9">
+							<textarea class="form-control" name="pitch_counter_measure" id="pitch_counter_measure"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-6">
+							<button class="btn btn-success btn-lg btn-block" type="submit" name="pitch_result" value="hit" id="hit-button" data-loading-text="Loading...">Hit</button>
+						</div>
+						<div class="col-sm-6">
+							<button class="btn btn-danger btn-lg btn-block" type="submit" name="pitch_result" value="missed" id="missed-button" data-loading-text="Loading...">Missed</button>
+						</div>
+					</div>
+					
+					<input type="hidden" name="pitch_timestamp" value="<?php echo time(); ?>" />
+					<input type="hidden" name="pitch_number" id="pitch_number" value="<?php echo get_next_pitch_number(); ?>" />
+					<input type="hidden" name="app_pitchtracker_sheets_id" value="<?php echo $sheet->getID(); ?>" />
+					
+				</form>
+				
+			<?php endforeach; ?>
+			
+				<?php if (get_pitches()): ?>
+				
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							Log
+						</div>
+						
+						<table class="table">
+							<tr>
+								<th>#</th>
+								<th>Goal</th>
+								<th>Actual</th>
+								<th>Result</th>
+								<th>Missed Reason</th>
+								<th>Missed Reason (Other)</th>
+								<th>Counter Measure</th>
+							</tr>
+				
+							<?php foreach(get_pitches() as $pitch): ?>
+	
+								<tr>
+									<td><?php echo $pitch->getNumber(); ?></td>
+									<td><?php echo $pitch->getGoal(); ?></td>
+									<td><?php echo $pitch->getActual(); ?></td>
+									<td><?php echo ucfirst($pitch->getResult()); ?></td>
+									<td>									
+										<?php if (get_missed_pitch_reasons($pitch->getID())):
+											echo implode(', ', get_missed_pitch_reasons($pitch->getID()));
+										endif; ?>
+									</td>
+									<td><?php echo $pitch->getMissedReasonOther(); ?></td>
+									<td><?php echo $pitch->getCounterMeasure(); ?></td>
+								</tr>
+	
+							<?php endforeach; ?>
+							
+						</table>
+						
+						<ul class="list-group">
+							<li class="list-group-item">
+								<b>Goal Total:</b> <?php echo get_goal_total(); ?>
+								<b>Actual Total:</b> <?php echo get_actual_total(); ?>
+								<?php echo get_pitch_goal_percent(); ?>
+							</li>
+							<li class="list-group-item">
+								<b>Total Pitches:</b> <?php echo get_total_pitches() ?>
+								<b>Total Hit:</b> <?php echo get_total_pitches_hit(); ?>
+								<b>Total Missed:</b> <?php echo get_total_pitches_missed(); ?>
+								<?php echo get_pitch_attainment_percent(); ?>
+							</li>
+						</ul>
+					
+					</div>
+					
+				<?php else : create_message('info', 'No pitches have been submitted.', true); endif; ?>
+			
+			<?php else : create_message('danger', 'The requested pitch sheet doesn\'t exist!', true); endif; ?>
+			
+		</div>
+		
+	</div>
+		
+	<script type="text/javascript">
+		$(function() {
+			$("#pitch_missed_reasons").chosen({
+				width: '100%',
+				inherit_select_classes: true
+			});
+			$("#hit-button").click(function() {
+			    var btn = $(this);
+			    btn.button('loading');
+			    setTimeout(function () {
+			        btn.button('reset');
+			    }, 1000);
+			});
+			$("#missed-button").click(function() {
+			    var btn = $(this);
+			    btn.button('loading');
+			    setTimeout(function () {
+			        btn.button('reset');
+			    }, 1000);
+			});
+			$("#line-down").click(function() {
+			    var btn = $(this);
+			    btn.button('loading');
+			    setTimeout(function () {
+			        btn.button('reset');
+			    }, 1000);
+			});	
+		});
+		
+		$('#pitch_sheet').validate();
+		
+	</script>
+
+<?php get_footer(); ?>

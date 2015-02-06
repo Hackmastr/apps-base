@@ -1,0 +1,82 @@
+<?php get_header(); ?>
+
+	<div class="row">
+
+		<div class="col-sm-4 col-md-3 sidebar">
+			<?php get_monthly_subnav(); ?>
+		</div>
+
+		<div class="col-sm-8 col-md-9">
+
+			<div class="page-header">
+				<h1><?php echo $template->page_title; ?></h1>
+			</div>
+
+			<?php get_message() ?>
+
+			<form class="form-horizontal" method="post" action="<?php echo get_page_url(); ?>">
+
+				<div role="tabpanel" id="divisions">
+
+					<ul class="nav nav-tabs" role="tablist">
+						<?php foreach(Division::getAllDivisions() as $division) : ?>
+								<li role="presentation" <?php echo ($division->getID() == '1' ? 'class="active"' : ''); ?>><a href="#d<?php echo $division->getID(); ?>" aria-controls="d<?php echo $division->getID(); ?>" role="tab" data-toggle="tab"><?php echo $division->getName(); ?></a></li>
+						<?php endforeach; ?>
+					</ul>
+
+					<div class="tab-content">
+
+						<?php foreach(Division::getAllDivisions() as $division) : ?>
+
+							<div role="tabpanel" class="tab-pane <?php echo ($division->getID() == '1' ? 'in active' : '') ?>" id="d<?php echo $division->getID(); ?>">
+
+								<table class="table table-condensed table-bordered table-hover metriccell-assignment">
+									<thead>
+										<tr>
+											<th></th>
+											<?php foreach(Cell::getCellsByDivision($division->getID()) as $cell) : ?>
+												<th><?php echo $cell->getName(); ?></th>
+											<?php endforeach; ?>
+										</tr>
+									</thead>
+									<tbody>
+										<?php foreach(Metric::getAllMetrics() as $metric) : ?>
+										<tr>
+											<td>
+												<?php echo $metric->getName(); ?>
+											</td>
+											<?php foreach(Cell::getCellsByDivision($division->getID()) as $cell) : ?>
+												<td class="metriccell-checkbox">
+													<input <?php echo (Metric::inCell($metric->getID(), $cell->getID()) ? 'checked="checked"' : ''); ?> type="checkbox" name="metric_cells[<?php echo $metric->getID(); ?>][]" value="<?php echo $cell->getID(); ?>" />
+												</td>
+											<?php endforeach; ?>
+										</tr>
+										<?php endforeach; ?>
+									</tbody>
+								</table>
+
+							</div>
+
+						<?php endforeach; ?>
+
+					</div>
+
+					<button class="btn btn-default" type="submit" name="submit">Submit</button>
+
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+	<script>
+		$('#divisions a').click(function (e) {
+			e.preventDefault()
+			$(this).tab('show')
+		});
+	</script>
+
+<?php get_footer(); ?>
+

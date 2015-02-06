@@ -1,0 +1,140 @@
+<?php get_header(); ?>
+
+	<div class="row">
+
+		<div class="col-sm-4 col-md-3 sidebar">
+			<?php echo $template->subnav(); ?>
+		</div>
+		
+		<div class="col-sm-8 col-md-9">
+		
+			<div class="page-header">
+	
+				<h1><?php echo $template->page_title; ?></h1>
+				
+			</div>
+			
+			<?php get_message(); ?>
+		
+			<form id="setup" class="form-horizontal" method="post" action="<?php echo get_page_url() ?>">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Select Cell</label>
+						<div class="col-sm-9">
+							<select class="form-control" name="app_cells_id" required>
+								<option value="">Select One</option>
+							
+								<?php foreach (Cell::getAllCells() as $cell) {
+									
+									echo '<option value="'. $cell->getID() .'">'. $cell->getName() .'</option>';
+									
+								} ?>
+							
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label" for="sheet_shift">Select Shift</label>
+						<div class="col-sm-9">
+							<select class="form-control" name="sheet_shift" id="sheet_shift" required>
+								<option value="first">First</option>
+								<option value="second">Second</option>
+								<option value="third">Third</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label" for="sheet_shift_goal">Shift Goal</label>
+						<div class="col-sm-9">
+							<input class="form-control" type="text" name="sheet_shift_goal" id="sheet_shift_goal" required />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label" for="sheet_mode">Mode</label>
+						<div class="col-sm-9">
+							<select class="form-control" name="sheet_mode">
+								<option value="takt_time">Takt Time</option>
+								<option value="cycle_time">Line Cycle Time</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 sheet_mode_label control-label" for="sheet_taktcycle_time">Takt Time</label>
+						<div class="col-sm-9">
+							<input class="form-control" type="text" name="sheet_taktcycle_time" required />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label" for="sheet_planned_cycle_time">Planned Cycle Time</label>
+						<div class="col-sm-9">
+							<input class="form-control" type="text" name="sheet_planned_cycle_time" readonly />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label" for="sheet_pitch_goal">Pitch Goal</label>
+						<div class="col-sm-9">
+							<input class="form-control" type="text" name="sheet_pitch_goal" readonly />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button class="btn btn-primary sheet_generate" type="button" name="generate">Generate Pitch Attainment</button>
+						</div>
+					</div>
+					
+					<div class="panel panel-default" id="sheet_summary">
+						
+						<div class="panel-heading">
+							<h3 class="panel-title">Pitch Sheet Summary</h3>
+						</div>
+						
+						<table class="table">
+							<tbody>
+								<tr>
+									<td width="20%">Cell</td>
+									<td><span class="sheet_cell"></span></td>
+								</tr>
+								<tr>
+									<td>Shift</td>
+									<td><span class="sheet_shift"></span></td>
+								</tr>
+								<tr>
+									<td>Goal</td>
+									<td><span class="sheet_shift_goal"></span>
+								</tr>
+								<tr>
+									<td>Mode</td>
+									<td><span class="sheet_mode"></span></td>
+								</tr>
+								<tr>
+									<td>Takt/Cycle Time</td>
+									<td><span class="sheet_taktcycle_time"></span></td>
+								</tr>
+								<tr>
+									<td>Planned Cycle Time</td>
+									<td><span class="sheet_planned_cycle_time"></span></td>
+								</tr>
+								<tr>
+									<td>Pitch Goal</td>
+									<td><span class="sheet_pitch_goal"></span></td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<div class="panel-footer">
+							<input type="hidden" name="sheet_timestamp" value="<?php echo time() ?>" />
+							<button class="btn btn-primary" type="submit" name="submit">Create Pitch Sheet</button>
+						</div>
+					
+					</div>
+					
+				</form>
+			
+		</div>
+		
+	</div>
+	
+	<script>
+		$("#setup").validate();
+	</script>
+
+<?php get_footer(); ?>
