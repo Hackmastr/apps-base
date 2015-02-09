@@ -13,16 +13,35 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
+					February 7th, 2015
+				</div>
+				<div class="panel-body update-notes">
+					<h4>Base</h4>
+					<ul>
+						<li>Added Google Analytics.</li>
+						<li>Added <a href="<?php echo $options['site_url']; ?>/docs">phpDocs</a>.</li>
+						<li>If a template file doesn't exist in the app's template directory, fallback to the base template directory before failing completely.</li>
+					</ul>
+					<h4>Monthly</h4>
+					<ul>
+						<li class="improved">Selected period now defaults to previous month.</li>
+						<li class="improved">Rephrased period selection submit button from "Submit" to "Select Period" to differentiate it from the Save Metrics button.</li>
+						<li class="improved">Added border to bottom of period selection form to separate it from metric input panels.</li>
+						<li class="improved">Added selected month name to page title.</li>
+						<li class="improved">Login is now required to manage metrics and categories.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
 					February 2nd, 2015
 				</div>
 				<div class="panel-body update-notes">
-
 					<h4>General</h4>
-
 					<ul>
 						<li>Initial release.</li>
 					</ul>
-
 				</div>
 			</div>
 
