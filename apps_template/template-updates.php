@@ -13,6 +13,19 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
+					February 21st, 2015
+				</div>
+				<div class="panel-body update-notes">
+					<h4>Monthly</h4>
+					<ul>
+						<li class="improved">Refactored hits/misses so there's only one save button per metric input page (instead of 4).</li>
+						<li class="improved">Add "Goal" to forecast column header description.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
 					February 7th, 2015
 				</div>
 				<div class="panel-body update-notes">
