@@ -19,7 +19,7 @@
 					<h4>Monthly</h4>
 					<ul>
 						<li class="improved">Refactored hits/misses so there's only one save button per metric input page (instead of 4).</li>
-						<li class="improved">Add "Goal" to forecast column header description.</li>
+						<li class="improved">Added "Goal" to forecast column header description.</li>
 					</ul>
 				</div>
 			</div>
