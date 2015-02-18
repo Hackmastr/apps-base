@@ -20,6 +20,8 @@
 					<ul>
 						<li class="improved">Refactored hits/misses so there's only one save button per metric input page (instead of 4).</li>
 						<li class="improved">Added "Goal" to forecast column header description.</li>
+						<li class="improved">Added Percent and Dollars to metric data type options.</li>
+						<li class="improved">Highlight reported metrics on Manage Metrics page</li>
 					</ul>
 				</div>
 			</div>
