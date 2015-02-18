@@ -231,21 +231,13 @@ input.error {
 	font-size: 1em;
 }
 
-.update-notes ul {
-	margin-bottom: 20px;
+.update-notes li {
+	border-left: 10px solid #000000;
+	line-height: 25px;
+	list-style: none;
+	margin: 5px 0;
+	padding-left: 10px;
 }
-
-.update-notes ul:last-of-type {
-	margin: 0;
-}
-
-	.update-notes li {
-		border-left: 10px solid #000000;
-		line-height: 25px;
-		list-style: none;
-		margin: 5px 0;
-		padding-left: 10px;
-	}
 
 .updatenotes-legend {
 	margin-bottom: 20px;
