@@ -13,13 +13,17 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					February 21st, 2015
+					February ?, 2015
 				</div>
 				<div class="panel-body update-notes">
 					<h4>Monthly</h4>
 					<ul>
 						<li class="improved">Refactored hits/misses so there's only one save button per metric input page (instead of 4).</li>
 						<li class="improved">Added "Goal" to forecast column header description.</li>
+						<li class="improved">Added Percent and Dollars to metric data type options.</li>
+						<li class="improved">Highlight reported metrics on Manage Metrics page.</li>
+						<li class="improved">Display percent numbers instead of decimals for metric.</li>
+						<li class="improved">Display data type sign in front/behind input box.</li>
 					</ul>
 				</div>
 			</div>
