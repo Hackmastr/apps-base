@@ -7,7 +7,7 @@
 	<div class="row">
 
 		<div class="col-lg-12">
-			<a class="btn btn-lg btn-primary" href="https://venturamfg.webex.com/mw0401lsp12/mywebex/default.do?siteurl=venturamfg">Host a Meeting</a>
+			<a class="btn btn-lg btn-primary" href="https://venturamfg.webex.com/mw0401lsp12/mywebex/login/login.do?siteurl=venturamfg&login_return_url=%2Fmc0901lsp12%2Fmeetingcenter%2Fframe%2Fexpandurl.do%3Fsiteurl%3Dventuramfg">Host a Meeting</a>
 		</div>
 
 		<div class="col-lg-12">
