@@ -173,6 +173,13 @@ body {
 }
 
 /**
+ * Dashboard page
+ */
+.webex-host-links {
+	margin-bottom: 20px;
+}
+
+/**
  * Dashboard Links
  */
 .dashboard-links {
