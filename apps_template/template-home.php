@@ -17,28 +17,30 @@
 		<?php endforeach; else : create_message('info', 'No links exist.', true); endif; ?>
 	</div>
 
-	<h1>WebEx</h1>
+	<div class="row webex-host-links">
+		<div class="col-lg-12">
+			<h1>WebEx</h1>
 
-	<div class="panel">
-		<div class="row">
-			<div class="col-lg-12">
-				<a class="btn btn-lg btn-primary" href="https://venturamfg.webex.com/mw0401lsp12/mywebex/login/login.do?siteurl=venturamfg&login_return_url=%2Fmc0901lsp12%2Fmeetingcenter%2Fframe%2Fexpandurl.do%3Fsiteurl%3Dventuramfg">Host a Meeting</a>
-				<a class="btn btn-lg btn-primary" href="<?php echo $options['site_url']; ?>/conferencerooms.php">Join a Meeting</a>
-			</div>
+			<a class="btn btn-lg btn-primary" href="https://venturamfg.webex.com/mw0401lsp12/mywebex/login/login.do?siteurl=venturamfg&login_return_url=%2Fmc0901lsp12%2Fmeetingcenter%2Fframe%2Fexpandurl.do%3Fsiteurl%3Dventuramfg">Host a Meeting</a>
+			<a class="btn btn-lg btn-primary" href="<?php echo $options['site_url']; ?>/conferencerooms.php">Join a Meeting</a>
 		</div>
 	</div>
 
-	<h1>Apps</h1>
+	<div class="row">
+		<div class="col-lg-12">
+			<h1>Apps</h1>
 
-	<div class="row dashboard-links">
-		<?php foreach($options['mainnav']['apps']['children'] as $app) : ?>
-			<div class="col-lg-3 col-md-4 col-xs-6">
-				<a class="thumbnail" href="<?php echo $options['site_url'] .'/'. $app['url']; ?>" data-toggle="tooltip">
-					<i class="fa <?php echo $app['icon']; ?>"></i>
-					<h4><?php echo $app['title']; ?></h4>
-				</a>
+			<div class="dashboard-links">
+				<?php foreach($options['mainnav']['apps']['children'] as $app) : ?>
+					<div class="col-lg-3 col-md-4 col-xs-6">
+						<a class="thumbnail" href="<?php echo $options['site_url'] .'/'. $app['url']; ?>" data-toggle="tooltip">
+							<i class="fa <?php echo $app['icon']; ?>"></i>
+							<h4><?php echo $app['title']; ?></h4>
+						</a>
+					</div>
+				<?php endforeach; ?>
 			</div>
-		<?php endforeach; ?>
+		</div>
 	</div>
 
 	<script type="text/javascript">
