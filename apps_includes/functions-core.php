@@ -143,7 +143,7 @@ function get_nav_menu() {
 
 		if (isset($nav_item_properties['children'])) {
 
-			$nav_menu .= '<li class="dropdown'. ($template->parent_page == $nav_item ? ' active"' : '') .'">
+			$nav_menu .= '<li class="dropdown'. ($template->parent_page == $nav_item ? ' active' : '') .'">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="'. $options['site_url'] . $nav_item_properties['url'] .'">'. $nav_item_properties['title'] .' <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">';
 
