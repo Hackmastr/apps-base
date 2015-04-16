@@ -25,6 +25,10 @@
 						<li class="fixed">Calculate button now works in Internet Explorer.</li>
 						<li class="fixed">Fixed quoted words from disappearing in hits/misses.</li>
 					</ul>
+					<h4>Base</h4>
+					<ul>
+						<li class="improved">Dashboard links order now display on the Manage Links list page.</li>
+					</ul>
 				</div>
 			</div>
 
