@@ -13,7 +13,7 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					April 17th, 2015
+					April 20th, 2015
 				</div>
 				<div class="panel-body update-notes">
 					<h4>Monthly</h4>
