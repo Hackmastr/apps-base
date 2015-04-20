@@ -37,13 +37,31 @@ class Cell {
 	/**
 	 * Get cells by division
 	 */
-	static function getCellsByDivision($id) {
+	static function getCellsByDivision($id, $status = '') {
 
 		$db = DB::getInstance();
-		$query = $db->dbh->prepare('SELECT * FROM app_cells WHERE app_division_id = :id');
-		$query->bindValue('id', $id);
+		$params = [];
 
-		if ($query->execute())
+		$sql = 'SELECT *
+			FROM
+				app_cells
+			WHERE
+				app_division_id = :id';
+
+		if ($status != '') {
+			$sql .= ' AND cell_status = :status';
+			$params['status'] = $status;
+		}
+
+		// Prepare data params
+		$params['id'] = $id;
+
+    // Prepare & execute query
+    $query = $db->dbh->prepare($sql);
+    $result = $query->execute($params);
+
+		// Check results
+		if ($query->execute($params))
 			return $query->fetchAll(PDO::FETCH_CLASS, 'Cell');
 
 	}

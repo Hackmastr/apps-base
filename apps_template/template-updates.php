@@ -13,6 +13,27 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
+					April 20th, 2015
+				</div>
+				<div class="panel-body update-notes">
+					<h4>Monthly</h4>
+					<ul>
+						<li class="added">Forecasts can now be entered per division and corporate.</li>
+						<li class="added">New "Presentation Mode".</li>
+						<li class="improved">Empty fields now default to "0" if nothing has been entered.</li>
+						<li class="improved">Limit hits/misses to 125 characters.</li>
+						<li class="fixed">Calculate button now works in Internet Explorer.</li>
+						<li class="fixed">Fixed quoted words from disappearing in hits/misses.</li>
+					</ul>
+					<h4>Base</h4>
+					<ul>
+						<li class="improved">Dashboard links order now display on the Manage Links list page.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
 					February 25th, 2015
 				</div>
 				<div class="panel-body update-notes">
