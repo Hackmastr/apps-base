@@ -1,7 +1,0 @@
-# Ignore all app directories
-# Each app should have its own Git repo
-/a/*
-!/a/index.php
-
-# Ignore user config file
-apps-config.php
