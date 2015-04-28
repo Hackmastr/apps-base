@@ -13,6 +13,22 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
+					--
+				</div>
+				<div class="panel-body update-notes">
+					<h4>Monthly</h4>
+					<ul>
+						<li class="improved">Added option to include metrics in corporate overview. Metrics that are not get filtered from the presentation mode.</li>
+					</ul>
+					<h4>Base</h4>
+					<ul>
+						<li class="improved">A banner will now display if the user's web browser is out of date.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
 					April 20th, 2015
 				</div>
 				<div class="panel-body update-notes">
