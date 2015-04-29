@@ -2,10 +2,6 @@
 
 	<div class="page-header">
 		<h1><?php echo $template->page_title; ?></h1>
-
-		<div class="updatenotes-legend">
-			<span class="updatenotes-legend-added">Added</span><span class="updatenotes-legend-removed">Removed</span><span class="updatenotes-legend-fixed">Fixed</span><span class="updatenotes-legend-improved">Improved</span>
-		</div>
 	</div>
 
 	<div class="row">
