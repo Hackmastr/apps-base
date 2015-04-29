@@ -19,6 +19,7 @@
 					<h4>Base</h4>
 					<ul>
 						<li>A banner will now display if the user's web browser is out of date.</li>
+						<li>Simplified look of updates page.</li>
 					</ul>
 				</div>
 			</div>
