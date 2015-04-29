@@ -12,14 +12,14 @@
 					--
 				</div>
 				<div class="panel-body update-notes">
-					<h4>Monthly</h4>
-					<ul>
-						<li>Added option to include metrics in corporate overview. Metrics that are not get filtered from the presentation mode.</li>
-					</ul>
 					<h4>Base</h4>
 					<ul>
 						<li>A banner will now display if the user's web browser is out of date.</li>
 						<li>Simplified look of updates page.</li>
+					</ul>
+					<h4>Monthly</h4>
+					<ul>
+						<li>Added option to include metrics in corporate overview. Metrics that are not get filtered from the presentation mode.</li>
 					</ul>
 				</div>
 			</div>
@@ -29,6 +29,10 @@
 					April 20th, 2015
 				</div>
 				<div class="panel-body update-notes">
+					<h4>Base</h4>
+					<ul>
+						<li>Dashboard links order now display on the Manage Links list page.</li>
+					</ul>
 					<h4>Monthly</h4>
 					<ul>
 						<li>Forecasts can now be entered per division and corporate.</li>
@@ -37,10 +41,6 @@
 						<li>Limit hits/misses to 125 characters.</li>
 						<li>Calculate button now works in Internet Explorer.</li>
 						<li>Fixed quoted words from disappearing in hits/misses.</li>
-					</ul>
-					<h4>Base</h4>
-					<ul>
-						<li>Dashboard links order now display on the Manage Links list page.</li>
 					</ul>
 				</div>
 			</div>
