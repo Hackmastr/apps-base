@@ -20,6 +20,7 @@
 					<h4>Monthly</h4>
 					<ul>
 						<li>Added option to include metrics in corporate overview. Metrics that are not get filtered from the presentation mode.</li>
+						<li>Improvements to corporate rollup in presentation mode.</li>
 					</ul>
 				</div>
 			</div>
