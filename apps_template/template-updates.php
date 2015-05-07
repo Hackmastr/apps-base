@@ -19,8 +19,16 @@
 					</ul>
 					<h4>Monthly</h4>
 					<ul>
-						<li>Added option to include metrics in corporate overview. Metrics that are not get filtered from the presentation mode.</li>
-						<li>Improved corporate rollup in presentation mode.</li>
+						<li>Various impovements to Presentation Mode:
+							<ul>
+								<li>Added option to metrics to display whether or not it gets included in corporate overview.</li>
+								<li>Added option to metrics to manage display order.</li>
+								<li>Added option to include which divisions get included into corporate rollup.</li>
+								<li>Added data labels to column graphs.</li>
+								<li>Changed way corporate rollup is calculated so now it displays correct results.</li>
+								<li>Corporate Metrics management page now only displays metrics that are in corporate rollup.</li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
