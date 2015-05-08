@@ -27,8 +27,8 @@
 								<li>Added data labels to column graphs.</li>
 								<li>Changed way corporate rollup is calculated so now it displays correct results.</li>
 								<li>Corporate Metrics management page now only displays metrics that are in corporate rollup.</li>
-								<li>Cleaned up setup page.</li>
-								<li>Cleaned up and improved error checking after submitting Setup page.</li>
+								<li>Improved setup page.</li>
+								<li>Improved error checking after submitting Setup page.</li>
 							</ul>
 						</li>
 					</ul>
