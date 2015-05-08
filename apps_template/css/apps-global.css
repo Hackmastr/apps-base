@@ -236,6 +236,7 @@ input.error {
 .update-notes h4 {
 	color: #000000;
 	font-size: 1em;
+	font-weight: bold;
 }
 
 .update-notes ul {
@@ -245,34 +246,3 @@ input.error {
 .update-notes ul:last-of-type {
 	margin: 0;
 }
-
-	.update-notes li {
-		border-left: 10px solid #000000;
-		line-height: 25px;
-		list-style: none;
-		margin: 5px 0;
-		padding-left: 10px;
-	}
-
-.updatenotes-legend {
-	margin-bottom: 20px;
-}
-
-	.updatenotes-legend span {
-		color: #ffffff;
-		font-size: .8em;
-		padding: 2px 5px;
-		text-transform: uppercase;
-	}
-
-	.updatenotes-legend-added { background-color: #339900; }
-	li.added { border-color: #339900; }
-
-	.updatenotes-legend-removed { background-color: #ff0000; }
-	li.removed { border-color: #ff0000; }
-
-	.updatenotes-legend-fixed { background-color: #ff9900; }
-	li.fixed { border-color: #ff9900; }
-
-	.updatenotes-legend-improved { background-color: #660066; }
-	li.improved { border-color: #660099; }
