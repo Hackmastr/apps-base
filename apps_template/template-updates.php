@@ -9,6 +9,19 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
+					May 13th, 2015
+				</div>
+				<div class="panel-body update-notes">
+					<h4>Monthly</h4>
+					<ul>
+						<li>Added percent signs to percent numbers in presentation mode.</li>
+						<li>Adjusted scale of graphs for specific metrics.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
 					May 8th, 2015
 				</div>
 				<div class="panel-body update-notes">
