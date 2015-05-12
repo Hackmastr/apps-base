@@ -14,8 +14,13 @@
 				<div class="panel-body update-notes">
 					<h4>Monthly</h4>
 					<ul>
-						<li>Added percent signs to percent numbers in presentation mode.</li>
-						<li>Adjusted scale of graphs for specific metrics.</li>
+						<li>More impovements to Presentation Mode:
+							<ul>
+								<li>Added percent signs to actuals when data type is percent.</li>
+								<li>Adjusted scale of graphs for specific metrics.</li>
+								<li>Metrics that weren't calculated that had percent data type defined weren't getting converted from decimal in graphs.</li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
