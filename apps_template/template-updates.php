@@ -9,6 +9,18 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
+					May 13th, 2015
+				</div>
+				<div class="panel-body update-notes">
+					<h4>Monthly</h4>
+					<ul>
+						<li>Order cell metrics by month in presentation mode.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
 					May 12th, 2015
 				</div>
 				<div class="panel-body update-notes">
