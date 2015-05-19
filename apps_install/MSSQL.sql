@@ -12,7 +12,7 @@ CREATE TABLE app_locations (
 CREATE TABLE app_divisions (
 	id bigint check (id > 0) NOT NULL identity,
 	division_name VARCHAR(200) NOT NULL,
-	PRIMARY KEY (id)	
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE app_cells (
@@ -23,14 +23,14 @@ CREATE TABLE app_cells (
 	app_location_id bigint NOT NULL,
 	cell_iq_connector VARCHAR(100) NOT NULL,
 	cell_status VARCHAR(20) NOT NULL DEFAULT 'active',
-	PRIMARY KEY (id)	
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE app_links (
 	id bigint check (id > 0) NOT NULL identity,
 	link_name VARCHAR(30) NOT NULL,
 	link_description VARCHAR(100) NOT NULL,
-	link_url VARCHAR(100) NOT NULL,
+	link_url VARCHAR(255) NOT NULL,
 	link_bg_color VARCHAR(10),
 	link_order decimal(38) NOT NULL,
 	link_icon_class VARCHAR(30) NULL,
@@ -49,7 +49,7 @@ CREATE TABLE app_innolunch (
 	innolunch_day VARCHAR(200) NOT NULL,
 	innolunch_item VARCHAR(200) NOT NULL,
 	innolunch_price VARCHAR(200) NOT NULL,
-	PRIMARY KEY (id)	
+	PRIMARY KEY (id)
 );
 INSERT INTO app_innolunch (innolunch_day, innolunch_item, innolunch_price) VALUES ('Monday', 'Item 1', '$3.00');
 INSERT INTO app_innolunch (innolunch_day, innolunch_item, innolunch_price) VALUES ('Tuesday', 'Item 2', '$3.00');

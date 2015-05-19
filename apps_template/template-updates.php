@@ -9,6 +9,18 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
+					? ?, 2015
+				</div>
+				<div class="panel-body update-notes">
+					<h4>Base</h4>
+					<ul>
+						<li>Increased character limit for dashboard link URLs to 255.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
 					May 13th, 2015
 				</div>
 				<div class="panel-body update-notes">
