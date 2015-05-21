@@ -12,6 +12,10 @@
 					? ?, 2015
 				</div>
 				<div class="panel-body update-notes">
+					<h4>General</h4>
+					<ul>
+						<li>Disabled SMTPAuth for PHPMailer. This is no longer needed with Office 365.</li>
+					</ul>
 					<h4>Base</h4>
 					<ul>
 						<li>Increased character limit for dashboard link URLs to 255.</li>
