@@ -9,7 +9,7 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					? ?, 2015
+					June 5th, 2015
 				</div>
 				<div class="panel-body update-notes">
 					<h4>General</h4>
@@ -18,7 +18,14 @@
 					</ul>
 					<h4>Base</h4>
 					<ul>
-						<li>Increased character limit for dashboard link URLs to 255.</li>
+						<li>Increased character limit for dashboard links URLs to 255.</li>
+						<li>Added General 1 WebEx room to Conference Rooms page.</li>
+					</ul>
+					<h4>Monthly</h4>
+					<ul>
+						<li>Fixed issue with presentation mode setup where if you choose to present cells for one division, cells for every division would display.</li>
+						<li>Added padding to .presentation_body.</li>
+						<li>Added exporting options to graphs.</li>
 					</ul>
 				</div>
 			</div>
