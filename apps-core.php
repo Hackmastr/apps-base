@@ -60,7 +60,7 @@ $mail->Host = $options['email_host'];
 $mail->Port = $options['email_port'];
 $mail->From = $options['email_from'];
 $mail->FromName = $options['email_from_name'];
-$mail->SMTPAuth = true;
+$mail->SMTPAuth = false;
 $mail->Username = $options['email_username'];
 $mail->Password = $options['email_password'];
 
