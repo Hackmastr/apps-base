@@ -9,6 +9,18 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
+					June 8th, 2015
+				</div>
+				<div class="panel-body update-notes">
+					<h4>Monthly</h4>
+					<ul>
+						<li>Added "Questions?" slide to the end of each cell, division, and corporate rollup.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
 					June 5th, 2015
 				</div>
 				<div class="panel-body update-notes">
