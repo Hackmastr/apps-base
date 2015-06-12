@@ -9,6 +9,20 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
+					--/--, 2015
+				</div>
+				<div class="panel-body update-notes">
+					<h4>Monthly</h4>
+					<ul>
+						<li>Added corporate rollup config table so now individual metrics can be included in the corporate rollup per division.</li>
+						<li>Corporate rollup no longer requires the end-user to configure it on the setup screen.</li>
+						<li>Removed slide title from finacial slides.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
 					June 8th, 2015
 				</div>
 				<div class="panel-body update-notes">
