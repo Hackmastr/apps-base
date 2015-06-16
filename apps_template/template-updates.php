@@ -17,6 +17,7 @@
 						<li>Added corporate rollup config table so now individual metrics can be included in the corporate rollup per division.</li>
 						<li>Corporate rollup no longer requires the end-user to configure it on the setup screen.</li>
 						<li>Removed slide title from finacial slides.</li>
+						<li>Unwanted characters (commas, percent signs, etc) now get automatically stripped from input when metric data is submitted.</li>
 					</ul>
 				</div>
 			</div>
