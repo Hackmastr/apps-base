@@ -23,6 +23,7 @@ CREATE TABLE app_cells (
 	app_location_id bigint NOT NULL,
 	cell_iq_connector VARCHAR(100) NOT NULL,
 	cell_status VARCHAR(20) NOT NULL DEFAULT 'active',
+	cell_order decimal(38) NOT NULL,
 	PRIMARY KEY (id)
 );
 
