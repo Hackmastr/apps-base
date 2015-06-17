@@ -12,12 +12,17 @@
 					--/--, 2015
 				</div>
 				<div class="panel-body update-notes">
+					<h4>Base</h4>
+					<ul>
+						<li>Added "Cell Display Order" options to cells.</li>
+					</ul>
 					<h4>Monthly</h4>
 					<ul>
-						<li>Added corporate rollup config table so now individual metrics can be included in the corporate rollup per division.</li>
+						<li>Added corporate rollup configuration screen so now individual metrics can be included in the corporate rollup per division.</li>
 						<li>Corporate rollup no longer requires the end-user to configure it on the setup screen.</li>
 						<li>Removed slide title from finacial slides.</li>
 						<li>Unwanted characters (commas, percent signs, etc) now get automatically stripped from input when metric data is submitted.</li>
+						<li>The presentation order of cells can now be changed.</li>
 					</ul>
 				</div>
 			</div>
