@@ -12,6 +12,10 @@
 					--/--, 2015
 				</div>
 				<div class="panel-body update-notes">
+					<h4>General</h4>
+					<ul>
+						<li>Bootstrap updated to latest release.</li>
+					</ul>
 					<h4>Base</h4>
 					<ul>
 						<li>Added "Cell Display Order" options to cells.</li>
