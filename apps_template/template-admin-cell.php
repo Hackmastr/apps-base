@@ -1,26 +1,26 @@
 <?php get_header(); ?>
 
 	<div class="row">
-	
+
 		<div class="col-sm-4 col-md-3 sidebar">
 			<?php echo $template->subnav(); ?>
 		</div>
-		
+
 		<div class="col-sm-8 col-md-9">
-		
+
 			<div class="page-header">
-	
+
 				<h1><?php echo $template->page_title; ?></h1>
-				
+
 			</div>
-	
+
 			<?php get_message(); ?>
-		
+
 			<?php if (is_single()) : ?>
-			
+
 				<?php
 					$cell_id = get_var('id');
-			
+
 					$cell = ($cell_id ? Cell::getCell($cell_id) : false);
 					$cell_name = ($cell ? $cell->getName() : '');
 					$cell_number = ($cell ? $cell->getNumber() : '');
@@ -28,14 +28,15 @@
 					$app_location_id = ($cell ? $cell->getLocationID() : '');
 					$cell_iq_connector = ($cell ? $cell->getIQConnector() : '');
 					$cell_status = ($cell ? $cell->getStatus() : '');
+					$cell_order = ($cell ? $cell->getOrder() : '');
 				?>
-				
+
 				<?php if (get_var('action') != 'add' && !$cell) : ?>
-				
+
 					<?php create_message('danger', 'Cell does not exist!', true); ?>
-					
+
 				<?php else : ?>
-				
+
 					<form class="form-horizontal" method="post" action="<?php echo get_page_url(); ?>">
 						<div class="form-group">
 							<label class="col-sm-3 control-label" for="name">Cell Name</label>
@@ -86,6 +87,12 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="col-sm-3 control-label" for="cell_order">Cell Display Order</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" id="cell_order" name="cell_order" value="<?php echo $cell_order; ?>" />
+							</div>
+						</div>
+						<div class="form-group">
 							<div class="col-sm-offset-3 col-sm-9">
 								<button class="btn btn-default" type="submit" name="submit">Submit</button>
 								<?php if (get_var('action') == 'view') : ?>
@@ -94,15 +101,15 @@
 							</div>
 						</div>
 					</form>
-				
+
 				<?php endif; ?>
-				
+
 			<?php else : ?>
-			
+
 				<a class="btn btn-primary" href="<?php echo $app->url; ?>/admin.php?area=cells&action=add">Add New</a>
-		
+
 				<?php if (Cell::getAllCells()) : ?>
-		
+
 					<table class="table">
 						<thead>
 							<tr>
@@ -110,22 +117,22 @@
 							</tr>
 						</thead>
 						<tbody>
-							
+
 						<?php foreach (Cell::getAllCells() as $cell) : ?>
 							<tr>
 								<td><a href="<?php echo $app->url; ?>/admin.php?area=cells&action=view&id=<?php echo $cell->getID(); ?>"><?php echo $cell->getName(); ?></a></li></td>
 							</tr>
 						<?php endforeach; ?>
-			
+
 						</tbody>
 					</table>
-					
+
 				<?php endif; ?>
-			
-			<?php endif; ?>			
-			
+
+			<?php endif; ?>
+
 		</div>
-	
+
 	</div>
 
 <?php get_footer(); ?>
