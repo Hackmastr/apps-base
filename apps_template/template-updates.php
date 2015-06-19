@@ -27,6 +27,7 @@
 						<li>Removed slide title from finacial slides.</li>
 						<li>Unwanted characters (commas, percent signs, etc) now get automatically stripped from input when metric data is submitted.</li>
 						<li>The presentation order of cells can now be changed.</li>
+						<li>The maximum/minimum display values for graphs can now be configured on the manage metric page.</li>
 					</ul>
 				</div>
 			</div>
