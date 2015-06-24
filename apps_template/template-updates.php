@@ -9,6 +9,31 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
+					June 24th, 2015
+				</div>
+				<div class="panel-body update-notes">
+					<h4>General</h4>
+					<ul>
+						<li>Bootstrap updated to latest release.</li>
+					</ul>
+					<h4>Base</h4>
+					<ul>
+						<li>Added "Cell Display Order" options to cells.</li>
+					</ul>
+					<h4>Monthly</h4>
+					<ul>
+						<li>Added corporate rollup configuration screen so now individual metrics can be included in the corporate rollup per division.</li>
+						<li>Corporate rollup no longer requires the end-user to configure it on the setup screen.</li>
+						<li>Removed slide title from finacial slides.</li>
+						<li>Unwanted characters (commas, percent signs, etc) now get automatically stripped from input when metric data is submitted.</li>
+						<li>The presentation order of cells can now be changed.</li>
+						<li>The maximum/minimum display values for graphs can now be configured on the manage metric page.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
 					June 8th, 2015
 				</div>
 				<div class="panel-body update-notes">

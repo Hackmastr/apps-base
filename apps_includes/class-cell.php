@@ -16,6 +16,7 @@ class Cell {
 	private $cell_name;
 	private $cell_iq_connector;
 	private $cell_status;
+	private $cell_order;
 
 	function __construct($db = '') {
 		$this->db = $db;
@@ -37,7 +38,7 @@ class Cell {
 	/**
 	 * Get cells by division
 	 */
-	static function getCellsByDivision($id, $status = '') {
+	static function getCellsByDivision($id, $status = '', $orderby = '') {
 
 		$db = DB::getInstance();
 		$params = [];
@@ -51,6 +52,10 @@ class Cell {
 		if ($status != '') {
 			$sql .= ' AND cell_status = :status';
 			$params['status'] = $status;
+		}
+
+		if ($orderby != '') {
+			$sql .= ' ORDER BY '. $orderby;
 		}
 
 		// Prepare data params
@@ -87,13 +92,14 @@ class Cell {
 
 		$db = DB::getInstance();
 
-		$query = $db->dbh->prepare('INSERT INTO app_cells (app_division_id, app_location_id, cell_number, cell_name, cell_iq_connector, cell_status) VALUES (:app_division_id, :app_location_id, :cell_number, :cell_name, :cell_iq_connector, :cell_status)');
+		$query = $db->dbh->prepare('INSERT INTO app_cells (app_division_id, app_location_id, cell_number, cell_name, cell_iq_connector, cell_status, cell_order) VALUES (:app_division_id, :app_location_id, :cell_number, :cell_name, :cell_iq_connector, :cell_status, :cell_order)');
 		$query->bindValue('app_division_id', $post['app_division_id']);
 		$query->bindValue('app_location_id', $post['app_location_id']);
 		$query->bindValue('cell_number', $post['cell_number']);
 		$query->bindValue('cell_name', $post['cell_name']);
 		$query->bindValue('cell_iq_connector', $post['cell_iq_connector']);
 		$query->bindValue('cell_status', $post['cell_status']);
+		$query->bindValue('cell_order', $post['cell_order']);
 
 		if ($query->execute())
 			return true;
@@ -106,7 +112,7 @@ class Cell {
 	public static function saveCell($id, $post) {
 
 		$db = DB::getInstance();
-		$query = $db->dbh->prepare('UPDATE app_cells SET app_division_id = :app_division_id, app_location_id = :app_location_id, cell_number = :cell_number, cell_name = :cell_name, cell_iq_connector = :cell_iq_connector, cell_status = :cell_status WHERE id = :id');
+		$query = $db->dbh->prepare('UPDATE app_cells SET app_division_id = :app_division_id, app_location_id = :app_location_id, cell_number = :cell_number, cell_name = :cell_name, cell_iq_connector = :cell_iq_connector, cell_status = :cell_status, cell_order = :cell_order WHERE id = :id');
 		$query->bindValue('id', $id);
 		$query->bindValue('app_division_id', $post['app_division_id']);
 		$query->bindValue('app_location_id', $post['app_location_id']);
@@ -114,6 +120,7 @@ class Cell {
 		$query->bindValue('cell_name', $post['cell_name']);
 		$query->bindValue('cell_iq_connector', $post['cell_iq_connector']);
 		$query->bindValue('cell_status', $post['cell_status']);
+		$query->bindValue('cell_order', $post['cell_order']);
 
 		if ($query->execute())
 			return true;
@@ -185,6 +192,13 @@ class Cell {
 	 */
 	function getStatus() {
 		return $this->cell_status;
+	}
+
+	/**
+	 * Get cell display order
+	 */
+	function getOrder() {
+		return $this->cell_order;
 	}
 
 }
