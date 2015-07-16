@@ -9,6 +9,18 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
+					July 16th, 2015
+				</div>
+				<div class="panel-body update-notes">
+					<h4>Monthly</h4>
+					<ul>
+						<li>Fix metric forecast display order.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
 					June 24th, 2015
 				</div>
 				<div class="panel-body update-notes">
