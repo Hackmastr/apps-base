@@ -9,12 +9,24 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
+					July 31st, 2015
+				</div>
+				<div class="panel-body update-notes">
+					<h4>Monthly</h4>
+					<ul>
+						<li>Refactored how presentation mode graphs are generated for cells.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
 					July 16th, 2015
 				</div>
 				<div class="panel-body update-notes">
 					<h4>Monthly</h4>
 					<ul>
-						<li>Fix metric forecast display order.</li>
+						<li>Fixed metric forecast display order.</li>
 					</ul>
 				</div>
 			</div>
