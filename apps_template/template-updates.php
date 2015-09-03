@@ -9,6 +9,18 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
+					-- --, 2015
+				</div>
+				<div class="panel-body update-notes">
+					<h4>Monthly</h4>
+					<ul>
+						<li>Prevent financial images from getting cached.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
 					July 31st, 2015
 				</div>
 				<div class="panel-body update-notes">
